@@ -1,0 +1,17 @@
+# Игнорировать временные файлы
+*.tmp
+*.log
+*.exe
+
+# Игнорировать папки
+node_modules/
+ignored/
+
+# Игнорировать файлы конфигурации
+config.json
+settings.json
+tasks.json
+launch.json
+
+# Игнорировать все файлы конфигурации
+.vscode/
