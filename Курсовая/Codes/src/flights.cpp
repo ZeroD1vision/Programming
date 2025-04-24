@@ -1,7 +1,21 @@
+/******************************************************************************
+*                               Курс Информатика                              *
+*******************************************************************************
+* Project type  : Windows Console Application                                 *
+* Project name  : Practics                                                    *
+* File name     : main.cpp                                                    *
+* Language      : CPP                                                         *
+* Programmers   : Нарзиев Артемий Тимурович                                   *
+* Modified By   :                                                             *
+* Created       : 15.04.2025                                                  *
+* Last Revision : 25.04.2025                                                  *
+* Comment       : Работа со структурами данных. Вариант: 12                   *
+******************************************************************************/
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <cctype>
+#include <iomanip>
 // Для локали на русском
 #include <locale>
 #include <codecvt>
@@ -11,21 +25,80 @@ using namespace std;
 
 // Структура для хранения информации о самолете
 struct Plane {
-    string time;         // Время посадки
-    int minutes;        // Время в минутах
-    string model;       // Модель летательного аппарата
-    string bortNumber;  // Бортовой номер
-    string airport;     // Аэродром посадки
+    string time;         // Время посадки в формате HH:MM
+    int minutes;        // Время в минутах для сортировки
+    string model;       // Название модели воздушного судна
+    string bortNumber;  // Бортовой номер формата X-XXXX
+    string airport;     // Код аэродрома (АП1, АП2, АП3)
 };
 
 const int MAX_PLANES = 100; // Максимальное количество самолетов
 Plane planes[MAX_PLANES];    // Массив для хранения самолетов
 int planeCount = 0;          // Счетчик самолетов
 
+// Проверка формата времени
+/**
+ * Проверка корректности формата времени
+ * @param time Строка времени в формате HH:MM
+ * @return true если время валидно, false в противном случае
+ */
+bool isTimeValid(const string& time) {
+    if (time.length() != 5 || time[2] != ':') return false;
+    for (int i = 0; i < 5; i++) {
+        if (i == 2) continue;
+        if (!isdigit(time[i])) return false;
+    }
+    int hours = (time[0]-'0')*10 + (time[1]-'0');
+    int mins = (time[3]-'0')*10 + (time[4]-'0');
+    return (hours >= 0 && hours <= 23) && (mins >= 0 && mins <= 59);
+}
+
+// Проверка бортового номера
+/**
+ * Проверка формата бортового номера
+ * @param bort Строка бортового номера
+ * @return true если формат X-XXXX соблюден, false в противном случае
+ */
+bool isBortValid(const string& bort) {
+    if (bort.length() != 6 || bort[1] != '-') return false;
+    if (!isalpha(bort[0])) return false;
+    for (int i = 2; i < 6; i++) {
+        if (!isdigit(bort[i])) return false;
+    }
+    return true;
+}
+
+// Проверка аэродрома
+/**
+ * Проверка принадлежности аэродрому
+ * @param airport Код аэродрома
+ * @return true если код соответствует допустимым значениям
+ */
+bool isAirportValid(const string& airport) {
+    return airport == "АП1" || airport == "АП2" || airport == "АП3";
+}
+
+/**
+ * Обрезка пробелов в начале и конце строки
+ * @param s Исходная строка
+ * @return Очищенная от пробелов строка
+ */
+string trim(const string& s) {
+    int start = 0, end = s.length() - 1;
+    while (start <= end && (s[start] == ' ' || s[start] == '\t')) start++;
+    while (end >= start && (s[end] == ' ' || s[end] == '\t')) end--;
+    return s.substr(start, end - start + 1);
+}
+
 // Функция сортировки пузырьком для сортировки индексов самолетов по времени посадки
+/**
+ * Сортировка индексов массива по времени посадки (пузырьковая)
+ * @param indices Массив индексов для сортировки
+ * @param size Количество элементов в массиве
+ */
 void bubbleSort(int indices[], int size) {
     for (int i = 0; i < size - 1; i++) {
-        for (int j = 0; j < size - i - 1; j++) { // Исправлено: было 'i++'
+        for (int j = 0; j < size - i - 1; j++) {
             if (planes[indices[j]].minutes < planes[indices[j + 1]].minutes) {
                 int temp = indices[j];
                 indices[j] = indices[j + 1];
@@ -33,6 +106,36 @@ void bubbleSort(int indices[], int size) {
             }
         }
     }
+}
+
+// Вывод таблицы
+/**
+ * Форматированный вывод таблицы с данными
+ * @param indices Отсортированные индексы записей
+ * @param count Количество выводимых записей
+ * @param airport Код аэродрома для заголовка
+ */
+void printTable(int indices[], int count, const string& airport) {
+    const int TIME_WIDTH = 12;
+    const int MODEL_WIDTH = 15;
+    const int BORT_WIDTH = 16;
+    const int AIRPORT_WIDTH = 18;
+
+    
+    cout << "\nАэродром " << airport << ":\n";
+    cout << "┌────────────┬───────────────┬────────────────┬────────────────┐\n";
+    cout << "│ Время      │ Марка ЛА      │ Бортовой номер │ Аэродром       │\n";
+    cout << "├────────────┼───────────────┼────────────────┼────────────────┤\n";
+    
+    for (int i = 0; i < count; i++) {
+        const Plane& p = planes[indices[i]];
+        cout << "│ " << left << setw(TIME_WIDTH-2) << p.time
+             << " │ " << setw(MODEL_WIDTH-2) << p.model.substr(0, MODEL_WIDTH-2)
+             << " │ " << setw(BORT_WIDTH-2) << p.bortNumber
+             << " │ " << setw(AIRPORT_WIDTH-2) << p.airport << " │\n";
+    }
+    
+    cout << "└────────────┴───────────────┴────────────────┴────────────────┘\n\n";
 }
 
 int main() {
@@ -62,11 +165,27 @@ int main() {
             continue; // Переход к следующей строке
         }
 
-        // Заполнение структуры данными из строки
-        planes[planeCount].time = line.substr(0, pos1); // Время
-        planes[planeCount].model = line.substr(pos1 + 2, pos2 - pos1 - 2); // Модель (с учетом пробела после запятой)
-        planes[planeCount].bortNumber = line.substr(pos2 + 2, pos3 - pos2 - 2); // Бортовой номер (с учетом пробела после запятой)
-        planes[planeCount].airport = line.substr(pos3 + 2); // Аэродром (с учетом пробела после запятой)
+        planes[planeCount].time = trim(line.substr(0, pos1));
+        planes[planeCount].model = trim(line.substr(pos1 + 1, pos2 - pos1 - 1));
+        planes[planeCount].bortNumber = trim(line.substr(pos2 + 1, pos3 - pos2 - 1));
+        planes[planeCount].airport = trim(line.substr(pos3 + 1));
+
+        // Приведение бортового номера в нормальный вид
+        planes[planeCount].bortNumber[0] = toupper(planes[planeCount].bortNumber[0]);
+
+        // Проверки
+        if (!isTimeValid(planes[planeCount].time)) {
+            cerr << "Пропуск: неверное время " << planes[planeCount].time << endl;
+            continue;
+        }
+        if (!isBortValid(planes[planeCount].bortNumber)) {
+            cerr << "Пропуск: неверный борт " << planes[planeCount].bortNumber << endl;
+            continue;
+        }
+        if (!isAirportValid(planes[planeCount].airport)) {
+            cerr << "Пропуск: неверный аэродром " << planes[planeCount].airport << endl;
+            continue;
+        }
 
         // Конвертация времени в минуты
         planes[planeCount].minutes = 
@@ -101,18 +220,9 @@ int main() {
         }
         
         bubbleSort(indices, count);
-        // Вывод таблицы
-        cout << "Аэродром " << ap << ":\n"; // Вывод на русском
-        cout << "Время   | Модель      | Бортовой | Аэродром\n"; // Вывод на русском
-        cout << "------------------------------------------\n";
-        for (int i = 0; i < count; i++) {
-            const Plane& p = planes[indices[i]];
-            cout << p.time << " | " << p.model 
-                 << "\t| " << p.bortNumber << "\t| " << p.airport << endl;
-        }
-        cout << endl;
+        printTable(indices, count, ap);
     }
     
     return 0;
 }
- 
+/******************************* КОНЕЦ main.cpp ******************************/
