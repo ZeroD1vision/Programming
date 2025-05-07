@@ -1,0 +1,5 @@
+14:45,Airbus-A320,B-5678,AP1
+12:30,Boeing-777,A-1234,AP1
+07:00,Gymbro-190,E-5566,AP3
+13:15,Bombardiro,F-7788,AP3
+20:05,Crocodilo,G-9900,AP3

@@ -1,0 +1,3 @@
+14:20,   ,G-4444,AP3
+13:15,Bombardiro,F-7788,AP3
+20:05,Crocodilo,G-9900,AP3

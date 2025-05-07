@@ -11,10 +11,6 @@ int main(){
     cout << "Original string: " << str << endl;
     // Находим длину строки
     while (str[len] != '\0') len++;
-
-    while(str[len] != '\0'){
-        len++;
-    }
     
     while((str[i] != '\0') && (str[i] != 'o')) {
         i++;
@@ -29,6 +25,7 @@ int main(){
     
     int p2a = j;
     i = 1;
+    
     /*
     // Первый способ
     while(str[p2a + i] != '\0'){

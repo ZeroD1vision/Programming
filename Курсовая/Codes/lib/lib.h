@@ -1,42 +1,27 @@
-/******************************************************************************
-*                               Курс Информатика                              *
-*******************************************************************************
-* Project type  : Linux Console Application                                   *
-* Project name  : Lab_2                                                       *
-* File name     : lib.h                                                       *
-* Language      : CPP                                                         *
-* Programmers   : Шалаев Александр Максимович, Нарзиев Артемий Тимурович      *
-* Modified By   :                                                             *
-* Created       : 02.04.2025                                                  *
-* Last Revision : 10.04.2025                                                  *
-* Comment       : Двумерные массивы. Вариант: 6                               *
-******************************************************************************/
-#ifndef LIB_H 
+#ifndef LIB_H
 #define LIB_H
 
-#include <fstream>
+const int MAX_PLANES = 100;
+const int TIME_LEN = 6;
+const int MODEL_LEN = 20;
+const int BORT_LEN = 7;
+const int AIRPORT_LEN = 4;
 
-// ######################## ДЛЯ СТАТИЧЕСКИХ МАССИВОВ ####################### //
+struct Plane {
+    char time[TIME_LEN];     // HH:MM
+    int minutes;            // время в минутах
+    char model[MODEL_LEN];  // модель самолета
+    char bort[BORT_LEN];    // бортовой номер
+    char airport[AIRPORT_LEN]; // аэродром
+};
 
-const int N_MAX = 10;   // максимальный размер матрицы
+// ПРОТОТИПЫ ФУНКЦИЙ
+int read_data(const char *filename, Plane *planes, int *count);
+void process_airport(Plane *planes, int count, const char *airport);
+bool is_time_valid(const char *time);
+bool is_bort_valid(const char *bort);
+bool is_airport_valid(const char *airport);
+void bubble_sort(int *indices, int size, Plane *data);
+void print_table(int *indices, int size, Plane *data, const char *airport);
 
-// ф-я считывания матрицы из файла
-int reading_matrix(const char *FILE_NAME, int matrix[][N_MAX], int *N);
-// ф-я вычисляющая произведение отрицательных эл. над главной диагональю
-int multiplication_neg_el (int matrix[][N_MAX], int N);
-// ф-я для нахождения минимума среди нечётных эл. матрицы
-int min_odd_el (int matrix[][N_MAX], int N);
-
-// ####################### ДЛЯ ДИНАМИЧЕСКИХ МАССИВОВ ####################### //
-
-// ф-я считывания размера матрицы из файла
-int reading_size_of_matrix(const char *FILE_NAME);
-// ф-я считывания динамической матрицы из файла
-int reading_dinamic_matrix(const char *FILE_NAME, int **matrix, int N);
-// ф-я вычисляющая произведение отрицательных эл. над главной диагональю
-int dinamic_multiplication_neg_el (int **matrix, int N);
-// ф-я для нахождения минимума среди нечётных эл. матрицы
-int dinamic_min_odd_el (int **matrix, int N);
-
-#endif // LIB_H
-/******************************** КОНЕЦ lib.h ********************************/
+#endif
