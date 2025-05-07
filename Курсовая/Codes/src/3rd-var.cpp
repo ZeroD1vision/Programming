@@ -105,7 +105,7 @@ Airport AP3: no landings
 
 
 // Активный тест (для быстрой проверки)
-// const char *FILE_NAME = "tests/correct/test1.txt";
+const char *FILE_NAME = "tests/correct/test1.txt";
 
 /*******************************************************************************
 *  ГЛАВНАЯ ФУНКЦИЯ 
