@@ -95,7 +95,7 @@ Airport AP3: no landings
 */
 
 // Цель: Нет посадок на 1-ый аэродром
-// const char *FILE_NAME = "tests/correct/test7.txt";    // Airport AP1: no landings
+const char *FILE_NAME = "tests/correct/test7.txt";    // Airport AP1: no landings
 
 // Цель: Нет посадок на 2-ой аэродром
 // const char *FILE_NAME = "tests/correct/test8.txt";    // Airport AP2: no landings
@@ -105,7 +105,7 @@ Airport AP3: no landings
 
 
 // Активный тест (для быстрой проверки)
-const char *FILE_NAME = "tests/correct/test1.txt";
+// const char *FILE_NAME = "tests/correct/test1.txt";
 
 /*******************************************************************************
 *  ГЛАВНАЯ ФУНКЦИЯ 

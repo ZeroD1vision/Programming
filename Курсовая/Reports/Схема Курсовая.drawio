@@ -1,0 +1,123 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.2.14">
+  <diagram name="Страница — 1" id="49l8CZxV3Xv4czewr5SG">
+    <mxGraphModel dx="-1485" dy="663" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-2" target="gUxfaNmRcvNz3cCwNIGn-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-2" value="&lt;font style=&quot;color: rgb(0, 0, 0); background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;Начало&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: rgb(0, 0, 0);&quot;&gt;void print_error(int err, const char *FILE_NAME, int N)&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontFamily=Consolas;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="2730" y="80" width="270" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-5" target="gUxfaNmRcvNz3cCwNIGn-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2865" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-5" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;err != -1&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="2793.5" y="180" width="143" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-7" target="gUxfaNmRcvNz3cCwNIGn-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-7" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;err != -2&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="2793.5" y="320" width="143" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-9" target="gUxfaNmRcvNz3cCwNIGn-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-9" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;err != -4&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="2793.5" y="600" width="143" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=1;startArrow=classic;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-12" target="gUxfaNmRcvNz3cCwNIGn-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-12" target="gUxfaNmRcvNz3cCwNIGn-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-12" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;err != -5&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="3118.5" y="177.5" width="143" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-14" target="gUxfaNmRcvNz3cCwNIGn-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-14" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;err != -6&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="3118.5" y="317.5" width="143" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-16" target="gUxfaNmRcvNz3cCwNIGn-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-16" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;err != -3&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="2793.5" y="462.5" width="143" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-18" target="gUxfaNmRcvNz3cCwNIGn-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-18" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;err != -7&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="3118.5" y="457.5" width="143" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-20" target="gUxfaNmRcvNz3cCwNIGn-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-20" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;err &amp;lt; 0&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="3118.5" y="607.5" width="143" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-22" target="gUxfaNmRcvNz3cCwNIGn-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-22" value="Вывод:&amp;nbsp;файл не найден" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2785" y="255" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-24" target="gUxfaNmRcvNz3cCwNIGn-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-24" value="Вывод : Неправильный формат времени в строке" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2785" y="395" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-26" target="gUxfaNmRcvNz3cCwNIGn-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-26" value="Вывод: размер матрицы &amp;lt; 0" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2785" y="534" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-28" target="gUxfaNmRcvNz3cCwNIGn-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-28" value="Вывод: считанный&amp;nbsp;размер матрицы больше зарезервированного" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="2785" y="670" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-30" target="gUxfaNmRcvNz3cCwNIGn-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-30" value="Вывод: произошла ошибка при считывании элементов матрицы" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="3110" y="250" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-32" target="gUxfaNmRcvNz3cCwNIGn-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-32" value="Вывод: в файле есть лишняя информация" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="3110" y="387.5" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gUxfaNmRcvNz3cCwNIGn-34" target="gUxfaNmRcvNz3cCwNIGn-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-34" value="Вывод: в файле не достаточно информации" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="3110" y="536.5" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-35" value="Вывод: Размер считанной матрицы не равен введенной" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="3110" y="677.5" width="160" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-36" value="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+          <mxGeometry x="3170" y="110" width="40" height="37.5" as="geometry" />
+        </mxCell>
+        <mxCell id="gUxfaNmRcvNz3cCwNIGn-37" value="1" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2847.5" y="753.75" width="35" height="32.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

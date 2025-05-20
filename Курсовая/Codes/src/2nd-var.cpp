@@ -85,7 +85,7 @@ void print_table(int *indices, int size, Plane *data, const char *airport);
 // const char *FILE_NAME = "tests/correct/test4.txt";    // 00:00,MINI-JET,A-0000,AP1
 
 // Цель: Лишние данные
-// const char *FILE_NAME = "tests/correct/test5.txt";    // Лишние данные
+const char *FILE_NAME = "tests/incorrect/test6.txt";    // Лишние данные
 
 // Цель: Нет посадок на все аэродромы
 // const char *FILE_NAME = "tests/correct/test6.txt";    
@@ -96,7 +96,7 @@ Airport AP3: no landings
 */
 
 // Цель: Нет посадок на 1-ый аэродром
-const char *FILE_NAME = "tests/correct/test7.txt";    // Airport AP1: no landings
+// const char *FILE_NAME = "tests/correct/test7.txt";    // Airport AP1: no landings
 
 // Цель: Нет посадок на 2-ой аэродром
 // const char *FILE_NAME = "tests/correct/test8.txt";    // Airport AP2: no landings
