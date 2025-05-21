@@ -2,4 +2,4 @@
 12:30,Boeing-777,A-1234,AP1
 10:30,SuperJet,C-1122,AP2
 16:20,Bombini,D-3344,AP2
-12 :45,Gussini-245,I -9012,AP2
+12:45,Gussini-245,I-9012,AP2

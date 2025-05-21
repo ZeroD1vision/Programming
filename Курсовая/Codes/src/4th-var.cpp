@@ -23,19 +23,19 @@
 using namespace std;
 
 // КОНСТАНТЫ
-const int MAX_PLANES = 100;
-const int TIME_LEN = 6;
-const int MODEL_LEN = 20;
-const int BORT_LEN = 7;
-const int AIRPORT_LEN = 4;
+const int MAX_PLANES = 100;    // Максимальное количество записей о самолетах
+const int TIME_LEN = 6;        // Длина строки времени (HH:MM + нуль-терминатор)
+const int MODEL_LEN = 20;      // Максимальная длина модели самолета
+const int BORT_LEN = 7;        // Длина бортового номера (X-XXXX + нуль-терминатор)
+const int AIRPORT_LEN = 4;     // Длина кода аэродрома (APX + нуль-терминатор)
 
 // СТРУКТУРА ДАННЫХ
 struct Plane {
-    char time[TIME_LEN];       // HH:MM
-    int minutes;               // время в минутах
-    char model[MODEL_LEN];     // модель самолета
-    char bort[BORT_LEN];       // бортовой номер
-    char airport[AIRPORT_LEN]; // аэродром
+    char time[TIME_LEN];       // Время посадки в формате HH:MM
+    int minutes;               // Время в минутах для сортировки
+    char model[MODEL_LEN];     // Модель самолета
+    char bort[BORT_LEN];       // Бортовой номер
+    char airport[AIRPORT_LEN]; // Код аэродрома
 };
 
 /*******************************************************************************
@@ -64,7 +64,7 @@ void print_table(int *indices, int size, Plane *data, const char *airport);
 // const char *FILE_NAME = "tests/incorrect/test4.txt";
 
 // Тест 4. Пустая модель
-const char *FILE_NAME = "tests/incorrect/test5.txt";
+// const char *FILE_NAME = "tests/incorrect/test5.txt";
 
 // Тест 5. Лишние данные
 // const char *FILE_NAME = "tests/incorrect/test6.txt";    // Лишние данные
@@ -91,7 +91,7 @@ const char *FILE_NAME = "tests/incorrect/test5.txt";
 // const char *FILE_NAME = "tests/correct/test2.txt";    // 08:15,  AIRBUS-A320 , B-5678, AP2  
 
 // Цель: Граничное время (23:59)
-// const char *FILE_NAME = "tests/correct/test3.txt";    // 23:59,CONCORDE,C-9999,AP3
+const char *FILE_NAME = "tests/correct/test3.txt";    // 23:59,CONCORDE,C-9999,AP3
 
 // Цель: Минимально допустимые значения
 // const char *FILE_NAME = "tests/correct/test4.txt";    // 00:00,MINI-JET,A-0000,AP1
@@ -135,17 +135,20 @@ int main() {
     // Установка кодировки консоли для корректного отображения символов
     SetConsoleOutputCP(CP_UTF8);
     setlocale(LC_ALL, "en_US.UTF-8");
-    Plane planes[MAX_PLANES];
-    int count = 0;
-    const char *airports[] = {"AP1", "AP2", "AP3"};
     
+    // Основные переменные программы
+    Plane planes[MAX_PLANES];  // Массив для хранения данных о самолетах
+    int count = 0;             // Счетчик успешно загруженных записей
+    const char *airports[] = {"AP1", "AP2", "AP3"}; // Список аэродромов для обработки
+    
+    // Чтение данных из файла
     int err = read_data(FILE_NAME, planes, &count);
     if (err == -1) {
         print_error(err, FILE_NAME, 0);
         return 1;
     }
 
-    // Всегда обрабатываем данные, если count > 0
+    // Обработка данных для каждого аэродрома
     for (int i = 0; i < 3; i++) {
         process_airport(planes, count, airports[i]);
     }
@@ -185,20 +188,22 @@ void print_error(int err, const char* field, int line_num) {
  * @note Формат строки: "HH:MM,Модель,Бортовой_номер,Аэродром".
  */
 int read_data(const char *filename, Plane *planes, int *count) {
+    // Открытие файла
     ifstream file(filename);
     if (!file.is_open()) return -1;
 
-    char line[100];
-    int line_num = 0;
-    bool has_errors = false;
+    // Переменные для обработки файла
+    char line[100];         // Буфер для чтения строки
+    int line_num = 0;       // Счетчик строк
+    bool has_errors = false; // Флаг наличия ошибок
 
     while (file.getline(line, 100) && *count < MAX_PLANES) {
         line_num++;
-        Plane p = {};
-        int pos = 0;
-        bool is_valid = true;
+        Plane p = {};       // Временная структура для хранения данных
+        int pos = 0;       // Позиция в строке
+        bool is_valid = true; // Флаг валидности строки
 
-        // Пропуск пустых строк
+        // Проверка на пустую строку
         bool is_empty = true;
         for (int i = 0; line[i] != '\0'; i++) {
             if (line[i] != ' ' && line[i] != '\t') {
@@ -214,18 +219,30 @@ int read_data(const char *filename, Plane *planes, int *count) {
 
         // ПАРСИНГ ПОЛЕЙ
         for (int field_num = 0; field_num < 4 && is_valid; field_num++) {
-            char* dest = field_num == 0 ? p.time : 
-                        (field_num == 1 ? p.model : 
-                        (field_num == 2 ? p.bort : p.airport));
-            int max_len = field_num == 0 ? TIME_LEN-1 : 
-                         (field_num == 1 ? MODEL_LEN-1 : 
-                         (field_num == 2 ? BORT_LEN-1 : AIRPORT_LEN-1));
+            // Определение целевого поля и его максимальной длины
+            char* dest = NULL;
+            int max_len = 0;
+            int j = 0;
+
+            if (field_num == 0) {
+                dest = p.time;
+                max_len = TIME_LEN-1;
+            } else if (field_num == 1) {
+                dest = p.model;
+                max_len = MODEL_LEN-1;
+            } else if (field_num == 2) {
+                dest = p.bort;
+                max_len = BORT_LEN-1;
+            } else {
+                dest = p.airport;
+                max_len = AIRPORT_LEN-1;
+            }
 
             // Пропуск пробелов перед полем
             while (line[pos] == ' ') pos++;
 
             // Чтение поля до запятой или конца строки
-            int j = 0;
+            j = 0;
             while (line[pos] && line[pos] != ',' && j < max_len) {
                 dest[j++] = line[pos++];
             }
@@ -244,7 +261,7 @@ int read_data(const char *filename, Plane *planes, int *count) {
         purify(p.bort);
         purify(p.airport);
 
-        // ВАЛИДАЦИЯ ПОЛЕЙ (с немедленным выходом при ошибке)
+        // ВАЛИДАЦИЯ ПОЛЕЙ
         if (p.model[0] == '\0') {
             print_error(-5, filename, line_num);
             is_valid = false;
@@ -290,11 +307,19 @@ int read_data(const char *filename, Plane *planes, int *count) {
  * @note Изменяет исходную строку.
  */
 void purify(char* field) {
-    char* dst = field;
-    for (; *field; field++) {
-        if (*field != ' ' && *field != '\t') *dst++ = toupper(*field);
+    // Указатели для чтения и записи
+    char* read_ptr = field;
+    char* write_ptr = field;
+    
+    // Обработка каждого символа
+    while (*read_ptr) {
+        if (*read_ptr != ' ' && *read_ptr != '\t') {
+            *write_ptr = toupper(*read_ptr);
+            write_ptr++;
+        }
+        read_ptr++;
     }
-    *dst = '\0';
+    *write_ptr = '\0';
 }
 
 /**
@@ -304,14 +329,19 @@ void purify(char* field) {
  * @return 0 при корректном формате, -2 при ошибке.
  */
 int is_time_valid(const char *time, int line_num) {
+    // Проверка формата
     if (time[2] != ':' || time[5] != '\0') return -2;
+    
+    // Проверка цифр
     for (int i = 0; i < 5; i++) {
         if (i == 2) continue;
         if (time[i] < '0' || time[i] > '9') return -2;
     }
-    int h = (time[0]-'0')*10 + (time[1]-'0');
-    int m = (time[3]-'0')*10 + (time[4]-'0');
-    return (h >= 0 && h < 24 && m >= 0 && m < 60) ? 0 : -2;
+    // Проверка диапазонов часов и минут
+    int hours = (time[0]-'0')*10 + (time[1]-'0');
+    int minutes = (time[3]-'0')*10 + (time[4]-'0');
+    
+    return (hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60) ? 0 : -2;
 }
 
 /**
@@ -321,11 +351,17 @@ int is_time_valid(const char *time, int line_num) {
  * @return 0 при корректном формате, -3 при ошибке.
  */
 int is_bort_valid(const char *bort, int line_num) {
+    // Проверка длины и формата
     if (bort[1] != '-' || bort[6] != '\0') return -3;
+    
+    // Проверка первой буквы
     if (bort[0] < 'A' || bort[0] > 'Z') return -3;
+    
+    // Проверка цифр
     for (int i = 2; i < 6; i++) {
         if (bort[i] < '0' || bort[i] > '9') return -3;
     }
+    
     return 0;
 }
 
@@ -337,9 +373,9 @@ int is_bort_valid(const char *bort, int line_num) {
  */
 int is_airport_valid(const char *airport, int line_num) {
     // Объявление всех переменных в начале
-    int len = 0;
-    int i, j;
-    bool match;
+    int len = 0; // Длина поля аэропоорта
+    int i, j; // Счетчики
+    bool match; // Флаг для добавления самолетов в соответств. аэропорт
     const char valid[3][4] = {"AP1", "AP2", "AP3"};
 
     // Проверка длины
@@ -364,10 +400,12 @@ int is_airport_valid(const char *airport, int line_num) {
  * @param data Массив структур Plane с данными.
  */
 void bubble_sort(int *indices, int size, Plane *data) {
+    int temp; // Временная переменная для обмена
+
     for (int i = 0; i < size-1; i++) {
         for (int j = 0; j < size-i-1; j++) {
             if (data[indices[j]].minutes < data[indices[j+1]].minutes) {
-                int temp = indices[j];
+                temp = indices[j];
                 indices[j] = indices[j+1];
                 indices[j+1] = temp;
             }
@@ -384,14 +422,19 @@ void bubble_sort(int *indices, int size, Plane *data) {
  * @note Если записей нет, выводит "no landings".
  */
 void print_table(int *indices, int size, Plane *data, const char *airport) {
+    // Проверка на отсутствие данных
     if (size == 0) {
         cout << "Airport " << airport << ": no landings\n";
         return;
     }
+
+    // Вывод заголовка таблицы
     cout << "\nAirport " << airport << ":\n";
     cout << "┌────────────┬───────────────┬────────────────┬────────────────┐\n";
     cout << "│ Time       │ Model         │ Bort Number    │ Airport        │\n";
     cout << "├────────────┼───────────────┼────────────────┼────────────────┤\n";
+    
+    // Вывод данных
     for (int i = 0; i < size; i++) {
         const Plane &p = data[indices[i]];
         cout << "│ " << left << setw(11) << p.time << "│ "
@@ -399,6 +442,7 @@ void print_table(int *indices, int size, Plane *data, const char *airport) {
              << setw(15) << p.bort << "│ "
              << setw(15) << p.airport << "│\n";
     }
+    // Вывод нижней границы таблицы
     cout << "└────────────┴───────────────┴────────────────┴────────────────┘\n";
 }
 
@@ -409,15 +453,21 @@ void print_table(int *indices, int size, Plane *data, const char *airport) {
  * @param airport Код аэродрома.
  */
 void process_airport(Plane *planes, int count, const char *airport) {
+    // Массив для хранения индексов подходящих записей
     int indices[MAX_PLANES];
-    int size = 0;
+    int size = 0; // Количество подходящих записей
+    bool match; // Флаг для добавления самолетов в соответств. аэропорт
+
+    // Фильтрация записей по аэродрому
     for (int i = 0; i < count; i++) {
-        bool match = true;
+        match = true;
         for (int j = 0; j < 3; j++) {
             if (planes[i].airport[j] != airport[j]) match = false;
         }
         if (match) indices[size++] = i;
     }
+
+    // Сортировка и вывод
     bubble_sort(indices, size, planes);
     print_table(indices, size, planes, airport);
 }
