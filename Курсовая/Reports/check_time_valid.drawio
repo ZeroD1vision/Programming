@@ -1,0 +1,246 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.8">
+  <diagram name="Страница — 1" id="08cvkqezKgbYn4_KbTPs">
+    <mxGraphModel dx="-824" dy="797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GCC-cDxP40W7veVLv-QS-80" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-76" target="GCC-cDxP40W7veVLv-QS-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-76" value="&lt;font style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: rgb(0, 0, 0);&quot;&gt;Начало&lt;/font&gt;&lt;div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span&gt;heck_time_valid(const char *time, &lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span&gt;int line_num, ErrorInfo *errors, &lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span&gt;int *error_count&lt;/span&gt;)&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontFamily=Consolas;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="289.25" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-79">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1980" y="507.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-153" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-79" target="GCC-cDxP40W7veVLv-QS-151">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-79" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;strlen(time) != 5&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1904.25" y="405" width="151.5" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-85" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;Добавляем ошибку &lt;/div&gt;&lt;div style=&quot;&quot;&gt;&quot;Неправильная длина&quot;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="507.5" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="GCC-cDxP40W7veVLv-QS-92">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1980" y="577.5" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="1980" y="670" />
+              <mxPoint x="1980" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" source="GCC-cDxP40W7veVLv-QS-92" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1980" y="718.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-154" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-92">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1980" y="800" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1870" y="654" />
+              <mxPoint x="1870" y="800" />
+              <mxPoint x="1980" y="800" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-92" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;time[2] != &#39;:&#39;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1904.25" y="616" width="151.5" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" source="GCC-cDxP40W7veVLv-QS-94" target="GCC-cDxP40W7veVLv-QS-104" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1980" y="825" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-94" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;Добавляем ошибку &lt;/div&gt;&lt;div style=&quot;&quot;&gt;&quot;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Неправильный &lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;разделитель&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&quot;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="718.5" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-97" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2010" y="671.5" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-98" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1870" y="618.5" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-99" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2010" y="469.5" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-100" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1864.25" y="406" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-108" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-104" target="GCC-cDxP40W7veVLv-QS-106">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-104" target="GCC-cDxP40W7veVLv-QS-133">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1981" y="1170" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1820" y="862" />
+              <mxPoint x="1820" y="1130" />
+              <mxPoint x="1981" y="1130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-104" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;i &amp;lt; 5&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1904.25" y="824" width="151.5" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-109" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-106" target="GCC-cDxP40W7veVLv-QS-107">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-106">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1980" y="1110" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1870" y="958" />
+              <mxPoint x="1870" y="1110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-106" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;time[i] &amp;lt; &#39;0&#39; &lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;|| time[i] &amp;gt; &#39;9&#39;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="1904.25" y="920" width="151.5" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-110" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-111">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1980" y="810" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2135" y="810" />
+              <mxPoint x="1980" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-107" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;Добавляем ошибку &lt;/div&gt;&lt;div style=&quot;&quot;&gt;&quot;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Недопустимый символ&lt;/font&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&quot;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="1020" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-114" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-107" target="GCC-cDxP40W7veVLv-QS-111">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1980" y="810" as="targetPoint" />
+            <mxPoint x="1980" y="1090" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="1980" y="1120" />
+              <mxPoint x="2135" y="1120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-111" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;i++&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+          <mxGeometry x="2090" y="938.75" width="90" height="38.5" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-115" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1988.5" y="985" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-116" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="920" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-117" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2010" y="879.5" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-118" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1880" y="822.5" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-123" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-121" target="GCC-cDxP40W7veVLv-QS-122">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-121" target="GCC-cDxP40W7veVLv-QS-127">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-121" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;Нет ни одной &lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;ошибки&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="2238.01" y="368" width="151.5" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-122" value="Конец" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="2443.76" y="376" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-125" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2332.88" y="436" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-126" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2380.88" y="368" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-141" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-127" target="GCC-cDxP40W7veVLv-QS-137">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-127" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;int hours = (time[0]-&#39;0&#39;)*10 &lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ (time[1]-&#39;0&#39;);&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;int minutes = (time[3]-&#39;0&#39;)*10 &lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;+ (time[4]-&#39;0&#39;);&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+          <mxGeometry x="2180.89" y="465" width="265.75" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-147" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-131" target="GCC-cDxP40W7veVLv-QS-143">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-131" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;hours &amp;lt; 0 &lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;|| hours &amp;gt;= 24&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="2237.13" y="779.5" width="151.5" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-133" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="1150" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-136" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-135" target="GCC-cDxP40W7veVLv-QS-121">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-135" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="2292.88" y="293.25" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-137" target="GCC-cDxP40W7veVLv-QS-138">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-144" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-137">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2313.77" y="760" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2440" y="610" />
+              <mxPoint x="2440" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-137" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;minutes &amp;lt; 0 &lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;|| minutes &amp;gt;= 60&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="2238.02" y="572.5" width="151.5" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-138" target="GCC-cDxP40W7veVLv-QS-131">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-138" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;Добавляем ошибку &lt;/div&gt;&lt;div style=&quot;&quot;&gt;&quot;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Часы должны быть в &lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;диапазоне 00-23&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&quot;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+          <mxGeometry x="2233.77" y="671.5" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-143" target="GCC-cDxP40W7veVLv-QS-149">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2313.76" y="1000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-143" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;Добавляем ошибку &lt;/div&gt;&lt;div style=&quot;&quot;&gt;&quot;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Минуты должны быть &lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;в диапазоне 00-59&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&quot;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+          <mxGeometry x="2233.76" y="871.5" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-145" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GCC-cDxP40W7veVLv-QS-131">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2310" y="970" as="targetPoint" />
+            <mxPoint x="2385.23" y="819.53" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="2436" y="818" />
+              <mxPoint x="2436" y="970" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-149" value="Конец" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="2253.77" y="996" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-151" value="Конец" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="1730.0000000000005" y="413" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-152" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" target="GCC-cDxP40W7veVLv-QS-151" parent="1" source="GCC-cDxP40W7veVLv-QS-79">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2030" y="443" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-155" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2340" y="640.5" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-156" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2388" y="572.5" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-157" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2340" y="841.5" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GCC-cDxP40W7veVLv-QS-158" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2388" y="773.5" width="40" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
