@@ -1,57 +1,63 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.1.1">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.1.3">
   <diagram id="8_HsYhV4zXAZxGBtnPcS" name="Страница — 1">
-    <mxGraphModel dx="893" dy="916" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="906" dy="916" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-3" target="GOCr-NE7sH1xTfwpcKTo-28">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GOCr-NE7sH1xTfwpcKTo-3" target="GOCr-NE7sH1xTfwpcKTo-28" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-3" value="&lt;font style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;Начало&lt;/font&gt;&lt;div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;void process_airport&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;(Plane *planes, int count, &lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;const char *airport)&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontFamily=Consolas;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="280" y="130" width="280" height="90" as="geometry" />
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-3" value="&lt;font style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;Начало&lt;/font&gt;&lt;div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;process_airport&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontFamily=Consolas;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="340" y="160" width="160" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-28" target="GOCr-NE7sH1xTfwpcKTo-30">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GOCr-NE7sH1xTfwpcKTo-28" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420.0999999999999" y="380.0501650165015" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-28" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-wrap-mode: nowrap;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;Инициализация&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(51, 51, 51); text-wrap-mode: nowrap;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;indices[],&amp;nbsp;&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;font-family: Consolas, Monaco, &amp;quot;Andale Mono&amp;quot;, &amp;quot;Ubuntu Mono&amp;quot;, monospace; color: rgb(51, 51, 51); text-wrap-mode: nowrap; background-color: transparent;&quot;&gt;size = 0&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(51, 51, 51); text-wrap-mode: nowrap; background-color: transparent;&quot;&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;i = 0&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-28" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; white-space: pre;&quot;&gt;Инициализация &lt;/div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; white-space: pre;&quot;&gt;переменных&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" parent="1" vertex="1">
           <mxGeometry x="335" y="260" width="170" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-30" target="GOCr-NE7sH1xTfwpcKTo-32">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="VB7fCMFGBJjOvrQQi_K--1" target="GOCr-NE7sH1xTfwpcKTo-32" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="344.25" y="418" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="183" y="405" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="VB7fCMFGBJjOvrQQi_K--1" target="GOCr-NE7sH1xTfwpcKTo-39" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420.0999999999999" y="455.9498349834985" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GOCr-NE7sH1xTfwpcKTo-32" target="GOCr-NE7sH1xTfwpcKTo-35" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-30" target="GOCr-NE7sH1xTfwpcKTo-39">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-30" value="&lt;div style=&quot;line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: rgb(51, 51, 51); white-space-collapse: collapse;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;i &amp;lt; count?&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
-          <mxGeometry x="344.25" y="380" width="151.5" height="76" as="geometry" />
-        </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-32" target="GOCr-NE7sH1xTfwpcKTo-35">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-32" value="&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot;&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;Сортировка (bubble_sort)&lt;/span&gt;&lt;/font&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-32" value="&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot;&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;Сортировка (bubble_sort)&lt;/span&gt;&lt;/font&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" parent="1" vertex="1">
           <mxGeometry x="70" y="460" width="225" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-35" target="GOCr-NE7sH1xTfwpcKTo-37">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GOCr-NE7sH1xTfwpcKTo-35" target="GOCr-NE7sH1xTfwpcKTo-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-35" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-wrap-mode: nowrap;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;Вывод таблицы (print_table)&lt;/font&gt;&lt;/span&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-35" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-wrap-mode: nowrap;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;Вывод таблицы (print_table)&lt;/font&gt;&lt;/span&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" parent="1" vertex="1">
           <mxGeometry x="50" y="552.5" width="265" height="56" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-37" value="Конец" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=50;" vertex="1" parent="1">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-37" value="Конец" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=50;" parent="1" vertex="1">
           <mxGeometry x="122.5" y="642" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-39" target="GOCr-NE7sH1xTfwpcKTo-41">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GOCr-NE7sH1xTfwpcKTo-39" target="GOCr-NE7sH1xTfwpcKTo-41" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-39">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GOCr-NE7sH1xTfwpcKTo-39" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="590" y="522.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-39" value="&lt;div style=&quot;line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: rgb(51, 51, 51); white-space-collapse: collapse;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;airport совпадает?&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" vertex="1" parent="1">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-39" value="&lt;div style=&quot;line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: rgb(51, 51, 51); white-space-collapse: collapse;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;airport совпадает?&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" parent="1" vertex="1">
           <mxGeometry x="344.25" y="484.5" width="151.5" height="76" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-41" target="GOCr-NE7sH1xTfwpcKTo-43">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="GOCr-NE7sH1xTfwpcKTo-41" target="GOCr-NE7sH1xTfwpcKTo-43" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="420" y="680" />
@@ -59,10 +65,10 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-41" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-wrap-mode: nowrap;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;Добавить индекс в indices&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-41" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-wrap-mode: nowrap;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;Добавить индекс в массив&lt;/font&gt;&lt;/span&gt;&lt;div&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; color=&quot;#333333&quot;&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;индексов&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" parent="1" vertex="1">
           <mxGeometry x="335" y="590" width="170" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GOCr-NE7sH1xTfwpcKTo-43">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GOCr-NE7sH1xTfwpcKTo-43" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="420" y="350" as="targetPoint" />
             <Array as="points">
@@ -70,20 +76,17 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-43" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-wrap-mode: nowrap;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;i++, size++&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" vertex="1" parent="1">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-43" value="&lt;span style=&quot;color: rgb(51, 51, 51); text-wrap-mode: nowrap;&quot;&gt;&lt;font face=&quot;Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace&quot; style=&quot;&quot;&gt;size++&lt;/font&gt;&lt;/span&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" parent="1" vertex="1">
           <mxGeometry x="530" y="429.5" width="110" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-47" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="315" y="378" width="40" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-48" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="430" y="447.5" width="40" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-49" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-49" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="430" y="547" width="40" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GOCr-NE7sH1xTfwpcKTo-50" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="GOCr-NE7sH1xTfwpcKTo-50" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="480" y="477.5" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VB7fCMFGBJjOvrQQi_K--1" value="&lt;div style=&quot;background-color: rgb(255, 255, 255); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space: pre;&quot;&gt;&lt;span style=&quot;color: #0000ff;&quot;&gt;int&lt;/span&gt; &lt;span style=&quot;color: #001080;&quot;&gt;i&lt;/span&gt; = &lt;span style=&quot;color: #098658;&quot;&gt;0&lt;/span&gt;; &lt;/div&gt;&lt;div style=&quot;background-color: rgb(255, 255, 255); font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; line-height: 19px; white-space: pre;&quot;&gt;&lt;span style=&quot;color: #001080;&quot;&gt;i&lt;/span&gt; &amp;lt; &lt;span style=&quot;color: #001080;&quot;&gt;count&lt;/span&gt;; &lt;span style=&quot;color: #001080;&quot;&gt;i&lt;/span&gt;++&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="337.88" y="379" width="164.25" height="50.5" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -2,34 +2,51 @@
 
 using namespace std;
 
-int main(){
+int main() {
     const int N_MAX = 50;
-    int i = 0, j = 0;
     char inputString[N_MAX] = {0};
 
+    // Ввод строки
     cin.getline(inputString, sizeof(inputString));
-    
-    while (inputString[i] != '\0') { // Пропуск проблелов
+
+    int i = 0; // Индекс чтения
+    int j = 0; // Индекс записи
+
+    while (inputString[i] != '\0') {
+        // Пропускаем пробелы
         while (inputString[i] == ' ') {
-            inputString[j++] = inputString[i++];
+            i++;
         }
 
-        int wordStart = j; // Запоминаем начало слова
+        if (inputString[i] == '\0') break; // Если достигнут конец строки, выходим
 
+        int wordStart = i; // Запоминаем начало слова
+
+        // Ищем конец слова
         while (inputString[i] != ' ' && inputString[i] != '\0') {
-            inputString[j++] = inputString[i++];
+            i++;
         }
+        int wordEnd = i - 1; // Индекс последнего символа слова
+
+        // Проверяем длину слова
+        int wordLength = wordEnd - wordStart + 1; // Длина слова
 
         // Удаляем два последних символа, если слово длиннее 2 символов
-        if (j - wordStart > 2) {
-            j -= 2; // Уменьшаем индекс записи на 2
-        } else {
-            j = wordStart; // Если слово слишком короткое, просто сбрасываем j к началу слова
+        int copyLength = (wordLength > 2) ? (wordLength - 2) : wordLength;
+        for (int k = 0; k < copyLength; k++) {
+            inputString[j++] = inputString[wordStart + k];
+        }
+
+        // Добавляем пробел, если не достигнут конец строки
+        if (inputString[i] != '\0') {
+            inputString[j++] = ' ';
         }
     }
 
-
+    // Завершаем строку нулевым символом
     inputString[j] = '\0';
+
+    // Выводим результат
     cout << inputString << endl;
 
     return 0;

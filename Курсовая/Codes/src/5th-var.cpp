@@ -16,6 +16,7 @@
 #include <fstream>
 #include <iomanip>
 #include <cstring>
+// Для локали
 #include <locale>
 #include <codecvt>
 #include <windows.h>
@@ -69,10 +70,88 @@ void print_table(int *indices, int size, Plane *data, const char *airport);
 // Тестовый файл
 const char *FILE_NAME = "tests/correct/test2.txt";
 
+//ТЕСТЫ
+// ----- НЕКОРРЕКТНЫЕ ----- //
+
+// Тест 1. Ошибка формата времени
+// const char *FILE_NAME = "tests/incorrect/test2.txt";
+
+// Тест 2. Ошибка бортового номера  
+// const char *FILE_NAME = "tests/incorrect/test3.txt";
+
+// Тест 3. Ошибка аэродрома
+// const char *FILE_NAME = "tests/incorrect/test4.txt";
+
+// Тест 4. Пустая модель
+// const char *FILE_NAME = "tests/incorrect/test5.txt";
+
+// Тест 5. Лишние данные
+// const char *FILE_NAME = "tests/incorrect/test6.txt";    // Лишние данные
+
+// Тест 6. Смешанные ошибки
+// const char *FILE_NAME = "tests/incorrect/test7.txt";    // Лишние данные
+
+// Тест 7. Граничные значения времени
+// const char *FILE_NAME = "tests/incorrect/test8.txt";    // Лишние данные
+
+// Тест 8. Пустые строки
+// const char *FILE_NAME = "tests/incorrect/test10.txt";    // Лишние данные
+
+
+// ----- КОРРЕКТНЫЕ ----- //
+
+// Цель: Абсолютно корректные данные
+// const char *FILE_NAME = "tests/correct/test1.txt";    // 12:30,BOEING-747,A-1234,AP1
+
+// Цель: Корректные данные с лишними пробелами
+// const char *FILE_NAME = "tests/correct/test2.txt";    // 08:15,  AIRBUS-A320 , B-5678, AP2  
+
+// Цель: Граничное время (23:59)
+// const char *FILE_NAME = "tests/correct/test3.txt";    // 23:59,CONCORDE,C-9999,AP3
+
+// Цель: Минимально допустимые значения
+// const char *FILE_NAME = "tests/correct/test4.txt";    // 00:00,MINI-JET,A-0000,AP1
+
+// Цель: Нет посадок на все аэродромы
+// const char *FILE_NAME = "tests/correct/test6.txt";    
+/* 
+Airport AP1: no landings
+Airport AP2: no landings
+Airport AP3: no landings
+*/
+
+// Цель: Нет посадок на 1-ый аэродром
+// const char *FILE_NAME = "tests/correct/test7.txt";    // Airport AP1: no landings
+
+// Цель: Нет посадок на 2-ой аэродром
+// const char *FILE_NAME = "tests/correct/test8.txt";    // Airport AP2: no landings
+
+// Цель: Нет посадок на 3-ий аэродром
+// const char *FILE_NAME = "tests/correct/test9.txt";    // Airport AP3: no landings
+
+// Цель: Нормализация значений с дефисами
+// const char *FILE_NAME = "tests/correct/test10.txt";
+
+// Цель: Повторяющееся время посадки
+// const char *FILE_NAME = "tests/correct/test11.txt"; //Цель: Проверить сортировку при одинаковом времени.
+
+// Цель: Частично корректные входные данные 
+// const char *FILE_NAME = "tests/correct/test12.txt"; //Цель: Проверить обработку файла с одной корректной записью среди ошибок.
+
+// Цель: Время с ведущими нулями
+// const char *FILE_NAME = "tests/correct/test13.txt"; //Цель: Проверить обработку времени вида 00:05 и 05:09.
+
+// Активный тест (для быстрой проверки)
+// const char *FILE_NAME = "tests/correct/test1.txt";
+
+// Различные символы
+// const char *FILE_NAME = "tests/incorrect/test9.txt";
+
 /*******************************************************************************
 *  ГЛАВНАЯ ФУНКЦИЯ 
 ******************************************************************************/
-int main() {
+int main() 
+{
     SetConsoleOutputCP(CP_UTF8);
     setlocale(LC_ALL, "en_US.UTF-8");
     
@@ -113,16 +192,19 @@ int main() {
 *  ИНИЦИАЛИЗАЦИЯ ФУНКЦИЙ
 ******************************************************************************/
 
-void print_error(const ErrorInfo& error) {
+void print_error(const ErrorInfo& error) 
+{
     cout << "[31m";
     cout << "Строка " << error.line_num << ", поле '" << error.field_name 
          << "': " << error.message;
     cout << "[0m\n";
 }
 
-int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors, int *error_count) {
+int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors, int *error_count) 
+{
     ifstream file(filename);
-    if (!file.is_open()) {
+    if (!file.is_open()) 
+    {
         strncpy(errors[*error_count].field_name, "Файл", sizeof(errors[*error_count].field_name) - 1);
         strncpy(errors[*error_count].message, "Файл не найден", sizeof(errors[*error_count].message) - 1);
         errors[*error_count].line_num = 0;
@@ -134,26 +216,30 @@ int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors
     int line_num = 0;
     bool has_errors = false;
 
-    while (file.getline(line, 100) && *count < MAX_PLANES) {
+    while (file.getline(line, 100) && *count < MAX_PLANES) 
+    {
         line_num++;
         
         // Эхо-печать обрабатываемой строки
         cout << "Обработка строки " << line_num << ": " << line << endl;
         
-        Plane p = {};
+        Plane p = {}; 
         int pos = 0;
         bool is_valid = true;
         bool is_empty = true;
         int comma_count = 0;
 
         // Проверка на пустую строку
-        for (int i = 0; line[i] != '\0'; i++) {
-            if (line[i] != ' ' && line[i] != '\t') {
+        for (int i = 0; line[i] != '\0'; i++) 
+        {
+            if (line[i] != ' ' && line[i] != '\t') 
+            {
                 is_empty = false;
                 break;
             }
         }
-        if (is_empty) {
+        if (is_empty) 
+        {
             strncpy(errors[*error_count].field_name, "Строка", sizeof(errors[*error_count].field_name) - 1);
             strncpy(errors[*error_count].message, "Пустая строка", sizeof(errors[*error_count].message) - 1);
             errors[*error_count].line_num = line_num;
@@ -163,10 +249,12 @@ int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors
         }
 
         // Проверка количества запятых
-        for (int i = 0; line[i] != '\0'; i++) {
+        for (int i = 0; line[i] != '\0'; i++) 
+        {
             if (line[i] == ',') comma_count++;
         }
-        if (comma_count < 3) {
+        if (comma_count < 3) 
+        {
             strncpy(errors[*error_count].field_name, "Строка", sizeof(errors[*error_count].field_name) - 1);
             strncpy(errors[*error_count].message, "Неправильное построение строки (недостаточно запятых)", sizeof(errors[*error_count].message) - 1);
             errors[*error_count].line_num = line_num;
@@ -176,7 +264,8 @@ int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors
         }
 
         // ПАРСИНГ ПОЛЕЙ
-        for (int field_num = 0; field_num < ALLOWED_FIELDS; field_num++) {
+        for (int field_num = 0; field_num < ALLOWED_FIELDS; field_num++) 
+        {
             char* dest = NULL;
             int max_len = 0;
             int j = 0;
@@ -184,16 +273,20 @@ int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors
             char temp_field[100] = {0}; // Временный буфер для хранения поля
             int temp_index = 0;
 
-            if (field_num == 0) {
+            if (field_num == 0) 
+            {
                 dest = p.time;
                 max_len = TIME_LEN;
-            } else if (field_num == 1) {
+            } else if (field_num == 1) 
+            {
                 dest = p.model;
                 max_len = MODEL_LEN;
-            } else if (field_num == 2) {
+            } else if (field_num == 2) 
+            {
                 dest = p.bort;
                 max_len = BORT_LEN;
-            } else {
+            } else 
+            {
                 dest = p.airport;
                 max_len = AIRPORT_LEN;
             }
@@ -201,29 +294,33 @@ int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors
             while (line[pos] == ' ') pos++;
 
             // Читаем символы до запятой или конца строки во временный буфер
-            while (line[pos] && line[pos] != ',' && temp_index < 99) {
+            while (line[pos] && line[pos] != ',' && temp_index < 99) 
+            {
                 temp_field[temp_index++] = line[pos++];
             }
             temp_field[temp_index] = '\0';
 
-            // Проверяем длину исходного поля
-            if (temp_index > max_len - 1) {
-                field_too_long = true;
-                is_valid = false;
-            }
-
             // Очищаем поле от пробелов
             purify(temp_field);
             int purified_len = strlen(temp_field);
+
+            // Проверяем длину очищенного поля
+            if (purified_len > max_len - 1) 
+            {
+                field_too_long = true;
+                is_valid = false;
+            }
 
             // Копируем очищенное поле в целевую переменную
             strncpy(dest, temp_field, max_len - 1);
             dest[max_len - 1] = '\0';
 
             // Если поле было слишком длинным, добавляем ошибку
-            if (field_too_long) {
+            if (field_too_long) 
+            {
                 const char* field_name = "";
-                switch (field_num) {
+                switch (field_num) 
+                {
                     case 0: field_name = "Время"; break;
                     case 1: field_name = "Модель"; break;
                     case 2: field_name = "Бортовой номер"; break;
@@ -238,17 +335,22 @@ int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors
                 (*error_count)++;
             }
 
-            if (line[pos] == ',') {
+            if (line[pos] == ',') 
+            {
                 pos++;
             }
         }
+
+        // Пропускаем пробелы после последнего поля
+        while (line[pos] == ' ') pos++;
 
         // Запоминаем количество ошибок перед валидацией
         int prev_error_count = *error_count;
 
         // ПРОВЕРКА ВРЕМЕНИ (первой, чтобы ошибки шли в правильном порядке)
         p.minutes = check_and_convert_time(p.time, line_num, errors, error_count);
-        if (p.minutes < 0) {
+        if (p.minutes < 0) 
+        {
             is_valid = false;
         }
 
@@ -258,8 +360,8 @@ int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors
         check_airport_valid(p.airport, line_num, errors, error_count);
         
         // Проверка на лишние данные
-        while (line[pos] == ' ') pos++;
-        if (line[pos] != '\0') {
+        if (line[pos] != '\0') 
+        {
             strncpy(errors[*error_count].field_name, "Строка", sizeof(errors[*error_count].field_name) - 1);
             strncpy(errors[*error_count].message, "Лишние данные в конце строки", sizeof(errors[*error_count].message) - 1);
             errors[*error_count].line_num = line_num;
@@ -268,12 +370,14 @@ int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors
         }
 
         // Если были ошибки валидации, не добавляем запись
-        if (*error_count > prev_error_count) {
+        if (*error_count > prev_error_count) 
+        {
             is_valid = false;
         }
 
         // Добавляем запись, если она валидна
-        if (is_valid) {
+        if (is_valid) 
+        {
             planes[(*count)++] = p;
         } else {
             has_errors = true;
@@ -283,11 +387,13 @@ int read_data(const char *filename, Plane *planes, int *count, ErrorInfo *errors
     return has_errors ? -7 : 0;
 }
 
-void purify(char* field) {
+void purify(char* field) 
+{
     char* read_ptr = field;
     char* write_ptr = field;
     
-    while (*read_ptr) {
+    while (*read_ptr) 
+    {
         if (*read_ptr != ' ' && *read_ptr != '\t') {
             *write_ptr = *read_ptr;
             write_ptr++;
@@ -297,9 +403,12 @@ void purify(char* field) {
     *write_ptr = '\0';
 }
 
-int check_and_convert_time(const char *time, int line_num, ErrorInfo *errors, int *error_count) {
+int check_and_convert_time(const char *time, int line_num, ErrorInfo *errors, int *error_count) 
+{
+    bool has_errors = false;
     // Проверка длины
-    if (strlen(time) != EXPECTED_TIME_LEN) {
+    if (strlen(time) != EXPECTED_TIME_LEN) 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Неправильная длина (должно быть %d символов, получено %zu)", 
                  EXPECTED_TIME_LEN, strlen(time));
@@ -311,27 +420,30 @@ int check_and_convert_time(const char *time, int line_num, ErrorInfo *errors, in
     }
     
     // Проверка разделителя
-    if (time[2] != ':') {
+    if (time[2] != ':') 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Неправильный разделитель (должен быть ':', а получен '%c')", time[2]);
         strncpy(errors[*error_count].field_name, "Время", sizeof(errors[*error_count].field_name) - 1);
         strncpy(errors[*error_count].message, msg, sizeof(errors[*error_count].message) - 1);
         errors[*error_count].line_num = line_num;
         (*error_count)++;
-        return -1;
+        has_errors = true;
     }
     
     // Проверка цифровых символов
-    for (int i = 0; i < EXPECTED_TIME_LEN; i++) {
+    for (int i = 0; i < EXPECTED_TIME_LEN; i++) 
+    {
         if (i == 2) continue; // Пропускаем разделитель
-        if (time[i] < '0' || time[i] > '9') {
+        if (time[i] < '0' || time[i] > '9') 
+        {
             char msg[250];
             snprintf(msg, sizeof(msg), "Недопустимый символ '%c' в позиции %d", time[i], i);
             strncpy(errors[*error_count].field_name, "Время", sizeof(errors[*error_count].field_name) - 1);
             strncpy(errors[*error_count].message, msg, sizeof(errors[*error_count].message) - 1);
             errors[*error_count].line_num = line_num;
             (*error_count)++;
-            return -1;
+            has_errors = true;
         }
     }
     
@@ -340,31 +452,35 @@ int check_and_convert_time(const char *time, int line_num, ErrorInfo *errors, in
     int minutes = (time[3]-'0')*10 + (time[4]-'0');
     
     // Проверка диапазонов
-    if (hours < 0 || hours >= 24) {
+    if (hours < 0 || hours >= 24) 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Часы должны быть в диапазоне 00-23 (получено %02d)", hours);
         strncpy(errors[*error_count].field_name, "Время", sizeof(errors[*error_count].field_name) - 1);
         strncpy(errors[*error_count].message, msg, sizeof(errors[*error_count].message) - 1);
         errors[*error_count].line_num = line_num;
         (*error_count)++;
-        return -1;
+        has_errors = true;
     }
     
-    if (minutes < 0 || minutes >= 60) {
+    if (minutes < 0 || minutes >= 60) 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Минуты должны быть в диапазоне 00-59 (получено %02d)", minutes);
         strncpy(errors[*error_count].field_name, "Время", sizeof(errors[*error_count].field_name) - 1);
         strncpy(errors[*error_count].message, msg, sizeof(errors[*error_count].message) - 1);
         errors[*error_count].line_num = line_num;
         (*error_count)++;
-        return -1;
+        has_errors = true;
     }
-    
-    return hours * 60 + minutes;
+
+    return has_errors ? -1 : hours * 60 + minutes;
 }
 
-void check_model_valid(const char *model, int line_num, ErrorInfo *errors, int *error_count) {
-    if (strlen(model) == 0) {
+void check_model_valid(const char *model, int line_num, ErrorInfo *errors, int *error_count) 
+{
+    if (strlen(model) == 0) 
+    {
         strncpy(errors[*error_count].field_name, "Модель", sizeof(errors[*error_count].field_name) - 1);
         strncpy(errors[*error_count].message, "Пустое поле", sizeof(errors[*error_count].message) - 1);
         errors[*error_count].line_num = line_num;
@@ -382,10 +498,12 @@ void check_model_valid(const char *model, int line_num, ErrorInfo *errors, int *
     }
 }
 
-void check_bort_valid(const char *bort, int line_num, ErrorInfo *errors, int *error_count) {
+void check_bort_valid(const char *bort, int line_num, ErrorInfo *errors, int *error_count) 
+{
     int len = strlen(bort);
     // Проверка на пустое поле
-    if (len == 0) {
+    if (len == 0) 
+    {
         strncpy(errors[*error_count].field_name, "Бортовой номер", sizeof(errors[*error_count].field_name) - 1);
         strncpy(errors[*error_count].message, "Пустое поле", sizeof(errors[*error_count].message) - 1);
         errors[*error_count].line_num = line_num;
@@ -393,7 +511,8 @@ void check_bort_valid(const char *bort, int line_num, ErrorInfo *errors, int *er
         return;
     }
     
-    if (len > EXPECTED_BORT_LEN) {
+    if (len > EXPECTED_BORT_LEN) 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Слишком длинный бортовой номер (максимум %d символов, получено %d)", 
                  EXPECTED_BORT_LEN, len);
@@ -404,7 +523,8 @@ void check_bort_valid(const char *bort, int line_num, ErrorInfo *errors, int *er
         return;
     }
     
-    if (len < EXPECTED_BORT_LEN) {
+    if (len < EXPECTED_BORT_LEN) 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Слишком короткий бортовой номер (должно быть %d символов, получено %d)", 
                  EXPECTED_BORT_LEN, len);
@@ -416,7 +536,8 @@ void check_bort_valid(const char *bort, int line_num, ErrorInfo *errors, int *er
     }
     
     // Остальные проверки
-    if (bort[1] != '-') {
+    if (bort[1] != '-') 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Неправильный разделитель (должен быть '-', а получен '%c')", bort[1]);
         strncpy(errors[*error_count].field_name, "Бортовой номер", sizeof(errors[*error_count].field_name) - 1);
@@ -425,7 +546,8 @@ void check_bort_valid(const char *bort, int line_num, ErrorInfo *errors, int *er
         (*error_count)++;
     }
     
-    if (bort[0] < 'A' || bort[0] > 'Z') {
+    if (bort[0] < 'A' || bort[0] > 'Z') 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Первым символом должна быть заглавная буква A-Z (получено '%c')", bort[0]);
         strncpy(errors[*error_count].field_name, "Бортовой номер", sizeof(errors[*error_count].field_name) - 1);
@@ -434,8 +556,10 @@ void check_bort_valid(const char *bort, int line_num, ErrorInfo *errors, int *er
         (*error_count)++;
     }
     
-    for (int i = 2; i < EXPECTED_BORT_LEN; i++) {
-        if (bort[i] < '0' || bort[i] > '9') {
+    for (int i = 2; i < EXPECTED_BORT_LEN; i++) 
+    {
+        if (bort[i] < '0' || bort[i] > '9') 
+        {
             char msg[250];
             snprintf(msg, sizeof(msg), "Недопустимый символ '%c' в позиции %d (ожидалась цифра)", bort[i], i);
             strncpy(errors[*error_count].field_name, "Бортовой номер", sizeof(errors[*error_count].field_name) - 1);
@@ -446,8 +570,10 @@ void check_bort_valid(const char *bort, int line_num, ErrorInfo *errors, int *er
     }
 }
 
-void check_airport_valid(const char *airport, int line_num, ErrorInfo *errors, int *error_count) {
-    if (strlen(airport) != EXPECTED_AIRPORT_LEN) {
+void check_airport_valid(const char *airport, int line_num, ErrorInfo *errors, int *error_count) 
+{
+    if (strlen(airport) != EXPECTED_AIRPORT_LEN) 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Неправильная длина (должно быть %d символа, получено %zu)", 
                  EXPECTED_AIRPORT_LEN, strlen(airport));
@@ -457,8 +583,9 @@ void check_airport_valid(const char *airport, int line_num, ErrorInfo *errors, i
         (*error_count)++;
         return;
     }
-    
-    if (airport[0] != 'A' || airport[1] != 'P') {
+
+    if (airport[0] != 'A' || airport[1] != 'P') 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Код должен начинаться с 'AP' (получено '%.2s')", airport);
         strncpy(errors[*error_count].field_name, "Аэродром", sizeof(errors[*error_count].field_name) - 1);
@@ -467,7 +594,8 @@ void check_airport_valid(const char *airport, int line_num, ErrorInfo *errors, i
         (*error_count)++;
     }
     
-    if (airport[2] < '1' || airport[2] > '3') {
+    if (airport[2] < '1' || airport[2] > '3') 
+    {
         char msg[250];
         snprintf(msg, sizeof(msg), "Последний символ должен быть цифрой 1-3 (получено '%c')", airport[2]);
         strncpy(errors[*error_count].field_name, "Аэродром", sizeof(errors[*error_count].field_name) - 1);
@@ -477,10 +605,14 @@ void check_airport_valid(const char *airport, int line_num, ErrorInfo *errors, i
     }
 }
 
-void bubble_sort(int *indices, int size, Plane *data) {
-    for (int i = 0; i < size-1; i++) {
-        for (int j = 0; j < size-i-1; j++) {
-            if (data[indices[j]].minutes < data[indices[j+1]].minutes) {
+void bubble_sort(int *indices, int size, Plane *data) 
+{
+    for (int i = 0; i < size-1; i++) 
+    {
+        for (int j = 0; j < size-i-1; j++) 
+        {
+            if (data[indices[j]].minutes < data[indices[j+1]].minutes) 
+            {
                 int temp = indices[j];
                 indices[j] = indices[j+1];
                 indices[j+1] = temp;
@@ -489,8 +621,10 @@ void bubble_sort(int *indices, int size, Plane *data) {
     }
 }
 
-void print_table(int *indices, int size, Plane *data, const char *airport) {
-    if (size == 0) {
+void print_table(int *indices, int size, Plane *data, const char *airport) 
+{
+    if (size == 0) 
+    {
         cout << "Airport " << airport << ": no landings\n";
         return;
     }
@@ -510,12 +644,15 @@ void print_table(int *indices, int size, Plane *data, const char *airport) {
     cout << "└────────────┴───────────────┴────────────────┴────────────────┘\n";
 }
 
-void process_airport(Plane *planes, int count, const char *airport) {
+void process_airport(Plane *planes, int count, const char *airport) 
+{
     int indices[MAX_PLANES];
     int size = 0;
     
-    for (int i = 0; i < count; i++) {
-        if (strncmp(planes[i].airport, airport, EXPECTED_AIRPORT_LEN) == 0) {
+    for (int i = 0; i < count; i++) 
+    {
+        if (strncmp(planes[i].airport, airport, EXPECTED_AIRPORT_LEN) == 0) 
+        {
             indices[size++] = i;
         }
     }
