@@ -1,0 +1,95 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.1.3">
+  <diagram name="Страница — 1" id="QA3_rgYVUjgv32t3VOp6">
+    <mxGraphModel dx="79" dy="916" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sS5tm8K0ARaZDzi4v3gG-75" target="sS5tm8K0ARaZDzi4v3gG-76" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-75" value="&lt;font style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: rgb(0, 0, 0);&quot;&gt;Начало&lt;/font&gt;&lt;div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;span&gt;purify&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fontFamily=Consolas;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="1490" y="119.5" width="190" height="50.5" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sS5tm8K0ARaZDzi4v3gG-76" target="sS5tm8K0ARaZDzi4v3gG-78" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1585" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-76" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;Инициализация &lt;/div&gt;&lt;div style=&quot;&quot;&gt;переменных&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" parent="1" vertex="1">
+          <mxGeometry x="1505" y="199.5" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sS5tm8K0ARaZDzi4v3gG-78" target="sS5tm8K0ARaZDzi4v3gG-83" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sS5tm8K0ARaZDzi4v3gG-78" target="sS5tm8K0ARaZDzi4v3gG-95" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1585" y="680" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1450" y="340" />
+              <mxPoint x="1450" y="690" />
+              <mxPoint x="1585" y="690" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-78" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;Есть данные?&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="1509.25" y="302" width="151.5" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sS5tm8K0ARaZDzi4v3gG-80" target="sS5tm8K0ARaZDzi4v3gG-86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-80" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;Записываем текущий &lt;/div&gt;&lt;div style=&quot;&quot;&gt;символ в буфер вывода&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" parent="1" vertex="1">
+          <mxGeometry x="1504.99" y="515" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sS5tm8K0ARaZDzi4v3gG-83" target="sS5tm8K0ARaZDzi4v3gG-80" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sS5tm8K0ARaZDzi4v3gG-83" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1585.005" y="610" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1480" y="445" />
+              <mxPoint x="1480" y="610" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-83" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;Текущий символ &lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;не пробел?&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;align=center;verticalAlign=middle;arcSize=0;fontFamily=Consolas;fontSize=14;fontColor=default;fillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="1502.3200000000002" y="398" width="165.37" height="94.2" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sS5tm8K0ARaZDzi4v3gG-86" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1584.995" y="290" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1585" y="680" />
+              <mxPoint x="1720" y="680" />
+              <mxPoint x="1720" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-86" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;Переходим к &lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;следующему символу&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" parent="1" vertex="1">
+          <mxGeometry x="1511.26" y="622.5" width="148.74" height="47.5" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-88" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1469.25" y="305" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-89" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="362" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-90" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1469.25" y="408" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-91" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1600" y="480" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="btmmllElNtWMUzMRz_SL-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="sS5tm8K0ARaZDzi4v3gG-95" target="btmmllElNtWMUzMRz_SL-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sS5tm8K0ARaZDzi4v3gG-95" value="&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;Заканчиваем &lt;/div&gt;&lt;div style=&quot;font-family: Consolas, &amp;quot;Courier New&amp;quot;, monospace; line-height: 19px; white-space: pre;&quot;&gt;строку&lt;/div&gt;" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=0;" parent="1" vertex="1">
+          <mxGeometry x="1522.49" y="710" width="137.51" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="btmmllElNtWMUzMRz_SL-1" value="Конец" style="whiteSpace=wrap;html=1;fontSize=14;fontFamily=Consolas;rounded=1;arcSize=50;" parent="1" vertex="1">
+          <mxGeometry x="1531.245" y="790" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
