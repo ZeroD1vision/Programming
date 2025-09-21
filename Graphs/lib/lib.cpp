@@ -1,0 +1,243 @@
+#include "Graph.h"
+#include <climits>
+#include <fstream>
+#include <iostream>
+
+using namespace std;
+
+Graph::Graph(const char *filename, bool directed)
+    : is_directed(directed), vertex_count(0), matrix_size(0), matrix(nullptr),
+      vertices(nullptr) {
+    // Работа с файлом
+    if (filename && filename[0] != '\0') {
+        ifstream file(filename);
+        if (!file.is_open()) {
+            cout << "Error: Cannot open file" << filename << endl;
+            return;
+        }
+      
+        // Читаем число точек из файла
+        int n; // Число вершин
+        file >> n;
+      
+        // Выделение места и инициализация матриц
+        matrix_size =
+            n + 10; // Берем с запасом, для больших размеров матриц (n>100)
+        vertices = new int[matrix_size];
+        matrix = new int *[matrix_size];
+        for (int i = 0; i < matrix_size; i++) {
+            matrix[i] = new int[matrix_size](); // Выделяем место для каждой строки
+                                                // размером matrix_size
+            vertices[i] = -1;                   // Вершины нет (индекс < 0)
+        }
+      
+        for (int i = 0; i < n; i++) {
+          add_vertex(i);
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int weight;
+                file >> weight;
+                if (weight != 0) {
+                    add_edge(i, j, weight);
+                }
+            }
+        }
+    
+        file.close();
+    }
+}
+
+Graph::~Graph() {
+    for (int i = 0; i < matrix_size; i++) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+    delete[] vertices;
+}
+
+int Graph::find_vertex_index(int vertex) {
+    for (int i = 0; i < vertex_count; i++) {
+        if (vertices[i] == vertex) {
+            return i;
+        }
+    }
+}
+
+int Graph::size() { return vertex_count; }
+
+int Graph::weight(int vertex1, int vertex2) {
+    int i = find_vertex_index(vertex1);
+    int j = find_vertex_index(vertex2);
+
+    if (i == -1 || j == -1) {
+        cout << "Error: Vertex not found" << endl;
+        return 0;
+    }
+
+    return matrix[i][j];
+}
+
+bool Graph::is_edge(int vertex1, int vertex2) {
+    int i = find_vertex_index(vertex1);
+    int j = find_vertex_index(vertex2);
+
+    if (i == -1 || j == -1) {
+        return false;
+    }
+
+    return matrix[i][j] != 0;
+}
+
+void Graph::add_vertex(int vertex) {
+    if (find_vertex_index(vertex) != -1) {
+        cout << "Error: Vertex already exists" << endl;
+        return;
+    }
+
+    // if (vertex_count >= matrix_size) {
+    //     expand_matrix();
+    // }
+
+    vertices[vertex_count] = vertex;
+    vertex_count++;
+}
+
+void Graph::add_edge(int vertex1, int vertex2, int weight) {
+    int i = find_vertex_index(vertex1);
+    int j = find_vertex_index(vertex2);
+
+    if (i == -1 || j == -1) {
+        cout << "Error: Vertex not found" << endl;
+        return;
+    }
+
+    matrix[i][j] = weight;
+    if (!is_directed) {
+        matrix[j][i] = w;
+    }
+}
+
+void Graph::remove_vertex(int vertex) {
+    int idx = find_vertex_index(vertex);
+    if (idx == -1) {
+        cout << "Error: vertex not found" << endl;
+        return;
+    }
+
+    // Удаление из массива точек
+    for (int i = idx; i < vertex_count - 1; i++) {
+        // Смещаем весь массив на единицу влево
+        vertices[i] = vertices[i + 1];
+    }
+    vertices[vertex_count - 1] = -1;
+
+    // Удаление из матрицы (удаляем столбец и строку)
+    // Удаление столбца
+    for (int i = 0; i < vertex_count; i++) {
+        for (int j = idx; j < vertex_count - 1; j++) {
+            matrix[i][j] = matrix[i][j + 1];
+        }
+        matrix[i][vertex_count - 1] = 0;
+    }
+
+    // Удаление строки
+    for (int i = idx; i < vertex_count - 1; i++) {
+        for (int j = 0; j < vertex_count; j++) {
+            matrix[i][j] = matrix[i + 1][j];
+        }
+    }
+
+    for (int j = 0; j < vertex_count; j++) {
+        matrix[vertex_count - 1][j] = 0;
+    }
+
+    vertex_count--; // Уменьашем количество точек
+}
+
+void Graph::remove_edge(int vertex1, int vertex2) {
+    int i = find_vertex_index(vertex1);
+    int j = find_vertex_index(vertex2);
+
+    if (i == -1 || j == -1) {
+        cout << "Error: Vertex not found" << endl;
+        return;
+    }
+
+    matrix[i][j] = 0;
+    if (!is_directed) {
+        matrix[j][i] = 0;
+    }
+}
+
+// Все ребра между всеми точками
+void Graph::list_of_edges() {
+    for (int i = 0; i < vertex_count; i++) {
+        for (int j = (is_directed ? 0 : i), j < vertex_count; j++) {
+            if (matrix[i][j] != 0) {
+                cout << vertices[i] << " " << vertices[j] << " " 
+                << matrix[i][j] << endl;
+            }
+        }
+    }
+}
+
+// Все ребра исходящие из конкретной точки
+void Graph::list_of_edges(int vertex) {
+    int idx = find_vertex_index(vertex);
+    if (idx == -1) {
+        cout << "Error: Vertex not found" << endl;
+        return;
+    }
+
+    for (int j = 0; j < vertex_count; j++) {
+        if (matrix[idx][j] != 0) {
+            cout << vertex << " " << vertices[j] << " " 
+            << matrix[idx][j] << endl;
+        }
+    }
+}
+
+void Graph::list_of_vertices() {
+    for (int i = 0; i < vertex_count; i++) {
+        cout << vertices[i] << endl;
+    }
+    cout << endl;
+}
+
+bool Graph::is_connected() {
+    if (vertex_count == 0) return true; // Пустой граф связен по определению
+
+    bool* visited = new bool[vertex_count]();
+    int* path = new int[vertex_count];
+    int top = -1;
+
+    path[++top] = 0;
+    visited[0] = true;
+    int count = 1;
+
+    while (top >= 0) {
+        int current = path[top--];
+
+        for (int j = 0; j < vertex_count; j++) {
+            bool has_edge = false;
+
+            if (!is_directed) {
+                has_edge = (matrix[current][j] != 0 || matrix[j][current]);
+            } else {
+                has_edge = (matrix[current][j] != 0);
+            }
+
+            if (has_edge && !visited[j]) {
+                visited[j] = true;
+                path[++top] = j;
+                count++;
+            }
+        }
+    }
+    delete[] visited;
+    delete[] path;
+    
+    return count == vertex_count;
+}
