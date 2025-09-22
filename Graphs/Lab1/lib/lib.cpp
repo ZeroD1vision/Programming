@@ -241,3 +241,74 @@ bool Graph::is_connected() {
     
     return count == vertex_count;
 }
+
+void Graph::connected_components() {
+    bool* visited = new bool[vertex_count]();
+
+    for (int i = 0; i < vertex_count; i++) {
+        if (!visited[i]) {
+            int* path = new int[vertex_count];
+            int top = -1;
+
+            path[++top] = i;
+            visited[i] = true;
+
+            cout << "[";
+            bool first = true;
+
+            while (top >= 0) {
+                int current = path[top--];
+
+                if (!first) {
+                    cout << ", ";
+                }
+                first = false;
+                cout << vertices[current];
+
+                for (int j = 0; j < vertex_count; j++) {
+                    bool has_edge = false;
+                    if (!is_directed) {
+                        has_edge = (matrix[current][j] != 0 || matrix[j][current] != 0)
+                    }
+                    else {
+                        has_edge = matrix[current][j] != 0;            
+                    }
+
+                    if (has_edge && !visited[j]) {
+                        visited[j] = true;
+                        path[++top] = j;
+                    }
+                }
+            }
+
+            cout << "]" << endl;
+            delete[] path;
+        }   
+    }
+
+    delete[] visited;
+}
+
+void Graph::shortest_path(int start, int end) {
+    // Находим индексы в массивах для начала и конца
+    int start_idx = find_vertex_index(start);
+    int end_idx = find_vertex_index(end);
+
+    //Если не нашли — прерываем выполнение.
+    if (start_idx == -1 || end_idx == -1) {
+        cout << "Error: Vertex not found" << endl;
+        return;
+    }
+
+    // Инициализация вспомогательных массивов
+    int* dist = new int[vertex_count];// Минимальные расстояния до каждой вершины (в начале все максимально неопределённые).
+    int* prev = new int[vertex_count] // Запоминает предыдущую вершину на кратчайшем пути для восстановления итогового маршрута.
+    bool* visited = new bool[vertex_count](); // Флаги посещённых вершин (все false)
+    int* path = new int[vertex_count];
+
+    
+
+}
+
+
+Дерево, дистанции
