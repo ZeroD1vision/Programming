@@ -1,4 +1,4 @@
-#include "Graph.h"
+#include "lib.h"
 #include <climits>
 #include <fstream>
 #include <iostream>
@@ -63,6 +63,7 @@ int Graph::find_vertex_index(int vertex) {
             return i;
         }
     }
+    return -1;
 }
 
 int Graph::size() { return vertex_count; }
@@ -115,7 +116,7 @@ void Graph::add_edge(int vertex1, int vertex2, int weight) {
 
     matrix[i][j] = weight;
     if (!is_directed) {
-        matrix[j][i] = w;
+        matrix[j][i] = weight;
     }
 }
 
@@ -174,7 +175,7 @@ void Graph::remove_edge(int vertex1, int vertex2) {
 // Все ребра между всеми точками
 void Graph::list_of_edges() {
     for (int i = 0; i < vertex_count; i++) {
-        for (int j = (is_directed ? 0 : i), j < vertex_count; j++) {
+        for (int j = (is_directed ? 0 : i); j < vertex_count; j++) {
             if (matrix[i][j] != 0) {
                 cout << vertices[i] << " " << vertices[j] << " " 
                 << matrix[i][j] << endl;
@@ -268,10 +269,10 @@ void Graph::connected_components() {
                 for (int j = 0; j < vertex_count; j++) {
                     bool has_edge = false;
                     if (!is_directed) {
-                        has_edge = (matrix[current][j] != 0 || matrix[j][current] != 0)
+                        has_edge = (matrix[current][j] != 0 || matrix[j][current] != 0);
                     }
                     else {
-                        has_edge = matrix[current][j] != 0;            
+                        has_edge = (matrix[current][j] != 0);            
                     }
 
                     if (has_edge && !visited[j]) {
@@ -294,7 +295,7 @@ void Graph::shortest_path(int start, int end) {
     int start_idx = find_vertex_index(start);
     int end_idx = find_vertex_index(end);
 
-    //Если не нашли — прерываем выполнение.
+    // Если не нашли — прерываем выполнение.
     if (start_idx == -1 || end_idx == -1) {
         cout << "Error: Vertex not found" << endl;
         return;
@@ -306,9 +307,28 @@ void Graph::shortest_path(int start, int end) {
     bool* visited = new bool[vertex_count](); // Флаги посещённых вершин (все false)
     int* path = new int[vertex_count];
 
+    // Все вершины ставим в [INT_MAX ~ inf, -1] а начало в [0, -1]
+    for (int i = 0; i < vertex_count; i++) {
+        dist[i] = INT_MAX;
+        prev[i] = -1;
+    }
+
+    dist[start_idx] = 0;
+
+    for (int i = 0; i < vertex_count; i++) {
+        bool has_edge = false;
+        
+    }
+
+
     
 
 }
 
 
+// Все вершины inf кроме начала
+// Находим всех соседей, расстояния до них
+// берем мин (было, стало) от начала
+// Если стало меньше то вершина посещенная, если нет то нет
+// от новой вершины находим всех соседей и по такой же схеме
 Дерево, дистанции

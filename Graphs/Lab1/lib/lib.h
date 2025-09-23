@@ -2,12 +2,11 @@
 #define GRAPH_H
 
 #include <iostream>
-#include <ifstream>
+#include <fstream>
 
 using namespace std;
 
-class Graph
-{
+class Graph {
 private:
     bool is_directed; // Ориентированный граф
     int matrix_size;  // Размер матрицы
@@ -26,9 +25,10 @@ public:
     bool is_edge(int vertex1, int vertex2);
     void add_vertex(int vertex);
     void add_edge(int vertex1, int vertex2, int weight);
-    int find_vertex_index(int vertex);
     void list_of_edges();
     void list_of_edges(int vertex);
+    bool is_connected();
+    void list_of_vertices();
     void remove_vertex(int vertex);
     void remove_edge(int vertex1, int vertex2);
     void connected_components();
