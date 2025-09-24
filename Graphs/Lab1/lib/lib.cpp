@@ -377,4 +377,78 @@ void Graph::shortest_path(int start, int end) {
     delete[] visited;
 }
 
-// Дерево, дистанции
+Graph::distances_from_vertex(int start) {
+    int start_idx = find_vertex_index(start);
+
+    if (start_idx == -1) {
+        cout << "Error: Vertex not found" << endl;
+        return;
+    }
+
+    // Инициализация вспомогательных массивов
+    int* dist = new int[vertex_count];// Минимальные расстояния до каждой вершины (в начале все максимально неопределённые).
+    int* prev = new int[vertex_count]; // Запоминает предыдущую вершину на кратчайшем пути для восстановления итогового маршрута.
+    bool* visited = new bool[vertex_count](); // Флаги посещённых вершин (все false)
+
+    // Все вершины ставим в [INF(INT_MAX) ~ inf, -1] а начало в [0, -1]
+    for (int i = 0; i < vertex_count; i++) {
+        dist[i] = INF;
+        prev[i] = -1;
+        visited[i] = false;
+    }
+
+    dist[start_idx] = 0;
+
+    while (true) {
+        int current = -1;
+        int min_dist = INF;
+
+        // Найдем непосещённую вершину с минимальным расстоянием
+        for (int i = 0; i < vertex_count; i++) {
+            if ((dist[i] < min_dist) && !visited[i]) {
+                min_dist = dist[i];
+                current = i;
+            }
+        }
+
+        // Все вершины обработаны или недостижимы
+        if (current == -1) break;
+        
+        // Помечаем текущую вершину посещённой
+        visited[current] = true;
+
+        for (int i = 0; i < vertex_count; i++) {
+            if (!visited[i] && matrix[current][i] != 0 
+                && dist[current] != INF) {
+                int current_dist = matrix[current][i] + dist[current];
+                if (current_dist < dist[i]) {
+                    dist[i] = current_dist;
+                    prev[i] = current;
+                }
+            }
+        }
+    }
+    
+    cout << "Shotest paths lengths from " << start << ":" << endl;
+    for (int i = 0; i < vertex_count; i++) {
+        cout << "  " << start << " - " << vertices[i] << " : ";
+        if (dist[i] == INT_MAX) {
+            cout << "+Infinity";
+        } else {
+            cout << dist[i];
+        }
+        if (i < vertex_count - 1) cout << "     ";
+    }
+    cout << endl;
+    
+    delete[] dist;
+    delete[] visited;
+}
+
+void Graph::all_shortest_paths() const {
+    for (int i = 0; i < vertex_count; i++) {
+        distances_from_vertex(vertices[i]);
+    }
+}
+
+// Дерево
