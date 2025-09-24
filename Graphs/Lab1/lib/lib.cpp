@@ -5,6 +5,8 @@
 
 using namespace std;
 
+const int INF = INT_MAX;
+
 Graph::Graph(const char *filename, bool directed)
     : is_directed(directed), vertex_count(0), matrix_size(0), matrix(nullptr),
       vertices(nullptr) {
@@ -303,32 +305,76 @@ void Graph::shortest_path(int start, int end) {
 
     // Инициализация вспомогательных массивов
     int* dist = new int[vertex_count];// Минимальные расстояния до каждой вершины (в начале все максимально неопределённые).
-    int* prev = new int[vertex_count] // Запоминает предыдущую вершину на кратчайшем пути для восстановления итогового маршрута.
+    int* prev = new int[vertex_count]; // Запоминает предыдущую вершину на кратчайшем пути для восстановления итогового маршрута.
     bool* visited = new bool[vertex_count](); // Флаги посещённых вершин (все false)
-    int* path = new int[vertex_count];
 
-    // Все вершины ставим в [INT_MAX ~ inf, -1] а начало в [0, -1]
+    // Все вершины ставим в [INF(INT_MAX) ~ inf, -1] а начало в [0, -1]
     for (int i = 0; i < vertex_count; i++) {
-        dist[i] = INT_MAX;
+        dist[i] = INF;
         prev[i] = -1;
+        visited[i] = false;
     }
 
     dist[start_idx] = 0;
 
-    for (int i = 0; i < vertex_count; i++) {
-        bool has_edge = false;
+    while (true) {
+        int current = -1;
+        int min_dist = INF;
+
+        // Найдем непосещённую вершину с минимальным расстоянием
+        for (int i = 0; i < vertex_count; i++) {
+            if ((dist[i] < min_dist) && !visited[i]) {
+                min_dist = dist[i];
+                current = i;
+            }
+        }
+
+        // Все вершины обработаны или недостижимы
+        if (current == -1) break;
         
+        // Помечаем текущую вершину посещённой
+        visited[current] = true;
+
+        for (int i = 0; i < vertex_count; i++) {
+            if (!visited[i] && matrix[current][i] != 0 
+                && dist[current] != INF) {
+                int current_dist = matrix[current][i] + dist[current];
+                if (current_dist < dist[i]) {
+                    dist[i] = current_dist;
+                    prev[i] = current;
+                }
+            }
+        }
+    }
+    
+    // Восстановление пути
+    if (dist[end_idx] == INF) {
+        cout << "No path from " << start << "to " << end << endl;
+    }
+    else {
+        int count = 0;
+        int* path = new int[vertex_count];
+
+        for (int i = end_idx; i != -1; i = prev[i]) {
+            path[count++] = i;
+        }
+
+        for (int left = 0, right = count - 1; left < right; ++left, --right) {
+            swap(path[left], path[right]);
+        }
+
+        for (int i = 0; i < count; i++) {
+            cout << vertices[path[i]];
+            if (i != count - 1) cout << "-";
+        }
+        cout << endl;
+
+        delete[] path;
     }
 
-
-    
-
+    delete[] dist;
+    delete[] prev;
+    delete[] visited;
 }
 
-
-// Все вершины inf кроме начала
-// Находим всех соседей, расстояния до них
-// берем мин (было, стало) от начала
-// Если стало меньше то вершина посещенная, если нет то нет
-// от новой вершины находим всех соседей и по такой же схеме
-Дерево, дистанции
+// Дерево, дистанции
