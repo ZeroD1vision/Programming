@@ -315,11 +315,11 @@ void Graph::shortest_path(int start, int end) {
         visited[i] = false;
     }
 
-    dist[start_idx] = 0;
+    dist[start_idx] = 0; // Стартовая точка в 0
 
     while (true) {
-        int current = -1;
-        int min_dist = INF;
+        int current = -1; // Текущая рассмативаемая вершина
+        int min_dist = INF; // До всех точек расстояние бесконечно
 
         // Найдем непосещённую вершину с минимальным расстоянием
         for (int i = 0; i < vertex_count; i++) {
@@ -352,17 +352,20 @@ void Graph::shortest_path(int start, int end) {
         cout << "No path from " << start << "to " << end << endl;
     }
     else {
-        int count = 0;
-        int* path = new int[vertex_count];
+        int count = 0; // Кол-во точек на пути
+        int* path = new int[vertex_count]; // Список точек пути
 
+        // Просчитываем путь от конца до начала
         for (int i = end_idx; i != -1; i = prev[i]) {
             path[count++] = i;
         }
 
+        // Переворачиваем массив пути
         for (int left = 0, right = count - 1; left < right; ++left, --right) {
             swap(path[left], path[right]);
         }
 
+        // Выводим путь
         for (int i = 0; i < count; i++) {
             cout << vertices[path[i]];
             if (i != count - 1) cout << "-";
@@ -397,8 +400,9 @@ Graph::distances_from_vertex(int start) {
         visited[i] = false;
     }
 
-    dist[start_idx] = 0;
+    dist[start_idx] = 0; // Стартовая верршина в 0
 
+    // Цикл для всех вершин
     while (true) {
         int current = -1;
         int min_dist = INF;
@@ -429,7 +433,7 @@ Graph::distances_from_vertex(int start) {
         }
     }
     
-    cout << "Shotest paths lengths from " << start << ":" << endl;
+    cout << "Shortest paths lengths from " << start << ":" << endl;
     for (int i = 0; i < vertex_count; i++) {
         cout << "  " << start << " - " << vertices[i] << " : ";
         if (dist[i] == INT_MAX) {
@@ -445,7 +449,7 @@ Graph::distances_from_vertex(int start) {
     delete[] visited;
 }
 
-void Graph::all_shortest_paths() const {
+void Graph::all_shortest_paths() {
     for (int i = 0; i < vertex_count; i++) {
         distances_from_vertex(vertices[i]);
     }
