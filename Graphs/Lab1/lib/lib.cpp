@@ -442,7 +442,7 @@ Graph::distances_from_vertex(int start) {
         } else {
             cout << dist[i];
         }
-        if (i < vertex_count - 1) cout << "     ";
+        if (i < vertex_count - 1) cout << "     "; // Разделитель между расстояниями
     }
     cout << endl;
     
@@ -462,29 +462,93 @@ void Graph::min_spanning_tree() {
         return;
     }
 
-    // Сортируем ребра по неубыванию весов
-    int edge_count = 0;
-    int* edges = new int[];
+    int max_possible_edges = vertex_count * (vertex_count - 1) / 2; // Мах кол-во еджей в графе
+
+    // Инициализация массивов
+    int edge_count = 0; // Для счета еджей
+
+    int** edges = new int*[max_possible_edges](); // Массив для хранения ребер: [Вес, Вершина1, Вершина2]
+    for (int i = 0; i < max_possible_edges; i++) {
+        edges[i] = new int[3];
+    }
+    
+    int* components = new int[vertex_count];
+    int* mst_edges = new int[max_possible_edges];
+
+    // Шаг 1: Находим все ребра графа
     for (int i = 0; i < vertex_count; i++) {
         for (int j = (is_directed ? 0 : i); j < vertex_count; j++) {
             if (matrix[i][j] != 0) {
-                edges[edge_count] = matrix[i][j];
+                edges[edge_count][0] = matrix[i][j]; // Вес
+                edges[edge_count][1] = i;            // Индекс первой вершины
+                edges[edge_count][2] = j;            // Индекс второй вершины
+                edge_count++;
             }
         }
     }
 
-    // Взять ребро мин веса (для орграфа вес этого ребра будет 
-    // минимальным из весов дуг (u, v) и (v, u))
-
-    for (int i = 0; i < edge_count; i++) {
-        
+    // Шаг 2: Сортировка ребер по весу (пузырьковая сортировка)
+    for (int i = 0; i < edge_count - 1; i++) {
+        for (int j = 0; j < edge_count - i - 1; j++) {
+            if (edges[j][0] > edges[j + 1][0]) {
+                // Меняем местами ребра
+                int * temp = edges[j];
+                edges[j] = edges[i];
+                edges[j + 1] = temp;
+            }
+        }
     }
 
-    // Если ребро создает цикл - выкинуть
+    // Шаг 3: Каждой вершине присваиваем номер ее компоненты
+    for (int i = 0; i < vertex_count; i++) {
+        components[i] = i; // Изначально каждая вершина в своей компоненте
+    }
 
-    // Иначе добавить в дерево
+    // Шаг 4: Основной цикл построения MST
+    for (int i = 0; i < edge_count; i++) {
+        // Найдем точки начала и конца
+        // Через доступ к 2,3 полям кортежей двумерного массива
+        int weight = edges[i][0]; // Вес из кортежа
+        int u = edges[i][1]; // Индекс точки начала
+        int v = edges[i][2]; // Индекс точки конца
+        int count = 0; // Кол-во еджей в МСТ
 
-    // Переход к второму шагу если остались ребра
+        // Начало == конец компонентам => выкинем
+        if (components[u] != components[v]) {
+            mst_edges[count] = i; // Сохраняем индекс ребра
+            count++;
 
+            // Объединяем компоненты: все вершины компоненты v переводим в компоненту u
+            int old_component = components[v];
+            int new_component = components[u];
+
+            for (int k = 0; k < vertex_count; k++) {
+                if (components[k] == old_component) {
+                    components[k] = new_component;
+                }
+            }
+        } 
+        // Иначе - ребро создает цикл, пропускаем его
+    }
+    // Шаг 5: Вывод результата
+    cout << "Minimum Spanning Tree (Kruskal):" << endl;
+    int total_weight = 0;
+    for (int i = 0; i < count; i++) {
+        int edge_idx = mst_edges[i];
+        int u_idx = edges[edge_idx][1];
+        int v_idx = edges[edge_idx][2];
+        int weight = edges[edge_idx][0];
+        
+        cout << vertices[u_idx] << " - " << vertices[v_idx] << " : " << weight << endl;
+        total_weight += weight;
+    }
+    cout << "Total weight: " << total_weight << endl;
+
+    // Освобождение памяти
+    for (int i = 0; i < max_possible_edges; i++) {
+        delete[] edges[i];
+    }
+    delete[] edges;
+    delete[] components;
+    delete[] mst_edges;
 }
-// Дерево
