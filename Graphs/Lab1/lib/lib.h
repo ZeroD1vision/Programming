@@ -39,7 +39,7 @@ public:
     void connected_components(); // Вывод компонент связности
     void shortest_path(int start, int end); // Кратчайший путь между двумя вершинами
     void distances_from_vertex(int start); // Расстояния от вершины до всех остальных
-    void all_shortest_paths() const;     // Все кратчайшие пути (для примера вывода)
+    void all_shortest_paths();     // Все кратчайшие пути (для примера вывода)
     void min_spanning_tree(); // Минимальное остовное дерево
 };
 
