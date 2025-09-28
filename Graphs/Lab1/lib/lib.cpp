@@ -7,6 +7,11 @@ using namespace std;
 
 const int INF = INT_MAX;
 
+/**
+* @brief Конструктор графа
+* @param filename Путь к файлу с матрицей смежности (nullptr для пустого графа)
+* @param directed Тип графа: true - ориентированный, false - неориентированный
+*/
 Graph::Graph(const char *filename, bool directed)
     : is_directed(directed), vertex_count(0), matrix_size(0), matrix(nullptr),
       vertices(nullptr) {
@@ -33,14 +38,17 @@ Graph::Graph(const char *filename, bool directed)
             vertices[i] = -1;                   // Вершины нет (индекс < 0)
         }
       
+        // Добавляем вершины в граф
         for (int i = 0; i < n; i++) {
           add_vertex(i);
         }
 
+        // Читаем матрицу смежности из файла и добавляем рёбра
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int weight;
                 file >> weight;
+                // Если вес не нулевой, добавляем ребро между вершинами i и j
                 if (weight != 0) {
                     add_edge(i, j, weight);
                 }
@@ -52,6 +60,7 @@ Graph::Graph(const char *filename, bool directed)
 }
 
 Graph::~Graph() {
+    // Освобождаем память: сначала каждую строку матрицы, затем массив указателей
     for (int i = 0; i < matrix_size; i++) {
         delete[] matrix[i];
     }
@@ -60,6 +69,7 @@ Graph::~Graph() {
 }
 
 int Graph::find_vertex_index(int vertex) {
+    // Поиск вершины в массиве vertices
     for (int i = 0; i < vertex_count; i++) {
         if (vertices[i] == vertex) {
             return i;
@@ -68,9 +78,44 @@ int Graph::find_vertex_index(int vertex) {
     return -1;
 }
 
+// Увеличение размера матрицы при нехватке места
+void Graph::expand_matrix() {
+    // Новый размер = текущий + 10
+    int new_size = matrix_size + 10;
+    int** new_matrix = new int*[new_size];
+    int* new_vertices = new int[new_size];
+    
+    // Инициализируем новую матрицу и массив вершин
+    for (int i = 0; i < new_size; i++) {
+        new_matrix[i] = new int[new_size]();  // Инициализация нулями
+        new_vertices[i] = -1;
+        
+        // Копируем данные из старой матрицы
+        if (i < matrix_size) {
+            new_vertices[i] = vertices[i];
+            for (int j = 0; j < matrix_size; j++) {
+                new_matrix[i][j] = matrix[i][j];
+            }
+        }
+    }
+    
+    // Освобождаем память старой матрицы
+    for (int i = 0; i < matrix_size; i++) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+    delete[] vertices;
+    
+    // Обновляем указатели и размер
+    matrix = new_matrix;
+    vertices = new_vertices;
+    matrix_size = new_size;
+}
+
 int Graph::size() { return vertex_count; }
 
 int Graph::weight(int vertex1, int vertex2) {
+    // Находим индексы вершин в массиве
     int i = find_vertex_index(vertex1);
     int j = find_vertex_index(vertex2);
 
@@ -94,20 +139,24 @@ bool Graph::is_edge(int vertex1, int vertex2) {
 }
 
 void Graph::add_vertex(int vertex) {
+    // Проверяем, не существует ли уже такая вершина
     if (find_vertex_index(vertex) != -1) {
         cout << "Error: Vertex already exists" << endl;
         return;
     }
 
-    // if (vertex_count >= matrix_size) {
-    //     expand_matrix();
-    // }
+    // Если массив полон, увеличиваем его размер
+    if (vertex_count >= matrix_size) {
+        expand_matrix();
+    }
 
+    // Добавляем вершину в конец массива
     vertices[vertex_count] = vertex;
     vertex_count++;
 }
 
 void Graph::add_edge(int vertex1, int vertex2, int weight) {
+    // Находим индексы вершин
     int i = find_vertex_index(vertex1);
     int j = find_vertex_index(vertex2);
 
@@ -116,7 +165,9 @@ void Graph::add_edge(int vertex1, int vertex2, int weight) {
         return;
     }
 
+    // Устанавливаем вес в матрице смежности
     matrix[i][j] = weight;
+    // Если граф неориентированный, добавляем обратное ребро
     if (!is_directed) {
         matrix[j][i] = weight;
     }
@@ -168,17 +219,20 @@ void Graph::remove_edge(int vertex1, int vertex2) {
         return;
     }
 
-    matrix[i][j] = 0;
+    matrix[i][j] = 0; // Обнуляем вес = удаляем ребро
     if (!is_directed) {
-        matrix[j][i] = 0;
+        matrix[j][i] = 0; // Для неориентированного графа удаляем и обратное ребро
     }
 }
 
 // Все ребра между всеми точками
 void Graph::list_of_edges() {
+    // Проходим по всем возможным парам вершин
     for (int i = 0; i < vertex_count; i++) {
+        // Для неориентированного графа начинаем с i, чтобы избежать дубликатов
         for (int j = (is_directed ? 0 : i); j < vertex_count; j++) {
             if (matrix[i][j] != 0) {
+                // Выводим: вершина1 вершина2 вес
                 cout << vertices[i] << " " << vertices[j] << " " 
                 << matrix[i][j] << endl;
             }
@@ -194,15 +248,17 @@ void Graph::list_of_edges(int vertex) {
         return;
     }
 
+    // Проходим по всем вершинам и выводим рёбра из заданной вершины
     for (int j = 0; j < vertex_count; j++) {
         if (matrix[idx][j] != 0) {
-            cout << vertex << " " << vertices[j] << " " 
+            cout << vertex << " -> " << vertices[j] << ": " 
             << matrix[idx][j] << endl;
         }
     }
 }
 
 void Graph::list_of_vertices() {
+    // Вывод всех вершин
     for (int i = 0; i < vertex_count; i++) {
         cout << vertices[i] << endl;
     }
@@ -211,65 +267,79 @@ void Graph::list_of_vertices() {
 
 bool Graph::is_connected() {
     if (vertex_count == 0) return true; // Пустой граф связен по определению
+    
+    // Массивы для поиска в глубину (DFS)
+    bool* visited = new bool[vertex_count](); // Массив посещённых вершин (инициализирован false)
+    int* path = new int[vertex_count];        // Стек для DFS
+    int top = -1;                             // Вершина стека
 
-    bool* visited = new bool[vertex_count]();
-    int* path = new int[vertex_count];
-    int top = -1;
-
+    // Начинаем обход с первой вершины
     path[++top] = 0;
     visited[0] = true;
-    int count = 1;
+    int count = 1; // Счётчик посещённых вершин
 
+    // Пока стек не пуст
     while (top >= 0) {
-        int current = path[top--];
+        int current = path[top--]; // Извлекаем вершину из стека
 
+        // Проверяем всех соседей текущей вершины
         for (int j = 0; j < vertex_count; j++) {
             bool has_edge = false;
 
+            // Для неориентированного графа проверяем рёбра в обоих направлениях
             if (!is_directed) {
                 has_edge = (matrix[current][j] != 0 || matrix[j][current]);
             } else {
-                has_edge = (matrix[current][j] != 0);
+                has_edge = (matrix[current][j] != 0); // Для ориентированного - только исходящие
             }
 
+            // Если есть ребро и вершина не посещена, добавляем в стек
             if (has_edge && !visited[j]) {
                 visited[j] = true;
                 path[++top] = j;
-                count++;
+                count++;  // Увеличиваем счётчик посещённых вершин
             }
         }
     }
     delete[] visited;
     delete[] path;
     
+    // Граф связен если все вершины были посещены
     return count == vertex_count;
 }
 
 void Graph::connected_components() {
-    bool* visited = new bool[vertex_count]();
+    bool* visited = new bool[vertex_count](); // Массив посещённых вершин
 
+    // Для каждой вершины
     for (int i = 0; i < vertex_count; i++) {
         if (!visited[i]) {
-            int* path = new int[vertex_count];
+            // Начинаем новую компоненту связности
+            int* path = new int[vertex_count]; // Путь для DFS
             int top = -1;
 
             path[++top] = i;
             visited[i] = true;
 
+            cout << "Connected components:" << endl;
             cout << "[";
-            bool first = true;
+            bool first = true; // Флаг для правильной расстановки запятых
 
+            // Поиск по компоненте в глубину
             while (top >= 0) {
                 int current = path[top--];
 
+                // Выводим вершину
                 if (!first) {
                     cout << ", ";
                 }
                 first = false;
                 cout << vertices[current];
 
+                // Добавляем всех непосещённых соседей
                 for (int j = 0; j < vertex_count; j++) {
                     bool has_edge = false;
+                    // Для неориентированного графа учитываем рёбра в обоих направлениях
                     if (!is_directed) {
                         has_edge = (matrix[current][j] != 0 || matrix[j][current] != 0);
                     }
@@ -304,7 +374,7 @@ void Graph::shortest_path(int start, int end) {
     }
 
     // Инициализация вспомогательных массивов
-    int* dist = new int[vertex_count];// Минимальные расстояния до каждой вершины (в начале все максимально неопределённые).
+    int* dist = new int[vertex_count]; // Минимальные расстояния до каждой вершины (в начале все максимально неопределённые).
     int* prev = new int[vertex_count]; // Запоминает предыдущую вершину на кратчайшем пути для восстановления итогового маршрута.
     bool* visited = new bool[vertex_count](); // Флаги посещённых вершин (все false)
 
@@ -336,9 +406,11 @@ void Graph::shortest_path(int start, int end) {
         visited[current] = true;
 
         for (int i = 0; i < vertex_count; i++) {
+            // Если есть ребро, вершина не посещена и текущее расстояние не бесконечно
             if (!visited[i] && matrix[current][i] != 0 
                 && dist[current] != INF) {
                 int current_dist = matrix[current][i] + dist[current];
+                // Если найден более короткий путь, обновляем
                 if (current_dist < dist[i]) {
                     dist[i] = current_dist;
                     prev[i] = current;
@@ -380,7 +452,7 @@ void Graph::shortest_path(int start, int end) {
     delete[] visited;
 }
 
-Graph::distances_from_vertex(int start) {
+void Graph::distances_from_vertex(int start) {
     int start_idx = find_vertex_index(start);
 
     if (start_idx == -1) {
@@ -466,6 +538,7 @@ void Graph::min_spanning_tree() {
 
     // Инициализация массивов
     int edge_count = 0; // Для счета еджей
+    int count = 0; // Кол-во еджей в МСТ
 
     int** edges = new int*[max_possible_edges](); // Массив для хранения ребер: [Вес, Вершина1, Вершина2]
     for (int i = 0; i < max_possible_edges; i++) {
@@ -511,7 +584,6 @@ void Graph::min_spanning_tree() {
         int weight = edges[i][0]; // Вес из кортежа
         int u = edges[i][1]; // Индекс точки начала
         int v = edges[i][2]; // Индекс точки конца
-        int count = 0; // Кол-во еджей в МСТ
 
         // Начало == конец компонентам => выкинем
         if (components[u] != components[v]) {
