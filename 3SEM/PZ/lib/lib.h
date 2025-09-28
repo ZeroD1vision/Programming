@@ -81,27 +81,15 @@ public:
     void Reduse(int DeltaRad);
 };
 
-// Класс прямоугольника
-class MyRectangle : public Point
-{
-protected:
-    int width;
-    int height;
-public:
-    MyRectangle(int InitX, int InitY, int InitWidth, int InitHeight);
-    ~MyRectangle();
-
-    virtual void Show();
-    virtual void Hide();
-};
-
 // Класс фонарика
-class Flashlight : public MyRectangle
+class Flashlight : public Point
 {
 protected:
-    int headWidth;
-    int headHeight;
-    bool visible;
+    int bodyWidth; // Толщина ручки
+    int bodyHeight; // Высота ручки
+    int headWidth; // Ширина головки
+    int headHeight; // Высота головки
+    bool visible; // Видимость
 
 public:
     Flashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight, 
@@ -111,6 +99,21 @@ public:
     virtual void Show();
     virtual void Hide();
 };
+// class Flashlight : public MyRectangle
+// {
+// protected:
+//     int headWidth;
+//     int headHeight;
+//     bool visible;
+
+// public:
+//     Flashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight, 
+//                int InitHeadWidth, int InitHeadHeight);
+//     ~Flashlight();
+
+//     virtual void Show();
+//     virtual void Hide();
+// };
 
 #endif
 
