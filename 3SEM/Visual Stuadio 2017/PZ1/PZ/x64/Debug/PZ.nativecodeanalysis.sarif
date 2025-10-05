@@ -1,0 +1,1250 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C6001",
+          "message": {
+            "text": "Использование неинициализированной памяти \"FigY\"."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                },
+                "region": {
+                  "startLine": 160,
+                  "startColumn": 24,
+                  "endLine": 160,
+                  "endColumn": 24
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "main",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 33,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 34,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 37,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 39,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 46,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 48,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 55,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 56,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 61,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 62,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "startColumn": 49
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "startColumn": 26
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 76,
+                            "startColumn": 30
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 102,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Инициализация \"FigY\" не выполнена"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 103,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 104,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 107,
+                            "startColumn": 12
+                          }
+                        },
+                        "message": {
+                          "text": "Войти в этот цикл (предполагается \"1\")"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 109,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 112,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 119,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 125,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 131,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Предполагается, что параметр (\"choice\") разрешается в case (1): "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 132,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 134,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 142,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 150,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 158,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Войти в эту ветвь (предполагается \"<условие ветви>\")"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 160,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 161,
+                            "startColumn": 30
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 162,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 160,
+                            "startColumn": 24
+                          }
+                        },
+                        "message": {
+                          "text": "\"FigY\" используется, но, возможно, не инициализировано"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6001",
+          "message": {
+            "text": "Использование неинициализированной памяти \"FigX\"."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                },
+                "region": {
+                  "startLine": 161,
+                  "startColumn": 31,
+                  "endLine": 161,
+                  "endColumn": 31
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "main",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 33,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 34,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 37,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 39,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 46,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 48,
+                            "startColumn": 13
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 55,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 56,
+                            "startColumn": 15
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 61,
+                            "startColumn": 16
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 62,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "startColumn": 49
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "startColumn": 42
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "startColumn": 26
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 76,
+                            "startColumn": 30
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "startColumn": 9
+                          }
+                        },
+                        "message": {
+                          "text": "Инициализация \"FigX\" не выполнена"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 102,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 103,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 104,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 107,
+                            "startColumn": 12
+                          }
+                        },
+                        "message": {
+                          "text": "Войти в этот цикл (предполагается \"1\")"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 109,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 112,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 119,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 125,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 131,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Предполагается, что параметр (\"choice\") разрешается в case (1): "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 132,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 134,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 142,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 150,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Пропустить эту ветвь (предполагается, что \"<условие ветви>\" равно false)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 158,
+                            "startColumn": 17
+                          }
+                        },
+                        "message": {
+                          "text": "Войти в эту ветвь (предполагается \"<условие ветви>\")"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 160,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 161,
+                            "startColumn": 30
+                          }
+                        },
+                        "message": {
+                          "text": "\"FigX\" является аргументом ввода-вывода для \"Point::MoveTo\" (объявлено в c:\\university\\programming\\3sem\\visual stuadio 2017\\pz1\\pz\\lib.h: 63)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 162,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+                          },
+                          "region": {
+                            "startLine": 161,
+                            "startColumn": 31
+                          }
+                        },
+                        "message": {
+                          "text": "\"FigX\" используется, но, возможно, не инициализировано"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.29.30159.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x64\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x003FC1B0 -il C:\\Users\\narza\\AppData\\Local\\Temp\\_CL_3c93f4d5ast -typedil -f PZ.cpp -Ze -D_MSC_EXTENSIONS -Zp16 -pc \\:/ -D_MSC_VER=1929 -D_MSC_FULL_VER=192930159 -D_MSC_BUILD=0 -D_M_AMD64=100 -ZILP448 -D_M_X64=100 -D_WIN64 -D_WIN32 -GR -D_CPPRTTI -nologo -W 3 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -D_DEBUG -D_CONSOLE -D_UNICODE -DUNICODE -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MDd -D_DEBUG -D_MT -D_DLL -GS -D_M_FP_PRECISE -permissive- -Zc:wchar_t -Zc:forScope -Fox64\\Debug\\PZ.obj -Fdx64\\Debug\\vc142.pdb -external:W 3 -Gd -analyze:projectdirectory C:\\University\\Programming\\3SEM\\Visual Stuadio 2017\\PZ1\\PZ -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\Include\\um",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/University/Programming/3SEM/Visual Stuadio 2017/PZ1/PZ/PZ.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "ddce136c90b4f1eb1b61227e4173a64a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/university/programming/3sem/visual stuadio 2017/pz1/pz/lib.h"
+          },
+          "hashes": {
+            "md5": "70f1472904a6b3f27a94e7d851ba9ffe"
+          }
+        }
+      ]
+    }
+  ]
+}
