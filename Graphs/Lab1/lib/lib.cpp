@@ -39,7 +39,7 @@ Graph::Graph(const char *filename, bool directed)
       
         // Добавляем вершины в граф
         for (int i = 0; i < n; i++) {
-          add_vertex(i);
+          add_vertex(i + 1);
         }
 
         // Читаем матрицу смежности из файла и добавляем рёбра
@@ -49,7 +49,7 @@ Graph::Graph(const char *filename, bool directed)
                 file >> weight;
                 // Если вес не нулевой, добавляем ребро между вершинами i и j
                 if (weight != 0) {
-                    add_edge(i, j, weight);
+                    add_edge(i + 1, j + 1, weight);
                 }
             }
         }
