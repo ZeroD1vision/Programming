@@ -1,0 +1,136 @@
+Graph is directed.
+Digraph is not connected
+
+Weakly connected components:
+[2, 3, 4, 7, 8]
+[1, 5, 6, 9, 10]
+
+Shortest paths lengths from 1:
+  1 -   1 : 0	  1 -   2 : +Infinity	  1 -   3 : +Infinity	  1 -   4 : +Infinity	  1 -   5 : 39	  1 -   6 : 17	  1 -   7 : +Infinity	  1 -   8 : +Infinity	  1 -   9 : 4	  1 -  10 : 22	
+
+Shortest paths lengths from 2:
+  2 -   1 : +Infinity	  2 -   2 : 0	  2 -   3 : 98	  2 -   4 : 21	  2 -   5 : +Infinity	  2 -   6 : +Infinity	  2 -   7 : 61	  2 -   8 : 105	  2 -   9 : +Infinity	  2 -  10 : +Infinity	
+
+Shortest paths lengths from 3:
+  3 -   1 : +Infinity	  3 -   2 : 26	  3 -   3 : 0	  3 -   4 : 24	  3 -   5 : +Infinity	  3 -   6 : +Infinity	  3 -   7 : 27	  3 -   8 : 71	  3 -   9 : +Infinity	  3 -  10 : +Infinity	
+
+Shortest paths lengths from 4:
+  4 -   1 : +Infinity	  4 -   2 : 29	  4 -   3 : 127	  4 -   4 : 0	  4 -   5 : +Infinity	  4 -   6 : +Infinity	  4 -   7 : 90	  4 -   8 : 134	  4 -   9 : +Infinity	  4 -  10 : +Infinity	
+
+Shortest paths lengths from 5:
+  5 -   1 : 93	  5 -   2 : +Infinity	  5 -   3 : +Infinity	  5 -   4 : +Infinity	  5 -   5 : 0	  5 -   6 : 110	  5 -   7 : +Infinity	  5 -   8 : +Infinity	  5 -   9 : 37	  5 -  10 : 63	
+
+Shortest paths lengths from 6:
+  6 -   1 : 22	  6 -   2 : +Infinity	  6 -   3 : +Infinity	  6 -   4 : +Infinity	  6 -   5 : 61	  6 -   6 : 0	  6 -   7 : +Infinity	  6 -   8 : +Infinity	  6 -   9 : 26	  6 -  10 : 44	
+
+Shortest paths lengths from 7:
+  7 -   1 : +Infinity	  7 -   2 : 15	  7 -   3 : 37	  7 -   4 : 36	  7 -   5 : +Infinity	  7 -   6 : +Infinity	  7 -   7 : 0	  7 -   8 : 44	  7 -   9 : +Infinity	  7 -  10 : +Infinity	
+
+Shortest paths lengths from 8:
+  8 -   1 : +Infinity	  8 -   2 : 80	  8 -   3 : 178	  8 -   4 : 51	  8 -   5 : +Infinity	  8 -   6 : +Infinity	  8 -   7 : 141	  8 -   8 : 0	  8 -   9 : +Infinity	  8 -  10 : +Infinity	
+
+Shortest paths lengths from 9:
+  9 -   1 : 135	  9 -   2 : +Infinity	  9 -   3 : +Infinity	  9 -   4 : +Infinity	  9 -   5 : 124	  9 -   6 : 152	  9 -   7 : +Infinity	  9 -   8 : +Infinity	  9 -   9 : 0	  9 -  10 : 105	
+
+Shortest paths lengths from 10:
+ 10 -   1 : 30	 10 -   2 : +Infinity	 10 -   3 : +Infinity	 10 -   4 : +Infinity	 10 -   5 : 19	 10 -   6 : 47	 10 -   7 : +Infinity	 10 -   8 : +Infinity	 10 -   9 : 34	 10 -  10 : 0	
+
+Path from 1 to 5:
+1-5
+Path from 1 to 6:
+1-6
+Path from 1 to 9:
+1-9
+Path from 1 to 10:
+1-10
+
+
+Path from 2 to 3:
+2-7-3
+Path from 2 to 4:
+2-4
+Path from 2 to 7:
+2-7
+Path from 2 to 8:
+2-7-8
+
+
+Path from 3 to 2:
+3-2
+Path from 3 to 4:
+3-4
+Path from 3 to 7:
+3-7
+Path from 3 to 8:
+3-7-8
+
+
+Path from 4 to 2:
+4-2
+Path from 4 to 3:
+4-2-7-3
+Path from 4 to 7:
+4-2-7
+Path from 4 to 8:
+4-2-7-8
+
+
+Path from 5 to 1:
+5-10-1
+Path from 5 to 6:
+5-10-1-6
+Path from 5 to 9:
+5-9
+Path from 5 to 10:
+5-10
+
+
+Path from 6 to 1:
+6-1
+Path from 6 to 5:
+6-1-5
+Path from 6 to 9:
+6-1-9
+Path from 6 to 10:
+6-1-10
+
+
+Path from 7 to 2:
+7-2
+Path from 7 to 3:
+7-3
+Path from 7 to 4:
+7-2-4
+Path from 7 to 8:
+7-8
+
+
+Path from 8 to 2:
+8-4-2
+Path from 8 to 3:
+8-4-2-7-3
+Path from 8 to 4:
+8-4
+Path from 8 to 7:
+8-4-2-7
+
+
+Path from 9 to 1:
+9-10-1
+Path from 9 to 5:
+9-10-5
+Path from 9 to 6:
+9-10-1-6
+Path from 9 to 10:
+9-10
+
+
+Path from 10 to 1:
+10-1
+Path from 10 to 5:
+10-5
+Path from 10 to 6:
+10-1-6
+Path from 10 to 9:
+10-1-9
+

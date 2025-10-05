@@ -1,0 +1,251 @@
+Graph is directed.
+Digraph is not connected
+
+Weakly connected components:
+[1, 2, 3, 8, 11, 13, 15]
+[4, 5, 6, 7, 9, 10, 12, 14]
+
+Shortest paths lengths from 1:
+  1 -   1 : 0	  1 -   2 : +Infinity	  1 -   3 : +Infinity	  1 -   4 : +Infinity	  1 -   5 : +Infinity	  1 -   6 : +Infinity	  1 -   7 : +Infinity	  1 -   8 : +Infinity	  1 -   9 : +Infinity	  1 -  10 : +Infinity	  1 -  11 : +Infinity	  1 -  12 : +Infinity	  1 -  13 : +Infinity	  1 -  14 : +Infinity	  1 -  15 : +Infinity	
+
+Shortest paths lengths from 2:
+  2 -   1 : 101	  2 -   2 : 0	  2 -   3 : 41	  2 -   4 : +Infinity	  2 -   5 : +Infinity	  2 -   6 : +Infinity	  2 -   7 : +Infinity	  2 -   8 : 64	  2 -   9 : +Infinity	  2 -  10 : +Infinity	  2 -  11 : 51	  2 -  12 : +Infinity	  2 -  13 : 94	  2 -  14 : +Infinity	  2 -  15 : 63	
+
+Shortest paths lengths from 3:
+  3 -   1 : 60	  3 -   2 : 24	  3 -   3 : 0	  3 -   4 : +Infinity	  3 -   5 : +Infinity	  3 -   6 : +Infinity	  3 -   7 : +Infinity	  3 -   8 : 23	  3 -   9 : +Infinity	  3 -  10 : +Infinity	  3 -  11 : 10	  3 -  12 : +Infinity	  3 -  13 : 53	  3 -  14 : +Infinity	  3 -  15 : 22	
+
+Shortest paths lengths from 4:
+  4 -   1 : +Infinity	  4 -   2 : +Infinity	  4 -   3 : +Infinity	  4 -   4 : 0	  4 -   5 : 68	  4 -   6 : 31	  4 -   7 : 24	  4 -   8 : +Infinity	  4 -   9 : 57	  4 -  10 : 37	  4 -  11 : +Infinity	  4 -  12 : 48	  4 -  13 : +Infinity	  4 -  14 : 12	  4 -  15 : +Infinity	
+
+Shortest paths lengths from 5:
+  5 -   1 : +Infinity	  5 -   2 : +Infinity	  5 -   3 : +Infinity	  5 -   4 : +Infinity	  5 -   5 : 0	  5 -   6 : 63	  5 -   7 : 85	  5 -   8 : +Infinity	  5 -   9 : 96	  5 -  10 : 76	  5 -  11 : +Infinity	  5 -  12 : 109	  5 -  13 : +Infinity	  5 -  14 : 44	  5 -  15 : +Infinity	
+
+Shortest paths lengths from 6:
+  6 -   1 : +Infinity	  6 -   2 : +Infinity	  6 -   3 : +Infinity	  6 -   4 : +Infinity	  6 -   5 : 66	  6 -   6 : 0	  6 -   7 : 22	  6 -   8 : +Infinity	  6 -   9 : 55	  6 -  10 : 35	  6 -  11 : +Infinity	  6 -  12 : 46	  6 -  13 : +Infinity	  6 -  14 : 110	  6 -  15 : +Infinity	
+
+Shortest paths lengths from 7:
+  7 -   1 : +Infinity	  7 -   2 : +Infinity	  7 -   3 : +Infinity	  7 -   4 : +Infinity	  7 -   5 : 44	  7 -   6 : 45	  7 -   7 : 0	  7 -   8 : +Infinity	  7 -   9 : 33	  7 -  10 : 13	  7 -  11 : +Infinity	  7 -  12 : 24	  7 -  13 : +Infinity	  7 -  14 : 88	  7 -  15 : +Infinity	
+
+Shortest paths lengths from 8:
+  8 -   1 : 77	  8 -   2 : 41	  8 -   3 : 17	  8 -   4 : +Infinity	  8 -   5 : +Infinity	  8 -   6 : +Infinity	  8 -   7 : +Infinity	  8 -   8 : 0	  8 -   9 : +Infinity	  8 -  10 : +Infinity	  8 -  11 : 27	  8 -  12 : +Infinity	  8 -  13 : 43	  8 -  14 : +Infinity	  8 -  15 : 12	
+
+Shortest paths lengths from 9:
+  9 -   1 : +Infinity	  9 -   2 : +Infinity	  9 -   3 : +Infinity	  9 -   4 : +Infinity	  9 -   5 : 49	  9 -   6 : 44	  9 -   7 : 66	  9 -   8 : +Infinity	  9 -   9 : 0	  9 -  10 : 18	  9 -  11 : +Infinity	  9 -  12 : 90	  9 -  13 : +Infinity	  9 -  14 : 93	  9 -  15 : +Infinity	
+
+Shortest paths lengths from 10:
+ 10 -   1 : +Infinity	 10 -   2 : +Infinity	 10 -   3 : +Infinity	 10 -   4 : +Infinity	 10 -   5 : 31	 10 -   6 : 32	 10 -   7 : 54	 10 -   8 : +Infinity	 10 -   9 : 20	 10 -  10 : 0	 10 -  11 : +Infinity	 10 -  12 : 78	 10 -  13 : +Infinity	 10 -  14 : 75	 10 -  15 : +Infinity	
+
+Shortest paths lengths from 11:
+ 11 -   1 : 115	 11 -   2 : 14	 11 -   3 : 55	 11 -   4 : +Infinity	 11 -   5 : +Infinity	 11 -   6 : +Infinity	 11 -   7 : +Infinity	 11 -   8 : 78	 11 -   9 : +Infinity	 11 -  10 : +Infinity	 11 -  11 : 0	 11 -  12 : +Infinity	 11 -  13 : 108	 11 -  14 : +Infinity	 11 -  15 : 77	
+
+Shortest paths lengths from 12:
+ 12 -   1 : +Infinity	 12 -   2 : +Infinity	 12 -   3 : +Infinity	 12 -   4 : +Infinity	 12 -   5 : 51	 12 -   6 : 24	 12 -   7 : 7	 12 -   8 : +Infinity	 12 -   9 : 40	 12 -  10 : 20	 12 -  11 : +Infinity	 12 -  12 : 0	 12 -  13 : +Infinity	 12 -  14 : 95	 12 -  15 : +Infinity	
+
+Shortest paths lengths from 13:
+ 13 -   1 : 97	 13 -   2 : 61	 13 -   3 : 37	 13 -   4 : +Infinity	 13 -   5 : +Infinity	 13 -   6 : +Infinity	 13 -   7 : +Infinity	 13 -   8 : 31	 13 -   9 : +Infinity	 13 -  10 : +Infinity	 13 -  11 : 47	 13 -  12 : +Infinity	 13 -  13 : 0	 13 -  14 : +Infinity	 13 -  15 : 43	
+
+Shortest paths lengths from 14:
+ 14 -   1 : +Infinity	 14 -   2 : +Infinity	 14 -   3 : +Infinity	 14 -   4 : +Infinity	 14 -   5 : 63	 14 -   6 : 19	 14 -   7 : 41	 14 -   8 : +Infinity	 14 -   9 : 52	 14 -  10 : 32	 14 -  11 : +Infinity	 14 -  12 : 65	 14 -  13 : +Infinity	 14 -  14 : 0	 14 -  15 : +Infinity	
+
+Shortest paths lengths from 15:
+ 15 -   1 : 71	 15 -   2 : 35	 15 -   3 : 11	 15 -   4 : +Infinity	 15 -   5 : +Infinity	 15 -   6 : +Infinity	 15 -   7 : +Infinity	 15 -   8 : 25	 15 -   9 : +Infinity	 15 -  10 : +Infinity	 15 -  11 : 21	 15 -  12 : +Infinity	 15 -  13 : 31	 15 -  14 : +Infinity	 15 -  15 : 0	
+
+
+
+Path from 2 to 1:
+2-3-1
+Path from 2 to 3:
+2-3
+Path from 2 to 8:
+2-3-8
+Path from 2 to 11:
+2-3-11
+Path from 2 to 13:
+2-3-15-13
+Path from 2 to 15:
+2-3-15
+
+
+Path from 3 to 1:
+3-1
+Path from 3 to 2:
+3-11-2
+Path from 3 to 8:
+3-8
+Path from 3 to 11:
+3-11
+Path from 3 to 13:
+3-15-13
+Path from 3 to 15:
+3-15
+
+
+Path from 4 to 5:
+4-7-10-5
+Path from 4 to 6:
+4-14-6
+Path from 4 to 7:
+4-7
+Path from 4 to 9:
+4-7-10-9
+Path from 4 to 10:
+4-7-10
+Path from 4 to 12:
+4-7-12
+Path from 4 to 14:
+4-14
+
+
+Path from 5 to 6:
+5-14-6
+Path from 5 to 7:
+5-14-6-7
+Path from 5 to 9:
+5-14-10-9
+Path from 5 to 10:
+5-14-10
+Path from 5 to 12:
+5-14-6-7-12
+Path from 5 to 14:
+5-14
+
+
+Path from 6 to 5:
+6-7-10-5
+Path from 6 to 7:
+6-7
+Path from 6 to 9:
+6-7-10-9
+Path from 6 to 10:
+6-7-10
+Path from 6 to 12:
+6-7-12
+Path from 6 to 14:
+6-7-10-5-14
+
+
+Path from 7 to 5:
+7-10-5
+Path from 7 to 6:
+7-10-6
+Path from 7 to 9:
+7-10-9
+Path from 7 to 10:
+7-10
+Path from 7 to 12:
+7-12
+Path from 7 to 14:
+7-10-5-14
+
+
+Path from 8 to 1:
+8-3-1
+Path from 8 to 2:
+8-3-11-2
+Path from 8 to 3:
+8-3
+Path from 8 to 11:
+8-3-11
+Path from 8 to 13:
+8-15-13
+Path from 8 to 15:
+8-15
+
+
+Path from 9 to 5:
+9-10-5
+Path from 9 to 6:
+9-6
+Path from 9 to 7:
+9-6-7
+Path from 9 to 10:
+9-10
+Path from 9 to 12:
+9-6-7-12
+Path from 9 to 14:
+9-10-5-14
+
+
+Path from 10 to 5:
+10-5
+Path from 10 to 6:
+10-6
+Path from 10 to 7:
+10-6-7
+Path from 10 to 9:
+10-9
+Path from 10 to 12:
+10-6-7-12
+Path from 10 to 14:
+10-5-14
+
+
+Path from 11 to 1:
+11-2-3-1
+Path from 11 to 2:
+11-2
+Path from 11 to 3:
+11-2-3
+Path from 11 to 8:
+11-2-3-8
+Path from 11 to 13:
+11-2-3-15-13
+Path from 11 to 15:
+11-2-3-15
+
+
+Path from 12 to 5:
+12-7-10-5
+Path from 12 to 6:
+12-6
+Path from 12 to 7:
+12-7
+Path from 12 to 9:
+12-7-10-9
+Path from 12 to 10:
+12-7-10
+Path from 12 to 14:
+12-7-10-5-14
+
+
+Path from 13 to 1:
+13-3-1
+Path from 13 to 2:
+13-3-11-2
+Path from 13 to 3:
+13-3
+Path from 13 to 8:
+13-8
+Path from 13 to 11:
+13-3-11
+Path from 13 to 15:
+13-8-15
+
+
+Path from 14 to 5:
+14-10-5
+Path from 14 to 6:
+14-6
+Path from 14 to 7:
+14-6-7
+Path from 14 to 9:
+14-10-9
+Path from 14 to 10:
+14-10
+Path from 14 to 12:
+14-6-7-12
+
+
+Path from 15 to 1:
+15-3-1
+Path from 15 to 2:
+15-3-11-2
+Path from 15 to 3:
+15-3
+Path from 15 to 8:
+15-8
+Path from 15 to 11:
+15-3-11
+Path from 15 to 13:
+15-13
+

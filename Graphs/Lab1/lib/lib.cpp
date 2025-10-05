@@ -28,8 +28,7 @@ Graph::Graph(const char *filename, bool directed)
         file >> n;
       
         // Выделение места и инициализация матриц
-        matrix_size =
-            n + 10; // Берем с запасом, для больших размеров матриц (n>100)
+        matrix_size = n + 10; // Берем с запасом, для больших размеров матриц (n>100)
         vertices = new int[matrix_size];
         matrix = new int *[matrix_size];
         for (int i = 0; i < matrix_size; i++) {
@@ -56,6 +55,9 @@ Graph::Graph(const char *filename, bool directed)
         }
     
         file.close();
+
+        // Вывод результата
+        cout << "Граф " << (is_directed ? "ориентированный" : "неориентированный") << endl;
     }
 }
 
@@ -266,88 +268,91 @@ void Graph::list_of_vertices() {
 }
 
 bool Graph::is_connected() {
-    if (vertex_count == 0) return true; // Пустой граф связен по определению
+    if (vertex_count == 0) return true;
     
-    // Массивы для поиска в глубину (DFS)
-    bool* visited = new bool[vertex_count](); // Массив посещённых вершин (инициализирован false)
-    int* path = new int[vertex_count];        // Стек для DFS
-    int top = -1;                             // Вершина стека
+    // Для ориентированного графа используем алгоритм для слабой связности
+    // Создаем неориентированную версию матрицы для обхода
+    int** undir_matrix = new int*[vertex_count];
+    for (int i = 0; i < vertex_count; i++) {
+        undir_matrix[i] = new int[vertex_count];
+        for (int j = 0; j < vertex_count; j++) {
+            // Для слабой связности считаем граф неориентированным
+            undir_matrix[i][j] = (matrix[i][j] != 0 || matrix[j][i] != 0) ? 1 : 0;
+        }
+    }
+    
+    bool* visited = new bool[vertex_count]();
+    int* path = new int[vertex_count];
+    int top = -1;
 
-    // Начинаем обход с первой вершины
     path[++top] = 0;
     visited[0] = true;
-    int count = 1; // Счётчик посещённых вершин
+    int count = 1;
 
-    // Пока стек не пуст
     while (top >= 0) {
-        int current = path[top--]; // Извлекаем вершину из стека
+        int current = path[top--];
 
-        // Проверяем всех соседей текущей вершины
         for (int j = 0; j < vertex_count; j++) {
-            bool has_edge = false;
-
-            // Для неориентированного графа проверяем рёбра в обоих направлениях
-            if (!is_directed) {
-                has_edge = (matrix[current][j] != 0 || matrix[j][current]);
-            } else {
-                has_edge = (matrix[current][j] != 0); // Для ориентированного - только исходящие
-            }
-
-            // Если есть ребро и вершина не посещена, добавляем в стек
-            if (has_edge && !visited[j]) {
+            if (undir_matrix[current][j] != 0 && !visited[j]) {
                 visited[j] = true;
                 path[++top] = j;
-                count++;  // Увеличиваем счётчик посещённых вершин
+                count++;
             }
         }
     }
+    
+    // Освобождаем память
+    for (int i = 0; i < vertex_count; i++) {
+        delete[] undir_matrix[i];
+    }
+    delete[] undir_matrix;
     delete[] visited;
     delete[] path;
     
-    // Граф связен если все вершины были посещены
     return count == vertex_count;
 }
 
 void Graph::connected_components() {
-    bool* visited = new bool[vertex_count](); // Массив посещённых вершин
+    // Для ориентированного графа выводим слабо связные компоненты
+    if (is_directed) {
+        cout << "Weakly connected components:" << endl;
+    } else {
+        cout << "Connected components:" << endl;
+    }
+    
+    // Создаем неориентированную версию матрицы для обхода
+    int** undir_matrix = new int*[vertex_count];
+    for (int i = 0; i < vertex_count; i++) {
+        undir_matrix[i] = new int[vertex_count];
+        for (int j = 0; j < vertex_count; j++) {
+            undir_matrix[i][j] = (matrix[i][j] != 0 || matrix[j][i] != 0) ? 1 : 0;
+        }
+    }
+    
+    bool* visited = new bool[vertex_count]();
 
-    // Для каждой вершины
     for (int i = 0; i < vertex_count; i++) {
         if (!visited[i]) {
-            // Начинаем новую компоненту связности
-            int* path = new int[vertex_count]; // Путь для DFS
+            int* path = new int[vertex_count];
             int top = -1;
 
             path[++top] = i;
             visited[i] = true;
 
-            cout << "Connected components:" << endl;
             cout << "[";
-            bool first = true; // Флаг для правильной расстановки запятых
+            bool first = true;
 
-            // Поиск по компоненте в глубину
             while (top >= 0) {
                 int current = path[top--];
 
-                // Выводим вершину
                 if (!first) {
                     cout << ", ";
                 }
                 first = false;
                 cout << vertices[current];
 
-                // Добавляем всех непосещённых соседей
                 for (int j = 0; j < vertex_count; j++) {
-                    bool has_edge = false;
-                    // Для неориентированного графа учитываем рёбра в обоих направлениях
-                    if (!is_directed) {
-                        has_edge = (matrix[current][j] != 0 || matrix[j][current] != 0);
-                    }
-                    else {
-                        has_edge = (matrix[current][j] != 0);            
-                    }
-
-                    if (has_edge && !visited[j]) {
+                    if (undir_matrix[current][j] != 0 && !visited[j]) {
                         visited[j] = true;
                         path[++top] = j;
                     }
@@ -359,8 +364,14 @@ void Graph::connected_components() {
         }   
     }
 
+    // Освобождаем память
+    for (int i = 0; i < vertex_count; i++) {
+        delete[] undir_matrix[i];
+    }
+    delete[] undir_matrix;
     delete[] visited;
 }
+
 
 void Graph::shortest_path(int start, int end) {
     // Находим индексы в массивах для начала и конца
@@ -529,9 +540,19 @@ void Graph::all_shortest_paths() {
 }
 
 void Graph::min_spanning_tree() {
-    if (is_directed) {
-        cout << "Minimum spanning tree exists for undirected graphs only" << endl;
-        return;
+    // Шаг 0: Определение направленности графа по матрице
+    bool directed = false;
+    for (int i = 0; i < vertex_count; i++) {
+        for (int j = 0; j < vertex_count; j++) {
+            if (matrix[i][j] != matrix[j][i]) {
+                directed = true;
+                break;
+            }
+        }
+        if (directed) break;
+    }
+    if (directed) {
+        cout << "Graph is directed, but MST will be computed treating it as undirected" << endl;
     }
 
     int max_possible_edges = vertex_count * (vertex_count - 1) / 2; // Мах кол-во еджей в графе
@@ -548,11 +569,35 @@ void Graph::min_spanning_tree() {
     int* components = new int[vertex_count];
     int* mst_edges = new int[max_possible_edges];
 
+    // // Шаг 1: Находим все ребра графа
+    // for (int i = 0; i < vertex_count; i++) {
+    //     for (int j = (is_directed ? 0 : i); j < vertex_count; j++) {
+    //         if (matrix[i][j] != 0) {
+    //             edges[edge_count][0] = matrix[i][j]; // Вес
+    //             edges[edge_count][1] = i;            // Индекс первой вершины
+    //             edges[edge_count][2] = j;            // Индекс второй вершины
+    //             edge_count++;
+    //         }
+    //     }
+    // }
+
     // Шаг 1: Находим все ребра графа
     for (int i = 0; i < vertex_count; i++) {
-        for (int j = (is_directed ? 0 : i); j < vertex_count; j++) {
-            if (matrix[i][j] != 0) {
-                edges[edge_count][0] = matrix[i][j]; // Вес
+        for (int j = i + 1; j < vertex_count; j++) { // j > i — чтобы не брать дважды
+            if (matrix[i][j] != 0 || matrix[j][i] != 0) {
+                // Возьмём вес как минимальный из двух направлений, если есть
+                int w = 0;
+                if (matrix[i][j] != 0 && matrix[j][i] != 0) {
+                    w = std::min(matrix[i][j], matrix[j][i]);
+                }
+                else if (matrix[i][j] != 0) {
+                    w = matrix[i][j];
+                }
+                else {
+                    w = matrix[j][i];
+                }
+
+                edges[edge_count][0] = w;            // Вес
                 edges[edge_count][1] = i;            // Индекс первой вершины
                 edges[edge_count][2] = j;            // Индекс второй вершины
                 edge_count++;
@@ -560,14 +605,24 @@ void Graph::min_spanning_tree() {
         }
     }
 
+    if (edge_count == 0) {
+        cout << "No edges found. Impossible to build MST" << endl;
+        for (int i = 0; i < edge_count; i++) delete[] edges[i];
+        delete[] edges;
+        return;
+    }
+
     // Шаг 2: Сортировка ребер по весу (пузырьковая сортировка)
     for (int i = 0; i < edge_count - 1; i++) {
         for (int j = 0; j < edge_count - i - 1; j++) {
             if (edges[j][0] > edges[j + 1][0]) {
                 // Меняем местами ребра
-                int * temp = edges[j];
-                edges[j] = edges[i];
-                edges[j + 1] = temp;
+                // int * temp = edges[j];
+                // edges[j] = edges[i];
+                // edges[j + 1] = temp;
+                swap(edges[j][0], edges[j + 1][0]);
+                swap(edges[j][1], edges[j + 1][1]);
+                swap(edges[j][2], edges[j + 1][2]);
             }
         }
     }
@@ -602,24 +657,41 @@ void Graph::min_spanning_tree() {
         } 
         // Иначе - ребро создает цикл, пропускаем его
     }
-    // Шаг 5: Вывод результата
-    cout << "Minimum Spanning Tree (Kruskal):" << endl;
-    int total_weight = 0;
-    for (int i = 0; i < count; i++) {
-        int edge_idx = mst_edges[i];
-        int u_idx = edges[edge_idx][1];
-        int v_idx = edges[edge_idx][2];
-        int weight = edges[edge_idx][0];
-        
-        cout << vertices[u_idx] << " - " << vertices[v_idx] << " : " << weight << endl;
-        total_weight += weight;
-    }
-    cout << "Total weight: " << total_weight << endl;
 
-    // Освобождение памяти
-    for (int i = 0; i < max_possible_edges; i++) {
-        delete[] edges[i];
+    // Проверка на связность (усли не все в одной компоненте - не сущетсвует мст)
+    int first_component = components[0];
+    for (int i = 1; i < vertex_count; i++) {
+        if (components[i] != first_component) {
+            cout << "Graph is not connected. MST does not exist." << endl;
+            for (int j = 0; j < max_possible_edges; j++) delete[] edges[j];
+
+            delete[] edges;
+            delete[] components;
+            delete[] mst_edges;
+            
+            return;
+        }
     }
+
+    // Шаг 5: Вывод результата
+    int total_weight = 0;
+    cout << "Weight of minimum spanning tree: ";
+    for (int i = 0; i < count; i++) {
+        total_weight += edges[mst_edges[i]][0];
+    }
+    cout << total_weight << endl;
+
+    cout << "Minimum Spanning Tree edges:" << endl;
+    for (int i = 0; i < count; i++) {
+        int idx = mst_edges[i];
+        int u = edges[idx][1];
+        int v = edges[idx][2];
+        int w = edges[idx][0];
+        cout << vertices[u] << " - " << vertices[v] << " : " << w << endl;
+    }
+
+    // Очистка памяти
+    for (int i = 0; i < max_possible_edges; i++) delete[] edges[i];
     delete[] edges;
     delete[] components;
     delete[] mst_edges;

@@ -1,0 +1,4034 @@
+Graph is unirected.
+Graph is not connected
+
+Connected components:
+[1, 7, 9, 12, 15, 16, 19, 27, 28, 33, 35, 36, 41, 42, 43, 46, 55, 56, 57, 65, 68, 72, 73, 75]
+[2, 3, 5, 6, 10, 11, 13, 22, 23, 24, 25, 29, 30, 31, 37, 39, 40, 44, 45, 47, 51, 52, 61, 62, 64, 66, 67, 69, 70]
+[4, 8, 14, 17, 18, 20, 21, 26, 32, 34, 38, 48, 49, 50, 53, 54, 58, 59, 60, 63, 71, 74]
+
+Shortest paths lengths from 1:
+  1 -   1 : 0	  1 -   2 : +Infinity	  1 -   3 : +Infinity	  1 -   4 : +Infinity	  1 -   5 : +Infinity	  1 -   6 : +Infinity	  1 -   7 : 45	  1 -   8 : +Infinity	  1 -   9 : 36	  1 -  10 : +Infinity	  1 -  11 : +Infinity	  1 -  12 : 44	  1 -  13 : +Infinity	  1 -  14 : +Infinity	  1 -  15 : 38	  1 -  16 : 31	  1 -  17 : +Infinity	  1 -  18 : +Infinity	  1 -  19 : 28	  1 -  20 : +Infinity	  1 -  21 : +Infinity	  1 -  22 : +Infinity	  1 -  23 : +Infinity	  1 -  24 : +Infinity	  1 -  25 : +Infinity	  1 -  26 : +Infinity	  1 -  27 : 32	  1 -  28 : 39	  1 -  29 : +Infinity	  1 -  30 : +Infinity	  1 -  31 : +Infinity	  1 -  32 : +Infinity	  1 -  33 : 24	  1 -  34 : +Infinity	  1 -  35 : 8	  1 -  36 : 20	  1 -  37 : +Infinity	  1 -  38 : +Infinity	  1 -  39 : +Infinity	  1 -  40 : +Infinity	  1 -  41 : 34	  1 -  42 : 21	  1 -  43 : 21	  1 -  44 : +Infinity	  1 -  45 : +Infinity	  1 -  46 : 33	  1 -  47 : +Infinity	  1 -  48 : +Infinity	  1 -  49 : +Infinity	  1 -  50 : +Infinity	  1 -  51 : +Infinity	  1 -  52 : +Infinity	  1 -  53 : +Infinity	  1 -  54 : +Infinity	  1 -  55 : 20	  1 -  56 : 24	  1 -  57 : 38	  1 -  58 : +Infinity	  1 -  59 : +Infinity	  1 -  60 : +Infinity	  1 -  61 : +Infinity	  1 -  62 : +Infinity	  1 -  63 : +Infinity	  1 -  64 : +Infinity	  1 -  65 : 34	  1 -  66 : +Infinity	  1 -  67 : +Infinity	  1 -  68 : 36	  1 -  69 : +Infinity	  1 -  70 : +Infinity	  1 -  71 : +Infinity	  1 -  72 : 43	  1 -  73 : 38	  1 -  74 : +Infinity	  1 -  75 : 14	
+
+Shortest paths lengths from 2:
+  2 -   1 : +Infinity	  2 -   2 : 0	  2 -   3 : 23	  2 -   4 : +Infinity	  2 -   5 : 34	  2 -   6 : 6	  2 -   7 : +Infinity	  2 -   8 : +Infinity	  2 -   9 : +Infinity	  2 -  10 : 32	  2 -  11 : 35	  2 -  12 : +Infinity	  2 -  13 : 24	  2 -  14 : +Infinity	  2 -  15 : +Infinity	  2 -  16 : +Infinity	  2 -  17 : +Infinity	  2 -  18 : +Infinity	  2 -  19 : +Infinity	  2 -  20 : +Infinity	  2 -  21 : +Infinity	  2 -  22 : 11	  2 -  23 : 42	  2 -  24 : 13	  2 -  25 : 12	  2 -  26 : +Infinity	  2 -  27 : +Infinity	  2 -  28 : +Infinity	  2 -  29 : 19	  2 -  30 : 35	  2 -  31 : 28	  2 -  32 : +Infinity	  2 -  33 : +Infinity	  2 -  34 : +Infinity	  2 -  35 : +Infinity	  2 -  36 : +Infinity	  2 -  37 : 27	  2 -  38 : +Infinity	  2 -  39 : 10	  2 -  40 : 15	  2 -  41 : +Infinity	  2 -  42 : +Infinity	  2 -  43 : +Infinity	  2 -  44 : 18	  2 -  45 : 41	  2 -  46 : +Infinity	  2 -  47 : 16	  2 -  48 : +Infinity	  2 -  49 : +Infinity	  2 -  50 : +Infinity	  2 -  51 : 15	  2 -  52 : 34	  2 -  53 : +Infinity	  2 -  54 : +Infinity	  2 -  55 : +Infinity	  2 -  56 : +Infinity	  2 -  57 : +Infinity	  2 -  58 : +Infinity	  2 -  59 : +Infinity	  2 -  60 : +Infinity	  2 -  61 : 31	  2 -  62 : 15	  2 -  63 : +Infinity	  2 -  64 : 28	  2 -  65 : +Infinity	  2 -  66 : 31	  2 -  67 : 18	  2 -  68 : +Infinity	  2 -  69 : 42	  2 -  70 : 28	  2 -  71 : +Infinity	  2 -  72 : +Infinity	  2 -  73 : +Infinity	  2 -  74 : +Infinity	  2 -  75 : +Infinity	
+
+Shortest paths lengths from 3:
+  3 -   1 : +Infinity	  3 -   2 : 23	  3 -   3 : 0	  3 -   4 : +Infinity	  3 -   5 : 42	  3 -   6 : 29	  3 -   7 : +Infinity	  3 -   8 : +Infinity	  3 -   9 : +Infinity	  3 -  10 : 40	  3 -  11 : 43	  3 -  12 : +Infinity	  3 -  13 : 26	  3 -  14 : +Infinity	  3 -  15 : +Infinity	  3 -  16 : +Infinity	  3 -  17 : +Infinity	  3 -  18 : +Infinity	  3 -  19 : +Infinity	  3 -  20 : +Infinity	  3 -  21 : +Infinity	  3 -  22 : 34	  3 -  23 : 48	  3 -  24 : 32	  3 -  25 : 16	  3 -  26 : +Infinity	  3 -  27 : +Infinity	  3 -  28 : +Infinity	  3 -  29 : 27	  3 -  30 : 24	  3 -  31 : 41	  3 -  32 : +Infinity	  3 -  33 : +Infinity	  3 -  34 : +Infinity	  3 -  35 : +Infinity	  3 -  36 : +Infinity	  3 -  37 : 35	  3 -  38 : +Infinity	  3 -  39 : 18	  3 -  40 : 38	  3 -  41 : +Infinity	  3 -  42 : +Infinity	  3 -  43 : +Infinity	  3 -  44 : 28	  3 -  45 : 24	  3 -  46 : +Infinity	  3 -  47 : 29	  3 -  48 : +Infinity	  3 -  49 : +Infinity	  3 -  50 : +Infinity	  3 -  51 : 21	  3 -  52 : 35	  3 -  53 : +Infinity	  3 -  54 : +Infinity	  3 -  55 : +Infinity	  3 -  56 : +Infinity	  3 -  57 : +Infinity	  3 -  58 : +Infinity	  3 -  59 : +Infinity	  3 -  60 : +Infinity	  3 -  61 : 14	  3 -  62 : 23	  3 -  63 : +Infinity	  3 -  64 : 36	  3 -  65 : +Infinity	  3 -  66 : 42	  3 -  67 : 5	  3 -  68 : +Infinity	  3 -  69 : 46	  3 -  70 : 41	  3 -  71 : +Infinity	  3 -  72 : +Infinity	  3 -  73 : +Infinity	  3 -  74 : +Infinity	  3 -  75 : +Infinity	
+
+Shortest paths lengths from 4:
+  4 -   1 : +Infinity	  4 -   2 : +Infinity	  4 -   3 : +Infinity	  4 -   4 : 0	  4 -   5 : +Infinity	  4 -   6 : +Infinity	  4 -   7 : +Infinity	  4 -   8 : 23	  4 -   9 : +Infinity	  4 -  10 : +Infinity	  4 -  11 : +Infinity	  4 -  12 : +Infinity	  4 -  13 : +Infinity	  4 -  14 : 27	  4 -  15 : +Infinity	  4 -  16 : +Infinity	  4 -  17 : 48	  4 -  18 : 42	  4 -  19 : +Infinity	  4 -  20 : 46	  4 -  21 : 34	  4 -  22 : +Infinity	  4 -  23 : +Infinity	  4 -  24 : +Infinity	  4 -  25 : +Infinity	  4 -  26 : 48	  4 -  27 : +Infinity	  4 -  28 : +Infinity	  4 -  29 : +Infinity	  4 -  30 : +Infinity	  4 -  31 : +Infinity	  4 -  32 : 46	  4 -  33 : +Infinity	  4 -  34 : 26	  4 -  35 : +Infinity	  4 -  36 : +Infinity	  4 -  37 : +Infinity	  4 -  38 : 57	  4 -  39 : +Infinity	  4 -  40 : +Infinity	  4 -  41 : +Infinity	  4 -  42 : +Infinity	  4 -  43 : +Infinity	  4 -  44 : +Infinity	  4 -  45 : +Infinity	  4 -  46 : +Infinity	  4 -  47 : +Infinity	  4 -  48 : 47	  4 -  49 : 46	  4 -  50 : 40	  4 -  51 : +Infinity	  4 -  52 : +Infinity	  4 -  53 : 34	  4 -  54 : 73	  4 -  55 : +Infinity	  4 -  56 : +Infinity	  4 -  57 : +Infinity	  4 -  58 : 21	  4 -  59 : 46	  4 -  60 : 39	  4 -  61 : +Infinity	  4 -  62 : +Infinity	  4 -  63 : 36	  4 -  64 : +Infinity	  4 -  65 : +Infinity	  4 -  66 : +Infinity	  4 -  67 : +Infinity	  4 -  68 : +Infinity	  4 -  69 : +Infinity	  4 -  70 : +Infinity	  4 -  71 : 60	  4 -  72 : +Infinity	  4 -  73 : +Infinity	  4 -  74 : 38	  4 -  75 : +Infinity	
+
+Shortest paths lengths from 5:
+  5 -   1 : +Infinity	  5 -   2 : 34	  5 -   3 : 42	  5 -   4 : +Infinity	  5 -   5 : 0	  5 -   6 : 40	  5 -   7 : +Infinity	  5 -   8 : +Infinity	  5 -   9 : +Infinity	  5 -  10 : 28	  5 -  11 : 41	  5 -  12 : +Infinity	  5 -  13 : 20	  5 -  14 : +Infinity	  5 -  15 : +Infinity	  5 -  16 : +Infinity	  5 -  17 : +Infinity	  5 -  18 : +Infinity	  5 -  19 : +Infinity	  5 -  20 : +Infinity	  5 -  21 : +Infinity	  5 -  22 : 43	  5 -  23 : 58	  5 -  24 : 35	  5 -  25 : 26	  5 -  26 : +Infinity	  5 -  27 : +Infinity	  5 -  28 : +Infinity	  5 -  29 : 15	  5 -  30 : 42	  5 -  31 : 43	  5 -  32 : +Infinity	  5 -  33 : +Infinity	  5 -  34 : +Infinity	  5 -  35 : +Infinity	  5 -  36 : +Infinity	  5 -  37 : 41	  5 -  38 : +Infinity	  5 -  39 : 24	  5 -  40 : 49	  5 -  41 : +Infinity	  5 -  42 : +Infinity	  5 -  43 : +Infinity	  5 -  44 : 35	  5 -  45 : 42	  5 -  46 : +Infinity	  5 -  47 : 38	  5 -  48 : +Infinity	  5 -  49 : +Infinity	  5 -  50 : +Infinity	  5 -  51 : 31	  5 -  52 : 40	  5 -  53 : +Infinity	  5 -  54 : +Infinity	  5 -  55 : +Infinity	  5 -  56 : +Infinity	  5 -  57 : +Infinity	  5 -  58 : +Infinity	  5 -  59 : +Infinity	  5 -  60 : +Infinity	  5 -  61 : 32	  5 -  62 : 21	  5 -  63 : +Infinity	  5 -  64 : 34	  5 -  65 : +Infinity	  5 -  66 : 46	  5 -  67 : 47	  5 -  68 : +Infinity	  5 -  69 : 29	  5 -  70 : 31	  5 -  71 : +Infinity	  5 -  72 : +Infinity	  5 -  73 : +Infinity	  5 -  74 : +Infinity	  5 -  75 : +Infinity	
+
+Shortest paths lengths from 6:
+  6 -   1 : +Infinity	  6 -   2 : 6	  6 -   3 : 29	  6 -   4 : +Infinity	  6 -   5 : 40	  6 -   6 : 0	  6 -   7 : +Infinity	  6 -   8 : +Infinity	  6 -   9 : +Infinity	  6 -  10 : 38	  6 -  11 : 29	  6 -  12 : +Infinity	  6 -  13 : 30	  6 -  14 : +Infinity	  6 -  15 : +Infinity	  6 -  16 : +Infinity	  6 -  17 : +Infinity	  6 -  18 : +Infinity	  6 -  19 : +Infinity	  6 -  20 : +Infinity	  6 -  21 : +Infinity	  6 -  22 : 17	  6 -  23 : 37	  6 -  24 : 7	  6 -  25 : 18	  6 -  26 : +Infinity	  6 -  27 : +Infinity	  6 -  28 : +Infinity	  6 -  29 : 25	  6 -  30 : 41	  6 -  31 : 34	  6 -  32 : +Infinity	  6 -  33 : +Infinity	  6 -  34 : +Infinity	  6 -  35 : +Infinity	  6 -  36 : +Infinity	  6 -  37 : 26	  6 -  38 : +Infinity	  6 -  39 : 16	  6 -  40 : 9	  6 -  41 : +Infinity	  6 -  42 : +Infinity	  6 -  43 : +Infinity	  6 -  44 : 24	  6 -  45 : 35	  6 -  46 : +Infinity	  6 -  47 : 10	  6 -  48 : +Infinity	  6 -  49 : +Infinity	  6 -  50 : +Infinity	  6 -  51 : 21	  6 -  52 : 33	  6 -  53 : +Infinity	  6 -  54 : +Infinity	  6 -  55 : +Infinity	  6 -  56 : +Infinity	  6 -  57 : +Infinity	  6 -  58 : +Infinity	  6 -  59 : +Infinity	  6 -  60 : +Infinity	  6 -  61 : 25	  6 -  62 : 21	  6 -  63 : +Infinity	  6 -  64 : 34	  6 -  65 : +Infinity	  6 -  66 : 37	  6 -  67 : 24	  6 -  68 : +Infinity	  6 -  69 : 38	  6 -  70 : 34	  6 -  71 : +Infinity	  6 -  72 : +Infinity	  6 -  73 : +Infinity	  6 -  74 : +Infinity	  6 -  75 : +Infinity	
+
+Shortest paths lengths from 7:
+  7 -   1 : 45	  7 -   2 : +Infinity	  7 -   3 : +Infinity	  7 -   4 : +Infinity	  7 -   5 : +Infinity	  7 -   6 : +Infinity	  7 -   7 : 0	  7 -   8 : +Infinity	  7 -   9 : 31	  7 -  10 : +Infinity	  7 -  11 : +Infinity	  7 -  12 : 34	  7 -  13 : +Infinity	  7 -  14 : +Infinity	  7 -  15 : 9	  7 -  16 : 16	  7 -  17 : +Infinity	  7 -  18 : +Infinity	  7 -  19 : 29	  7 -  20 : +Infinity	  7 -  21 : +Infinity	  7 -  22 : +Infinity	  7 -  23 : +Infinity	  7 -  24 : +Infinity	  7 -  25 : +Infinity	  7 -  26 : +Infinity	  7 -  27 : 31	  7 -  28 : 18	  7 -  29 : +Infinity	  7 -  30 : +Infinity	  7 -  31 : +Infinity	  7 -  32 : +Infinity	  7 -  33 : 21	  7 -  34 : +Infinity	  7 -  35 : 37	  7 -  36 : 31	  7 -  37 : +Infinity	  7 -  38 : +Infinity	  7 -  39 : +Infinity	  7 -  40 : +Infinity	  7 -  41 : 40	  7 -  42 : 24	  7 -  43 : 26	  7 -  44 : +Infinity	  7 -  45 : +Infinity	  7 -  46 : 34	  7 -  47 : +Infinity	  7 -  48 : +Infinity	  7 -  49 : +Infinity	  7 -  50 : +Infinity	  7 -  51 : +Infinity	  7 -  52 : +Infinity	  7 -  53 : +Infinity	  7 -  54 : +Infinity	  7 -  55 : 30	  7 -  56 : 25	  7 -  57 : 35	  7 -  58 : +Infinity	  7 -  59 : +Infinity	  7 -  60 : +Infinity	  7 -  61 : +Infinity	  7 -  62 : +Infinity	  7 -  63 : +Infinity	  7 -  64 : +Infinity	  7 -  65 : 13	  7 -  66 : +Infinity	  7 -  67 : +Infinity	  7 -  68 : 28	  7 -  69 : +Infinity	  7 -  70 : +Infinity	  7 -  71 : +Infinity	  7 -  72 : 35	  7 -  73 : 23	  7 -  74 : +Infinity	  7 -  75 : 31	
+
+Shortest paths lengths from 8:
+  8 -   1 : +Infinity	  8 -   2 : +Infinity	  8 -   3 : +Infinity	  8 -   4 : 23	  8 -   5 : +Infinity	  8 -   6 : +Infinity	  8 -   7 : +Infinity	  8 -   8 : 0	  8 -   9 : +Infinity	  8 -  10 : +Infinity	  8 -  11 : +Infinity	  8 -  12 : +Infinity	  8 -  13 : +Infinity	  8 -  14 : 50	  8 -  15 : +Infinity	  8 -  16 : +Infinity	  8 -  17 : 50	  8 -  18 : 51	  8 -  19 : +Infinity	  8 -  20 : 53	  8 -  21 : 57	  8 -  22 : +Infinity	  8 -  23 : +Infinity	  8 -  24 : +Infinity	  8 -  25 : +Infinity	  8 -  26 : 25	  8 -  27 : +Infinity	  8 -  28 : +Infinity	  8 -  29 : +Infinity	  8 -  30 : +Infinity	  8 -  31 : +Infinity	  8 -  32 : 47	  8 -  33 : +Infinity	  8 -  34 : 41	  8 -  35 : +Infinity	  8 -  36 : +Infinity	  8 -  37 : +Infinity	  8 -  38 : 53	  8 -  39 : +Infinity	  8 -  40 : +Infinity	  8 -  41 : +Infinity	  8 -  42 : +Infinity	  8 -  43 : +Infinity	  8 -  44 : +Infinity	  8 -  45 : +Infinity	  8 -  46 : +Infinity	  8 -  47 : +Infinity	  8 -  48 : 70	  8 -  49 : 69	  8 -  50 : 58	  8 -  51 : +Infinity	  8 -  52 : +Infinity	  8 -  53 : 57	  8 -  54 : 75	  8 -  55 : +Infinity	  8 -  56 : +Infinity	  8 -  57 : +Infinity	  8 -  58 : 44	  8 -  59 : 69	  8 -  60 : 41	  8 -  61 : +Infinity	  8 -  62 : +Infinity	  8 -  63 : 56	  8 -  64 : +Infinity	  8 -  65 : +Infinity	  8 -  66 : +Infinity	  8 -  67 : +Infinity	  8 -  68 : +Infinity	  8 -  69 : +Infinity	  8 -  70 : +Infinity	  8 -  71 : 37	  8 -  72 : +Infinity	  8 -  73 : +Infinity	  8 -  74 : 61	  8 -  75 : +Infinity	
+
+Shortest paths lengths from 9:
+  9 -   1 : 36	  9 -   2 : +Infinity	  9 -   3 : +Infinity	  9 -   4 : +Infinity	  9 -   5 : +Infinity	  9 -   6 : +Infinity	  9 -   7 : 31	  9 -   8 : +Infinity	  9 -   9 : 0	  9 -  10 : +Infinity	  9 -  11 : +Infinity	  9 -  12 : 49	  9 -  13 : +Infinity	  9 -  14 : +Infinity	  9 -  15 : 22	  9 -  16 : 29	  9 -  17 : +Infinity	  9 -  18 : +Infinity	  9 -  19 : 39	  9 -  20 : +Infinity	  9 -  21 : +Infinity	  9 -  22 : +Infinity	  9 -  23 : +Infinity	  9 -  24 : +Infinity	  9 -  25 : +Infinity	  9 -  26 : +Infinity	  9 -  27 : 35	  9 -  28 : 47	  9 -  29 : +Infinity	  9 -  30 : +Infinity	  9 -  31 : +Infinity	  9 -  32 : +Infinity	  9 -  33 : 23	  9 -  34 : +Infinity	  9 -  35 : 28	  9 -  36 : 16	  9 -  37 : +Infinity	  9 -  38 : +Infinity	  9 -  39 : +Infinity	  9 -  40 : +Infinity	  9 -  41 : 54	  9 -  42 : 22	  9 -  43 : 29	  9 -  44 : +Infinity	  9 -  45 : +Infinity	  9 -  46 : 36	  9 -  47 : +Infinity	  9 -  48 : +Infinity	  9 -  49 : +Infinity	  9 -  50 : +Infinity	  9 -  51 : +Infinity	  9 -  52 : +Infinity	  9 -  53 : +Infinity	  9 -  54 : +Infinity	  9 -  55 : 35	  9 -  56 : 27	  9 -  57 : 37	  9 -  58 : +Infinity	  9 -  59 : +Infinity	  9 -  60 : +Infinity	  9 -  61 : +Infinity	  9 -  62 : +Infinity	  9 -  63 : +Infinity	  9 -  64 : +Infinity	  9 -  65 : 26	  9 -  66 : +Infinity	  9 -  67 : +Infinity	  9 -  68 : 51	  9 -  69 : +Infinity	  9 -  70 : +Infinity	  9 -  71 : +Infinity	  9 -  72 : 58	  9 -  73 : 36	  9 -  74 : +Infinity	  9 -  75 : 29	
+
+Shortest paths lengths from 10:
+ 10 -   1 : +Infinity	 10 -   2 : 32	 10 -   3 : 40	 10 -   4 : +Infinity	 10 -   5 : 28	 10 -   6 : 38	 10 -   7 : +Infinity	 10 -   8 : +Infinity	 10 -   9 : +Infinity	 10 -  10 : 0	 10 -  11 : 40	 10 -  12 : +Infinity	 10 -  13 : 18	 10 -  14 : +Infinity	 10 -  15 : +Infinity	 10 -  16 : +Infinity	 10 -  17 : +Infinity	 10 -  18 : +Infinity	 10 -  19 : +Infinity	 10 -  20 : +Infinity	 10 -  21 : +Infinity	 10 -  22 : 43	 10 -  23 : 56	 10 -  24 : 37	 10 -  25 : 24	 10 -  26 : +Infinity	 10 -  27 : +Infinity	 10 -  28 : +Infinity	 10 -  29 : 13	 10 -  30 : 40	 10 -  31 : 48	 10 -  32 : +Infinity	 10 -  33 : +Infinity	 10 -  34 : +Infinity	 10 -  35 : +Infinity	 10 -  36 : +Infinity	 10 -  37 : 39	 10 -  38 : +Infinity	 10 -  39 : 22	 10 -  40 : 47	 10 -  41 : +Infinity	 10 -  42 : +Infinity	 10 -  43 : +Infinity	 10 -  44 : 33	 10 -  45 : 40	 10 -  46 : +Infinity	 10 -  47 : 40	 10 -  48 : +Infinity	 10 -  49 : +Infinity	 10 -  50 : +Infinity	 10 -  51 : 29	 10 -  52 : 38	 10 -  53 : +Infinity	 10 -  54 : +Infinity	 10 -  55 : +Infinity	 10 -  56 : +Infinity	 10 -  57 : +Infinity	 10 -  58 : +Infinity	 10 -  59 : +Infinity	 10 -  60 : +Infinity	 10 -  61 : 30	 10 -  62 : 27	 10 -  63 : +Infinity	 10 -  64 : 40	 10 -  65 : +Infinity	 10 -  66 : 45	 10 -  67 : 45	 10 -  68 : +Infinity	 10 -  69 : 49	 10 -  70 : 40	 10 -  71 : +Infinity	 10 -  72 : +Infinity	 10 -  73 : +Infinity	 10 -  74 : +Infinity	 10 -  75 : +Infinity	
+
+Shortest paths lengths from 11:
+ 11 -   1 : +Infinity	 11 -   2 : 35	 11 -   3 : 43	 11 -   4 : +Infinity	 11 -   5 : 41	 11 -   6 : 29	 11 -   7 : +Infinity	 11 -   8 : +Infinity	 11 -   9 : +Infinity	 11 -  10 : 40	 11 -  11 : 0	 11 -  12 : +Infinity	 11 -  13 : 32	 11 -  14 : +Infinity	 11 -  15 : +Infinity	 11 -  16 : +Infinity	 11 -  17 : +Infinity	 11 -  18 : +Infinity	 11 -  19 : +Infinity	 11 -  20 : +Infinity	 11 -  21 : +Infinity	 11 -  22 : 42	 11 -  23 : 59	 11 -  24 : 22	 11 -  25 : 27	 11 -  26 : +Infinity	 11 -  27 : +Infinity	 11 -  28 : +Infinity	 11 -  29 : 27	 11 -  30 : 54	 11 -  31 : 42	 11 -  32 : +Infinity	 11 -  33 : +Infinity	 11 -  34 : +Infinity	 11 -  35 : +Infinity	 11 -  36 : +Infinity	 11 -  37 : 42	 11 -  38 : +Infinity	 11 -  39 : 25	 11 -  40 : 38	 11 -  41 : +Infinity	 11 -  42 : +Infinity	 11 -  43 : +Infinity	 11 -  44 : 26	 11 -  45 : 44	 11 -  46 : +Infinity	 11 -  47 : 19	 11 -  48 : +Infinity	 11 -  49 : +Infinity	 11 -  50 : +Infinity	 11 -  51 : 32	 11 -  52 : 49	 11 -  53 : +Infinity	 11 -  54 : +Infinity	 11 -  55 : +Infinity	 11 -  56 : +Infinity	 11 -  57 : +Infinity	 11 -  58 : +Infinity	 11 -  59 : +Infinity	 11 -  60 : +Infinity	 11 -  61 : 34	 11 -  62 : 20	 11 -  63 : +Infinity	 11 -  64 : 7	 11 -  65 : +Infinity	 11 -  66 : 45	 11 -  67 : 48	 11 -  68 : +Infinity	 11 -  69 : 50	 11 -  70 : 54	 11 -  71 : +Infinity	 11 -  72 : +Infinity	 11 -  73 : +Infinity	 11 -  74 : +Infinity	 11 -  75 : +Infinity	
+
+Shortest paths lengths from 12:
+ 12 -   1 : 44	 12 -   2 : +Infinity	 12 -   3 : +Infinity	 12 -   4 : +Infinity	 12 -   5 : +Infinity	 12 -   6 : +Infinity	 12 -   7 : 34	 12 -   8 : +Infinity	 12 -   9 : 49	 12 -  10 : +Infinity	 12 -  11 : +Infinity	 12 -  12 : 0	 12 -  13 : +Infinity	 12 -  14 : +Infinity	 12 -  15 : 39	 12 -  16 : 38	 12 -  17 : +Infinity	 12 -  18 : +Infinity	 12 -  19 : 36	 12 -  20 : +Infinity	 12 -  21 : +Infinity	 12 -  22 : +Infinity	 12 -  23 : +Infinity	 12 -  24 : +Infinity	 12 -  25 : +Infinity	 12 -  26 : +Infinity	 12 -  27 : 30	 12 -  28 : 16	 12 -  29 : +Infinity	 12 -  30 : +Infinity	 12 -  31 : +Infinity	 12 -  32 : +Infinity	 12 -  33 : 26	 12 -  34 : +Infinity	 12 -  35 : 36	 12 -  36 : 36	 12 -  37 : +Infinity	 12 -  38 : +Infinity	 12 -  39 : +Infinity	 12 -  40 : +Infinity	 12 -  41 : 60	 12 -  42 : 29	 12 -  43 : 23	 12 -  44 : +Infinity	 12 -  45 : +Infinity	 12 -  46 : 31	 12 -  47 : +Infinity	 12 -  48 : +Infinity	 12 -  49 : +Infinity	 12 -  50 : +Infinity	 12 -  51 : +Infinity	 12 -  52 : +Infinity	 12 -  53 : +Infinity	 12 -  54 : +Infinity	 12 -  55 : 35	 12 -  56 : 22	 12 -  57 : 40	 12 -  58 : +Infinity	 12 -  59 : +Infinity	 12 -  60 : +Infinity	 12 -  61 : +Infinity	 12 -  62 : +Infinity	 12 -  63 : +Infinity	 12 -  64 : +Infinity	 12 -  65 : 36	 12 -  66 : +Infinity	 12 -  67 : +Infinity	 12 -  68 : 19	 12 -  69 : +Infinity	 12 -  70 : +Infinity	 12 -  71 : +Infinity	 12 -  72 : 26	 12 -  73 : 45	 12 -  74 : +Infinity	 12 -  75 : 32	
+
+Shortest paths lengths from 13:
+ 13 -   1 : +Infinity	 13 -   2 : 24	 13 -   3 : 26	 13 -   4 : +Infinity	 13 -   5 : 20	 13 -   6 : 30	 13 -   7 : +Infinity	 13 -   8 : +Infinity	 13 -   9 : +Infinity	 13 -  10 : 18	 13 -  11 : 32	 13 -  12 : +Infinity	 13 -  13 : 0	 13 -  14 : +Infinity	 13 -  15 : +Infinity	 13 -  16 : +Infinity	 13 -  17 : +Infinity	 13 -  18 : +Infinity	 13 -  19 : +Infinity	 13 -  20 : +Infinity	 13 -  21 : +Infinity	 13 -  22 : 35	 13 -  23 : 45	 13 -  24 : 29	 13 -  25 : 16	 13 -  26 : +Infinity	 13 -  27 : +Infinity	 13 -  28 : +Infinity	 13 -  29 : 5	 13 -  30 : 32	 13 -  31 : 40	 13 -  32 : +Infinity	 13 -  33 : +Infinity	 13 -  34 : +Infinity	 13 -  35 : +Infinity	 13 -  36 : +Infinity	 13 -  37 : 31	 13 -  38 : +Infinity	 13 -  39 : 14	 13 -  40 : 39	 13 -  41 : +Infinity	 13 -  42 : +Infinity	 13 -  43 : +Infinity	 13 -  44 : 25	 13 -  45 : 22	 13 -  46 : +Infinity	 13 -  47 : 27	 13 -  48 : +Infinity	 13 -  49 : +Infinity	 13 -  50 : +Infinity	 13 -  51 : 21	 13 -  52 : 30	 13 -  53 : +Infinity	 13 -  54 : +Infinity	 13 -  55 : +Infinity	 13 -  56 : +Infinity	 13 -  57 : +Infinity	 13 -  58 : +Infinity	 13 -  59 : +Infinity	 13 -  60 : +Infinity	 13 -  61 : 12	 13 -  62 : 19	 13 -  63 : +Infinity	 13 -  64 : 32	 13 -  65 : +Infinity	 13 -  66 : 37	 13 -  67 : 29	 13 -  68 : +Infinity	 13 -  69 : 41	 13 -  70 : 32	 13 -  71 : +Infinity	 13 -  72 : +Infinity	 13 -  73 : +Infinity	 13 -  74 : +Infinity	 13 -  75 : +Infinity	
+
+Shortest paths lengths from 14:
+ 14 -   1 : +Infinity	 14 -   2 : +Infinity	 14 -   3 : +Infinity	 14 -   4 : 27	 14 -   5 : +Infinity	 14 -   6 : +Infinity	 14 -   7 : +Infinity	 14 -   8 : 50	 14 -   9 : +Infinity	 14 -  10 : +Infinity	 14 -  11 : +Infinity	 14 -  12 : +Infinity	 14 -  13 : +Infinity	 14 -  14 : 0	 14 -  15 : +Infinity	 14 -  16 : +Infinity	 14 -  17 : 49	 14 -  18 : 15	 14 -  19 : +Infinity	 14 -  20 : 19	 14 -  21 : 7	 14 -  22 : +Infinity	 14 -  23 : +Infinity	 14 -  24 : +Infinity	 14 -  25 : +Infinity	 14 -  26 : 41	 14 -  27 : +Infinity	 14 -  28 : +Infinity	 14 -  29 : +Infinity	 14 -  30 : +Infinity	 14 -  31 : +Infinity	 14 -  32 : 19	 14 -  33 : +Infinity	 14 -  34 : 38	 14 -  35 : +Infinity	 14 -  36 : +Infinity	 14 -  37 : +Infinity	 14 -  38 : 30	 14 -  39 : +Infinity	 14 -  40 : +Infinity	 14 -  41 : +Infinity	 14 -  42 : +Infinity	 14 -  43 : +Infinity	 14 -  44 : +Infinity	 14 -  45 : +Infinity	 14 -  46 : +Infinity	 14 -  47 : +Infinity	 14 -  48 : 45	 14 -  49 : 19	 14 -  50 : 13	 14 -  51 : +Infinity	 14 -  52 : +Infinity	 14 -  53 : 24	 14 -  54 : 54	 14 -  55 : +Infinity	 14 -  56 : +Infinity	 14 -  57 : +Infinity	 14 -  58 : 37	 14 -  59 : 36	 14 -  60 : 52	 14 -  61 : +Infinity	 14 -  62 : +Infinity	 14 -  63 : 37	 14 -  64 : +Infinity	 14 -  65 : +Infinity	 14 -  66 : +Infinity	 14 -  67 : +Infinity	 14 -  68 : +Infinity	 14 -  69 : +Infinity	 14 -  70 : +Infinity	 14 -  71 : 35	 14 -  72 : +Infinity	 14 -  73 : +Infinity	 14 -  74 : 54	 14 -  75 : +Infinity	
+
+Shortest paths lengths from 15:
+ 15 -   1 : 38	 15 -   2 : +Infinity	 15 -   3 : +Infinity	 15 -   4 : +Infinity	 15 -   5 : +Infinity	 15 -   6 : +Infinity	 15 -   7 : 9	 15 -   8 : +Infinity	 15 -   9 : 22	 15 -  10 : +Infinity	 15 -  11 : +Infinity	 15 -  12 : 39	 15 -  13 : +Infinity	 15 -  14 : +Infinity	 15 -  15 : 0	 15 -  16 : 7	 15 -  17 : +Infinity	 15 -  18 : +Infinity	 15 -  19 : 20	 15 -  20 : +Infinity	 15 -  21 : +Infinity	 15 -  22 : +Infinity	 15 -  23 : +Infinity	 15 -  24 : +Infinity	 15 -  25 : +Infinity	 15 -  26 : +Infinity	 15 -  27 : 22	 15 -  28 : 27	 15 -  29 : +Infinity	 15 -  30 : +Infinity	 15 -  31 : +Infinity	 15 -  32 : +Infinity	 15 -  33 : 19	 15 -  34 : +Infinity	 15 -  35 : 30	 15 -  36 : 24	 15 -  37 : +Infinity	 15 -  38 : +Infinity	 15 -  39 : +Infinity	 15 -  40 : +Infinity	 15 -  41 : 33	 15 -  42 : 17	 15 -  43 : 17	 15 -  44 : +Infinity	 15 -  45 : +Infinity	 15 -  46 : 25	 15 -  47 : +Infinity	 15 -  48 : +Infinity	 15 -  49 : +Infinity	 15 -  50 : +Infinity	 15 -  51 : +Infinity	 15 -  52 : +Infinity	 15 -  53 : +Infinity	 15 -  54 : +Infinity	 15 -  55 : 21	 15 -  56 : 17	 15 -  57 : 33	 15 -  58 : +Infinity	 15 -  59 : +Infinity	 15 -  60 : +Infinity	 15 -  61 : +Infinity	 15 -  62 : +Infinity	 15 -  63 : +Infinity	 15 -  64 : +Infinity	 15 -  65 : 4	 15 -  66 : +Infinity	 15 -  67 : +Infinity	 15 -  68 : 37	 15 -  69 : +Infinity	 15 -  70 : +Infinity	 15 -  71 : +Infinity	 15 -  72 : 44	 15 -  73 : 14	 15 -  74 : +Infinity	 15 -  75 : 24	
+
+Shortest paths lengths from 16:
+ 16 -   1 : 31	 16 -   2 : +Infinity	 16 -   3 : +Infinity	 16 -   4 : +Infinity	 16 -   5 : +Infinity	 16 -   6 : +Infinity	 16 -   7 : 16	 16 -   8 : +Infinity	 16 -   9 : 29	 16 -  10 : +Infinity	 16 -  11 : +Infinity	 16 -  12 : 38	 16 -  13 : +Infinity	 16 -  14 : +Infinity	 16 -  15 : 7	 16 -  16 : 0	 16 -  17 : +Infinity	 16 -  18 : +Infinity	 16 -  19 : 27	 16 -  20 : +Infinity	 16 -  21 : +Infinity	 16 -  22 : +Infinity	 16 -  23 : +Infinity	 16 -  24 : +Infinity	 16 -  25 : +Infinity	 16 -  26 : +Infinity	 16 -  27 : 24	 16 -  28 : 34	 16 -  29 : +Infinity	 16 -  30 : +Infinity	 16 -  31 : +Infinity	 16 -  32 : +Infinity	 16 -  33 : 12	 16 -  34 : +Infinity	 16 -  35 : 23	 16 -  36 : 17	 16 -  37 : +Infinity	 16 -  38 : +Infinity	 16 -  39 : +Infinity	 16 -  40 : +Infinity	 16 -  41 : 26	 16 -  42 : 10	 16 -  43 : 19	 16 -  44 : +Infinity	 16 -  45 : +Infinity	 16 -  46 : 25	 16 -  47 : +Infinity	 16 -  48 : +Infinity	 16 -  49 : +Infinity	 16 -  50 : +Infinity	 16 -  51 : +Infinity	 16 -  52 : +Infinity	 16 -  53 : +Infinity	 16 -  54 : +Infinity	 16 -  55 : 23	 16 -  56 : 16	 16 -  57 : 26	 16 -  58 : +Infinity	 16 -  59 : +Infinity	 16 -  60 : +Infinity	 16 -  61 : +Infinity	 16 -  62 : +Infinity	 16 -  63 : +Infinity	 16 -  64 : +Infinity	 16 -  65 : 11	 16 -  66 : +Infinity	 16 -  67 : +Infinity	 16 -  68 : 39	 16 -  69 : +Infinity	 16 -  70 : +Infinity	 16 -  71 : +Infinity	 16 -  72 : 46	 16 -  73 : 7	 16 -  74 : +Infinity	 16 -  75 : 17	
+
+Shortest paths lengths from 17:
+ 17 -   1 : +Infinity	 17 -   2 : +Infinity	 17 -   3 : +Infinity	 17 -   4 : 48	 17 -   5 : +Infinity	 17 -   6 : +Infinity	 17 -   7 : +Infinity	 17 -   8 : 50	 17 -   9 : +Infinity	 17 -  10 : +Infinity	 17 -  11 : +Infinity	 17 -  12 : +Infinity	 17 -  13 : +Infinity	 17 -  14 : 49	 17 -  15 : +Infinity	 17 -  16 : +Infinity	 17 -  17 : 0	 17 -  18 : 40	 17 -  19 : +Infinity	 17 -  20 : 30	 17 -  21 : 42	 17 -  22 : +Infinity	 17 -  23 : +Infinity	 17 -  24 : +Infinity	 17 -  25 : +Infinity	 17 -  26 : 47	 17 -  27 : +Infinity	 17 -  28 : +Infinity	 17 -  29 : +Infinity	 17 -  30 : +Infinity	 17 -  31 : +Infinity	 17 -  32 : 36	 17 -  33 : +Infinity	 17 -  34 : 54	 17 -  35 : +Infinity	 17 -  36 : +Infinity	 17 -  37 : +Infinity	 17 -  38 : 19	 17 -  39 : +Infinity	 17 -  40 : +Infinity	 17 -  41 : +Infinity	 17 -  42 : +Infinity	 17 -  43 : +Infinity	 17 -  44 : +Infinity	 17 -  45 : +Infinity	 17 -  46 : +Infinity	 17 -  47 : +Infinity	 17 -  48 : 26	 17 -  49 : 68	 17 -  50 : 39	 17 -  51 : +Infinity	 17 -  52 : +Infinity	 17 -  53 : 28	 17 -  54 : 25	 17 -  55 : +Infinity	 17 -  56 : +Infinity	 17 -  57 : +Infinity	 17 -  58 : 27	 17 -  59 : 35	 17 -  60 : 9	 17 -  61 : +Infinity	 17 -  62 : +Infinity	 17 -  63 : 18	 17 -  64 : +Infinity	 17 -  65 : +Infinity	 17 -  66 : +Infinity	 17 -  67 : +Infinity	 17 -  68 : +Infinity	 17 -  69 : +Infinity	 17 -  70 : +Infinity	 17 -  71 : 46	 17 -  72 : +Infinity	 17 -  73 : +Infinity	 17 -  74 : 14	 17 -  75 : +Infinity	
+
+Shortest paths lengths from 18:
+ 18 -   1 : +Infinity	 18 -   2 : +Infinity	 18 -   3 : +Infinity	 18 -   4 : 42	 18 -   5 : +Infinity	 18 -   6 : +Infinity	 18 -   7 : +Infinity	 18 -   8 : 51	 18 -   9 : +Infinity	 18 -  10 : +Infinity	 18 -  11 : +Infinity	 18 -  12 : +Infinity	 18 -  13 : +Infinity	 18 -  14 : 15	 18 -  15 : +Infinity	 18 -  16 : +Infinity	 18 -  17 : 40	 18 -  18 : 0	 18 -  19 : +Infinity	 18 -  20 : 34	 18 -  21 : 22	 18 -  22 : +Infinity	 18 -  23 : +Infinity	 18 -  24 : +Infinity	 18 -  25 : +Infinity	 18 -  26 : 26	 18 -  27 : +Infinity	 18 -  28 : +Infinity	 18 -  29 : +Infinity	 18 -  30 : +Infinity	 18 -  31 : +Infinity	 18 -  32 : 4	 18 -  33 : +Infinity	 18 -  34 : 27	 18 -  35 : +Infinity	 18 -  36 : +Infinity	 18 -  37 : +Infinity	 18 -  38 : 45	 18 -  39 : +Infinity	 18 -  40 : +Infinity	 18 -  41 : +Infinity	 18 -  42 : +Infinity	 18 -  43 : +Infinity	 18 -  44 : +Infinity	 18 -  45 : +Infinity	 18 -  46 : +Infinity	 18 -  47 : +Infinity	 18 -  48 : 53	 18 -  49 : 34	 18 -  50 : 28	 18 -  51 : +Infinity	 18 -  52 : +Infinity	 18 -  53 : 39	 18 -  54 : 65	 18 -  55 : +Infinity	 18 -  56 : +Infinity	 18 -  57 : +Infinity	 18 -  58 : 35	 18 -  59 : 44	 18 -  60 : 37	 18 -  61 : +Infinity	 18 -  62 : +Infinity	 18 -  63 : 22	 18 -  64 : +Infinity	 18 -  65 : +Infinity	 18 -  66 : +Infinity	 18 -  67 : +Infinity	 18 -  68 : +Infinity	 18 -  69 : +Infinity	 18 -  70 : +Infinity	 18 -  71 : 24	 18 -  72 : +Infinity	 18 -  73 : +Infinity	 18 -  74 : 52	 18 -  75 : +Infinity	
+
+Shortest paths lengths from 19:
+ 19 -   1 : 28	 19 -   2 : +Infinity	 19 -   3 : +Infinity	 19 -   4 : +Infinity	 19 -   5 : +Infinity	 19 -   6 : +Infinity	 19 -   7 : 29	 19 -   8 : +Infinity	 19 -   9 : 39	 19 -  10 : +Infinity	 19 -  11 : +Infinity	 19 -  12 : 36	 19 -  13 : +Infinity	 19 -  14 : +Infinity	 19 -  15 : 20	 19 -  16 : 27	 19 -  17 : +Infinity	 19 -  18 : +Infinity	 19 -  19 : 0	 19 -  20 : +Infinity	 19 -  21 : +Infinity	 19 -  22 : +Infinity	 19 -  23 : +Infinity	 19 -  24 : +Infinity	 19 -  25 : +Infinity	 19 -  26 : +Infinity	 19 -  27 : 22	 19 -  28 : 47	 19 -  29 : +Infinity	 19 -  30 : +Infinity	 19 -  31 : +Infinity	 19 -  32 : +Infinity	 19 -  33 : 16	 19 -  34 : +Infinity	 19 -  35 : 20	 19 -  36 : 26	 19 -  37 : +Infinity	 19 -  38 : +Infinity	 19 -  39 : +Infinity	 19 -  40 : +Infinity	 19 -  41 : 46	 19 -  42 : 19	 19 -  43 : 29	 19 -  44 : +Infinity	 19 -  45 : +Infinity	 19 -  46 : 5	 19 -  47 : +Infinity	 19 -  48 : +Infinity	 19 -  49 : +Infinity	 19 -  50 : +Infinity	 19 -  51 : +Infinity	 19 -  52 : +Infinity	 19 -  53 : +Infinity	 19 -  54 : +Infinity	 19 -  55 : 30	 19 -  56 : 14	 19 -  57 : 30	 19 -  58 : +Infinity	 19 -  59 : +Infinity	 19 -  60 : +Infinity	 19 -  61 : +Infinity	 19 -  62 : +Infinity	 19 -  63 : +Infinity	 19 -  64 : +Infinity	 19 -  65 : 16	 19 -  66 : +Infinity	 19 -  67 : +Infinity	 19 -  68 : 46	 19 -  69 : +Infinity	 19 -  70 : +Infinity	 19 -  71 : +Infinity	 19 -  72 : 44	 19 -  73 : 31	 19 -  74 : +Infinity	 19 -  75 : 24	
+
+Shortest paths lengths from 20:
+ 20 -   1 : +Infinity	 20 -   2 : +Infinity	 20 -   3 : +Infinity	 20 -   4 : 46	 20 -   5 : +Infinity	 20 -   6 : +Infinity	 20 -   7 : +Infinity	 20 -   8 : 53	 20 -   9 : +Infinity	 20 -  10 : +Infinity	 20 -  11 : +Infinity	 20 -  12 : +Infinity	 20 -  13 : +Infinity	 20 -  14 : 19	 20 -  15 : +Infinity	 20 -  16 : +Infinity	 20 -  17 : 30	 20 -  18 : 34	 20 -  19 : +Infinity	 20 -  20 : 0	 20 -  21 : 12	 20 -  22 : +Infinity	 20 -  23 : +Infinity	 20 -  24 : +Infinity	 20 -  25 : +Infinity	 20 -  26 : 28	 20 -  27 : +Infinity	 20 -  28 : +Infinity	 20 -  29 : +Infinity	 20 -  30 : +Infinity	 20 -  31 : +Infinity	 20 -  32 : 36	 20 -  33 : +Infinity	 20 -  34 : 57	 20 -  35 : +Infinity	 20 -  36 : +Infinity	 20 -  37 : +Infinity	 20 -  38 : 11	 20 -  39 : +Infinity	 20 -  40 : +Infinity	 20 -  41 : +Infinity	 20 -  42 : +Infinity	 20 -  43 : +Infinity	 20 -  44 : +Infinity	 20 -  45 : +Infinity	 20 -  46 : +Infinity	 20 -  47 : +Infinity	 20 -  48 : 38	 20 -  49 : 38	 20 -  50 : 18	 20 -  51 : +Infinity	 20 -  52 : +Infinity	 20 -  53 : 29	 20 -  54 : 55	 20 -  55 : +Infinity	 20 -  56 : +Infinity	 20 -  57 : +Infinity	 20 -  58 : 42	 20 -  59 : 41	 20 -  60 : 39	 20 -  61 : +Infinity	 20 -  62 : +Infinity	 20 -  63 : 48	 20 -  64 : +Infinity	 20 -  65 : +Infinity	 20 -  66 : +Infinity	 20 -  67 : +Infinity	 20 -  68 : +Infinity	 20 -  69 : +Infinity	 20 -  70 : +Infinity	 20 -  71 : 16	 20 -  72 : +Infinity	 20 -  73 : +Infinity	 20 -  74 : 44	 20 -  75 : +Infinity	
+
+Shortest paths lengths from 21:
+ 21 -   1 : +Infinity	 21 -   2 : +Infinity	 21 -   3 : +Infinity	 21 -   4 : 34	 21 -   5 : +Infinity	 21 -   6 : +Infinity	 21 -   7 : +Infinity	 21 -   8 : 57	 21 -   9 : +Infinity	 21 -  10 : +Infinity	 21 -  11 : +Infinity	 21 -  12 : +Infinity	 21 -  13 : +Infinity	 21 -  14 : 7	 21 -  15 : +Infinity	 21 -  16 : +Infinity	 21 -  17 : 42	 21 -  18 : 22	 21 -  19 : +Infinity	 21 -  20 : 12	 21 -  21 : 0	 21 -  22 : +Infinity	 21 -  23 : +Infinity	 21 -  24 : +Infinity	 21 -  25 : +Infinity	 21 -  26 : 39	 21 -  27 : +Infinity	 21 -  28 : +Infinity	 21 -  29 : +Infinity	 21 -  30 : +Infinity	 21 -  31 : +Infinity	 21 -  32 : 26	 21 -  33 : +Infinity	 21 -  34 : 45	 21 -  35 : +Infinity	 21 -  36 : +Infinity	 21 -  37 : +Infinity	 21 -  38 : 23	 21 -  39 : +Infinity	 21 -  40 : +Infinity	 21 -  41 : +Infinity	 21 -  42 : +Infinity	 21 -  43 : +Infinity	 21 -  44 : +Infinity	 21 -  45 : +Infinity	 21 -  46 : +Infinity	 21 -  47 : +Infinity	 21 -  48 : 38	 21 -  49 : 26	 21 -  50 : 6	 21 -  51 : +Infinity	 21 -  52 : +Infinity	 21 -  53 : 17	 21 -  54 : 47	 21 -  55 : +Infinity	 21 -  56 : +Infinity	 21 -  57 : +Infinity	 21 -  58 : 30	 21 -  59 : 29	 21 -  60 : 48	 21 -  61 : +Infinity	 21 -  62 : +Infinity	 21 -  63 : 44	 21 -  64 : +Infinity	 21 -  65 : +Infinity	 21 -  66 : +Infinity	 21 -  67 : +Infinity	 21 -  68 : +Infinity	 21 -  69 : +Infinity	 21 -  70 : +Infinity	 21 -  71 : 28	 21 -  72 : +Infinity	 21 -  73 : +Infinity	 21 -  74 : 47	 21 -  75 : +Infinity	
+
+Shortest paths lengths from 22:
+ 22 -   1 : +Infinity	 22 -   2 : 11	 22 -   3 : 34	 22 -   4 : +Infinity	 22 -   5 : 43	 22 -   6 : 17	 22 -   7 : +Infinity	 22 -   8 : +Infinity	 22 -   9 : +Infinity	 22 -  10 : 43	 22 -  11 : 42	 22 -  12 : +Infinity	 22 -  13 : 35	 22 -  14 : +Infinity	 22 -  15 : +Infinity	 22 -  16 : +Infinity	 22 -  17 : +Infinity	 22 -  18 : +Infinity	 22 -  19 : +Infinity	 22 -  20 : +Infinity	 22 -  21 : +Infinity	 22 -  22 : 0	 22 -  23 : 53	 22 -  24 : 24	 22 -  25 : 23	 22 -  26 : +Infinity	 22 -  27 : +Infinity	 22 -  28 : +Infinity	 22 -  29 : 30	 22 -  30 : 24	 22 -  31 : 39	 22 -  32 : +Infinity	 22 -  33 : +Infinity	 22 -  34 : +Infinity	 22 -  35 : +Infinity	 22 -  36 : +Infinity	 22 -  37 : 38	 22 -  38 : +Infinity	 22 -  39 : 21	 22 -  40 : 26	 22 -  41 : +Infinity	 22 -  42 : +Infinity	 22 -  43 : +Infinity	 22 -  44 : 29	 22 -  45 : 52	 22 -  46 : +Infinity	 22 -  47 : 27	 22 -  48 : +Infinity	 22 -  49 : +Infinity	 22 -  50 : +Infinity	 22 -  51 : 26	 22 -  52 : 45	 22 -  53 : +Infinity	 22 -  54 : +Infinity	 22 -  55 : +Infinity	 22 -  56 : +Infinity	 22 -  57 : +Infinity	 22 -  58 : +Infinity	 22 -  59 : +Infinity	 22 -  60 : +Infinity	 22 -  61 : 42	 22 -  62 : 22	 22 -  63 : +Infinity	 22 -  64 : 35	 22 -  65 : +Infinity	 22 -  66 : 42	 22 -  67 : 29	 22 -  68 : +Infinity	 22 -  69 : 53	 22 -  70 : 39	 22 -  71 : +Infinity	 22 -  72 : +Infinity	 22 -  73 : +Infinity	 22 -  74 : +Infinity	 22 -  75 : +Infinity	
+
+Shortest paths lengths from 23:
+ 23 -   1 : +Infinity	 23 -   2 : 42	 23 -   3 : 48	 23 -   4 : +Infinity	 23 -   5 : 58	 23 -   6 : 37	 23 -   7 : +Infinity	 23 -   8 : +Infinity	 23 -   9 : +Infinity	 23 -  10 : 56	 23 -  11 : 59	 23 -  12 : +Infinity	 23 -  13 : 45	 23 -  14 : +Infinity	 23 -  15 : +Infinity	 23 -  16 : +Infinity	 23 -  17 : +Infinity	 23 -  18 : +Infinity	 23 -  19 : +Infinity	 23 -  20 : +Infinity	 23 -  21 : +Infinity	 23 -  22 : 53	 23 -  23 : 0	 23 -  24 : 44	 23 -  25 : 32	 23 -  26 : +Infinity	 23 -  27 : +Infinity	 23 -  28 : +Infinity	 23 -  29 : 43	 23 -  30 : 61	 23 -  31 : 19	 23 -  32 : +Infinity	 23 -  33 : +Infinity	 23 -  34 : +Infinity	 23 -  35 : +Infinity	 23 -  36 : +Infinity	 23 -  37 : 36	 23 -  38 : +Infinity	 23 -  39 : 34	 23 -  40 : 46	 23 -  41 : +Infinity	 23 -  42 : +Infinity	 23 -  43 : +Infinity	 23 -  44 : 44	 23 -  45 : 29	 23 -  46 : +Infinity	 23 -  47 : 47	 23 -  48 : +Infinity	 23 -  49 : +Infinity	 23 -  50 : +Infinity	 23 -  51 : 27	 23 -  52 : 29	 23 -  53 : +Infinity	 23 -  54 : +Infinity	 23 -  55 : +Infinity	 23 -  56 : +Infinity	 23 -  57 : +Infinity	 23 -  58 : +Infinity	 23 -  59 : +Infinity	 23 -  60 : +Infinity	 23 -  61 : 39	 23 -  62 : 39	 23 -  63 : +Infinity	 23 -  64 : 52	 23 -  65 : +Infinity	 23 -  66 : 22	 23 -  67 : 53	 23 -  68 : +Infinity	 23 -  69 : 33	 23 -  70 : 44	 23 -  71 : +Infinity	 23 -  72 : +Infinity	 23 -  73 : +Infinity	 23 -  74 : +Infinity	 23 -  75 : +Infinity	
+
+Shortest paths lengths from 24:
+ 24 -   1 : +Infinity	 24 -   2 : 13	 24 -   3 : 32	 24 -   4 : +Infinity	 24 -   5 : 35	 24 -   6 : 7	 24 -   7 : +Infinity	 24 -   8 : +Infinity	 24 -   9 : +Infinity	 24 -  10 : 37	 24 -  11 : 22	 24 -  12 : +Infinity	 24 -  13 : 29	 24 -  14 : +Infinity	 24 -  15 : +Infinity	 24 -  16 : +Infinity	 24 -  17 : +Infinity	 24 -  18 : +Infinity	 24 -  19 : +Infinity	 24 -  20 : +Infinity	 24 -  21 : +Infinity	 24 -  22 : 24	 24 -  23 : 44	 24 -  24 : 0	 24 -  25 : 25	 24 -  26 : +Infinity	 24 -  27 : +Infinity	 24 -  28 : +Infinity	 24 -  29 : 24	 24 -  30 : 48	 24 -  31 : 36	 24 -  32 : +Infinity	 24 -  33 : +Infinity	 24 -  34 : +Infinity	 24 -  35 : +Infinity	 24 -  36 : +Infinity	 24 -  37 : 33	 24 -  38 : +Infinity	 24 -  39 : 23	 24 -  40 : 16	 24 -  41 : +Infinity	 24 -  42 : +Infinity	 24 -  43 : +Infinity	 24 -  44 : 31	 24 -  45 : 28	 24 -  46 : +Infinity	 24 -  47 : 3	 24 -  48 : +Infinity	 24 -  49 : +Infinity	 24 -  50 : +Infinity	 24 -  51 : 28	 24 -  52 : 39	 24 -  53 : +Infinity	 24 -  54 : +Infinity	 24 -  55 : +Infinity	 24 -  56 : +Infinity	 24 -  57 : +Infinity	 24 -  58 : +Infinity	 24 -  59 : +Infinity	 24 -  60 : +Infinity	 24 -  61 : 18	 24 -  62 : 28	 24 -  63 : +Infinity	 24 -  64 : 29	 24 -  65 : +Infinity	 24 -  66 : 39	 24 -  67 : 31	 24 -  68 : +Infinity	 24 -  69 : 45	 24 -  70 : 41	 24 -  71 : +Infinity	 24 -  72 : +Infinity	 24 -  73 : +Infinity	 24 -  74 : +Infinity	 24 -  75 : +Infinity	
+
+Shortest paths lengths from 25:
+ 25 -   1 : +Infinity	 25 -   2 : 12	 25 -   3 : 16	 25 -   4 : +Infinity	 25 -   5 : 26	 25 -   6 : 18	 25 -   7 : +Infinity	 25 -   8 : +Infinity	 25 -   9 : +Infinity	 25 -  10 : 24	 25 -  11 : 27	 25 -  12 : +Infinity	 25 -  13 : 16	 25 -  14 : +Infinity	 25 -  15 : +Infinity	 25 -  16 : +Infinity	 25 -  17 : +Infinity	 25 -  18 : +Infinity	 25 -  19 : +Infinity	 25 -  20 : +Infinity	 25 -  21 : +Infinity	 25 -  22 : 23	 25 -  23 : 32	 25 -  24 : 25	 25 -  25 : 0	 25 -  26 : +Infinity	 25 -  27 : +Infinity	 25 -  28 : +Infinity	 25 -  29 : 11	 25 -  30 : 38	 25 -  31 : 25	 25 -  32 : +Infinity	 25 -  33 : +Infinity	 25 -  34 : +Infinity	 25 -  35 : +Infinity	 25 -  36 : +Infinity	 25 -  37 : 19	 25 -  38 : +Infinity	 25 -  39 : 2	 25 -  40 : 27	 25 -  41 : +Infinity	 25 -  42 : +Infinity	 25 -  43 : +Infinity	 25 -  44 : 12	 25 -  45 : 38	 25 -  46 : +Infinity	 25 -  47 : 22	 25 -  48 : +Infinity	 25 -  49 : +Infinity	 25 -  50 : +Infinity	 25 -  51 : 5	 25 -  52 : 26	 25 -  53 : +Infinity	 25 -  54 : +Infinity	 25 -  55 : +Infinity	 25 -  56 : +Infinity	 25 -  57 : +Infinity	 25 -  58 : +Infinity	 25 -  59 : +Infinity	 25 -  60 : +Infinity	 25 -  61 : 28	 25 -  62 : 7	 25 -  63 : +Infinity	 25 -  64 : 20	 25 -  65 : +Infinity	 25 -  66 : 28	 25 -  67 : 21	 25 -  68 : +Infinity	 25 -  69 : 37	 25 -  70 : 38	 25 -  71 : +Infinity	 25 -  72 : +Infinity	 25 -  73 : +Infinity	 25 -  74 : +Infinity	 25 -  75 : +Infinity	
+
+Shortest paths lengths from 26:
+ 26 -   1 : +Infinity	 26 -   2 : +Infinity	 26 -   3 : +Infinity	 26 -   4 : 48	 26 -   5 : +Infinity	 26 -   6 : +Infinity	 26 -   7 : +Infinity	 26 -   8 : 25	 26 -   9 : +Infinity	 26 -  10 : +Infinity	 26 -  11 : +Infinity	 26 -  12 : +Infinity	 26 -  13 : +Infinity	 26 -  14 : 41	 26 -  15 : +Infinity	 26 -  16 : +Infinity	 26 -  17 : 47	 26 -  18 : 26	 26 -  19 : +Infinity	 26 -  20 : 28	 26 -  21 : 39	 26 -  22 : +Infinity	 26 -  23 : +Infinity	 26 -  24 : +Infinity	 26 -  25 : +Infinity	 26 -  26 : 0	 26 -  27 : +Infinity	 26 -  28 : +Infinity	 26 -  29 : +Infinity	 26 -  30 : +Infinity	 26 -  31 : +Infinity	 26 -  32 : 22	 26 -  33 : +Infinity	 26 -  34 : 45	 26 -  35 : +Infinity	 26 -  36 : +Infinity	 26 -  37 : +Infinity	 26 -  38 : 28	 26 -  39 : +Infinity	 26 -  40 : +Infinity	 26 -  41 : +Infinity	 26 -  42 : +Infinity	 26 -  43 : +Infinity	 26 -  44 : +Infinity	 26 -  45 : +Infinity	 26 -  46 : +Infinity	 26 -  47 : +Infinity	 26 -  48 : 48	 26 -  49 : 53	 26 -  50 : 33	 26 -  51 : +Infinity	 26 -  52 : +Infinity	 26 -  53 : 44	 26 -  54 : 72	 26 -  55 : +Infinity	 26 -  56 : +Infinity	 26 -  57 : +Infinity	 26 -  58 : 53	 26 -  59 : 56	 26 -  60 : 55	 26 -  61 : +Infinity	 26 -  62 : +Infinity	 26 -  63 : 40	 26 -  64 : +Infinity	 26 -  65 : +Infinity	 26 -  66 : +Infinity	 26 -  67 : +Infinity	 26 -  68 : +Infinity	 26 -  69 : +Infinity	 26 -  70 : +Infinity	 26 -  71 : 12	 26 -  72 : +Infinity	 26 -  73 : +Infinity	 26 -  74 : 36	 26 -  75 : +Infinity	
+
+Shortest paths lengths from 27:
+ 27 -   1 : 32	 27 -   2 : +Infinity	 27 -   3 : +Infinity	 27 -   4 : +Infinity	 27 -   5 : +Infinity	 27 -   6 : +Infinity	 27 -   7 : 31	 27 -   8 : +Infinity	 27 -   9 : 35	 27 -  10 : +Infinity	 27 -  11 : +Infinity	 27 -  12 : 30	 27 -  13 : +Infinity	 27 -  14 : +Infinity	 27 -  15 : 22	 27 -  16 : 24	 27 -  17 : +Infinity	 27 -  18 : +Infinity	 27 -  19 : 22	 27 -  20 : +Infinity	 27 -  21 : +Infinity	 27 -  22 : +Infinity	 27 -  23 : +Infinity	 27 -  24 : +Infinity	 27 -  25 : +Infinity	 27 -  26 : +Infinity	 27 -  27 : 0	 27 -  28 : 46	 27 -  29 : +Infinity	 27 -  30 : +Infinity	 27 -  31 : +Infinity	 27 -  32 : +Infinity	 27 -  33 : 12	 27 -  34 : +Infinity	 27 -  35 : 24	 27 -  36 : 22	 27 -  37 : +Infinity	 27 -  38 : +Infinity	 27 -  39 : +Infinity	 27 -  40 : +Infinity	 27 -  41 : 49	 27 -  42 : 15	 27 -  43 : 31	 27 -  44 : +Infinity	 27 -  45 : +Infinity	 27 -  46 : 17	 27 -  47 : +Infinity	 27 -  48 : +Infinity	 27 -  49 : +Infinity	 27 -  50 : +Infinity	 27 -  51 : +Infinity	 27 -  52 : +Infinity	 27 -  53 : +Infinity	 27 -  54 : +Infinity	 27 -  55 : 24	 27 -  56 : 8	 27 -  57 : 26	 27 -  58 : +Infinity	 27 -  59 : +Infinity	 27 -  60 : +Infinity	 27 -  61 : +Infinity	 27 -  62 : +Infinity	 27 -  63 : +Infinity	 27 -  64 : +Infinity	 27 -  65 : 18	 27 -  66 : +Infinity	 27 -  67 : +Infinity	 27 -  68 : 40	 27 -  69 : +Infinity	 27 -  70 : +Infinity	 27 -  71 : +Infinity	 27 -  72 : 47	 27 -  73 : 31	 27 -  74 : +Infinity	 27 -  75 : 18	
+
+Shortest paths lengths from 28:
+ 28 -   1 : 39	 28 -   2 : +Infinity	 28 -   3 : +Infinity	 28 -   4 : +Infinity	 28 -   5 : +Infinity	 28 -   6 : +Infinity	 28 -   7 : 18	 28 -   8 : +Infinity	 28 -   9 : 47	 28 -  10 : +Infinity	 28 -  11 : +Infinity	 28 -  12 : 16	 28 -  13 : +Infinity	 28 -  14 : +Infinity	 28 -  15 : 27	 28 -  16 : 34	 28 -  17 : +Infinity	 28 -  18 : +Infinity	 28 -  19 : 47	 28 -  20 : +Infinity	 28 -  21 : +Infinity	 28 -  22 : +Infinity	 28 -  23 : +Infinity	 28 -  24 : +Infinity	 28 -  25 : +Infinity	 28 -  26 : +Infinity	 28 -  27 : 46	 28 -  28 : 0	 28 -  29 : +Infinity	 28 -  30 : +Infinity	 28 -  31 : +Infinity	 28 -  32 : +Infinity	 28 -  33 : 39	 28 -  34 : +Infinity	 28 -  35 : 31	 28 -  36 : 31	 28 -  37 : +Infinity	 28 -  38 : +Infinity	 28 -  39 : +Infinity	 28 -  40 : +Infinity	 28 -  41 : 57	 28 -  42 : 38	 28 -  43 : 18	 28 -  44 : +Infinity	 28 -  45 : +Infinity	 28 -  46 : 47	 28 -  47 : +Infinity	 28 -  48 : +Infinity	 28 -  49 : +Infinity	 28 -  50 : +Infinity	 28 -  51 : +Infinity	 28 -  52 : +Infinity	 28 -  53 : +Infinity	 28 -  54 : +Infinity	 28 -  55 : 35	 28 -  56 : 38	 28 -  57 : 53	 28 -  58 : +Infinity	 28 -  59 : +Infinity	 28 -  60 : +Infinity	 28 -  61 : +Infinity	 28 -  62 : +Infinity	 28 -  63 : +Infinity	 28 -  64 : +Infinity	 28 -  65 : 31	 28 -  66 : +Infinity	 28 -  67 : +Infinity	 28 -  68 : 35	 28 -  69 : +Infinity	 28 -  70 : +Infinity	 28 -  71 : +Infinity	 28 -  72 : 42	 28 -  73 : 41	 28 -  74 : +Infinity	 28 -  75 : 37	
+
+Shortest paths lengths from 29:
+ 29 -   1 : +Infinity	 29 -   2 : 19	 29 -   3 : 27	 29 -   4 : +Infinity	 29 -   5 : 15	 29 -   6 : 25	 29 -   7 : +Infinity	 29 -   8 : +Infinity	 29 -   9 : +Infinity	 29 -  10 : 13	 29 -  11 : 27	 29 -  12 : +Infinity	 29 -  13 : 5	 29 -  14 : +Infinity	 29 -  15 : +Infinity	 29 -  16 : +Infinity	 29 -  17 : +Infinity	 29 -  18 : +Infinity	 29 -  19 : +Infinity	 29 -  20 : +Infinity	 29 -  21 : +Infinity	 29 -  22 : 30	 29 -  23 : 43	 29 -  24 : 24	 29 -  25 : 11	 29 -  26 : +Infinity	 29 -  27 : +Infinity	 29 -  28 : +Infinity	 29 -  29 : 0	 29 -  30 : 27	 29 -  31 : 35	 29 -  32 : +Infinity	 29 -  33 : +Infinity	 29 -  34 : +Infinity	 29 -  35 : +Infinity	 29 -  36 : +Infinity	 29 -  37 : 26	 29 -  38 : +Infinity	 29 -  39 : 9	 29 -  40 : 34	 29 -  41 : +Infinity	 29 -  42 : +Infinity	 29 -  43 : +Infinity	 29 -  44 : 20	 29 -  45 : 27	 29 -  46 : +Infinity	 29 -  47 : 27	 29 -  48 : +Infinity	 29 -  49 : +Infinity	 29 -  50 : +Infinity	 29 -  51 : 16	 29 -  52 : 25	 29 -  53 : +Infinity	 29 -  54 : +Infinity	 29 -  55 : +Infinity	 29 -  56 : +Infinity	 29 -  57 : +Infinity	 29 -  58 : +Infinity	 29 -  59 : +Infinity	 29 -  60 : +Infinity	 29 -  61 : 17	 29 -  62 : 14	 29 -  63 : +Infinity	 29 -  64 : 27	 29 -  65 : +Infinity	 29 -  66 : 32	 29 -  67 : 32	 29 -  68 : +Infinity	 29 -  69 : 36	 29 -  70 : 27	 29 -  71 : +Infinity	 29 -  72 : +Infinity	 29 -  73 : +Infinity	 29 -  74 : +Infinity	 29 -  75 : +Infinity	
+
+Shortest paths lengths from 30:
+ 30 -   1 : +Infinity	 30 -   2 : 35	 30 -   3 : 24	 30 -   4 : +Infinity	 30 -   5 : 42	 30 -   6 : 41	 30 -   7 : +Infinity	 30 -   8 : +Infinity	 30 -   9 : +Infinity	 30 -  10 : 40	 30 -  11 : 54	 30 -  12 : +Infinity	 30 -  13 : 32	 30 -  14 : +Infinity	 30 -  15 : +Infinity	 30 -  16 : +Infinity	 30 -  17 : +Infinity	 30 -  18 : +Infinity	 30 -  19 : +Infinity	 30 -  20 : +Infinity	 30 -  21 : +Infinity	 30 -  22 : 24	 30 -  23 : 61	 30 -  24 : 48	 30 -  25 : 38	 30 -  26 : +Infinity	 30 -  27 : +Infinity	 30 -  28 : +Infinity	 30 -  29 : 27	 30 -  30 : 0	 30 -  31 : 42	 30 -  32 : +Infinity	 30 -  33 : +Infinity	 30 -  34 : +Infinity	 30 -  35 : +Infinity	 30 -  36 : +Infinity	 30 -  37 : 53	 30 -  38 : +Infinity	 30 -  39 : 36	 30 -  40 : 50	 30 -  41 : +Infinity	 30 -  42 : +Infinity	 30 -  43 : +Infinity	 30 -  44 : 47	 30 -  45 : 48	 30 -  46 : +Infinity	 30 -  47 : 51	 30 -  48 : +Infinity	 30 -  49 : +Infinity	 30 -  50 : +Infinity	 30 -  51 : 43	 30 -  52 : 52	 30 -  53 : +Infinity	 30 -  54 : +Infinity	 30 -  55 : +Infinity	 30 -  56 : +Infinity	 30 -  57 : +Infinity	 30 -  58 : +Infinity	 30 -  59 : +Infinity	 30 -  60 : +Infinity	 30 -  61 : 38	 30 -  62 : 41	 30 -  63 : +Infinity	 30 -  64 : 54	 30 -  65 : +Infinity	 30 -  66 : 45	 30 -  67 : 19	 30 -  68 : +Infinity	 30 -  69 : 56	 30 -  70 : 17	 30 -  71 : +Infinity	 30 -  72 : +Infinity	 30 -  73 : +Infinity	 30 -  74 : +Infinity	 30 -  75 : +Infinity	
+
+Shortest paths lengths from 31:
+ 31 -   1 : +Infinity	 31 -   2 : 28	 31 -   3 : 41	 31 -   4 : +Infinity	 31 -   5 : 43	 31 -   6 : 34	 31 -   7 : +Infinity	 31 -   8 : +Infinity	 31 -   9 : +Infinity	 31 -  10 : 48	 31 -  11 : 42	 31 -  12 : +Infinity	 31 -  13 : 40	 31 -  14 : +Infinity	 31 -  15 : +Infinity	 31 -  16 : +Infinity	 31 -  17 : +Infinity	 31 -  18 : +Infinity	 31 -  19 : +Infinity	 31 -  20 : +Infinity	 31 -  21 : +Infinity	 31 -  22 : 39	 31 -  23 : 19	 31 -  24 : 36	 31 -  25 : 25	 31 -  26 : +Infinity	 31 -  27 : +Infinity	 31 -  28 : +Infinity	 31 -  29 : 35	 31 -  30 : 42	 31 -  31 : 0	 31 -  32 : +Infinity	 31 -  33 : +Infinity	 31 -  34 : +Infinity	 31 -  35 : +Infinity	 31 -  36 : +Infinity	 31 -  37 : 17	 31 -  38 : +Infinity	 31 -  39 : 27	 31 -  40 : 32	 31 -  41 : +Infinity	 31 -  42 : +Infinity	 31 -  43 : +Infinity	 31 -  44 : 37	 31 -  45 : 40	 31 -  46 : +Infinity	 31 -  47 : 39	 31 -  48 : +Infinity	 31 -  49 : +Infinity	 31 -  50 : +Infinity	 31 -  51 : 23	 31 -  52 : 10	 31 -  53 : +Infinity	 31 -  54 : +Infinity	 31 -  55 : +Infinity	 31 -  56 : +Infinity	 31 -  57 : +Infinity	 31 -  58 : +Infinity	 31 -  59 : +Infinity	 31 -  60 : +Infinity	 31 -  61 : 31	 31 -  62 : 32	 31 -  63 : +Infinity	 31 -  64 : 45	 31 -  65 : +Infinity	 31 -  66 : 3	 31 -  67 : 46	 31 -  68 : +Infinity	 31 -  69 : 14	 31 -  70 : 25	 31 -  71 : +Infinity	 31 -  72 : +Infinity	 31 -  73 : +Infinity	 31 -  74 : +Infinity	 31 -  75 : +Infinity	
+
+Shortest paths lengths from 32:
+ 32 -   1 : +Infinity	 32 -   2 : +Infinity	 32 -   3 : +Infinity	 32 -   4 : 46	 32 -   5 : +Infinity	 32 -   6 : +Infinity	 32 -   7 : +Infinity	 32 -   8 : 47	 32 -   9 : +Infinity	 32 -  10 : +Infinity	 32 -  11 : +Infinity	 32 -  12 : +Infinity	 32 -  13 : +Infinity	 32 -  14 : 19	 32 -  15 : +Infinity	 32 -  16 : +Infinity	 32 -  17 : 36	 32 -  18 : 4	 32 -  19 : +Infinity	 32 -  20 : 36	 32 -  21 : 26	 32 -  22 : +Infinity	 32 -  23 : +Infinity	 32 -  24 : +Infinity	 32 -  25 : +Infinity	 32 -  26 : 22	 32 -  27 : +Infinity	 32 -  28 : +Infinity	 32 -  29 : +Infinity	 32 -  30 : +Infinity	 32 -  31 : +Infinity	 32 -  32 : 0	 32 -  33 : +Infinity	 32 -  34 : 23	 32 -  35 : +Infinity	 32 -  36 : +Infinity	 32 -  37 : +Infinity	 32 -  38 : 47	 32 -  39 : +Infinity	 32 -  40 : +Infinity	 32 -  41 : +Infinity	 32 -  42 : +Infinity	 32 -  43 : +Infinity	 32 -  44 : +Infinity	 32 -  45 : +Infinity	 32 -  46 : +Infinity	 32 -  47 : +Infinity	 32 -  48 : 57	 32 -  49 : 38	 32 -  50 : 32	 32 -  51 : +Infinity	 32 -  52 : +Infinity	 32 -  53 : 43	 32 -  54 : 61	 32 -  55 : +Infinity	 32 -  56 : +Infinity	 32 -  57 : +Infinity	 32 -  58 : 39	 32 -  59 : 48	 32 -  60 : 33	 32 -  61 : +Infinity	 32 -  62 : +Infinity	 32 -  63 : 18	 32 -  64 : +Infinity	 32 -  65 : +Infinity	 32 -  66 : +Infinity	 32 -  67 : +Infinity	 32 -  68 : +Infinity	 32 -  69 : +Infinity	 32 -  70 : +Infinity	 32 -  71 : 20	 32 -  72 : +Infinity	 32 -  73 : +Infinity	 32 -  74 : 50	 32 -  75 : +Infinity	
+
+Shortest paths lengths from 33:
+ 33 -   1 : 24	 33 -   2 : +Infinity	 33 -   3 : +Infinity	 33 -   4 : +Infinity	 33 -   5 : +Infinity	 33 -   6 : +Infinity	 33 -   7 : 21	 33 -   8 : +Infinity	 33 -   9 : 23	 33 -  10 : +Infinity	 33 -  11 : +Infinity	 33 -  12 : 26	 33 -  13 : +Infinity	 33 -  14 : +Infinity	 33 -  15 : 19	 33 -  16 : 12	 33 -  17 : +Infinity	 33 -  18 : +Infinity	 33 -  19 : 16	 33 -  20 : +Infinity	 33 -  21 : +Infinity	 33 -  22 : +Infinity	 33 -  23 : +Infinity	 33 -  24 : +Infinity	 33 -  25 : +Infinity	 33 -  26 : +Infinity	 33 -  27 : 12	 33 -  28 : 39	 33 -  29 : +Infinity	 33 -  30 : +Infinity	 33 -  31 : +Infinity	 33 -  32 : +Infinity	 33 -  33 : 0	 33 -  34 : +Infinity	 33 -  35 : 16	 33 -  36 : 10	 33 -  37 : +Infinity	 33 -  38 : +Infinity	 33 -  39 : +Infinity	 33 -  40 : +Infinity	 33 -  41 : 38	 33 -  42 : 3	 33 -  43 : 23	 33 -  44 : +Infinity	 33 -  45 : +Infinity	 33 -  46 : 13	 33 -  47 : +Infinity	 33 -  48 : +Infinity	 33 -  49 : +Infinity	 33 -  50 : +Infinity	 33 -  51 : +Infinity	 33 -  52 : +Infinity	 33 -  53 : +Infinity	 33 -  54 : +Infinity	 33 -  55 : 16	 33 -  56 : 4	 33 -  57 : 14	 33 -  58 : +Infinity	 33 -  59 : +Infinity	 33 -  60 : +Infinity	 33 -  61 : +Infinity	 33 -  62 : +Infinity	 33 -  63 : +Infinity	 33 -  64 : +Infinity	 33 -  65 : 23	 33 -  66 : +Infinity	 33 -  67 : +Infinity	 33 -  68 : 32	 33 -  69 : +Infinity	 33 -  70 : +Infinity	 33 -  71 : +Infinity	 33 -  72 : 39	 33 -  73 : 19	 33 -  74 : +Infinity	 33 -  75 : 10	
+
+Shortest paths lengths from 34:
+ 34 -   1 : +Infinity	 34 -   2 : +Infinity	 34 -   3 : +Infinity	 34 -   4 : 26	 34 -   5 : +Infinity	 34 -   6 : +Infinity	 34 -   7 : +Infinity	 34 -   8 : 41	 34 -   9 : +Infinity	 34 -  10 : +Infinity	 34 -  11 : +Infinity	 34 -  12 : +Infinity	 34 -  13 : +Infinity	 34 -  14 : 38	 34 -  15 : +Infinity	 34 -  16 : +Infinity	 34 -  17 : 54	 34 -  18 : 27	 34 -  19 : +Infinity	 34 -  20 : 57	 34 -  21 : 45	 34 -  22 : +Infinity	 34 -  23 : +Infinity	 34 -  24 : +Infinity	 34 -  25 : +Infinity	 34 -  26 : 45	 34 -  27 : +Infinity	 34 -  28 : +Infinity	 34 -  29 : +Infinity	 34 -  30 : +Infinity	 34 -  31 : +Infinity	 34 -  32 : 23	 34 -  33 : +Infinity	 34 -  34 : 0	 34 -  35 : +Infinity	 34 -  36 : +Infinity	 34 -  37 : +Infinity	 34 -  38 : 68	 34 -  39 : +Infinity	 34 -  40 : +Infinity	 34 -  41 : +Infinity	 34 -  42 : +Infinity	 34 -  43 : +Infinity	 34 -  44 : +Infinity	 34 -  45 : +Infinity	 34 -  46 : +Infinity	 34 -  47 : +Infinity	 34 -  48 : 53	 34 -  49 : 57	 34 -  50 : 51	 34 -  51 : +Infinity	 34 -  52 : +Infinity	 34 -  53 : 40	 34 -  54 : 79	 34 -  55 : +Infinity	 34 -  56 : +Infinity	 34 -  57 : +Infinity	 34 -  58 : 27	 34 -  59 : 52	 34 -  60 : 45	 34 -  61 : +Infinity	 34 -  62 : +Infinity	 34 -  63 : 41	 34 -  64 : +Infinity	 34 -  65 : +Infinity	 34 -  66 : +Infinity	 34 -  67 : +Infinity	 34 -  68 : +Infinity	 34 -  69 : +Infinity	 34 -  70 : +Infinity	 34 -  71 : 43	 34 -  72 : +Infinity	 34 -  73 : +Infinity	 34 -  74 : 44	 34 -  75 : +Infinity	
+
+Shortest paths lengths from 35:
+ 35 -   1 : 8	 35 -   2 : +Infinity	 35 -   3 : +Infinity	 35 -   4 : +Infinity	 35 -   5 : +Infinity	 35 -   6 : +Infinity	 35 -   7 : 37	 35 -   8 : +Infinity	 35 -   9 : 28	 35 -  10 : +Infinity	 35 -  11 : +Infinity	 35 -  12 : 36	 35 -  13 : +Infinity	 35 -  14 : +Infinity	 35 -  15 : 30	 35 -  16 : 23	 35 -  17 : +Infinity	 35 -  18 : +Infinity	 35 -  19 : 20	 35 -  20 : +Infinity	 35 -  21 : +Infinity	 35 -  22 : +Infinity	 35 -  23 : +Infinity	 35 -  24 : +Infinity	 35 -  25 : +Infinity	 35 -  26 : +Infinity	 35 -  27 : 24	 35 -  28 : 31	 35 -  29 : +Infinity	 35 -  30 : +Infinity	 35 -  31 : +Infinity	 35 -  32 : +Infinity	 35 -  33 : 16	 35 -  34 : +Infinity	 35 -  35 : 0	 35 -  36 : 12	 35 -  37 : +Infinity	 35 -  38 : +Infinity	 35 -  39 : +Infinity	 35 -  40 : +Infinity	 35 -  41 : 26	 35 -  42 : 13	 35 -  43 : 13	 35 -  44 : +Infinity	 35 -  45 : +Infinity	 35 -  46 : 25	 35 -  47 : +Infinity	 35 -  48 : +Infinity	 35 -  49 : +Infinity	 35 -  50 : +Infinity	 35 -  51 : +Infinity	 35 -  52 : +Infinity	 35 -  53 : +Infinity	 35 -  54 : +Infinity	 35 -  55 : 12	 35 -  56 : 16	 35 -  57 : 30	 35 -  58 : +Infinity	 35 -  59 : +Infinity	 35 -  60 : +Infinity	 35 -  61 : +Infinity	 35 -  62 : +Infinity	 35 -  63 : +Infinity	 35 -  64 : +Infinity	 35 -  65 : 26	 35 -  66 : +Infinity	 35 -  67 : +Infinity	 35 -  68 : 28	 35 -  69 : +Infinity	 35 -  70 : +Infinity	 35 -  71 : +Infinity	 35 -  72 : 35	 35 -  73 : 30	 35 -  74 : +Infinity	 35 -  75 : 6	
+
+Shortest paths lengths from 36:
+ 36 -   1 : 20	 36 -   2 : +Infinity	 36 -   3 : +Infinity	 36 -   4 : +Infinity	 36 -   5 : +Infinity	 36 -   6 : +Infinity	 36 -   7 : 31	 36 -   8 : +Infinity	 36 -   9 : 16	 36 -  10 : +Infinity	 36 -  11 : +Infinity	 36 -  12 : 36	 36 -  13 : +Infinity	 36 -  14 : +Infinity	 36 -  15 : 24	 36 -  16 : 17	 36 -  17 : +Infinity	 36 -  18 : +Infinity	 36 -  19 : 26	 36 -  20 : +Infinity	 36 -  21 : +Infinity	 36 -  22 : +Infinity	 36 -  23 : +Infinity	 36 -  24 : +Infinity	 36 -  25 : +Infinity	 36 -  26 : +Infinity	 36 -  27 : 22	 36 -  28 : 31	 36 -  29 : +Infinity	 36 -  30 : +Infinity	 36 -  31 : +Infinity	 36 -  32 : +Infinity	 36 -  33 : 10	 36 -  34 : +Infinity	 36 -  35 : 12	 36 -  36 : 0	 36 -  37 : +Infinity	 36 -  38 : +Infinity	 36 -  39 : +Infinity	 36 -  40 : +Infinity	 36 -  41 : 38	 36 -  42 : 7	 36 -  43 : 13	 36 -  44 : +Infinity	 36 -  45 : +Infinity	 36 -  46 : 23	 36 -  47 : +Infinity	 36 -  48 : +Infinity	 36 -  49 : +Infinity	 36 -  50 : +Infinity	 36 -  51 : +Infinity	 36 -  52 : +Infinity	 36 -  53 : +Infinity	 36 -  54 : +Infinity	 36 -  55 : 20	 36 -  56 : 14	 36 -  57 : 24	 36 -  58 : +Infinity	 36 -  59 : +Infinity	 36 -  60 : +Infinity	 36 -  61 : +Infinity	 36 -  62 : +Infinity	 36 -  63 : +Infinity	 36 -  64 : +Infinity	 36 -  65 : 26	 36 -  66 : +Infinity	 36 -  67 : +Infinity	 36 -  68 : 36	 36 -  69 : +Infinity	 36 -  70 : +Infinity	 36 -  71 : +Infinity	 36 -  72 : 43	 36 -  73 : 24	 36 -  74 : +Infinity	 36 -  75 : 14	
+
+Shortest paths lengths from 37:
+ 37 -   1 : +Infinity	 37 -   2 : 27	 37 -   3 : 35	 37 -   4 : +Infinity	 37 -   5 : 41	 37 -   6 : 26	 37 -   7 : +Infinity	 37 -   8 : +Infinity	 37 -   9 : +Infinity	 37 -  10 : 39	 37 -  11 : 42	 37 -  12 : +Infinity	 37 -  13 : 31	 37 -  14 : +Infinity	 37 -  15 : +Infinity	 37 -  16 : +Infinity	 37 -  17 : +Infinity	 37 -  18 : +Infinity	 37 -  19 : +Infinity	 37 -  20 : +Infinity	 37 -  21 : +Infinity	 37 -  22 : 38	 37 -  23 : 36	 37 -  24 : 33	 37 -  25 : 19	 37 -  26 : +Infinity	 37 -  27 : +Infinity	 37 -  28 : +Infinity	 37 -  29 : 26	 37 -  30 : 53	 37 -  31 : 17	 37 -  32 : +Infinity	 37 -  33 : +Infinity	 37 -  34 : +Infinity	 37 -  35 : +Infinity	 37 -  36 : +Infinity	 37 -  37 : 0	 37 -  38 : +Infinity	 37 -  39 : 17	 37 -  40 : 35	 37 -  41 : +Infinity	 37 -  42 : +Infinity	 37 -  43 : +Infinity	 37 -  44 : 31	 37 -  45 : 38	 37 -  46 : +Infinity	 37 -  47 : 36	 37 -  48 : +Infinity	 37 -  49 : +Infinity	 37 -  50 : +Infinity	 37 -  51 : 24	 37 -  52 : 7	 37 -  53 : +Infinity	 37 -  54 : +Infinity	 37 -  55 : +Infinity	 37 -  56 : +Infinity	 37 -  57 : +Infinity	 37 -  58 : +Infinity	 37 -  59 : +Infinity	 37 -  60 : +Infinity	 37 -  61 : 28	 37 -  62 : 22	 37 -  63 : +Infinity	 37 -  64 : 35	 37 -  65 : +Infinity	 37 -  66 : 14	 37 -  67 : 40	 37 -  68 : +Infinity	 37 -  69 : 18	 37 -  70 : 42	 37 -  71 : +Infinity	 37 -  72 : +Infinity	 37 -  73 : +Infinity	 37 -  74 : +Infinity	 37 -  75 : +Infinity	
+
+Shortest paths lengths from 38:
+ 38 -   1 : +Infinity	 38 -   2 : +Infinity	 38 -   3 : +Infinity	 38 -   4 : 57	 38 -   5 : +Infinity	 38 -   6 : +Infinity	 38 -   7 : +Infinity	 38 -   8 : 53	 38 -   9 : +Infinity	 38 -  10 : +Infinity	 38 -  11 : +Infinity	 38 -  12 : +Infinity	 38 -  13 : +Infinity	 38 -  14 : 30	 38 -  15 : +Infinity	 38 -  16 : +Infinity	 38 -  17 : 19	 38 -  18 : 45	 38 -  19 : +Infinity	 38 -  20 : 11	 38 -  21 : 23	 38 -  22 : +Infinity	 38 -  23 : +Infinity	 38 -  24 : +Infinity	 38 -  25 : +Infinity	 38 -  26 : 28	 38 -  27 : +Infinity	 38 -  28 : +Infinity	 38 -  29 : +Infinity	 38 -  30 : +Infinity	 38 -  31 : +Infinity	 38 -  32 : 47	 38 -  33 : +Infinity	 38 -  34 : 68	 38 -  35 : +Infinity	 38 -  36 : +Infinity	 38 -  37 : +Infinity	 38 -  38 : 0	 38 -  39 : +Infinity	 38 -  40 : +Infinity	 38 -  41 : +Infinity	 38 -  42 : +Infinity	 38 -  43 : +Infinity	 38 -  44 : +Infinity	 38 -  45 : +Infinity	 38 -  46 : +Infinity	 38 -  47 : +Infinity	 38 -  48 : 27	 38 -  49 : 49	 38 -  50 : 29	 38 -  51 : +Infinity	 38 -  52 : +Infinity	 38 -  53 : 40	 38 -  54 : 44	 38 -  55 : +Infinity	 38 -  56 : +Infinity	 38 -  57 : +Infinity	 38 -  58 : 46	 38 -  59 : 36	 38 -  60 : 28	 38 -  61 : +Infinity	 38 -  62 : +Infinity	 38 -  63 : 37	 38 -  64 : +Infinity	 38 -  65 : +Infinity	 38 -  66 : +Infinity	 38 -  67 : +Infinity	 38 -  68 : +Infinity	 38 -  69 : +Infinity	 38 -  70 : +Infinity	 38 -  71 : 27	 38 -  72 : +Infinity	 38 -  73 : +Infinity	 38 -  74 : 33	 38 -  75 : +Infinity	
+
+Shortest paths lengths from 39:
+ 39 -   1 : +Infinity	 39 -   2 : 10	 39 -   3 : 18	 39 -   4 : +Infinity	 39 -   5 : 24	 39 -   6 : 16	 39 -   7 : +Infinity	 39 -   8 : +Infinity	 39 -   9 : +Infinity	 39 -  10 : 22	 39 -  11 : 25	 39 -  12 : +Infinity	 39 -  13 : 14	 39 -  14 : +Infinity	 39 -  15 : +Infinity	 39 -  16 : +Infinity	 39 -  17 : +Infinity	 39 -  18 : +Infinity	 39 -  19 : +Infinity	 39 -  20 : +Infinity	 39 -  21 : +Infinity	 39 -  22 : 21	 39 -  23 : 34	 39 -  24 : 23	 39 -  25 : 2	 39 -  26 : +Infinity	 39 -  27 : +Infinity	 39 -  28 : +Infinity	 39 -  29 : 9	 39 -  30 : 36	 39 -  31 : 27	 39 -  32 : +Infinity	 39 -  33 : +Infinity	 39 -  34 : +Infinity	 39 -  35 : +Infinity	 39 -  36 : +Infinity	 39 -  37 : 17	 39 -  38 : +Infinity	 39 -  39 : 0	 39 -  40 : 25	 39 -  41 : +Infinity	 39 -  42 : +Infinity	 39 -  43 : +Infinity	 39 -  44 : 14	 39 -  45 : 36	 39 -  46 : +Infinity	 39 -  47 : 20	 39 -  48 : +Infinity	 39 -  49 : +Infinity	 39 -  50 : +Infinity	 39 -  51 : 7	 39 -  52 : 24	 39 -  53 : +Infinity	 39 -  54 : +Infinity	 39 -  55 : +Infinity	 39 -  56 : +Infinity	 39 -  57 : +Infinity	 39 -  58 : +Infinity	 39 -  59 : +Infinity	 39 -  60 : +Infinity	 39 -  61 : 26	 39 -  62 : 5	 39 -  63 : +Infinity	 39 -  64 : 18	 39 -  65 : +Infinity	 39 -  66 : 30	 39 -  67 : 23	 39 -  68 : +Infinity	 39 -  69 : 35	 39 -  70 : 36	 39 -  71 : +Infinity	 39 -  72 : +Infinity	 39 -  73 : +Infinity	 39 -  74 : +Infinity	 39 -  75 : +Infinity	
+
+Shortest paths lengths from 40:
+ 40 -   1 : +Infinity	 40 -   2 : 15	 40 -   3 : 38	 40 -   4 : +Infinity	 40 -   5 : 49	 40 -   6 : 9	 40 -   7 : +Infinity	 40 -   8 : +Infinity	 40 -   9 : +Infinity	 40 -  10 : 47	 40 -  11 : 38	 40 -  12 : +Infinity	 40 -  13 : 39	 40 -  14 : +Infinity	 40 -  15 : +Infinity	 40 -  16 : +Infinity	 40 -  17 : +Infinity	 40 -  18 : +Infinity	 40 -  19 : +Infinity	 40 -  20 : +Infinity	 40 -  21 : +Infinity	 40 -  22 : 26	 40 -  23 : 46	 40 -  24 : 16	 40 -  25 : 27	 40 -  26 : +Infinity	 40 -  27 : +Infinity	 40 -  28 : +Infinity	 40 -  29 : 34	 40 -  30 : 50	 40 -  31 : 32	 40 -  32 : +Infinity	 40 -  33 : +Infinity	 40 -  34 : +Infinity	 40 -  35 : +Infinity	 40 -  36 : +Infinity	 40 -  37 : 35	 40 -  38 : +Infinity	 40 -  39 : 25	 40 -  40 : 0	 40 -  41 : +Infinity	 40 -  42 : +Infinity	 40 -  43 : +Infinity	 40 -  44 : 33	 40 -  45 : 44	 40 -  46 : +Infinity	 40 -  47 : 19	 40 -  48 : +Infinity	 40 -  49 : +Infinity	 40 -  50 : +Infinity	 40 -  51 : 30	 40 -  52 : 42	 40 -  53 : +Infinity	 40 -  54 : +Infinity	 40 -  55 : +Infinity	 40 -  56 : +Infinity	 40 -  57 : +Infinity	 40 -  58 : +Infinity	 40 -  59 : +Infinity	 40 -  60 : +Infinity	 40 -  61 : 34	 40 -  62 : 30	 40 -  63 : +Infinity	 40 -  64 : 43	 40 -  65 : +Infinity	 40 -  66 : 35	 40 -  67 : 33	 40 -  68 : +Infinity	 40 -  69 : 46	 40 -  70 : 43	 40 -  71 : +Infinity	 40 -  72 : +Infinity	 40 -  73 : +Infinity	 40 -  74 : +Infinity	 40 -  75 : +Infinity	
+
+Shortest paths lengths from 41:
+ 41 -   1 : 34	 41 -   2 : +Infinity	 41 -   3 : +Infinity	 41 -   4 : +Infinity	 41 -   5 : +Infinity	 41 -   6 : +Infinity	 41 -   7 : 40	 41 -   8 : +Infinity	 41 -   9 : 54	 41 -  10 : +Infinity	 41 -  11 : +Infinity	 41 -  12 : 60	 41 -  13 : +Infinity	 41 -  14 : +Infinity	 41 -  15 : 33	 41 -  16 : 26	 41 -  17 : +Infinity	 41 -  18 : +Infinity	 41 -  19 : 46	 41 -  20 : +Infinity	 41 -  21 : +Infinity	 41 -  22 : +Infinity	 41 -  23 : +Infinity	 41 -  24 : +Infinity	 41 -  25 : +Infinity	 41 -  26 : +Infinity	 41 -  27 : 49	 41 -  28 : 57	 41 -  29 : +Infinity	 41 -  30 : +Infinity	 41 -  31 : +Infinity	 41 -  32 : +Infinity	 41 -  33 : 38	 41 -  34 : +Infinity	 41 -  35 : 26	 41 -  36 : 38	 41 -  37 : +Infinity	 41 -  38 : +Infinity	 41 -  39 : +Infinity	 41 -  40 : +Infinity	 41 -  41 : 0	 41 -  42 : 36	 41 -  43 : 39	 41 -  44 : +Infinity	 41 -  45 : +Infinity	 41 -  46 : 50	 41 -  47 : +Infinity	 41 -  48 : +Infinity	 41 -  49 : +Infinity	 41 -  50 : +Infinity	 41 -  51 : +Infinity	 41 -  52 : +Infinity	 41 -  53 : +Infinity	 41 -  54 : +Infinity	 41 -  55 : 25	 41 -  56 : 41	 41 -  57 : 52	 41 -  58 : +Infinity	 41 -  59 : +Infinity	 41 -  60 : +Infinity	 41 -  61 : +Infinity	 41 -  62 : +Infinity	 41 -  63 : +Infinity	 41 -  64 : +Infinity	 41 -  65 : 37	 41 -  66 : +Infinity	 41 -  67 : +Infinity	 41 -  68 : 41	 41 -  69 : +Infinity	 41 -  70 : +Infinity	 41 -  71 : +Infinity	 41 -  72 : 48	 41 -  73 : 33	 41 -  74 : +Infinity	 41 -  75 : 31	
+
+Shortest paths lengths from 42:
+ 42 -   1 : 21	 42 -   2 : +Infinity	 42 -   3 : +Infinity	 42 -   4 : +Infinity	 42 -   5 : +Infinity	 42 -   6 : +Infinity	 42 -   7 : 24	 42 -   8 : +Infinity	 42 -   9 : 22	 42 -  10 : +Infinity	 42 -  11 : +Infinity	 42 -  12 : 29	 42 -  13 : +Infinity	 42 -  14 : +Infinity	 42 -  15 : 17	 42 -  16 : 10	 42 -  17 : +Infinity	 42 -  18 : +Infinity	 42 -  19 : 19	 42 -  20 : +Infinity	 42 -  21 : +Infinity	 42 -  22 : +Infinity	 42 -  23 : +Infinity	 42 -  24 : +Infinity	 42 -  25 : +Infinity	 42 -  26 : +Infinity	 42 -  27 : 15	 42 -  28 : 38	 42 -  29 : +Infinity	 42 -  30 : +Infinity	 42 -  31 : +Infinity	 42 -  32 : +Infinity	 42 -  33 : 3	 42 -  34 : +Infinity	 42 -  35 : 13	 42 -  36 : 7	 42 -  37 : +Infinity	 42 -  38 : +Infinity	 42 -  39 : +Infinity	 42 -  40 : +Infinity	 42 -  41 : 36	 42 -  42 : 0	 42 -  43 : 20	 42 -  44 : +Infinity	 42 -  45 : +Infinity	 42 -  46 : 16	 42 -  47 : +Infinity	 42 -  48 : +Infinity	 42 -  49 : +Infinity	 42 -  50 : +Infinity	 42 -  51 : +Infinity	 42 -  52 : +Infinity	 42 -  53 : +Infinity	 42 -  54 : +Infinity	 42 -  55 : 13	 42 -  56 : 7	 42 -  57 : 17	 42 -  58 : +Infinity	 42 -  59 : +Infinity	 42 -  60 : +Infinity	 42 -  61 : +Infinity	 42 -  62 : +Infinity	 42 -  63 : +Infinity	 42 -  64 : +Infinity	 42 -  65 : 21	 42 -  66 : +Infinity	 42 -  67 : +Infinity	 42 -  68 : 29	 42 -  69 : +Infinity	 42 -  70 : +Infinity	 42 -  71 : +Infinity	 42 -  72 : 36	 42 -  73 : 17	 42 -  74 : +Infinity	 42 -  75 : 7	
+
+Shortest paths lengths from 43:
+ 43 -   1 : 21	 43 -   2 : +Infinity	 43 -   3 : +Infinity	 43 -   4 : +Infinity	 43 -   5 : +Infinity	 43 -   6 : +Infinity	 43 -   7 : 26	 43 -   8 : +Infinity	 43 -   9 : 29	 43 -  10 : +Infinity	 43 -  11 : +Infinity	 43 -  12 : 23	 43 -  13 : +Infinity	 43 -  14 : +Infinity	 43 -  15 : 17	 43 -  16 : 19	 43 -  17 : +Infinity	 43 -  18 : +Infinity	 43 -  19 : 29	 43 -  20 : +Infinity	 43 -  21 : +Infinity	 43 -  22 : +Infinity	 43 -  23 : +Infinity	 43 -  24 : +Infinity	 43 -  25 : +Infinity	 43 -  26 : +Infinity	 43 -  27 : 31	 43 -  28 : 18	 43 -  29 : +Infinity	 43 -  30 : +Infinity	 43 -  31 : +Infinity	 43 -  32 : +Infinity	 43 -  33 : 23	 43 -  34 : +Infinity	 43 -  35 : 13	 43 -  36 : 13	 43 -  37 : +Infinity	 43 -  38 : +Infinity	 43 -  39 : +Infinity	 43 -  40 : +Infinity	 43 -  41 : 39	 43 -  42 : 20	 43 -  43 : 0	 43 -  44 : +Infinity	 43 -  45 : +Infinity	 43 -  46 : 34	 43 -  47 : +Infinity	 43 -  48 : +Infinity	 43 -  49 : +Infinity	 43 -  50 : +Infinity	 43 -  51 : +Infinity	 43 -  52 : +Infinity	 43 -  53 : +Infinity	 43 -  54 : +Infinity	 43 -  55 : 17	 43 -  56 : 27	 43 -  57 : 37	 43 -  58 : +Infinity	 43 -  59 : +Infinity	 43 -  60 : +Infinity	 43 -  61 : +Infinity	 43 -  62 : +Infinity	 43 -  63 : +Infinity	 43 -  64 : +Infinity	 43 -  65 : 13	 43 -  66 : +Infinity	 43 -  67 : +Infinity	 43 -  68 : 33	 43 -  69 : +Infinity	 43 -  70 : +Infinity	 43 -  71 : +Infinity	 43 -  72 : 40	 43 -  73 : 26	 43 -  74 : +Infinity	 43 -  75 : 19	
+
+Shortest paths lengths from 44:
+ 44 -   1 : +Infinity	 44 -   2 : 18	 44 -   3 : 28	 44 -   4 : +Infinity	 44 -   5 : 35	 44 -   6 : 24	 44 -   7 : +Infinity	 44 -   8 : +Infinity	 44 -   9 : +Infinity	 44 -  10 : 33	 44 -  11 : 26	 44 -  12 : +Infinity	 44 -  13 : 25	 44 -  14 : +Infinity	 44 -  15 : +Infinity	 44 -  16 : +Infinity	 44 -  17 : +Infinity	 44 -  18 : +Infinity	 44 -  19 : +Infinity	 44 -  20 : +Infinity	 44 -  21 : +Infinity	 44 -  22 : 29	 44 -  23 : 44	 44 -  24 : 31	 44 -  25 : 12	 44 -  26 : +Infinity	 44 -  27 : +Infinity	 44 -  28 : +Infinity	 44 -  29 : 20	 44 -  30 : 47	 44 -  31 : 37	 44 -  32 : +Infinity	 44 -  33 : +Infinity	 44 -  34 : +Infinity	 44 -  35 : +Infinity	 44 -  36 : +Infinity	 44 -  37 : 31	 44 -  38 : +Infinity	 44 -  39 : 14	 44 -  40 : 33	 44 -  41 : +Infinity	 44 -  42 : +Infinity	 44 -  43 : +Infinity	 44 -  44 : 0	 44 -  45 : 47	 44 -  46 : +Infinity	 44 -  47 : 34	 44 -  48 : +Infinity	 44 -  49 : +Infinity	 44 -  50 : +Infinity	 44 -  51 : 17	 44 -  52 : 38	 44 -  53 : +Infinity	 44 -  54 : +Infinity	 44 -  55 : +Infinity	 44 -  56 : +Infinity	 44 -  57 : +Infinity	 44 -  58 : +Infinity	 44 -  59 : +Infinity	 44 -  60 : +Infinity	 44 -  61 : 37	 44 -  62 : 19	 44 -  63 : +Infinity	 44 -  64 : 19	 44 -  65 : +Infinity	 44 -  66 : 40	 44 -  67 : 33	 44 -  68 : +Infinity	 44 -  69 : 48	 44 -  70 : 46	 44 -  71 : +Infinity	 44 -  72 : +Infinity	 44 -  73 : +Infinity	 44 -  74 : +Infinity	 44 -  75 : +Infinity	
+
+Shortest paths lengths from 45:
+ 45 -   1 : +Infinity	 45 -   2 : 41	 45 -   3 : 24	 45 -   4 : +Infinity	 45 -   5 : 42	 45 -   6 : 35	 45 -   7 : +Infinity	 45 -   8 : +Infinity	 45 -   9 : +Infinity	 45 -  10 : 40	 45 -  11 : 44	 45 -  12 : +Infinity	 45 -  13 : 22	 45 -  14 : +Infinity	 45 -  15 : +Infinity	 45 -  16 : +Infinity	 45 -  17 : +Infinity	 45 -  18 : +Infinity	 45 -  19 : +Infinity	 45 -  20 : +Infinity	 45 -  21 : +Infinity	 45 -  22 : 52	 45 -  23 : 29	 45 -  24 : 28	 45 -  25 : 38	 45 -  26 : +Infinity	 45 -  27 : +Infinity	 45 -  28 : +Infinity	 45 -  29 : 27	 45 -  30 : 48	 45 -  31 : 40	 45 -  32 : +Infinity	 45 -  33 : +Infinity	 45 -  34 : +Infinity	 45 -  35 : +Infinity	 45 -  36 : +Infinity	 45 -  37 : 38	 45 -  38 : +Infinity	 45 -  39 : 36	 45 -  40 : 44	 45 -  41 : +Infinity	 45 -  42 : +Infinity	 45 -  43 : +Infinity	 45 -  44 : 47	 45 -  45 : 0	 45 -  46 : +Infinity	 45 -  47 : 25	 45 -  48 : +Infinity	 45 -  49 : +Infinity	 45 -  50 : +Infinity	 45 -  51 : 43	 45 -  52 : 31	 45 -  53 : +Infinity	 45 -  54 : +Infinity	 45 -  55 : +Infinity	 45 -  56 : +Infinity	 45 -  57 : +Infinity	 45 -  58 : +Infinity	 45 -  59 : +Infinity	 45 -  60 : +Infinity	 45 -  61 : 10	 45 -  62 : 41	 45 -  63 : +Infinity	 45 -  64 : 51	 45 -  65 : +Infinity	 45 -  66 : 38	 45 -  67 : 29	 45 -  68 : +Infinity	 45 -  69 : 26	 45 -  70 : 54	 45 -  71 : +Infinity	 45 -  72 : +Infinity	 45 -  73 : +Infinity	 45 -  74 : +Infinity	 45 -  75 : +Infinity	
+
+Shortest paths lengths from 46:
+ 46 -   1 : 33	 46 -   2 : +Infinity	 46 -   3 : +Infinity	 46 -   4 : +Infinity	 46 -   5 : +Infinity	 46 -   6 : +Infinity	 46 -   7 : 34	 46 -   8 : +Infinity	 46 -   9 : 36	 46 -  10 : +Infinity	 46 -  11 : +Infinity	 46 -  12 : 31	 46 -  13 : +Infinity	 46 -  14 : +Infinity	 46 -  15 : 25	 46 -  16 : 25	 46 -  17 : +Infinity	 46 -  18 : +Infinity	 46 -  19 : 5	 46 -  20 : +Infinity	 46 -  21 : +Infinity	 46 -  22 : +Infinity	 46 -  23 : +Infinity	 46 -  24 : +Infinity	 46 -  25 : +Infinity	 46 -  26 : +Infinity	 46 -  27 : 17	 46 -  28 : 47	 46 -  29 : +Infinity	 46 -  30 : +Infinity	 46 -  31 : +Infinity	 46 -  32 : +Infinity	 46 -  33 : 13	 46 -  34 : +Infinity	 46 -  35 : 25	 46 -  36 : 23	 46 -  37 : +Infinity	 46 -  38 : +Infinity	 46 -  39 : +Infinity	 46 -  40 : +Infinity	 46 -  41 : 50	 46 -  42 : 16	 46 -  43 : 34	 46 -  44 : +Infinity	 46 -  45 : +Infinity	 46 -  46 : 0	 46 -  47 : +Infinity	 46 -  48 : +Infinity	 46 -  49 : +Infinity	 46 -  50 : +Infinity	 46 -  51 : +Infinity	 46 -  52 : +Infinity	 46 -  53 : +Infinity	 46 -  54 : +Infinity	 46 -  55 : 25	 46 -  56 : 9	 46 -  57 : 27	 46 -  58 : +Infinity	 46 -  59 : +Infinity	 46 -  60 : +Infinity	 46 -  61 : +Infinity	 46 -  62 : +Infinity	 46 -  63 : +Infinity	 46 -  64 : +Infinity	 46 -  65 : 21	 46 -  66 : +Infinity	 46 -  67 : +Infinity	 46 -  68 : 41	 46 -  69 : +Infinity	 46 -  70 : +Infinity	 46 -  71 : +Infinity	 46 -  72 : 48	 46 -  73 : 26	 46 -  74 : +Infinity	 46 -  75 : 19	
+
+Shortest paths lengths from 47:
+ 47 -   1 : +Infinity	 47 -   2 : 16	 47 -   3 : 29	 47 -   4 : +Infinity	 47 -   5 : 38	 47 -   6 : 10	 47 -   7 : +Infinity	 47 -   8 : +Infinity	 47 -   9 : +Infinity	 47 -  10 : 40	 47 -  11 : 19	 47 -  12 : +Infinity	 47 -  13 : 27	 47 -  14 : +Infinity	 47 -  15 : +Infinity	 47 -  16 : +Infinity	 47 -  17 : +Infinity	 47 -  18 : +Infinity	 47 -  19 : +Infinity	 47 -  20 : +Infinity	 47 -  21 : +Infinity	 47 -  22 : 27	 47 -  23 : 47	 47 -  24 : 3	 47 -  25 : 22	 47 -  26 : +Infinity	 47 -  27 : +Infinity	 47 -  28 : +Infinity	 47 -  29 : 27	 47 -  30 : 51	 47 -  31 : 39	 47 -  32 : +Infinity	 47 -  33 : +Infinity	 47 -  34 : +Infinity	 47 -  35 : +Infinity	 47 -  36 : +Infinity	 47 -  37 : 36	 47 -  38 : +Infinity	 47 -  39 : 20	 47 -  40 : 19	 47 -  41 : +Infinity	 47 -  42 : +Infinity	 47 -  43 : +Infinity	 47 -  44 : 34	 47 -  45 : 25	 47 -  46 : +Infinity	 47 -  47 : 0	 47 -  48 : +Infinity	 47 -  49 : +Infinity	 47 -  50 : +Infinity	 47 -  51 : 27	 47 -  52 : 36	 47 -  53 : +Infinity	 47 -  54 : +Infinity	 47 -  55 : +Infinity	 47 -  56 : +Infinity	 47 -  57 : +Infinity	 47 -  58 : +Infinity	 47 -  59 : +Infinity	 47 -  60 : +Infinity	 47 -  61 : 15	 47 -  62 : 25	 47 -  63 : +Infinity	 47 -  64 : 26	 47 -  65 : +Infinity	 47 -  66 : 42	 47 -  67 : 34	 47 -  68 : +Infinity	 47 -  69 : 47	 47 -  70 : 44	 47 -  71 : +Infinity	 47 -  72 : +Infinity	 47 -  73 : +Infinity	 47 -  74 : +Infinity	 47 -  75 : +Infinity	
+
+Shortest paths lengths from 48:
+ 48 -   1 : +Infinity	 48 -   2 : +Infinity	 48 -   3 : +Infinity	 48 -   4 : 47	 48 -   5 : +Infinity	 48 -   6 : +Infinity	 48 -   7 : +Infinity	 48 -   8 : 70	 48 -   9 : +Infinity	 48 -  10 : +Infinity	 48 -  11 : +Infinity	 48 -  12 : +Infinity	 48 -  13 : +Infinity	 48 -  14 : 45	 48 -  15 : +Infinity	 48 -  16 : +Infinity	 48 -  17 : 26	 48 -  18 : 53	 48 -  19 : +Infinity	 48 -  20 : 38	 48 -  21 : 38	 48 -  22 : +Infinity	 48 -  23 : +Infinity	 48 -  24 : +Infinity	 48 -  25 : +Infinity	 48 -  26 : 48	 48 -  27 : +Infinity	 48 -  28 : +Infinity	 48 -  29 : +Infinity	 48 -  30 : +Infinity	 48 -  31 : +Infinity	 48 -  32 : 57	 48 -  33 : +Infinity	 48 -  34 : 53	 48 -  35 : +Infinity	 48 -  36 : +Infinity	 48 -  37 : +Infinity	 48 -  38 : 27	 48 -  39 : +Infinity	 48 -  40 : +Infinity	 48 -  41 : +Infinity	 48 -  42 : +Infinity	 48 -  43 : +Infinity	 48 -  44 : +Infinity	 48 -  45 : +Infinity	 48 -  46 : +Infinity	 48 -  47 : +Infinity	 48 -  48 : 0	 48 -  49 : 64	 48 -  50 : 32	 48 -  51 : +Infinity	 48 -  52 : +Infinity	 48 -  53 : 21	 48 -  54 : 51	 48 -  55 : +Infinity	 48 -  56 : +Infinity	 48 -  57 : +Infinity	 48 -  58 : 26	 48 -  59 : 9	 48 -  60 : 35	 48 -  61 : +Infinity	 48 -  62 : +Infinity	 48 -  63 : 44	 48 -  64 : +Infinity	 48 -  65 : +Infinity	 48 -  66 : +Infinity	 48 -  67 : +Infinity	 48 -  68 : +Infinity	 48 -  69 : +Infinity	 48 -  70 : +Infinity	 48 -  71 : 44	 48 -  72 : +Infinity	 48 -  73 : +Infinity	 48 -  74 : 12	 48 -  75 : +Infinity	
+
+Shortest paths lengths from 49:
+ 49 -   1 : +Infinity	 49 -   2 : +Infinity	 49 -   3 : +Infinity	 49 -   4 : 46	 49 -   5 : +Infinity	 49 -   6 : +Infinity	 49 -   7 : +Infinity	 49 -   8 : 69	 49 -   9 : +Infinity	 49 -  10 : +Infinity	 49 -  11 : +Infinity	 49 -  12 : +Infinity	 49 -  13 : +Infinity	 49 -  14 : 19	 49 -  15 : +Infinity	 49 -  16 : +Infinity	 49 -  17 : 68	 49 -  18 : 34	 49 -  19 : +Infinity	 49 -  20 : 38	 49 -  21 : 26	 49 -  22 : +Infinity	 49 -  23 : +Infinity	 49 -  24 : +Infinity	 49 -  25 : +Infinity	 49 -  26 : 53	 49 -  27 : +Infinity	 49 -  28 : +Infinity	 49 -  29 : +Infinity	 49 -  30 : +Infinity	 49 -  31 : +Infinity	 49 -  32 : 38	 49 -  33 : +Infinity	 49 -  34 : 57	 49 -  35 : +Infinity	 49 -  36 : +Infinity	 49 -  37 : +Infinity	 49 -  38 : 49	 49 -  39 : +Infinity	 49 -  40 : +Infinity	 49 -  41 : +Infinity	 49 -  42 : +Infinity	 49 -  43 : +Infinity	 49 -  44 : +Infinity	 49 -  45 : +Infinity	 49 -  46 : +Infinity	 49 -  47 : +Infinity	 49 -  48 : 64	 49 -  49 : 0	 49 -  50 : 32	 49 -  51 : +Infinity	 49 -  52 : +Infinity	 49 -  53 : 43	 49 -  54 : 73	 49 -  55 : +Infinity	 49 -  56 : +Infinity	 49 -  57 : +Infinity	 49 -  58 : 56	 49 -  59 : 55	 49 -  60 : 71	 49 -  61 : +Infinity	 49 -  62 : +Infinity	 49 -  63 : 56	 49 -  64 : +Infinity	 49 -  65 : +Infinity	 49 -  66 : +Infinity	 49 -  67 : +Infinity	 49 -  68 : +Infinity	 49 -  69 : +Infinity	 49 -  70 : +Infinity	 49 -  71 : 54	 49 -  72 : +Infinity	 49 -  73 : +Infinity	 49 -  74 : 73	 49 -  75 : +Infinity	
+
+Shortest paths lengths from 50:
+ 50 -   1 : +Infinity	 50 -   2 : +Infinity	 50 -   3 : +Infinity	 50 -   4 : 40	 50 -   5 : +Infinity	 50 -   6 : +Infinity	 50 -   7 : +Infinity	 50 -   8 : 58	 50 -   9 : +Infinity	 50 -  10 : +Infinity	 50 -  11 : +Infinity	 50 -  12 : +Infinity	 50 -  13 : +Infinity	 50 -  14 : 13	 50 -  15 : +Infinity	 50 -  16 : +Infinity	 50 -  17 : 39	 50 -  18 : 28	 50 -  19 : +Infinity	 50 -  20 : 18	 50 -  21 : 6	 50 -  22 : +Infinity	 50 -  23 : +Infinity	 50 -  24 : +Infinity	 50 -  25 : +Infinity	 50 -  26 : 33	 50 -  27 : +Infinity	 50 -  28 : +Infinity	 50 -  29 : +Infinity	 50 -  30 : +Infinity	 50 -  31 : +Infinity	 50 -  32 : 32	 50 -  33 : +Infinity	 50 -  34 : 51	 50 -  35 : +Infinity	 50 -  36 : +Infinity	 50 -  37 : +Infinity	 50 -  38 : 29	 50 -  39 : +Infinity	 50 -  40 : +Infinity	 50 -  41 : +Infinity	 50 -  42 : +Infinity	 50 -  43 : +Infinity	 50 -  44 : +Infinity	 50 -  45 : +Infinity	 50 -  46 : +Infinity	 50 -  47 : +Infinity	 50 -  48 : 32	 50 -  49 : 32	 50 -  50 : 0	 50 -  51 : +Infinity	 50 -  52 : +Infinity	 50 -  53 : 11	 50 -  54 : 42	 50 -  55 : +Infinity	 50 -  56 : +Infinity	 50 -  57 : +Infinity	 50 -  58 : 24	 50 -  59 : 23	 50 -  60 : 42	 50 -  61 : +Infinity	 50 -  62 : +Infinity	 50 -  63 : 50	 50 -  64 : +Infinity	 50 -  65 : +Infinity	 50 -  66 : +Infinity	 50 -  67 : +Infinity	 50 -  68 : +Infinity	 50 -  69 : +Infinity	 50 -  70 : +Infinity	 50 -  71 : 34	 50 -  72 : +Infinity	 50 -  73 : +Infinity	 50 -  74 : 41	 50 -  75 : +Infinity	
+
+Shortest paths lengths from 51:
+ 51 -   1 : +Infinity	 51 -   2 : 15	 51 -   3 : 21	 51 -   4 : +Infinity	 51 -   5 : 31	 51 -   6 : 21	 51 -   7 : +Infinity	 51 -   8 : +Infinity	 51 -   9 : +Infinity	 51 -  10 : 29	 51 -  11 : 32	 51 -  12 : +Infinity	 51 -  13 : 21	 51 -  14 : +Infinity	 51 -  15 : +Infinity	 51 -  16 : +Infinity	 51 -  17 : +Infinity	 51 -  18 : +Infinity	 51 -  19 : +Infinity	 51 -  20 : +Infinity	 51 -  21 : +Infinity	 51 -  22 : 26	 51 -  23 : 27	 51 -  24 : 28	 51 -  25 : 5	 51 -  26 : +Infinity	 51 -  27 : +Infinity	 51 -  28 : +Infinity	 51 -  29 : 16	 51 -  30 : 43	 51 -  31 : 23	 51 -  32 : +Infinity	 51 -  33 : +Infinity	 51 -  34 : +Infinity	 51 -  35 : +Infinity	 51 -  36 : +Infinity	 51 -  37 : 24	 51 -  38 : +Infinity	 51 -  39 : 7	 51 -  40 : 30	 51 -  41 : +Infinity	 51 -  42 : +Infinity	 51 -  43 : +Infinity	 51 -  44 : 17	 51 -  45 : 43	 51 -  46 : +Infinity	 51 -  47 : 27	 51 -  48 : +Infinity	 51 -  49 : +Infinity	 51 -  50 : +Infinity	 51 -  51 : 0	 51 -  52 : 31	 51 -  53 : +Infinity	 51 -  54 : +Infinity	 51 -  55 : +Infinity	 51 -  56 : +Infinity	 51 -  57 : +Infinity	 51 -  58 : +Infinity	 51 -  59 : +Infinity	 51 -  60 : +Infinity	 51 -  61 : 33	 51 -  62 : 12	 51 -  63 : +Infinity	 51 -  64 : 25	 51 -  65 : +Infinity	 51 -  66 : 26	 51 -  67 : 26	 51 -  68 : +Infinity	 51 -  69 : 37	 51 -  70 : 43	 51 -  71 : +Infinity	 51 -  72 : +Infinity	 51 -  73 : +Infinity	 51 -  74 : +Infinity	 51 -  75 : +Infinity	
+
+Shortest paths lengths from 52:
+ 52 -   1 : +Infinity	 52 -   2 : 34	 52 -   3 : 35	 52 -   4 : +Infinity	 52 -   5 : 40	 52 -   6 : 33	 52 -   7 : +Infinity	 52 -   8 : +Infinity	 52 -   9 : +Infinity	 52 -  10 : 38	 52 -  11 : 49	 52 -  12 : +Infinity	 52 -  13 : 30	 52 -  14 : +Infinity	 52 -  15 : +Infinity	 52 -  16 : +Infinity	 52 -  17 : +Infinity	 52 -  18 : +Infinity	 52 -  19 : +Infinity	 52 -  20 : +Infinity	 52 -  21 : +Infinity	 52 -  22 : 45	 52 -  23 : 29	 52 -  24 : 39	 52 -  25 : 26	 52 -  26 : +Infinity	 52 -  27 : +Infinity	 52 -  28 : +Infinity	 52 -  29 : 25	 52 -  30 : 52	 52 -  31 : 10	 52 -  32 : +Infinity	 52 -  33 : +Infinity	 52 -  34 : +Infinity	 52 -  35 : +Infinity	 52 -  36 : +Infinity	 52 -  37 : 7	 52 -  38 : +Infinity	 52 -  39 : 24	 52 -  40 : 42	 52 -  41 : +Infinity	 52 -  42 : +Infinity	 52 -  43 : +Infinity	 52 -  44 : 38	 52 -  45 : 31	 52 -  46 : +Infinity	 52 -  47 : 36	 52 -  48 : +Infinity	 52 -  49 : +Infinity	 52 -  50 : +Infinity	 52 -  51 : 31	 52 -  52 : 0	 52 -  53 : +Infinity	 52 -  54 : +Infinity	 52 -  55 : +Infinity	 52 -  56 : +Infinity	 52 -  57 : +Infinity	 52 -  58 : +Infinity	 52 -  59 : +Infinity	 52 -  60 : +Infinity	 52 -  61 : 21	 52 -  62 : 29	 52 -  63 : +Infinity	 52 -  64 : 42	 52 -  65 : +Infinity	 52 -  66 : 7	 52 -  67 : 40	 52 -  68 : +Infinity	 52 -  69 : 11	 52 -  70 : 35	 52 -  71 : +Infinity	 52 -  72 : +Infinity	 52 -  73 : +Infinity	 52 -  74 : +Infinity	 52 -  75 : +Infinity	
+
+Shortest paths lengths from 53:
+ 53 -   1 : +Infinity	 53 -   2 : +Infinity	 53 -   3 : +Infinity	 53 -   4 : 34	 53 -   5 : +Infinity	 53 -   6 : +Infinity	 53 -   7 : +Infinity	 53 -   8 : 57	 53 -   9 : +Infinity	 53 -  10 : +Infinity	 53 -  11 : +Infinity	 53 -  12 : +Infinity	 53 -  13 : +Infinity	 53 -  14 : 24	 53 -  15 : +Infinity	 53 -  16 : +Infinity	 53 -  17 : 28	 53 -  18 : 39	 53 -  19 : +Infinity	 53 -  20 : 29	 53 -  21 : 17	 53 -  22 : +Infinity	 53 -  23 : +Infinity	 53 -  24 : +Infinity	 53 -  25 : +Infinity	 53 -  26 : 44	 53 -  27 : +Infinity	 53 -  28 : +Infinity	 53 -  29 : +Infinity	 53 -  30 : +Infinity	 53 -  31 : +Infinity	 53 -  32 : 43	 53 -  33 : +Infinity	 53 -  34 : 40	 53 -  35 : +Infinity	 53 -  36 : +Infinity	 53 -  37 : +Infinity	 53 -  38 : 40	 53 -  39 : +Infinity	 53 -  40 : +Infinity	 53 -  41 : +Infinity	 53 -  42 : +Infinity	 53 -  43 : +Infinity	 53 -  44 : +Infinity	 53 -  45 : +Infinity	 53 -  46 : +Infinity	 53 -  47 : +Infinity	 53 -  48 : 21	 53 -  49 : 43	 53 -  50 : 11	 53 -  51 : +Infinity	 53 -  52 : +Infinity	 53 -  53 : 0	 53 -  54 : 53	 53 -  55 : +Infinity	 53 -  56 : +Infinity	 53 -  57 : +Infinity	 53 -  58 : 13	 53 -  59 : 12	 53 -  60 : 31	 53 -  61 : +Infinity	 53 -  62 : +Infinity	 53 -  63 : 46	 53 -  64 : +Infinity	 53 -  65 : +Infinity	 53 -  66 : +Infinity	 53 -  67 : +Infinity	 53 -  68 : +Infinity	 53 -  69 : +Infinity	 53 -  70 : +Infinity	 53 -  71 : 45	 53 -  72 : +Infinity	 53 -  73 : +Infinity	 53 -  74 : 30	 53 -  75 : +Infinity	
+
+Shortest paths lengths from 54:
+ 54 -   1 : +Infinity	 54 -   2 : +Infinity	 54 -   3 : +Infinity	 54 -   4 : 73	 54 -   5 : +Infinity	 54 -   6 : +Infinity	 54 -   7 : +Infinity	 54 -   8 : 75	 54 -   9 : +Infinity	 54 -  10 : +Infinity	 54 -  11 : +Infinity	 54 -  12 : +Infinity	 54 -  13 : +Infinity	 54 -  14 : 54	 54 -  15 : +Infinity	 54 -  16 : +Infinity	 54 -  17 : 25	 54 -  18 : 65	 54 -  19 : +Infinity	 54 -  20 : 55	 54 -  21 : 47	 54 -  22 : +Infinity	 54 -  23 : +Infinity	 54 -  24 : +Infinity	 54 -  25 : +Infinity	 54 -  26 : 72	 54 -  27 : +Infinity	 54 -  28 : +Infinity	 54 -  29 : +Infinity	 54 -  30 : +Infinity	 54 -  31 : +Infinity	 54 -  32 : 61	 54 -  33 : +Infinity	 54 -  34 : 79	 54 -  35 : +Infinity	 54 -  36 : +Infinity	 54 -  37 : +Infinity	 54 -  38 : 44	 54 -  39 : +Infinity	 54 -  40 : +Infinity	 54 -  41 : +Infinity	 54 -  42 : +Infinity	 54 -  43 : +Infinity	 54 -  44 : +Infinity	 54 -  45 : +Infinity	 54 -  46 : +Infinity	 54 -  47 : +Infinity	 54 -  48 : 51	 54 -  49 : 73	 54 -  50 : 42	 54 -  51 : +Infinity	 54 -  52 : +Infinity	 54 -  53 : 53	 54 -  54 : 0	 54 -  55 : +Infinity	 54 -  56 : +Infinity	 54 -  57 : +Infinity	 54 -  58 : 52	 54 -  59 : 60	 54 -  60 : 34	 54 -  61 : +Infinity	 54 -  62 : +Infinity	 54 -  63 : 43	 54 -  64 : +Infinity	 54 -  65 : +Infinity	 54 -  66 : +Infinity	 54 -  67 : +Infinity	 54 -  68 : +Infinity	 54 -  69 : +Infinity	 54 -  70 : +Infinity	 54 -  71 : 71	 54 -  72 : +Infinity	 54 -  73 : +Infinity	 54 -  74 : 39	 54 -  75 : +Infinity	
+
+Shortest paths lengths from 55:
+ 55 -   1 : 20	 55 -   2 : +Infinity	 55 -   3 : +Infinity	 55 -   4 : +Infinity	 55 -   5 : +Infinity	 55 -   6 : +Infinity	 55 -   7 : 30	 55 -   8 : +Infinity	 55 -   9 : 35	 55 -  10 : +Infinity	 55 -  11 : +Infinity	 55 -  12 : 35	 55 -  13 : +Infinity	 55 -  14 : +Infinity	 55 -  15 : 21	 55 -  16 : 23	 55 -  17 : +Infinity	 55 -  18 : +Infinity	 55 -  19 : 30	 55 -  20 : +Infinity	 55 -  21 : +Infinity	 55 -  22 : +Infinity	 55 -  23 : +Infinity	 55 -  24 : +Infinity	 55 -  25 : +Infinity	 55 -  26 : +Infinity	 55 -  27 : 24	 55 -  28 : 35	 55 -  29 : +Infinity	 55 -  30 : +Infinity	 55 -  31 : +Infinity	 55 -  32 : +Infinity	 55 -  33 : 16	 55 -  34 : +Infinity	 55 -  35 : 12	 55 -  36 : 20	 55 -  37 : +Infinity	 55 -  38 : +Infinity	 55 -  39 : +Infinity	 55 -  40 : +Infinity	 55 -  41 : 25	 55 -  42 : 13	 55 -  43 : 17	 55 -  44 : +Infinity	 55 -  45 : +Infinity	 55 -  46 : 25	 55 -  47 : +Infinity	 55 -  48 : +Infinity	 55 -  49 : +Infinity	 55 -  50 : +Infinity	 55 -  51 : +Infinity	 55 -  52 : +Infinity	 55 -  53 : +Infinity	 55 -  54 : +Infinity	 55 -  55 : 0	 55 -  56 : 16	 55 -  57 : 30	 55 -  58 : +Infinity	 55 -  59 : +Infinity	 55 -  60 : +Infinity	 55 -  61 : +Infinity	 55 -  62 : +Infinity	 55 -  63 : +Infinity	 55 -  64 : +Infinity	 55 -  65 : 25	 55 -  66 : +Infinity	 55 -  67 : +Infinity	 55 -  68 : 16	 55 -  69 : +Infinity	 55 -  70 : +Infinity	 55 -  71 : +Infinity	 55 -  72 : 23	 55 -  73 : 30	 55 -  74 : +Infinity	 55 -  75 : 6	
+
+Shortest paths lengths from 56:
+ 56 -   1 : 24	 56 -   2 : +Infinity	 56 -   3 : +Infinity	 56 -   4 : +Infinity	 56 -   5 : +Infinity	 56 -   6 : +Infinity	 56 -   7 : 25	 56 -   8 : +Infinity	 56 -   9 : 27	 56 -  10 : +Infinity	 56 -  11 : +Infinity	 56 -  12 : 22	 56 -  13 : +Infinity	 56 -  14 : +Infinity	 56 -  15 : 17	 56 -  16 : 16	 56 -  17 : +Infinity	 56 -  18 : +Infinity	 56 -  19 : 14	 56 -  20 : +Infinity	 56 -  21 : +Infinity	 56 -  22 : +Infinity	 56 -  23 : +Infinity	 56 -  24 : +Infinity	 56 -  25 : +Infinity	 56 -  26 : +Infinity	 56 -  27 : 8	 56 -  28 : 38	 56 -  29 : +Infinity	 56 -  30 : +Infinity	 56 -  31 : +Infinity	 56 -  32 : +Infinity	 56 -  33 : 4	 56 -  34 : +Infinity	 56 -  35 : 16	 56 -  36 : 14	 56 -  37 : +Infinity	 56 -  38 : +Infinity	 56 -  39 : +Infinity	 56 -  40 : +Infinity	 56 -  41 : 41	 56 -  42 : 7	 56 -  43 : 27	 56 -  44 : +Infinity	 56 -  45 : +Infinity	 56 -  46 : 9	 56 -  47 : +Infinity	 56 -  48 : +Infinity	 56 -  49 : +Infinity	 56 -  50 : +Infinity	 56 -  51 : +Infinity	 56 -  52 : +Infinity	 56 -  53 : +Infinity	 56 -  54 : +Infinity	 56 -  55 : 16	 56 -  56 : 0	 56 -  57 : 18	 56 -  58 : +Infinity	 56 -  59 : +Infinity	 56 -  60 : +Infinity	 56 -  61 : +Infinity	 56 -  62 : +Infinity	 56 -  63 : +Infinity	 56 -  64 : +Infinity	 56 -  65 : 21	 56 -  66 : +Infinity	 56 -  67 : +Infinity	 56 -  68 : 32	 56 -  69 : +Infinity	 56 -  70 : +Infinity	 56 -  71 : +Infinity	 56 -  72 : 39	 56 -  73 : 23	 56 -  74 : +Infinity	 56 -  75 : 10	
+
+Shortest paths lengths from 57:
+ 57 -   1 : 38	 57 -   2 : +Infinity	 57 -   3 : +Infinity	 57 -   4 : +Infinity	 57 -   5 : +Infinity	 57 -   6 : +Infinity	 57 -   7 : 35	 57 -   8 : +Infinity	 57 -   9 : 37	 57 -  10 : +Infinity	 57 -  11 : +Infinity	 57 -  12 : 40	 57 -  13 : +Infinity	 57 -  14 : +Infinity	 57 -  15 : 33	 57 -  16 : 26	 57 -  17 : +Infinity	 57 -  18 : +Infinity	 57 -  19 : 30	 57 -  20 : +Infinity	 57 -  21 : +Infinity	 57 -  22 : +Infinity	 57 -  23 : +Infinity	 57 -  24 : +Infinity	 57 -  25 : +Infinity	 57 -  26 : +Infinity	 57 -  27 : 26	 57 -  28 : 53	 57 -  29 : +Infinity	 57 -  30 : +Infinity	 57 -  31 : +Infinity	 57 -  32 : +Infinity	 57 -  33 : 14	 57 -  34 : +Infinity	 57 -  35 : 30	 57 -  36 : 24	 57 -  37 : +Infinity	 57 -  38 : +Infinity	 57 -  39 : +Infinity	 57 -  40 : +Infinity	 57 -  41 : 52	 57 -  42 : 17	 57 -  43 : 37	 57 -  44 : +Infinity	 57 -  45 : +Infinity	 57 -  46 : 27	 57 -  47 : +Infinity	 57 -  48 : +Infinity	 57 -  49 : +Infinity	 57 -  50 : +Infinity	 57 -  51 : +Infinity	 57 -  52 : +Infinity	 57 -  53 : +Infinity	 57 -  54 : +Infinity	 57 -  55 : 30	 57 -  56 : 18	 57 -  57 : 0	 57 -  58 : +Infinity	 57 -  59 : +Infinity	 57 -  60 : +Infinity	 57 -  61 : +Infinity	 57 -  62 : +Infinity	 57 -  63 : +Infinity	 57 -  64 : +Infinity	 57 -  65 : 37	 57 -  66 : +Infinity	 57 -  67 : +Infinity	 57 -  68 : 46	 57 -  69 : +Infinity	 57 -  70 : +Infinity	 57 -  71 : +Infinity	 57 -  72 : 53	 57 -  73 : 27	 57 -  74 : +Infinity	 57 -  75 : 24	
+
+Shortest paths lengths from 58:
+ 58 -   1 : +Infinity	 58 -   2 : +Infinity	 58 -   3 : +Infinity	 58 -   4 : 21	 58 -   5 : +Infinity	 58 -   6 : +Infinity	 58 -   7 : +Infinity	 58 -   8 : 44	 58 -   9 : +Infinity	 58 -  10 : +Infinity	 58 -  11 : +Infinity	 58 -  12 : +Infinity	 58 -  13 : +Infinity	 58 -  14 : 37	 58 -  15 : +Infinity	 58 -  16 : +Infinity	 58 -  17 : 27	 58 -  18 : 35	 58 -  19 : +Infinity	 58 -  20 : 42	 58 -  21 : 30	 58 -  22 : +Infinity	 58 -  23 : +Infinity	 58 -  24 : +Infinity	 58 -  25 : +Infinity	 58 -  26 : 53	 58 -  27 : +Infinity	 58 -  28 : +Infinity	 58 -  29 : +Infinity	 58 -  30 : +Infinity	 58 -  31 : +Infinity	 58 -  32 : 39	 58 -  33 : +Infinity	 58 -  34 : 27	 58 -  35 : +Infinity	 58 -  36 : +Infinity	 58 -  37 : +Infinity	 58 -  38 : 46	 58 -  39 : +Infinity	 58 -  40 : +Infinity	 58 -  41 : +Infinity	 58 -  42 : +Infinity	 58 -  43 : +Infinity	 58 -  44 : +Infinity	 58 -  45 : +Infinity	 58 -  46 : +Infinity	 58 -  47 : +Infinity	 58 -  48 : 26	 58 -  49 : 56	 58 -  50 : 24	 58 -  51 : +Infinity	 58 -  52 : +Infinity	 58 -  53 : 13	 58 -  54 : 52	 58 -  55 : +Infinity	 58 -  56 : +Infinity	 58 -  57 : +Infinity	 58 -  58 : 0	 58 -  59 : 25	 58 -  60 : 18	 58 -  61 : +Infinity	 58 -  62 : +Infinity	 58 -  63 : 33	 58 -  64 : +Infinity	 58 -  65 : +Infinity	 58 -  66 : +Infinity	 58 -  67 : +Infinity	 58 -  68 : +Infinity	 58 -  69 : +Infinity	 58 -  70 : +Infinity	 58 -  71 : 49	 58 -  72 : +Infinity	 58 -  73 : +Infinity	 58 -  74 : 17	 58 -  75 : +Infinity	
+
+Shortest paths lengths from 59:
+ 59 -   1 : +Infinity	 59 -   2 : +Infinity	 59 -   3 : +Infinity	 59 -   4 : 46	 59 -   5 : +Infinity	 59 -   6 : +Infinity	 59 -   7 : +Infinity	 59 -   8 : 69	 59 -   9 : +Infinity	 59 -  10 : +Infinity	 59 -  11 : +Infinity	 59 -  12 : +Infinity	 59 -  13 : +Infinity	 59 -  14 : 36	 59 -  15 : +Infinity	 59 -  16 : +Infinity	 59 -  17 : 35	 59 -  18 : 44	 59 -  19 : +Infinity	 59 -  20 : 41	 59 -  21 : 29	 59 -  22 : +Infinity	 59 -  23 : +Infinity	 59 -  24 : +Infinity	 59 -  25 : +Infinity	 59 -  26 : 56	 59 -  27 : +Infinity	 59 -  28 : +Infinity	 59 -  29 : +Infinity	 59 -  30 : +Infinity	 59 -  31 : +Infinity	 59 -  32 : 48	 59 -  33 : +Infinity	 59 -  34 : 52	 59 -  35 : +Infinity	 59 -  36 : +Infinity	 59 -  37 : +Infinity	 59 -  38 : 36	 59 -  39 : +Infinity	 59 -  40 : +Infinity	 59 -  41 : +Infinity	 59 -  42 : +Infinity	 59 -  43 : +Infinity	 59 -  44 : +Infinity	 59 -  45 : +Infinity	 59 -  46 : +Infinity	 59 -  47 : +Infinity	 59 -  48 : 9	 59 -  49 : 55	 59 -  50 : 23	 59 -  51 : +Infinity	 59 -  52 : +Infinity	 59 -  53 : 12	 59 -  54 : 60	 59 -  55 : +Infinity	 59 -  56 : +Infinity	 59 -  57 : +Infinity	 59 -  58 : 25	 59 -  59 : 0	 59 -  60 : 43	 59 -  61 : +Infinity	 59 -  62 : +Infinity	 59 -  63 : 53	 59 -  64 : +Infinity	 59 -  65 : +Infinity	 59 -  66 : +Infinity	 59 -  67 : +Infinity	 59 -  68 : +Infinity	 59 -  69 : +Infinity	 59 -  70 : +Infinity	 59 -  71 : 53	 59 -  72 : +Infinity	 59 -  73 : +Infinity	 59 -  74 : 21	 59 -  75 : +Infinity	
+
+Shortest paths lengths from 60:
+ 60 -   1 : +Infinity	 60 -   2 : +Infinity	 60 -   3 : +Infinity	 60 -   4 : 39	 60 -   5 : +Infinity	 60 -   6 : +Infinity	 60 -   7 : +Infinity	 60 -   8 : 41	 60 -   9 : +Infinity	 60 -  10 : +Infinity	 60 -  11 : +Infinity	 60 -  12 : +Infinity	 60 -  13 : +Infinity	 60 -  14 : 52	 60 -  15 : +Infinity	 60 -  16 : +Infinity	 60 -  17 : 9	 60 -  18 : 37	 60 -  19 : +Infinity	 60 -  20 : 39	 60 -  21 : 48	 60 -  22 : +Infinity	 60 -  23 : +Infinity	 60 -  24 : +Infinity	 60 -  25 : +Infinity	 60 -  26 : 55	 60 -  27 : +Infinity	 60 -  28 : +Infinity	 60 -  29 : +Infinity	 60 -  30 : +Infinity	 60 -  31 : +Infinity	 60 -  32 : 33	 60 -  33 : +Infinity	 60 -  34 : 45	 60 -  35 : +Infinity	 60 -  36 : +Infinity	 60 -  37 : +Infinity	 60 -  38 : 28	 60 -  39 : +Infinity	 60 -  40 : +Infinity	 60 -  41 : +Infinity	 60 -  42 : +Infinity	 60 -  43 : +Infinity	 60 -  44 : +Infinity	 60 -  45 : +Infinity	 60 -  46 : +Infinity	 60 -  47 : +Infinity	 60 -  48 : 35	 60 -  49 : 71	 60 -  50 : 42	 60 -  51 : +Infinity	 60 -  52 : +Infinity	 60 -  53 : 31	 60 -  54 : 34	 60 -  55 : +Infinity	 60 -  56 : +Infinity	 60 -  57 : +Infinity	 60 -  58 : 18	 60 -  59 : 43	 60 -  60 : 0	 60 -  61 : +Infinity	 60 -  62 : +Infinity	 60 -  63 : 15	 60 -  64 : +Infinity	 60 -  65 : +Infinity	 60 -  66 : +Infinity	 60 -  67 : +Infinity	 60 -  68 : +Infinity	 60 -  69 : +Infinity	 60 -  70 : +Infinity	 60 -  71 : 53	 60 -  72 : +Infinity	 60 -  73 : +Infinity	 60 -  74 : 23	 60 -  75 : +Infinity	
+
+Shortest paths lengths from 61:
+ 61 -   1 : +Infinity	 61 -   2 : 31	 61 -   3 : 14	 61 -   4 : +Infinity	 61 -   5 : 32	 61 -   6 : 25	 61 -   7 : +Infinity	 61 -   8 : +Infinity	 61 -   9 : +Infinity	 61 -  10 : 30	 61 -  11 : 34	 61 -  12 : +Infinity	 61 -  13 : 12	 61 -  14 : +Infinity	 61 -  15 : +Infinity	 61 -  16 : +Infinity	 61 -  17 : +Infinity	 61 -  18 : +Infinity	 61 -  19 : +Infinity	 61 -  20 : +Infinity	 61 -  21 : +Infinity	 61 -  22 : 42	 61 -  23 : 39	 61 -  24 : 18	 61 -  25 : 28	 61 -  26 : +Infinity	 61 -  27 : +Infinity	 61 -  28 : +Infinity	 61 -  29 : 17	 61 -  30 : 38	 61 -  31 : 31	 61 -  32 : +Infinity	 61 -  33 : +Infinity	 61 -  34 : +Infinity	 61 -  35 : +Infinity	 61 -  36 : +Infinity	 61 -  37 : 28	 61 -  38 : +Infinity	 61 -  39 : 26	 61 -  40 : 34	 61 -  41 : +Infinity	 61 -  42 : +Infinity	 61 -  43 : +Infinity	 61 -  44 : 37	 61 -  45 : 10	 61 -  46 : +Infinity	 61 -  47 : 15	 61 -  48 : +Infinity	 61 -  49 : +Infinity	 61 -  50 : +Infinity	 61 -  51 : 33	 61 -  52 : 21	 61 -  53 : +Infinity	 61 -  54 : +Infinity	 61 -  55 : +Infinity	 61 -  56 : +Infinity	 61 -  57 : +Infinity	 61 -  58 : +Infinity	 61 -  59 : +Infinity	 61 -  60 : +Infinity	 61 -  61 : 0	 61 -  62 : 31	 61 -  63 : +Infinity	 61 -  64 : 41	 61 -  65 : +Infinity	 61 -  66 : 28	 61 -  67 : 19	 61 -  68 : +Infinity	 61 -  69 : 32	 61 -  70 : 44	 61 -  71 : +Infinity	 61 -  72 : +Infinity	 61 -  73 : +Infinity	 61 -  74 : +Infinity	 61 -  75 : +Infinity	
+
+Shortest paths lengths from 62:
+ 62 -   1 : +Infinity	 62 -   2 : 15	 62 -   3 : 23	 62 -   4 : +Infinity	 62 -   5 : 21	 62 -   6 : 21	 62 -   7 : +Infinity	 62 -   8 : +Infinity	 62 -   9 : +Infinity	 62 -  10 : 27	 62 -  11 : 20	 62 -  12 : +Infinity	 62 -  13 : 19	 62 -  14 : +Infinity	 62 -  15 : +Infinity	 62 -  16 : +Infinity	 62 -  17 : +Infinity	 62 -  18 : +Infinity	 62 -  19 : +Infinity	 62 -  20 : +Infinity	 62 -  21 : +Infinity	 62 -  22 : 22	 62 -  23 : 39	 62 -  24 : 28	 62 -  25 : 7	 62 -  26 : +Infinity	 62 -  27 : +Infinity	 62 -  28 : +Infinity	 62 -  29 : 14	 62 -  30 : 41	 62 -  31 : 32	 62 -  32 : +Infinity	 62 -  33 : +Infinity	 62 -  34 : +Infinity	 62 -  35 : +Infinity	 62 -  36 : +Infinity	 62 -  37 : 22	 62 -  38 : +Infinity	 62 -  39 : 5	 62 -  40 : 30	 62 -  41 : +Infinity	 62 -  42 : +Infinity	 62 -  43 : +Infinity	 62 -  44 : 19	 62 -  45 : 41	 62 -  46 : +Infinity	 62 -  47 : 25	 62 -  48 : +Infinity	 62 -  49 : +Infinity	 62 -  50 : +Infinity	 62 -  51 : 12	 62 -  52 : 29	 62 -  53 : +Infinity	 62 -  54 : +Infinity	 62 -  55 : +Infinity	 62 -  56 : +Infinity	 62 -  57 : +Infinity	 62 -  58 : +Infinity	 62 -  59 : +Infinity	 62 -  60 : +Infinity	 62 -  61 : 31	 62 -  62 : 0	 62 -  63 : +Infinity	 62 -  64 : 13	 62 -  65 : +Infinity	 62 -  66 : 35	 62 -  67 : 28	 62 -  68 : +Infinity	 62 -  69 : 40	 62 -  70 : 41	 62 -  71 : +Infinity	 62 -  72 : +Infinity	 62 -  73 : +Infinity	 62 -  74 : +Infinity	 62 -  75 : +Infinity	
+
+Shortest paths lengths from 63:
+ 63 -   1 : +Infinity	 63 -   2 : +Infinity	 63 -   3 : +Infinity	 63 -   4 : 36	 63 -   5 : +Infinity	 63 -   6 : +Infinity	 63 -   7 : +Infinity	 63 -   8 : 56	 63 -   9 : +Infinity	 63 -  10 : +Infinity	 63 -  11 : +Infinity	 63 -  12 : +Infinity	 63 -  13 : +Infinity	 63 -  14 : 37	 63 -  15 : +Infinity	 63 -  16 : +Infinity	 63 -  17 : 18	 63 -  18 : 22	 63 -  19 : +Infinity	 63 -  20 : 48	 63 -  21 : 44	 63 -  22 : +Infinity	 63 -  23 : +Infinity	 63 -  24 : +Infinity	 63 -  25 : +Infinity	 63 -  26 : 40	 63 -  27 : +Infinity	 63 -  28 : +Infinity	 63 -  29 : +Infinity	 63 -  30 : +Infinity	 63 -  31 : +Infinity	 63 -  32 : 18	 63 -  33 : +Infinity	 63 -  34 : 41	 63 -  35 : +Infinity	 63 -  36 : +Infinity	 63 -  37 : +Infinity	 63 -  38 : 37	 63 -  39 : +Infinity	 63 -  40 : +Infinity	 63 -  41 : +Infinity	 63 -  42 : +Infinity	 63 -  43 : +Infinity	 63 -  44 : +Infinity	 63 -  45 : +Infinity	 63 -  46 : +Infinity	 63 -  47 : +Infinity	 63 -  48 : 44	 63 -  49 : 56	 63 -  50 : 50	 63 -  51 : +Infinity	 63 -  52 : +Infinity	 63 -  53 : 46	 63 -  54 : 43	 63 -  55 : +Infinity	 63 -  56 : +Infinity	 63 -  57 : +Infinity	 63 -  58 : 33	 63 -  59 : 53	 63 -  60 : 15	 63 -  61 : +Infinity	 63 -  62 : +Infinity	 63 -  63 : 0	 63 -  64 : +Infinity	 63 -  65 : +Infinity	 63 -  66 : +Infinity	 63 -  67 : +Infinity	 63 -  68 : +Infinity	 63 -  69 : +Infinity	 63 -  70 : +Infinity	 63 -  71 : 38	 63 -  72 : +Infinity	 63 -  73 : +Infinity	 63 -  74 : 32	 63 -  75 : +Infinity	
+
+Shortest paths lengths from 64:
+ 64 -   1 : +Infinity	 64 -   2 : 28	 64 -   3 : 36	 64 -   4 : +Infinity	 64 -   5 : 34	 64 -   6 : 34	 64 -   7 : +Infinity	 64 -   8 : +Infinity	 64 -   9 : +Infinity	 64 -  10 : 40	 64 -  11 : 7	 64 -  12 : +Infinity	 64 -  13 : 32	 64 -  14 : +Infinity	 64 -  15 : +Infinity	 64 -  16 : +Infinity	 64 -  17 : +Infinity	 64 -  18 : +Infinity	 64 -  19 : +Infinity	 64 -  20 : +Infinity	 64 -  21 : +Infinity	 64 -  22 : 35	 64 -  23 : 52	 64 -  24 : 29	 64 -  25 : 20	 64 -  26 : +Infinity	 64 -  27 : +Infinity	 64 -  28 : +Infinity	 64 -  29 : 27	 64 -  30 : 54	 64 -  31 : 45	 64 -  32 : +Infinity	 64 -  33 : +Infinity	 64 -  34 : +Infinity	 64 -  35 : +Infinity	 64 -  36 : +Infinity	 64 -  37 : 35	 64 -  38 : +Infinity	 64 -  39 : 18	 64 -  40 : 43	 64 -  41 : +Infinity	 64 -  42 : +Infinity	 64 -  43 : +Infinity	 64 -  44 : 19	 64 -  45 : 51	 64 -  46 : +Infinity	 64 -  47 : 26	 64 -  48 : +Infinity	 64 -  49 : +Infinity	 64 -  50 : +Infinity	 64 -  51 : 25	 64 -  52 : 42	 64 -  53 : +Infinity	 64 -  54 : +Infinity	 64 -  55 : +Infinity	 64 -  56 : +Infinity	 64 -  57 : +Infinity	 64 -  58 : +Infinity	 64 -  59 : +Infinity	 64 -  60 : +Infinity	 64 -  61 : 41	 64 -  62 : 13	 64 -  63 : +Infinity	 64 -  64 : 0	 64 -  65 : +Infinity	 64 -  66 : 48	 64 -  67 : 41	 64 -  68 : +Infinity	 64 -  69 : 43	 64 -  70 : 54	 64 -  71 : +Infinity	 64 -  72 : +Infinity	 64 -  73 : +Infinity	 64 -  74 : +Infinity	 64 -  75 : +Infinity	
+
+Shortest paths lengths from 65:
+ 65 -   1 : 34	 65 -   2 : +Infinity	 65 -   3 : +Infinity	 65 -   4 : +Infinity	 65 -   5 : +Infinity	 65 -   6 : +Infinity	 65 -   7 : 13	 65 -   8 : +Infinity	 65 -   9 : 26	 65 -  10 : +Infinity	 65 -  11 : +Infinity	 65 -  12 : 36	 65 -  13 : +Infinity	 65 -  14 : +Infinity	 65 -  15 : 4	 65 -  16 : 11	 65 -  17 : +Infinity	 65 -  18 : +Infinity	 65 -  19 : 16	 65 -  20 : +Infinity	 65 -  21 : +Infinity	 65 -  22 : +Infinity	 65 -  23 : +Infinity	 65 -  24 : +Infinity	 65 -  25 : +Infinity	 65 -  26 : +Infinity	 65 -  27 : 18	 65 -  28 : 31	 65 -  29 : +Infinity	 65 -  30 : +Infinity	 65 -  31 : +Infinity	 65 -  32 : +Infinity	 65 -  33 : 23	 65 -  34 : +Infinity	 65 -  35 : 26	 65 -  36 : 26	 65 -  37 : +Infinity	 65 -  38 : +Infinity	 65 -  39 : +Infinity	 65 -  40 : +Infinity	 65 -  41 : 37	 65 -  42 : 21	 65 -  43 : 13	 65 -  44 : +Infinity	 65 -  45 : +Infinity	 65 -  46 : 21	 65 -  47 : +Infinity	 65 -  48 : +Infinity	 65 -  49 : +Infinity	 65 -  50 : +Infinity	 65 -  51 : +Infinity	 65 -  52 : +Infinity	 65 -  53 : +Infinity	 65 -  54 : +Infinity	 65 -  55 : 25	 65 -  56 : 21	 65 -  57 : 37	 65 -  58 : +Infinity	 65 -  59 : +Infinity	 65 -  60 : +Infinity	 65 -  61 : +Infinity	 65 -  62 : +Infinity	 65 -  63 : +Infinity	 65 -  64 : +Infinity	 65 -  65 : 0	 65 -  66 : +Infinity	 65 -  67 : +Infinity	 65 -  68 : 41	 65 -  69 : +Infinity	 65 -  70 : +Infinity	 65 -  71 : +Infinity	 65 -  72 : 48	 65 -  73 : 18	 65 -  74 : +Infinity	 65 -  75 : 28	
+
+Shortest paths lengths from 66:
+ 66 -   1 : +Infinity	 66 -   2 : 31	 66 -   3 : 42	 66 -   4 : +Infinity	 66 -   5 : 46	 66 -   6 : 37	 66 -   7 : +Infinity	 66 -   8 : +Infinity	 66 -   9 : +Infinity	 66 -  10 : 45	 66 -  11 : 45	 66 -  12 : +Infinity	 66 -  13 : 37	 66 -  14 : +Infinity	 66 -  15 : +Infinity	 66 -  16 : +Infinity	 66 -  17 : +Infinity	 66 -  18 : +Infinity	 66 -  19 : +Infinity	 66 -  20 : +Infinity	 66 -  21 : +Infinity	 66 -  22 : 42	 66 -  23 : 22	 66 -  24 : 39	 66 -  25 : 28	 66 -  26 : +Infinity	 66 -  27 : +Infinity	 66 -  28 : +Infinity	 66 -  29 : 32	 66 -  30 : 45	 66 -  31 : 3	 66 -  32 : +Infinity	 66 -  33 : +Infinity	 66 -  34 : +Infinity	 66 -  35 : +Infinity	 66 -  36 : +Infinity	 66 -  37 : 14	 66 -  38 : +Infinity	 66 -  39 : 30	 66 -  40 : 35	 66 -  41 : +Infinity	 66 -  42 : +Infinity	 66 -  43 : +Infinity	 66 -  44 : 40	 66 -  45 : 38	 66 -  46 : +Infinity	 66 -  47 : 42	 66 -  48 : +Infinity	 66 -  49 : +Infinity	 66 -  50 : +Infinity	 66 -  51 : 26	 66 -  52 : 7	 66 -  53 : +Infinity	 66 -  54 : +Infinity	 66 -  55 : +Infinity	 66 -  56 : +Infinity	 66 -  57 : +Infinity	 66 -  58 : +Infinity	 66 -  59 : +Infinity	 66 -  60 : +Infinity	 66 -  61 : 28	 66 -  62 : 35	 66 -  63 : +Infinity	 66 -  64 : 48	 66 -  65 : +Infinity	 66 -  66 : 0	 66 -  67 : 47	 66 -  68 : +Infinity	 66 -  69 : 17	 66 -  70 : 28	 66 -  71 : +Infinity	 66 -  72 : +Infinity	 66 -  73 : +Infinity	 66 -  74 : +Infinity	 66 -  75 : +Infinity	
+
+Shortest paths lengths from 67:
+ 67 -   1 : +Infinity	 67 -   2 : 18	 67 -   3 : 5	 67 -   4 : +Infinity	 67 -   5 : 47	 67 -   6 : 24	 67 -   7 : +Infinity	 67 -   8 : +Infinity	 67 -   9 : +Infinity	 67 -  10 : 45	 67 -  11 : 48	 67 -  12 : +Infinity	 67 -  13 : 29	 67 -  14 : +Infinity	 67 -  15 : +Infinity	 67 -  16 : +Infinity	 67 -  17 : +Infinity	 67 -  18 : +Infinity	 67 -  19 : +Infinity	 67 -  20 : +Infinity	 67 -  21 : +Infinity	 67 -  22 : 29	 67 -  23 : 53	 67 -  24 : 31	 67 -  25 : 21	 67 -  26 : +Infinity	 67 -  27 : +Infinity	 67 -  28 : +Infinity	 67 -  29 : 32	 67 -  30 : 19	 67 -  31 : 46	 67 -  32 : +Infinity	 67 -  33 : +Infinity	 67 -  34 : +Infinity	 67 -  35 : +Infinity	 67 -  36 : +Infinity	 67 -  37 : 40	 67 -  38 : +Infinity	 67 -  39 : 23	 67 -  40 : 33	 67 -  41 : +Infinity	 67 -  42 : +Infinity	 67 -  43 : +Infinity	 67 -  44 : 33	 67 -  45 : 29	 67 -  46 : +Infinity	 67 -  47 : 34	 67 -  48 : +Infinity	 67 -  49 : +Infinity	 67 -  50 : +Infinity	 67 -  51 : 26	 67 -  52 : 40	 67 -  53 : +Infinity	 67 -  54 : +Infinity	 67 -  55 : +Infinity	 67 -  56 : +Infinity	 67 -  57 : +Infinity	 67 -  58 : +Infinity	 67 -  59 : +Infinity	 67 -  60 : +Infinity	 67 -  61 : 19	 67 -  62 : 28	 67 -  63 : +Infinity	 67 -  64 : 41	 67 -  65 : +Infinity	 67 -  66 : 47	 67 -  67 : 0	 67 -  68 : +Infinity	 67 -  69 : 51	 67 -  70 : 36	 67 -  71 : +Infinity	 67 -  72 : +Infinity	 67 -  73 : +Infinity	 67 -  74 : +Infinity	 67 -  75 : +Infinity	
+
+Shortest paths lengths from 68:
+ 68 -   1 : 36	 68 -   2 : +Infinity	 68 -   3 : +Infinity	 68 -   4 : +Infinity	 68 -   5 : +Infinity	 68 -   6 : +Infinity	 68 -   7 : 28	 68 -   8 : +Infinity	 68 -   9 : 51	 68 -  10 : +Infinity	 68 -  11 : +Infinity	 68 -  12 : 19	 68 -  13 : +Infinity	 68 -  14 : +Infinity	 68 -  15 : 37	 68 -  16 : 39	 68 -  17 : +Infinity	 68 -  18 : +Infinity	 68 -  19 : 46	 68 -  20 : +Infinity	 68 -  21 : +Infinity	 68 -  22 : +Infinity	 68 -  23 : +Infinity	 68 -  24 : +Infinity	 68 -  25 : +Infinity	 68 -  26 : +Infinity	 68 -  27 : 40	 68 -  28 : 35	 68 -  29 : +Infinity	 68 -  30 : +Infinity	 68 -  31 : +Infinity	 68 -  32 : +Infinity	 68 -  33 : 32	 68 -  34 : +Infinity	 68 -  35 : 28	 68 -  36 : 36	 68 -  37 : +Infinity	 68 -  38 : +Infinity	 68 -  39 : +Infinity	 68 -  40 : +Infinity	 68 -  41 : 41	 68 -  42 : 29	 68 -  43 : 33	 68 -  44 : +Infinity	 68 -  45 : +Infinity	 68 -  46 : 41	 68 -  47 : +Infinity	 68 -  48 : +Infinity	 68 -  49 : +Infinity	 68 -  50 : +Infinity	 68 -  51 : +Infinity	 68 -  52 : +Infinity	 68 -  53 : +Infinity	 68 -  54 : +Infinity	 68 -  55 : 16	 68 -  56 : 32	 68 -  57 : 46	 68 -  58 : +Infinity	 68 -  59 : +Infinity	 68 -  60 : +Infinity	 68 -  61 : +Infinity	 68 -  62 : +Infinity	 68 -  63 : +Infinity	 68 -  64 : +Infinity	 68 -  65 : 41	 68 -  66 : +Infinity	 68 -  67 : +Infinity	 68 -  68 : 0	 68 -  69 : +Infinity	 68 -  70 : +Infinity	 68 -  71 : +Infinity	 68 -  72 : 7	 68 -  73 : 46	 68 -  74 : +Infinity	 68 -  75 : 22	
+
+Shortest paths lengths from 69:
+ 69 -   1 : +Infinity	 69 -   2 : 42	 69 -   3 : 46	 69 -   4 : +Infinity	 69 -   5 : 29	 69 -   6 : 38	 69 -   7 : +Infinity	 69 -   8 : +Infinity	 69 -   9 : +Infinity	 69 -  10 : 49	 69 -  11 : 50	 69 -  12 : +Infinity	 69 -  13 : 41	 69 -  14 : +Infinity	 69 -  15 : +Infinity	 69 -  16 : +Infinity	 69 -  17 : +Infinity	 69 -  18 : +Infinity	 69 -  19 : +Infinity	 69 -  20 : +Infinity	 69 -  21 : +Infinity	 69 -  22 : 53	 69 -  23 : 33	 69 -  24 : 45	 69 -  25 : 37	 69 -  26 : +Infinity	 69 -  27 : +Infinity	 69 -  28 : +Infinity	 69 -  29 : 36	 69 -  30 : 56	 69 -  31 : 14	 69 -  32 : +Infinity	 69 -  33 : +Infinity	 69 -  34 : +Infinity	 69 -  35 : +Infinity	 69 -  36 : +Infinity	 69 -  37 : 18	 69 -  38 : +Infinity	 69 -  39 : 35	 69 -  40 : 46	 69 -  41 : +Infinity	 69 -  42 : +Infinity	 69 -  43 : +Infinity	 69 -  44 : 48	 69 -  45 : 26	 69 -  46 : +Infinity	 69 -  47 : 47	 69 -  48 : +Infinity	 69 -  49 : +Infinity	 69 -  50 : +Infinity	 69 -  51 : 37	 69 -  52 : 11	 69 -  53 : +Infinity	 69 -  54 : +Infinity	 69 -  55 : +Infinity	 69 -  56 : +Infinity	 69 -  57 : +Infinity	 69 -  58 : +Infinity	 69 -  59 : +Infinity	 69 -  60 : +Infinity	 69 -  61 : 32	 69 -  62 : 40	 69 -  63 : +Infinity	 69 -  64 : 43	 69 -  65 : +Infinity	 69 -  66 : 17	 69 -  67 : 51	 69 -  68 : +Infinity	 69 -  69 : 0	 69 -  70 : 39	 69 -  71 : +Infinity	 69 -  72 : +Infinity	 69 -  73 : +Infinity	 69 -  74 : +Infinity	 69 -  75 : +Infinity	
+
+Shortest paths lengths from 70:
+ 70 -   1 : +Infinity	 70 -   2 : 28	 70 -   3 : 41	 70 -   4 : +Infinity	 70 -   5 : 31	 70 -   6 : 34	 70 -   7 : +Infinity	 70 -   8 : +Infinity	 70 -   9 : +Infinity	 70 -  10 : 40	 70 -  11 : 54	 70 -  12 : +Infinity	 70 -  13 : 32	 70 -  14 : +Infinity	 70 -  15 : +Infinity	 70 -  16 : +Infinity	 70 -  17 : +Infinity	 70 -  18 : +Infinity	 70 -  19 : +Infinity	 70 -  20 : +Infinity	 70 -  21 : +Infinity	 70 -  22 : 39	 70 -  23 : 44	 70 -  24 : 41	 70 -  25 : 38	 70 -  26 : +Infinity	 70 -  27 : +Infinity	 70 -  28 : +Infinity	 70 -  29 : 27	 70 -  30 : 17	 70 -  31 : 25	 70 -  32 : +Infinity	 70 -  33 : +Infinity	 70 -  34 : +Infinity	 70 -  35 : +Infinity	 70 -  36 : +Infinity	 70 -  37 : 42	 70 -  38 : +Infinity	 70 -  39 : 36	 70 -  40 : 43	 70 -  41 : +Infinity	 70 -  42 : +Infinity	 70 -  43 : +Infinity	 70 -  44 : 46	 70 -  45 : 54	 70 -  46 : +Infinity	 70 -  47 : 44	 70 -  48 : +Infinity	 70 -  49 : +Infinity	 70 -  50 : +Infinity	 70 -  51 : 43	 70 -  52 : 35	 70 -  53 : +Infinity	 70 -  54 : +Infinity	 70 -  55 : +Infinity	 70 -  56 : +Infinity	 70 -  57 : +Infinity	 70 -  58 : +Infinity	 70 -  59 : +Infinity	 70 -  60 : +Infinity	 70 -  61 : 44	 70 -  62 : 41	 70 -  63 : +Infinity	 70 -  64 : 54	 70 -  65 : +Infinity	 70 -  66 : 28	 70 -  67 : 36	 70 -  68 : +Infinity	 70 -  69 : 39	 70 -  70 : 0	 70 -  71 : +Infinity	 70 -  72 : +Infinity	 70 -  73 : +Infinity	 70 -  74 : +Infinity	 70 -  75 : +Infinity	
+
+Shortest paths lengths from 71:
+ 71 -   1 : +Infinity	 71 -   2 : +Infinity	 71 -   3 : +Infinity	 71 -   4 : 60	 71 -   5 : +Infinity	 71 -   6 : +Infinity	 71 -   7 : +Infinity	 71 -   8 : 37	 71 -   9 : +Infinity	 71 -  10 : +Infinity	 71 -  11 : +Infinity	 71 -  12 : +Infinity	 71 -  13 : +Infinity	 71 -  14 : 35	 71 -  15 : +Infinity	 71 -  16 : +Infinity	 71 -  17 : 46	 71 -  18 : 24	 71 -  19 : +Infinity	 71 -  20 : 16	 71 -  21 : 28	 71 -  22 : +Infinity	 71 -  23 : +Infinity	 71 -  24 : +Infinity	 71 -  25 : +Infinity	 71 -  26 : 12	 71 -  27 : +Infinity	 71 -  28 : +Infinity	 71 -  29 : +Infinity	 71 -  30 : +Infinity	 71 -  31 : +Infinity	 71 -  32 : 20	 71 -  33 : +Infinity	 71 -  34 : 43	 71 -  35 : +Infinity	 71 -  36 : +Infinity	 71 -  37 : +Infinity	 71 -  38 : 27	 71 -  39 : +Infinity	 71 -  40 : +Infinity	 71 -  41 : +Infinity	 71 -  42 : +Infinity	 71 -  43 : +Infinity	 71 -  44 : +Infinity	 71 -  45 : +Infinity	 71 -  46 : +Infinity	 71 -  47 : +Infinity	 71 -  48 : 44	 71 -  49 : 54	 71 -  50 : 34	 71 -  51 : +Infinity	 71 -  52 : +Infinity	 71 -  53 : 45	 71 -  54 : 71	 71 -  55 : +Infinity	 71 -  56 : +Infinity	 71 -  57 : +Infinity	 71 -  58 : 49	 71 -  59 : 53	 71 -  60 : 53	 71 -  61 : +Infinity	 71 -  62 : +Infinity	 71 -  63 : 38	 71 -  64 : +Infinity	 71 -  65 : +Infinity	 71 -  66 : +Infinity	 71 -  67 : +Infinity	 71 -  68 : +Infinity	 71 -  69 : +Infinity	 71 -  70 : +Infinity	 71 -  71 : 0	 71 -  72 : +Infinity	 71 -  73 : +Infinity	 71 -  74 : 32	 71 -  75 : +Infinity	
+
+Shortest paths lengths from 72:
+ 72 -   1 : 43	 72 -   2 : +Infinity	 72 -   3 : +Infinity	 72 -   4 : +Infinity	 72 -   5 : +Infinity	 72 -   6 : +Infinity	 72 -   7 : 35	 72 -   8 : +Infinity	 72 -   9 : 58	 72 -  10 : +Infinity	 72 -  11 : +Infinity	 72 -  12 : 26	 72 -  13 : +Infinity	 72 -  14 : +Infinity	 72 -  15 : 44	 72 -  16 : 46	 72 -  17 : +Infinity	 72 -  18 : +Infinity	 72 -  19 : 44	 72 -  20 : +Infinity	 72 -  21 : +Infinity	 72 -  22 : +Infinity	 72 -  23 : +Infinity	 72 -  24 : +Infinity	 72 -  25 : +Infinity	 72 -  26 : +Infinity	 72 -  27 : 47	 72 -  28 : 42	 72 -  29 : +Infinity	 72 -  30 : +Infinity	 72 -  31 : +Infinity	 72 -  32 : +Infinity	 72 -  33 : 39	 72 -  34 : +Infinity	 72 -  35 : 35	 72 -  36 : 43	 72 -  37 : +Infinity	 72 -  38 : +Infinity	 72 -  39 : +Infinity	 72 -  40 : +Infinity	 72 -  41 : 48	 72 -  42 : 36	 72 -  43 : 40	 72 -  44 : +Infinity	 72 -  45 : +Infinity	 72 -  46 : 48	 72 -  47 : +Infinity	 72 -  48 : +Infinity	 72 -  49 : +Infinity	 72 -  50 : +Infinity	 72 -  51 : +Infinity	 72 -  52 : +Infinity	 72 -  53 : +Infinity	 72 -  54 : +Infinity	 72 -  55 : 23	 72 -  56 : 39	 72 -  57 : 53	 72 -  58 : +Infinity	 72 -  59 : +Infinity	 72 -  60 : +Infinity	 72 -  61 : +Infinity	 72 -  62 : +Infinity	 72 -  63 : +Infinity	 72 -  64 : +Infinity	 72 -  65 : 48	 72 -  66 : +Infinity	 72 -  67 : +Infinity	 72 -  68 : 7	 72 -  69 : +Infinity	 72 -  70 : +Infinity	 72 -  71 : +Infinity	 72 -  72 : 0	 72 -  73 : 53	 72 -  74 : +Infinity	 72 -  75 : 29	
+
+Shortest paths lengths from 73:
+ 73 -   1 : 38	 73 -   2 : +Infinity	 73 -   3 : +Infinity	 73 -   4 : +Infinity	 73 -   5 : +Infinity	 73 -   6 : +Infinity	 73 -   7 : 23	 73 -   8 : +Infinity	 73 -   9 : 36	 73 -  10 : +Infinity	 73 -  11 : +Infinity	 73 -  12 : 45	 73 -  13 : +Infinity	 73 -  14 : +Infinity	 73 -  15 : 14	 73 -  16 : 7	 73 -  17 : +Infinity	 73 -  18 : +Infinity	 73 -  19 : 31	 73 -  20 : +Infinity	 73 -  21 : +Infinity	 73 -  22 : +Infinity	 73 -  23 : +Infinity	 73 -  24 : +Infinity	 73 -  25 : +Infinity	 73 -  26 : +Infinity	 73 -  27 : 31	 73 -  28 : 41	 73 -  29 : +Infinity	 73 -  30 : +Infinity	 73 -  31 : +Infinity	 73 -  32 : +Infinity	 73 -  33 : 19	 73 -  34 : +Infinity	 73 -  35 : 30	 73 -  36 : 24	 73 -  37 : +Infinity	 73 -  38 : +Infinity	 73 -  39 : +Infinity	 73 -  40 : +Infinity	 73 -  41 : 33	 73 -  42 : 17	 73 -  43 : 26	 73 -  44 : +Infinity	 73 -  45 : +Infinity	 73 -  46 : 26	 73 -  47 : +Infinity	 73 -  48 : +Infinity	 73 -  49 : +Infinity	 73 -  50 : +Infinity	 73 -  51 : +Infinity	 73 -  52 : +Infinity	 73 -  53 : +Infinity	 73 -  54 : +Infinity	 73 -  55 : 30	 73 -  56 : 23	 73 -  57 : 27	 73 -  58 : +Infinity	 73 -  59 : +Infinity	 73 -  60 : +Infinity	 73 -  61 : +Infinity	 73 -  62 : +Infinity	 73 -  63 : +Infinity	 73 -  64 : +Infinity	 73 -  65 : 18	 73 -  66 : +Infinity	 73 -  67 : +Infinity	 73 -  68 : 46	 73 -  69 : +Infinity	 73 -  70 : +Infinity	 73 -  71 : +Infinity	 73 -  72 : 53	 73 -  73 : 0	 73 -  74 : +Infinity	 73 -  75 : 24	
+
+Shortest paths lengths from 74:
+ 74 -   1 : +Infinity	 74 -   2 : +Infinity	 74 -   3 : +Infinity	 74 -   4 : 38	 74 -   5 : +Infinity	 74 -   6 : +Infinity	 74 -   7 : +Infinity	 74 -   8 : 61	 74 -   9 : +Infinity	 74 -  10 : +Infinity	 74 -  11 : +Infinity	 74 -  12 : +Infinity	 74 -  13 : +Infinity	 74 -  14 : 54	 74 -  15 : +Infinity	 74 -  16 : +Infinity	 74 -  17 : 14	 74 -  18 : 52	 74 -  19 : +Infinity	 74 -  20 : 44	 74 -  21 : 47	 74 -  22 : +Infinity	 74 -  23 : +Infinity	 74 -  24 : +Infinity	 74 -  25 : +Infinity	 74 -  26 : 36	 74 -  27 : +Infinity	 74 -  28 : +Infinity	 74 -  29 : +Infinity	 74 -  30 : +Infinity	 74 -  31 : +Infinity	 74 -  32 : 50	 74 -  33 : +Infinity	 74 -  34 : 44	 74 -  35 : +Infinity	 74 -  36 : +Infinity	 74 -  37 : +Infinity	 74 -  38 : 33	 74 -  39 : +Infinity	 74 -  40 : +Infinity	 74 -  41 : +Infinity	 74 -  42 : +Infinity	 74 -  43 : +Infinity	 74 -  44 : +Infinity	 74 -  45 : +Infinity	 74 -  46 : +Infinity	 74 -  47 : +Infinity	 74 -  48 : 12	 74 -  49 : 73	 74 -  50 : 41	 74 -  51 : +Infinity	 74 -  52 : +Infinity	 74 -  53 : 30	 74 -  54 : 39	 74 -  55 : +Infinity	 74 -  56 : +Infinity	 74 -  57 : +Infinity	 74 -  58 : 17	 74 -  59 : 21	 74 -  60 : 23	 74 -  61 : +Infinity	 74 -  62 : +Infinity	 74 -  63 : 32	 74 -  64 : +Infinity	 74 -  65 : +Infinity	 74 -  66 : +Infinity	 74 -  67 : +Infinity	 74 -  68 : +Infinity	 74 -  69 : +Infinity	 74 -  70 : +Infinity	 74 -  71 : 32	 74 -  72 : +Infinity	 74 -  73 : +Infinity	 74 -  74 : 0	 74 -  75 : +Infinity	
+
+Shortest paths lengths from 75:
+ 75 -   1 : 14	 75 -   2 : +Infinity	 75 -   3 : +Infinity	 75 -   4 : +Infinity	 75 -   5 : +Infinity	 75 -   6 : +Infinity	 75 -   7 : 31	 75 -   8 : +Infinity	 75 -   9 : 29	 75 -  10 : +Infinity	 75 -  11 : +Infinity	 75 -  12 : 32	 75 -  13 : +Infinity	 75 -  14 : +Infinity	 75 -  15 : 24	 75 -  16 : 17	 75 -  17 : +Infinity	 75 -  18 : +Infinity	 75 -  19 : 24	 75 -  20 : +Infinity	 75 -  21 : +Infinity	 75 -  22 : +Infinity	 75 -  23 : +Infinity	 75 -  24 : +Infinity	 75 -  25 : +Infinity	 75 -  26 : +Infinity	 75 -  27 : 18	 75 -  28 : 37	 75 -  29 : +Infinity	 75 -  30 : +Infinity	 75 -  31 : +Infinity	 75 -  32 : +Infinity	 75 -  33 : 10	 75 -  34 : +Infinity	 75 -  35 : 6	 75 -  36 : 14	 75 -  37 : +Infinity	 75 -  38 : +Infinity	 75 -  39 : +Infinity	 75 -  40 : +Infinity	 75 -  41 : 31	 75 -  42 : 7	 75 -  43 : 19	 75 -  44 : +Infinity	 75 -  45 : +Infinity	 75 -  46 : 19	 75 -  47 : +Infinity	 75 -  48 : +Infinity	 75 -  49 : +Infinity	 75 -  50 : +Infinity	 75 -  51 : +Infinity	 75 -  52 : +Infinity	 75 -  53 : +Infinity	 75 -  54 : +Infinity	 75 -  55 : 6	 75 -  56 : 10	 75 -  57 : 24	 75 -  58 : +Infinity	 75 -  59 : +Infinity	 75 -  60 : +Infinity	 75 -  61 : +Infinity	 75 -  62 : +Infinity	 75 -  63 : +Infinity	 75 -  64 : +Infinity	 75 -  65 : 28	 75 -  66 : +Infinity	 75 -  67 : +Infinity	 75 -  68 : 22	 75 -  69 : +Infinity	 75 -  70 : +Infinity	 75 -  71 : +Infinity	 75 -  72 : 29	 75 -  73 : 24	 75 -  74 : +Infinity	 75 -  75 : 0	
+
+Path from 1 to 7:
+1-35-75-42-7
+Path from 1 to 9:
+1-35-36-9
+Path from 1 to 12:
+1-35-43-12
+Path from 1 to 15:
+1-35-75-42-16-15
+Path from 1 to 16:
+1-35-75-42-16
+Path from 1 to 19:
+1-35-19
+Path from 1 to 27:
+1-35-75-56-27
+Path from 1 to 28:
+1-35-43-28
+Path from 1 to 33:
+1-35-75-42-33
+Path from 1 to 35:
+1-35
+Path from 1 to 36:
+1-35-36
+Path from 1 to 41:
+1-35-41
+Path from 1 to 42:
+1-35-75-42
+Path from 1 to 43:
+1-35-43
+Path from 1 to 46:
+1-35-75-56-46
+Path from 1 to 55:
+1-35-75-55
+Path from 1 to 56:
+1-35-75-56
+Path from 1 to 57:
+1-35-75-42-33-57
+Path from 1 to 65:
+1-35-43-65
+Path from 1 to 68:
+1-35-75-55-68
+Path from 1 to 72:
+1-35-75-55-68-72
+Path from 1 to 73:
+1-35-75-42-16-73
+Path from 1 to 75:
+1-35-75
+
+
+Path from 2 to 3:
+2-67-3
+Path from 2 to 5:
+2-39-29-5
+Path from 2 to 6:
+2-6
+Path from 2 to 10:
+2-39-29-10
+Path from 2 to 11:
+2-6-24-47-11
+Path from 2 to 13:
+2-39-29-13
+Path from 2 to 22:
+2-22
+Path from 2 to 23:
+2-51-23
+Path from 2 to 24:
+2-6-24
+Path from 2 to 25:
+2-39-25
+Path from 2 to 29:
+2-39-29
+Path from 2 to 30:
+2-22-30
+Path from 2 to 31:
+2-31
+Path from 2 to 37:
+2-39-37
+Path from 2 to 39:
+2-39
+Path from 2 to 40:
+2-6-40
+Path from 2 to 44:
+2-44
+Path from 2 to 45:
+2-6-24-47-61-45
+Path from 2 to 47:
+2-6-24-47
+Path from 2 to 51:
+2-51
+Path from 2 to 52:
+2-39-37-52
+Path from 2 to 61:
+2-6-24-47-61
+Path from 2 to 62:
+2-39-62
+Path from 2 to 64:
+2-39-62-64
+Path from 2 to 66:
+2-31-66
+Path from 2 to 67:
+2-67
+Path from 2 to 69:
+2-31-69
+Path from 2 to 70:
+2-70
+
+
+Path from 3 to 2:
+3-67-2
+Path from 3 to 5:
+3-25-39-29-5
+Path from 3 to 6:
+3-67-2-6
+Path from 3 to 10:
+3-25-39-29-10
+Path from 3 to 11:
+3-25-39-62-64-11
+Path from 3 to 13:
+3-61-13
+Path from 3 to 22:
+3-67-2-22
+Path from 3 to 23:
+3-25-51-23
+Path from 3 to 24:
+3-61-47-24
+Path from 3 to 25:
+3-25
+Path from 3 to 29:
+3-25-39-29
+Path from 3 to 30:
+3-67-30
+Path from 3 to 31:
+3-25-31
+Path from 3 to 37:
+3-25-39-37
+Path from 3 to 39:
+3-25-39
+Path from 3 to 40:
+3-67-2-6-40
+Path from 3 to 44:
+3-25-44
+Path from 3 to 45:
+3-61-45
+Path from 3 to 47:
+3-61-47
+Path from 3 to 51:
+3-25-51
+Path from 3 to 52:
+3-61-52
+Path from 3 to 61:
+3-61
+Path from 3 to 62:
+3-25-39-62
+Path from 3 to 64:
+3-25-39-62-64
+Path from 3 to 66:
+3-61-52-66
+Path from 3 to 67:
+3-67
+Path from 3 to 69:
+3-61-52-69
+Path from 3 to 70:
+3-67-30-70
+
+
+Path from 4 to 8:
+4-8
+Path from 4 to 14:
+4-14
+Path from 4 to 17:
+4-58-60-17
+Path from 4 to 18:
+4-14-18
+Path from 4 to 20:
+4-14-21-20
+Path from 4 to 21:
+4-14-21
+Path from 4 to 26:
+4-8-26
+Path from 4 to 32:
+4-14-18-32
+Path from 4 to 34:
+4-34
+Path from 4 to 38:
+4-14-21-20-38
+Path from 4 to 48:
+4-58-48
+Path from 4 to 49:
+4-14-49
+Path from 4 to 50:
+4-14-50
+Path from 4 to 53:
+4-58-53
+Path from 4 to 54:
+4-58-60-17-54
+Path from 4 to 58:
+4-58
+Path from 4 to 59:
+4-58-53-59
+Path from 4 to 60:
+4-58-60
+Path from 4 to 63:
+4-63
+Path from 4 to 71:
+4-8-26-71
+Path from 4 to 74:
+4-58-74
+
+
+Path from 5 to 2:
+5-29-39-2
+Path from 5 to 3:
+5-29-39-25-3
+Path from 5 to 6:
+5-29-39-2-6
+Path from 5 to 10:
+5-10
+Path from 5 to 11:
+5-62-64-11
+Path from 5 to 13:
+5-29-13
+Path from 5 to 22:
+5-62-22
+Path from 5 to 23:
+5-29-39-25-51-23
+Path from 5 to 24:
+5-24
+Path from 5 to 25:
+5-29-39-25
+Path from 5 to 29:
+5-29
+Path from 5 to 30:
+5-29-30
+Path from 5 to 31:
+5-69-31
+Path from 5 to 37:
+5-29-39-37
+Path from 5 to 39:
+5-29-39
+Path from 5 to 40:
+5-29-39-2-6-40
+Path from 5 to 44:
+5-29-44
+Path from 5 to 45:
+5-29-13-61-45
+Path from 5 to 47:
+5-24-47
+Path from 5 to 51:
+5-29-39-25-51
+Path from 5 to 52:
+5-29-52
+Path from 5 to 61:
+5-29-13-61
+Path from 5 to 62:
+5-62
+Path from 5 to 64:
+5-62-64
+Path from 5 to 66:
+5-69-31-66
+Path from 5 to 67:
+5-29-39-25-3-67
+Path from 5 to 69:
+5-69
+Path from 5 to 70:
+5-70
+
+
+Path from 6 to 2:
+6-2
+Path from 6 to 3:
+6-2-67-3
+Path from 6 to 5:
+6-2-39-29-5
+Path from 6 to 10:
+6-2-39-29-10
+Path from 6 to 11:
+6-24-47-11
+Path from 6 to 13:
+6-2-39-29-13
+Path from 6 to 22:
+6-2-22
+Path from 6 to 23:
+6-23
+Path from 6 to 24:
+6-24
+Path from 6 to 25:
+6-2-39-25
+Path from 6 to 29:
+6-2-39-29
+Path from 6 to 30:
+6-2-22-30
+Path from 6 to 31:
+6-2-31
+Path from 6 to 37:
+6-37
+Path from 6 to 39:
+6-2-39
+Path from 6 to 40:
+6-40
+Path from 6 to 44:
+6-2-44
+Path from 6 to 45:
+6-24-47-61-45
+Path from 6 to 47:
+6-24-47
+Path from 6 to 51:
+6-2-51
+Path from 6 to 52:
+6-37-52
+Path from 6 to 61:
+6-24-47-61
+Path from 6 to 62:
+6-2-39-62
+Path from 6 to 64:
+6-2-39-62-64
+Path from 6 to 66:
+6-2-31-66
+Path from 6 to 67:
+6-2-67
+Path from 6 to 69:
+6-69
+Path from 6 to 70:
+6-2-70
+
+
+Path from 7 to 1:
+7-42-75-35-1
+Path from 7 to 9:
+7-15-9
+Path from 7 to 12:
+7-28-12
+Path from 7 to 15:
+7-15
+Path from 7 to 16:
+7-15-16
+Path from 7 to 19:
+7-15-65-19
+Path from 7 to 27:
+7-15-65-27
+Path from 7 to 28:
+7-28
+Path from 7 to 33:
+7-33
+Path from 7 to 35:
+7-42-75-35
+Path from 7 to 36:
+7-42-36
+Path from 7 to 41:
+7-41
+Path from 7 to 42:
+7-42
+Path from 7 to 43:
+7-15-65-43
+Path from 7 to 46:
+7-33-56-46
+Path from 7 to 55:
+7-15-55
+Path from 7 to 56:
+7-33-56
+Path from 7 to 57:
+7-33-57
+Path from 7 to 65:
+7-15-65
+Path from 7 to 68:
+7-68
+Path from 7 to 72:
+7-68-72
+Path from 7 to 73:
+7-15-16-73
+Path from 7 to 75:
+7-42-75
+
+
+Path from 8 to 4:
+8-4
+Path from 8 to 14:
+8-4-14
+Path from 8 to 17:
+8-60-17
+Path from 8 to 18:
+8-26-32-18
+Path from 8 to 20:
+8-26-71-20
+Path from 8 to 21:
+8-4-14-21
+Path from 8 to 26:
+8-26
+Path from 8 to 32:
+8-26-32
+Path from 8 to 34:
+8-34
+Path from 8 to 38:
+8-26-38
+Path from 8 to 48:
+8-4-58-48
+Path from 8 to 49:
+8-4-14-49
+Path from 8 to 50:
+8-26-50
+Path from 8 to 53:
+8-4-58-53
+Path from 8 to 54:
+8-60-17-54
+Path from 8 to 58:
+8-4-58
+Path from 8 to 59:
+8-4-58-53-59
+Path from 8 to 60:
+8-60
+Path from 8 to 63:
+8-60-63
+Path from 8 to 71:
+8-26-71
+Path from 8 to 74:
+8-26-74
+
+
+Path from 9 to 1:
+9-36-35-1
+Path from 9 to 7:
+9-15-7
+Path from 9 to 12:
+9-33-56-12
+Path from 9 to 15:
+9-15
+Path from 9 to 16:
+9-15-16
+Path from 9 to 19:
+9-33-19
+Path from 9 to 27:
+9-33-56-27
+Path from 9 to 28:
+9-36-43-28
+Path from 9 to 33:
+9-33
+Path from 9 to 35:
+9-36-35
+Path from 9 to 36:
+9-36
+Path from 9 to 41:
+9-36-35-41
+Path from 9 to 42:
+9-42
+Path from 9 to 43:
+9-36-43
+Path from 9 to 46:
+9-33-56-46
+Path from 9 to 55:
+9-42-75-55
+Path from 9 to 56:
+9-33-56
+Path from 9 to 57:
+9-33-57
+Path from 9 to 65:
+9-15-65
+Path from 9 to 68:
+9-42-75-55-68
+Path from 9 to 72:
+9-42-75-55-68-72
+Path from 9 to 73:
+9-15-16-73
+Path from 9 to 75:
+9-42-75
+
+
+Path from 10 to 2:
+10-29-39-2
+Path from 10 to 3:
+10-29-39-25-3
+Path from 10 to 5:
+10-5
+Path from 10 to 6:
+10-29-39-2-6
+Path from 10 to 11:
+10-29-11
+Path from 10 to 13:
+10-29-13
+Path from 10 to 22:
+10-29-39-2-22
+Path from 10 to 23:
+10-29-39-25-51-23
+Path from 10 to 24:
+10-29-24
+Path from 10 to 25:
+10-29-39-25
+Path from 10 to 29:
+10-29
+Path from 10 to 30:
+10-29-30
+Path from 10 to 31:
+10-29-52-66-31
+Path from 10 to 37:
+10-29-39-37
+Path from 10 to 39:
+10-29-39
+Path from 10 to 40:
+10-29-39-2-6-40
+Path from 10 to 44:
+10-29-44
+Path from 10 to 45:
+10-29-13-61-45
+Path from 10 to 47:
+10-29-24-47
+Path from 10 to 51:
+10-29-39-25-51
+Path from 10 to 52:
+10-29-52
+Path from 10 to 61:
+10-29-13-61
+Path from 10 to 62:
+10-29-39-62
+Path from 10 to 64:
+10-29-39-62-64
+Path from 10 to 66:
+10-29-52-66
+Path from 10 to 67:
+10-29-39-25-3-67
+Path from 10 to 69:
+10-29-52-69
+Path from 10 to 70:
+10-29-70
+
+
+Path from 11 to 2:
+11-64-62-39-2
+Path from 11 to 3:
+11-64-62-39-25-3
+Path from 11 to 5:
+11-64-62-5
+Path from 11 to 6:
+11-47-24-6
+Path from 11 to 10:
+11-29-10
+Path from 11 to 13:
+11-29-13
+Path from 11 to 22:
+11-64-62-22
+Path from 11 to 23:
+11-64-62-39-25-51-23
+Path from 11 to 24:
+11-47-24
+Path from 11 to 25:
+11-64-62-39-25
+Path from 11 to 29:
+11-29
+Path from 11 to 30:
+11-29-30
+Path from 11 to 31:
+11-31
+Path from 11 to 37:
+11-64-62-39-37
+Path from 11 to 39:
+11-64-62-39
+Path from 11 to 40:
+11-47-24-6-40
+Path from 11 to 44:
+11-64-44
+Path from 11 to 45:
+11-47-61-45
+Path from 11 to 47:
+11-47
+Path from 11 to 51:
+11-64-62-39-25-51
+Path from 11 to 52:
+11-64-62-39-37-52
+Path from 11 to 61:
+11-47-61
+Path from 11 to 62:
+11-64-62
+Path from 11 to 64:
+11-64
+Path from 11 to 66:
+11-31-66
+Path from 11 to 67:
+11-64-62-39-25-3-67
+Path from 11 to 69:
+11-64-69
+Path from 11 to 70:
+11-29-70
+
+
+Path from 12 to 1:
+12-43-35-1
+Path from 12 to 7:
+12-28-7
+Path from 12 to 9:
+12-56-33-9
+Path from 12 to 15:
+12-56-15
+Path from 12 to 16:
+12-56-33-16
+Path from 12 to 19:
+12-56-46-19
+Path from 12 to 27:
+12-56-27
+Path from 12 to 28:
+12-28
+Path from 12 to 33:
+12-56-33
+Path from 12 to 35:
+12-43-35
+Path from 12 to 36:
+12-43-36
+Path from 12 to 41:
+12-68-55-41
+Path from 12 to 42:
+12-56-33-42
+Path from 12 to 43:
+12-43
+Path from 12 to 46:
+12-56-46
+Path from 12 to 55:
+12-68-55
+Path from 12 to 56:
+12-56
+Path from 12 to 57:
+12-56-33-57
+Path from 12 to 65:
+12-43-65
+Path from 12 to 68:
+12-68
+Path from 12 to 72:
+12-68-72
+Path from 12 to 73:
+12-56-33-16-73
+Path from 12 to 75:
+12-56-75
+
+
+Path from 13 to 2:
+13-29-39-2
+Path from 13 to 3:
+13-61-3
+Path from 13 to 5:
+13-29-5
+Path from 13 to 6:
+13-29-39-2-6
+Path from 13 to 10:
+13-29-10
+Path from 13 to 11:
+13-29-11
+Path from 13 to 22:
+13-29-39-2-22
+Path from 13 to 23:
+13-23
+Path from 13 to 24:
+13-29-24
+Path from 13 to 25:
+13-29-39-25
+Path from 13 to 29:
+13-29
+Path from 13 to 30:
+13-29-30
+Path from 13 to 31:
+13-29-52-66-31
+Path from 13 to 37:
+13-29-39-37
+Path from 13 to 39:
+13-29-39
+Path from 13 to 40:
+13-29-39-2-6-40
+Path from 13 to 44:
+13-29-44
+Path from 13 to 45:
+13-61-45
+Path from 13 to 47:
+13-61-47
+Path from 13 to 51:
+13-29-39-25-51
+Path from 13 to 52:
+13-29-52
+Path from 13 to 61:
+13-61
+Path from 13 to 62:
+13-29-39-62
+Path from 13 to 64:
+13-29-39-62-64
+Path from 13 to 66:
+13-29-52-66
+Path from 13 to 67:
+13-67
+Path from 13 to 69:
+13-29-52-69
+Path from 13 to 70:
+13-29-70
+
+
+Path from 14 to 4:
+14-4
+Path from 14 to 8:
+14-4-8
+Path from 14 to 17:
+14-21-20-38-17
+Path from 14 to 18:
+14-18
+Path from 14 to 20:
+14-21-20
+Path from 14 to 21:
+14-21
+Path from 14 to 26:
+14-18-32-26
+Path from 14 to 32:
+14-18-32
+Path from 14 to 34:
+14-34
+Path from 14 to 38:
+14-21-20-38
+Path from 14 to 48:
+14-50-53-59-48
+Path from 14 to 49:
+14-49
+Path from 14 to 50:
+14-50
+Path from 14 to 53:
+14-50-53
+Path from 14 to 54:
+14-21-54
+Path from 14 to 58:
+14-50-53-58
+Path from 14 to 59:
+14-50-53-59
+Path from 14 to 60:
+14-18-32-63-60
+Path from 14 to 63:
+14-18-32-63
+Path from 14 to 71:
+14-21-20-71
+Path from 14 to 74:
+14-50-53-58-74
+
+
+Path from 15 to 1:
+15-65-43-35-1
+Path from 15 to 7:
+15-7
+Path from 15 to 9:
+15-9
+Path from 15 to 12:
+15-56-12
+Path from 15 to 16:
+15-16
+Path from 15 to 19:
+15-65-19
+Path from 15 to 27:
+15-65-27
+Path from 15 to 28:
+15-7-28
+Path from 15 to 33:
+15-16-33
+Path from 15 to 35:
+15-65-43-35
+Path from 15 to 36:
+15-16-42-36
+Path from 15 to 41:
+15-16-41
+Path from 15 to 42:
+15-16-42
+Path from 15 to 43:
+15-65-43
+Path from 15 to 46:
+15-65-19-46
+Path from 15 to 55:
+15-55
+Path from 15 to 56:
+15-56
+Path from 15 to 57:
+15-16-33-57
+Path from 15 to 65:
+15-65
+Path from 15 to 68:
+15-7-68
+Path from 15 to 72:
+15-7-68-72
+Path from 15 to 73:
+15-16-73
+Path from 15 to 75:
+15-16-42-75
+
+
+Path from 16 to 1:
+16-42-75-35-1
+Path from 16 to 7:
+16-15-7
+Path from 16 to 9:
+16-15-9
+Path from 16 to 12:
+16-33-56-12
+Path from 16 to 15:
+16-15
+Path from 16 to 19:
+16-15-65-19
+Path from 16 to 27:
+16-33-56-27
+Path from 16 to 28:
+16-15-7-28
+Path from 16 to 33:
+16-33
+Path from 16 to 35:
+16-42-75-35
+Path from 16 to 36:
+16-42-36
+Path from 16 to 41:
+16-41
+Path from 16 to 42:
+16-42
+Path from 16 to 43:
+16-43
+Path from 16 to 46:
+16-33-56-46
+Path from 16 to 55:
+16-42-75-55
+Path from 16 to 56:
+16-33-56
+Path from 16 to 57:
+16-33-57
+Path from 16 to 65:
+16-15-65
+Path from 16 to 68:
+16-42-75-55-68
+Path from 16 to 72:
+16-42-75-55-68-72
+Path from 16 to 73:
+16-73
+Path from 16 to 75:
+16-42-75
+
+
+Path from 17 to 4:
+17-60-58-4
+Path from 17 to 8:
+17-60-8
+Path from 17 to 14:
+17-38-20-21-14
+Path from 17 to 18:
+17-63-32-18
+Path from 17 to 20:
+17-38-20
+Path from 17 to 21:
+17-38-20-21
+Path from 17 to 26:
+17-38-26
+Path from 17 to 32:
+17-63-32
+Path from 17 to 34:
+17-60-58-34
+Path from 17 to 38:
+17-38
+Path from 17 to 48:
+17-74-48
+Path from 17 to 49:
+17-38-20-21-14-49
+Path from 17 to 50:
+17-53-50
+Path from 17 to 53:
+17-53
+Path from 17 to 54:
+17-54
+Path from 17 to 58:
+17-60-58
+Path from 17 to 59:
+17-74-48-59
+Path from 17 to 60:
+17-60
+Path from 17 to 63:
+17-63
+Path from 17 to 71:
+17-74-71
+Path from 17 to 74:
+17-74
+
+
+Path from 18 to 4:
+18-14-4
+Path from 18 to 8:
+18-32-26-8
+Path from 18 to 14:
+18-14
+Path from 18 to 17:
+18-32-63-17
+Path from 18 to 20:
+18-14-21-20
+Path from 18 to 21:
+18-14-21
+Path from 18 to 26:
+18-32-26
+Path from 18 to 32:
+18-32
+Path from 18 to 34:
+18-32-34
+Path from 18 to 38:
+18-14-21-20-38
+Path from 18 to 48:
+18-59-48
+Path from 18 to 49:
+18-14-49
+Path from 18 to 50:
+18-14-50
+Path from 18 to 53:
+18-14-50-53
+Path from 18 to 54:
+18-32-63-17-54
+Path from 18 to 58:
+18-58
+Path from 18 to 59:
+18-59
+Path from 18 to 60:
+18-32-63-60
+Path from 18 to 63:
+18-32-63
+Path from 18 to 71:
+18-32-71
+Path from 18 to 74:
+18-58-74
+
+
+Path from 19 to 1:
+19-35-1
+Path from 19 to 7:
+19-65-15-7
+Path from 19 to 9:
+19-33-9
+Path from 19 to 12:
+19-46-56-12
+Path from 19 to 15:
+19-65-15
+Path from 19 to 16:
+19-65-15-16
+Path from 19 to 27:
+19-46-56-27
+Path from 19 to 28:
+19-65-15-7-28
+Path from 19 to 33:
+19-33
+Path from 19 to 35:
+19-35
+Path from 19 to 36:
+19-33-42-36
+Path from 19 to 41:
+19-35-41
+Path from 19 to 42:
+19-33-42
+Path from 19 to 43:
+19-65-43
+Path from 19 to 46:
+19-46
+Path from 19 to 55:
+19-46-56-75-55
+Path from 19 to 56:
+19-46-56
+Path from 19 to 57:
+19-33-57
+Path from 19 to 65:
+19-65
+Path from 19 to 68:
+19-46-56-75-55-68
+Path from 19 to 72:
+19-72
+Path from 19 to 73:
+19-46-73
+Path from 19 to 75:
+19-46-56-75
+
+
+Path from 20 to 4:
+20-21-14-4
+Path from 20 to 8:
+20-71-26-8
+Path from 20 to 14:
+20-21-14
+Path from 20 to 17:
+20-38-17
+Path from 20 to 18:
+20-21-14-18
+Path from 20 to 21:
+20-21
+Path from 20 to 26:
+20-71-26
+Path from 20 to 32:
+20-71-32
+Path from 20 to 34:
+20-21-14-34
+Path from 20 to 38:
+20-38
+Path from 20 to 48:
+20-38-48
+Path from 20 to 49:
+20-21-14-49
+Path from 20 to 50:
+20-21-50
+Path from 20 to 53:
+20-21-50-53
+Path from 20 to 54:
+20-38-17-54
+Path from 20 to 58:
+20-21-50-53-58
+Path from 20 to 59:
+20-21-50-53-59
+Path from 20 to 60:
+20-38-17-60
+Path from 20 to 63:
+20-38-17-63
+Path from 20 to 71:
+20-71
+Path from 20 to 74:
+20-38-17-74
+
+
+Path from 21 to 4:
+21-14-4
+Path from 21 to 8:
+21-14-4-8
+Path from 21 to 14:
+21-14
+Path from 21 to 17:
+21-20-38-17
+Path from 21 to 18:
+21-14-18
+Path from 21 to 20:
+21-20
+Path from 21 to 26:
+21-50-26
+Path from 21 to 32:
+21-14-18-32
+Path from 21 to 34:
+21-14-34
+Path from 21 to 38:
+21-20-38
+Path from 21 to 48:
+21-50-53-59-48
+Path from 21 to 49:
+21-14-49
+Path from 21 to 50:
+21-50
+Path from 21 to 53:
+21-50-53
+Path from 21 to 54:
+21-54
+Path from 21 to 58:
+21-50-53-58
+Path from 21 to 59:
+21-50-53-59
+Path from 21 to 60:
+21-50-53-58-60
+Path from 21 to 63:
+21-14-18-32-63
+Path from 21 to 71:
+21-20-71
+Path from 21 to 74:
+21-50-53-58-74
+
+
+Path from 22 to 2:
+22-2
+Path from 22 to 3:
+22-2-67-3
+Path from 22 to 5:
+22-62-5
+Path from 22 to 6:
+22-2-6
+Path from 22 to 10:
+22-2-39-29-10
+Path from 22 to 11:
+22-62-64-11
+Path from 22 to 13:
+22-2-39-29-13
+Path from 22 to 23:
+22-2-51-23
+Path from 22 to 24:
+22-2-6-24
+Path from 22 to 25:
+22-2-39-25
+Path from 22 to 29:
+22-2-39-29
+Path from 22 to 30:
+22-30
+Path from 22 to 31:
+22-2-31
+Path from 22 to 37:
+22-2-39-37
+Path from 22 to 39:
+22-2-39
+Path from 22 to 40:
+22-2-6-40
+Path from 22 to 44:
+22-2-44
+Path from 22 to 45:
+22-2-6-24-47-61-45
+Path from 22 to 47:
+22-2-6-24-47
+Path from 22 to 51:
+22-2-51
+Path from 22 to 52:
+22-2-39-37-52
+Path from 22 to 61:
+22-2-6-24-47-61
+Path from 22 to 62:
+22-62
+Path from 22 to 64:
+22-62-64
+Path from 22 to 66:
+22-2-31-66
+Path from 22 to 67:
+22-2-67
+Path from 22 to 69:
+22-2-31-69
+Path from 22 to 70:
+22-2-70
+
+
+Path from 23 to 2:
+23-51-2
+Path from 23 to 3:
+23-51-25-3
+Path from 23 to 5:
+23-51-25-39-29-5
+Path from 23 to 6:
+23-6
+Path from 23 to 10:
+23-51-25-39-29-10
+Path from 23 to 11:
+23-51-25-39-62-64-11
+Path from 23 to 13:
+23-13
+Path from 23 to 22:
+23-51-2-22
+Path from 23 to 24:
+23-6-24
+Path from 23 to 25:
+23-51-25
+Path from 23 to 29:
+23-51-25-39-29
+Path from 23 to 30:
+23-31-70-30
+Path from 23 to 31:
+23-31
+Path from 23 to 37:
+23-31-66-52-37
+Path from 23 to 39:
+23-51-25-39
+Path from 23 to 40:
+23-6-40
+Path from 23 to 44:
+23-51-25-44
+Path from 23 to 45:
+23-45
+Path from 23 to 47:
+23-6-24-47
+Path from 23 to 51:
+23-51
+Path from 23 to 52:
+23-31-66-52
+Path from 23 to 61:
+23-45-61
+Path from 23 to 62:
+23-51-25-39-62
+Path from 23 to 64:
+23-51-25-39-62-64
+Path from 23 to 66:
+23-31-66
+Path from 23 to 67:
+23-51-25-3-67
+Path from 23 to 69:
+23-31-69
+Path from 23 to 70:
+23-31-70
+
+
+Path from 24 to 2:
+24-6-2
+Path from 24 to 3:
+24-47-61-3
+Path from 24 to 5:
+24-5
+Path from 24 to 6:
+24-6
+Path from 24 to 10:
+24-29-10
+Path from 24 to 11:
+24-47-11
+Path from 24 to 13:
+24-29-13
+Path from 24 to 22:
+24-6-2-22
+Path from 24 to 23:
+24-6-23
+Path from 24 to 25:
+24-47-39-25
+Path from 24 to 29:
+24-29
+Path from 24 to 30:
+24-6-2-22-30
+Path from 24 to 31:
+24-31
+Path from 24 to 37:
+24-6-37
+Path from 24 to 39:
+24-47-39
+Path from 24 to 40:
+24-6-40
+Path from 24 to 44:
+24-6-2-44
+Path from 24 to 45:
+24-47-61-45
+Path from 24 to 47:
+24-47
+Path from 24 to 51:
+24-6-2-51
+Path from 24 to 52:
+24-47-61-52
+Path from 24 to 61:
+24-47-61
+Path from 24 to 62:
+24-47-39-62
+Path from 24 to 64:
+24-47-11-64
+Path from 24 to 66:
+24-31-66
+Path from 24 to 67:
+24-6-2-67
+Path from 24 to 69:
+24-6-69
+Path from 24 to 70:
+24-6-2-70
+
+
+Path from 25 to 2:
+25-39-2
+Path from 25 to 3:
+25-3
+Path from 25 to 5:
+25-39-29-5
+Path from 25 to 6:
+25-39-2-6
+Path from 25 to 10:
+25-39-29-10
+Path from 25 to 11:
+25-39-62-64-11
+Path from 25 to 13:
+25-39-29-13
+Path from 25 to 22:
+25-39-2-22
+Path from 25 to 23:
+25-51-23
+Path from 25 to 24:
+25-39-2-6-24
+Path from 25 to 29:
+25-39-29
+Path from 25 to 30:
+25-39-29-30
+Path from 25 to 31:
+25-31
+Path from 25 to 37:
+25-39-37
+Path from 25 to 39:
+25-39
+Path from 25 to 40:
+25-39-2-6-40
+Path from 25 to 44:
+25-44
+Path from 25 to 45:
+25-39-29-13-61-45
+Path from 25 to 47:
+25-39-47
+Path from 25 to 51:
+25-51
+Path from 25 to 52:
+25-39-37-52
+Path from 25 to 61:
+25-39-29-13-61
+Path from 25 to 62:
+25-39-62
+Path from 25 to 64:
+25-39-62-64
+Path from 25 to 66:
+25-31-66
+Path from 25 to 67:
+25-3-67
+Path from 25 to 69:
+25-39-37-52-69
+Path from 25 to 70:
+25-39-29-70
+
+
+Path from 26 to 4:
+26-8-4
+Path from 26 to 8:
+26-8
+Path from 26 to 14:
+26-32-18-14
+Path from 26 to 17:
+26-38-17
+Path from 26 to 18:
+26-32-18
+Path from 26 to 20:
+26-71-20
+Path from 26 to 21:
+26-50-21
+Path from 26 to 32:
+26-32
+Path from 26 to 34:
+26-32-34
+Path from 26 to 38:
+26-38
+Path from 26 to 48:
+26-74-48
+Path from 26 to 49:
+26-49
+Path from 26 to 50:
+26-50
+Path from 26 to 53:
+26-50-53
+Path from 26 to 54:
+26-38-17-54
+Path from 26 to 58:
+26-74-58
+Path from 26 to 59:
+26-50-53-59
+Path from 26 to 60:
+26-32-63-60
+Path from 26 to 63:
+26-32-63
+Path from 26 to 71:
+26-71
+Path from 26 to 74:
+26-74
+
+
+Path from 27 to 1:
+27-56-75-35-1
+Path from 27 to 7:
+27-65-15-7
+Path from 27 to 9:
+27-56-33-9
+Path from 27 to 12:
+27-56-12
+Path from 27 to 15:
+27-65-15
+Path from 27 to 16:
+27-56-33-16
+Path from 27 to 19:
+27-56-46-19
+Path from 27 to 28:
+27-56-12-28
+Path from 27 to 33:
+27-56-33
+Path from 27 to 35:
+27-56-75-35
+Path from 27 to 36:
+27-56-33-42-36
+Path from 27 to 41:
+27-56-75-55-41
+Path from 27 to 42:
+27-56-33-42
+Path from 27 to 43:
+27-65-43
+Path from 27 to 46:
+27-56-46
+Path from 27 to 55:
+27-56-75-55
+Path from 27 to 56:
+27-56
+Path from 27 to 57:
+27-56-33-57
+Path from 27 to 65:
+27-65
+Path from 27 to 68:
+27-56-75-55-68
+Path from 27 to 72:
+27-56-75-55-68-72
+Path from 27 to 73:
+27-56-33-16-73
+Path from 27 to 75:
+27-56-75
+
+
+Path from 28 to 1:
+28-43-35-1
+Path from 28 to 7:
+28-7
+Path from 28 to 9:
+28-43-36-9
+Path from 28 to 12:
+28-12
+Path from 28 to 15:
+28-7-15
+Path from 28 to 16:
+28-7-15-16
+Path from 28 to 19:
+28-43-65-19
+Path from 28 to 27:
+28-12-56-27
+Path from 28 to 33:
+28-7-33
+Path from 28 to 35:
+28-43-35
+Path from 28 to 36:
+28-43-36
+Path from 28 to 41:
+28-43-35-41
+Path from 28 to 42:
+28-43-36-42
+Path from 28 to 43:
+28-43
+Path from 28 to 46:
+28-12-56-46
+Path from 28 to 55:
+28-43-55
+Path from 28 to 56:
+28-12-56
+Path from 28 to 57:
+28-7-33-57
+Path from 28 to 65:
+28-43-65
+Path from 28 to 68:
+28-12-68
+Path from 28 to 72:
+28-12-68-72
+Path from 28 to 73:
+28-7-15-16-73
+Path from 28 to 75:
+28-43-35-75
+
+
+Path from 29 to 2:
+29-39-2
+Path from 29 to 3:
+29-39-25-3
+Path from 29 to 5:
+29-5
+Path from 29 to 6:
+29-39-2-6
+Path from 29 to 10:
+29-10
+Path from 29 to 11:
+29-11
+Path from 29 to 13:
+29-13
+Path from 29 to 22:
+29-39-2-22
+Path from 29 to 23:
+29-39-25-51-23
+Path from 29 to 24:
+29-24
+Path from 29 to 25:
+29-39-25
+Path from 29 to 30:
+29-30
+Path from 29 to 31:
+29-52-66-31
+Path from 29 to 37:
+29-39-37
+Path from 29 to 39:
+29-39
+Path from 29 to 40:
+29-39-2-6-40
+Path from 29 to 44:
+29-44
+Path from 29 to 45:
+29-13-61-45
+Path from 29 to 47:
+29-24-47
+Path from 29 to 51:
+29-39-25-51
+Path from 29 to 52:
+29-52
+Path from 29 to 61:
+29-13-61
+Path from 29 to 62:
+29-39-62
+Path from 29 to 64:
+29-39-62-64
+Path from 29 to 66:
+29-52-66
+Path from 29 to 67:
+29-39-25-3-67
+Path from 29 to 69:
+29-52-69
+Path from 29 to 70:
+29-70
+
+
+Path from 30 to 2:
+30-22-2
+Path from 30 to 3:
+30-67-3
+Path from 30 to 5:
+30-29-5
+Path from 30 to 6:
+30-22-2-6
+Path from 30 to 10:
+30-29-10
+Path from 30 to 11:
+30-29-11
+Path from 30 to 13:
+30-29-13
+Path from 30 to 22:
+30-22
+Path from 30 to 23:
+30-70-31-23
+Path from 30 to 24:
+30-22-2-6-24
+Path from 30 to 25:
+30-29-39-25
+Path from 30 to 29:
+30-29
+Path from 30 to 31:
+30-70-31
+Path from 30 to 37:
+30-29-39-37
+Path from 30 to 39:
+30-29-39
+Path from 30 to 40:
+30-22-2-6-40
+Path from 30 to 44:
+30-29-44
+Path from 30 to 45:
+30-67-3-61-45
+Path from 30 to 47:
+30-22-2-6-24-47
+Path from 30 to 51:
+30-29-39-25-51
+Path from 30 to 52:
+30-29-52
+Path from 30 to 61:
+30-67-3-61
+Path from 30 to 62:
+30-29-39-62
+Path from 30 to 64:
+30-29-39-62-64
+Path from 30 to 66:
+30-70-31-66
+Path from 30 to 67:
+30-67
+Path from 30 to 69:
+30-70-31-69
+Path from 30 to 70:
+30-70
+
+
+Path from 31 to 2:
+31-2
+Path from 31 to 3:
+31-25-3
+Path from 31 to 5:
+31-69-5
+Path from 31 to 6:
+31-2-6
+Path from 31 to 10:
+31-66-52-29-10
+Path from 31 to 11:
+31-11
+Path from 31 to 13:
+31-66-52-29-13
+Path from 31 to 22:
+31-2-22
+Path from 31 to 23:
+31-23
+Path from 31 to 24:
+31-24
+Path from 31 to 25:
+31-25
+Path from 31 to 29:
+31-66-52-29
+Path from 31 to 30:
+31-70-30
+Path from 31 to 37:
+31-66-52-37
+Path from 31 to 39:
+31-25-39
+Path from 31 to 40:
+31-40
+Path from 31 to 44:
+31-25-44
+Path from 31 to 45:
+31-69-45
+Path from 31 to 47:
+31-24-47
+Path from 31 to 51:
+31-51
+Path from 31 to 52:
+31-66-52
+Path from 31 to 61:
+31-66-52-61
+Path from 31 to 62:
+31-25-39-62
+Path from 31 to 64:
+31-25-39-62-64
+Path from 31 to 66:
+31-66
+Path from 31 to 67:
+31-2-67
+Path from 31 to 69:
+31-69
+Path from 31 to 70:
+31-70
+
+
+Path from 32 to 4:
+32-18-14-4
+Path from 32 to 8:
+32-26-8
+Path from 32 to 14:
+32-18-14
+Path from 32 to 17:
+32-63-17
+Path from 32 to 18:
+32-18
+Path from 32 to 20:
+32-71-20
+Path from 32 to 21:
+32-18-14-21
+Path from 32 to 26:
+32-26
+Path from 32 to 34:
+32-34
+Path from 32 to 38:
+32-71-20-38
+Path from 32 to 48:
+32-18-59-48
+Path from 32 to 49:
+32-18-14-49
+Path from 32 to 50:
+32-18-14-50
+Path from 32 to 53:
+32-18-14-50-53
+Path from 32 to 54:
+32-63-17-54
+Path from 32 to 58:
+32-18-58
+Path from 32 to 59:
+32-18-59
+Path from 32 to 60:
+32-63-60
+Path from 32 to 63:
+32-63
+Path from 32 to 71:
+32-71
+Path from 32 to 74:
+32-63-17-74
+
+
+Path from 33 to 1:
+33-42-75-35-1
+Path from 33 to 7:
+33-7
+Path from 33 to 9:
+33-9
+Path from 33 to 12:
+33-56-12
+Path from 33 to 15:
+33-16-15
+Path from 33 to 16:
+33-16
+Path from 33 to 19:
+33-19
+Path from 33 to 27:
+33-56-27
+Path from 33 to 28:
+33-7-28
+Path from 33 to 35:
+33-42-75-35
+Path from 33 to 36:
+33-42-36
+Path from 33 to 41:
+33-16-41
+Path from 33 to 42:
+33-42
+Path from 33 to 43:
+33-42-36-43
+Path from 33 to 46:
+33-56-46
+Path from 33 to 55:
+33-42-75-55
+Path from 33 to 56:
+33-56
+Path from 33 to 57:
+33-57
+Path from 33 to 65:
+33-16-15-65
+Path from 33 to 68:
+33-42-75-55-68
+Path from 33 to 72:
+33-42-75-55-68-72
+Path from 33 to 73:
+33-16-73
+Path from 33 to 75:
+33-42-75
+
+
+Path from 34 to 4:
+34-4
+Path from 34 to 8:
+34-8
+Path from 34 to 14:
+34-14
+Path from 34 to 17:
+34-58-60-17
+Path from 34 to 18:
+34-32-18
+Path from 34 to 20:
+34-14-21-20
+Path from 34 to 21:
+34-14-21
+Path from 34 to 26:
+34-32-26
+Path from 34 to 32:
+34-32
+Path from 34 to 38:
+34-14-21-20-38
+Path from 34 to 48:
+34-58-48
+Path from 34 to 49:
+34-14-49
+Path from 34 to 50:
+34-14-50
+Path from 34 to 53:
+34-58-53
+Path from 34 to 54:
+34-58-60-17-54
+Path from 34 to 58:
+34-58
+Path from 34 to 59:
+34-58-53-59
+Path from 34 to 60:
+34-58-60
+Path from 34 to 63:
+34-32-63
+Path from 34 to 71:
+34-32-71
+Path from 34 to 74:
+34-58-74
+
+
+Path from 35 to 1:
+35-1
+Path from 35 to 7:
+35-75-42-7
+Path from 35 to 9:
+35-36-9
+Path from 35 to 12:
+35-43-12
+Path from 35 to 15:
+35-75-42-16-15
+Path from 35 to 16:
+35-75-42-16
+Path from 35 to 19:
+35-19
+Path from 35 to 27:
+35-75-56-27
+Path from 35 to 28:
+35-43-28
+Path from 35 to 33:
+35-75-42-33
+Path from 35 to 36:
+35-36
+Path from 35 to 41:
+35-41
+Path from 35 to 42:
+35-75-42
+Path from 35 to 43:
+35-43
+Path from 35 to 46:
+35-75-56-46
+Path from 35 to 55:
+35-75-55
+Path from 35 to 56:
+35-75-56
+Path from 35 to 57:
+35-75-42-33-57
+Path from 35 to 65:
+35-43-65
+Path from 35 to 68:
+35-75-55-68
+Path from 35 to 72:
+35-75-55-68-72
+Path from 35 to 73:
+35-75-42-16-73
+Path from 35 to 75:
+35-75
+
+
+Path from 36 to 1:
+36-35-1
+Path from 36 to 7:
+36-42-7
+Path from 36 to 9:
+36-9
+Path from 36 to 12:
+36-43-12
+Path from 36 to 15:
+36-42-16-15
+Path from 36 to 16:
+36-42-16
+Path from 36 to 19:
+36-42-33-19
+Path from 36 to 27:
+36-42-33-56-27
+Path from 36 to 28:
+36-43-28
+Path from 36 to 33:
+36-42-33
+Path from 36 to 35:
+36-35
+Path from 36 to 41:
+36-35-41
+Path from 36 to 42:
+36-42
+Path from 36 to 43:
+36-43
+Path from 36 to 46:
+36-42-33-56-46
+Path from 36 to 55:
+36-42-75-55
+Path from 36 to 56:
+36-42-33-56
+Path from 36 to 57:
+36-42-33-57
+Path from 36 to 65:
+36-43-65
+Path from 36 to 68:
+36-42-75-55-68
+Path from 36 to 72:
+36-42-75-55-68-72
+Path from 36 to 73:
+36-42-16-73
+Path from 36 to 75:
+36-42-75
+
+
+Path from 37 to 2:
+37-39-2
+Path from 37 to 3:
+37-39-25-3
+Path from 37 to 5:
+37-39-29-5
+Path from 37 to 6:
+37-6
+Path from 37 to 10:
+37-39-29-10
+Path from 37 to 11:
+37-39-62-64-11
+Path from 37 to 13:
+37-39-29-13
+Path from 37 to 22:
+37-39-2-22
+Path from 37 to 23:
+37-52-66-31-23
+Path from 37 to 24:
+37-6-24
+Path from 37 to 25:
+37-39-25
+Path from 37 to 29:
+37-39-29
+Path from 37 to 30:
+37-39-29-30
+Path from 37 to 31:
+37-52-66-31
+Path from 37 to 39:
+37-39
+Path from 37 to 40:
+37-6-40
+Path from 37 to 44:
+37-39-25-44
+Path from 37 to 45:
+37-52-61-45
+Path from 37 to 47:
+37-6-24-47
+Path from 37 to 51:
+37-39-25-51
+Path from 37 to 52:
+37-52
+Path from 37 to 61:
+37-52-61
+Path from 37 to 62:
+37-39-62
+Path from 37 to 64:
+37-39-62-64
+Path from 37 to 66:
+37-52-66
+Path from 37 to 67:
+37-39-25-3-67
+Path from 37 to 69:
+37-52-69
+Path from 37 to 70:
+37-52-66-31-70
+
+
+Path from 38 to 4:
+38-20-21-14-4
+Path from 38 to 8:
+38-26-8
+Path from 38 to 14:
+38-20-21-14
+Path from 38 to 17:
+38-17
+Path from 38 to 18:
+38-20-21-14-18
+Path from 38 to 20:
+38-20
+Path from 38 to 21:
+38-20-21
+Path from 38 to 26:
+38-26
+Path from 38 to 32:
+38-20-71-32
+Path from 38 to 34:
+38-20-21-14-34
+Path from 38 to 48:
+38-48
+Path from 38 to 49:
+38-20-21-14-49
+Path from 38 to 50:
+38-20-21-50
+Path from 38 to 53:
+38-20-21-50-53
+Path from 38 to 54:
+38-17-54
+Path from 38 to 58:
+38-17-60-58
+Path from 38 to 59:
+38-48-59
+Path from 38 to 60:
+38-17-60
+Path from 38 to 63:
+38-17-63
+Path from 38 to 71:
+38-20-71
+Path from 38 to 74:
+38-17-74
+
+
+Path from 39 to 2:
+39-2
+Path from 39 to 3:
+39-25-3
+Path from 39 to 5:
+39-29-5
+Path from 39 to 6:
+39-2-6
+Path from 39 to 10:
+39-29-10
+Path from 39 to 11:
+39-62-64-11
+Path from 39 to 13:
+39-29-13
+Path from 39 to 22:
+39-2-22
+Path from 39 to 23:
+39-25-51-23
+Path from 39 to 24:
+39-2-6-24
+Path from 39 to 25:
+39-25
+Path from 39 to 29:
+39-29
+Path from 39 to 30:
+39-29-30
+Path from 39 to 31:
+39-25-31
+Path from 39 to 37:
+39-37
+Path from 39 to 40:
+39-2-6-40
+Path from 39 to 44:
+39-25-44
+Path from 39 to 45:
+39-29-13-61-45
+Path from 39 to 47:
+39-47
+Path from 39 to 51:
+39-25-51
+Path from 39 to 52:
+39-37-52
+Path from 39 to 61:
+39-29-13-61
+Path from 39 to 62:
+39-62
+Path from 39 to 64:
+39-62-64
+Path from 39 to 66:
+39-25-31-66
+Path from 39 to 67:
+39-25-3-67
+Path from 39 to 69:
+39-37-52-69
+Path from 39 to 70:
+39-29-70
+
+
+Path from 40 to 2:
+40-6-2
+Path from 40 to 3:
+40-6-2-67-3
+Path from 40 to 5:
+40-6-2-39-29-5
+Path from 40 to 6:
+40-6
+Path from 40 to 10:
+40-6-2-39-29-10
+Path from 40 to 11:
+40-6-24-47-11
+Path from 40 to 13:
+40-6-2-39-29-13
+Path from 40 to 22:
+40-6-2-22
+Path from 40 to 23:
+40-6-23
+Path from 40 to 24:
+40-6-24
+Path from 40 to 25:
+40-6-2-39-25
+Path from 40 to 29:
+40-6-2-39-29
+Path from 40 to 30:
+40-6-2-22-30
+Path from 40 to 31:
+40-31
+Path from 40 to 37:
+40-6-37
+Path from 40 to 39:
+40-6-2-39
+Path from 40 to 44:
+40-6-2-44
+Path from 40 to 45:
+40-6-24-47-61-45
+Path from 40 to 47:
+40-6-24-47
+Path from 40 to 51:
+40-6-2-51
+Path from 40 to 52:
+40-6-37-52
+Path from 40 to 61:
+40-6-24-47-61
+Path from 40 to 62:
+40-6-2-39-62
+Path from 40 to 64:
+40-6-2-39-62-64
+Path from 40 to 66:
+40-31-66
+Path from 40 to 67:
+40-6-2-67
+Path from 40 to 69:
+40-31-69
+Path from 40 to 70:
+40-6-2-70
+
+
+Path from 41 to 1:
+41-35-1
+Path from 41 to 7:
+41-7
+Path from 41 to 9:
+41-35-36-9
+Path from 41 to 12:
+41-55-68-12
+Path from 41 to 15:
+41-16-15
+Path from 41 to 16:
+41-16
+Path from 41 to 19:
+41-35-19
+Path from 41 to 27:
+41-55-75-56-27
+Path from 41 to 28:
+41-35-43-28
+Path from 41 to 33:
+41-16-33
+Path from 41 to 35:
+41-35
+Path from 41 to 36:
+41-35-36
+Path from 41 to 42:
+41-16-42
+Path from 41 to 43:
+41-35-43
+Path from 41 to 46:
+41-55-75-56-46
+Path from 41 to 55:
+41-55
+Path from 41 to 56:
+41-55-75-56
+Path from 41 to 57:
+41-16-33-57
+Path from 41 to 65:
+41-16-15-65
+Path from 41 to 68:
+41-55-68
+Path from 41 to 72:
+41-55-68-72
+Path from 41 to 73:
+41-16-73
+Path from 41 to 75:
+41-55-75
+
+
+Path from 42 to 1:
+42-75-35-1
+Path from 42 to 7:
+42-7
+Path from 42 to 9:
+42-9
+Path from 42 to 12:
+42-33-56-12
+Path from 42 to 15:
+42-16-15
+Path from 42 to 16:
+42-16
+Path from 42 to 19:
+42-33-19
+Path from 42 to 27:
+42-33-56-27
+Path from 42 to 28:
+42-36-43-28
+Path from 42 to 33:
+42-33
+Path from 42 to 35:
+42-75-35
+Path from 42 to 36:
+42-36
+Path from 42 to 41:
+42-16-41
+Path from 42 to 43:
+42-36-43
+Path from 42 to 46:
+42-33-56-46
+Path from 42 to 55:
+42-75-55
+Path from 42 to 56:
+42-33-56
+Path from 42 to 57:
+42-33-57
+Path from 42 to 65:
+42-16-15-65
+Path from 42 to 68:
+42-75-55-68
+Path from 42 to 72:
+42-75-55-68-72
+Path from 42 to 73:
+42-16-73
+Path from 42 to 75:
+42-75
+
+
+Path from 43 to 1:
+43-35-1
+Path from 43 to 7:
+43-65-15-7
+Path from 43 to 9:
+43-36-9
+Path from 43 to 12:
+43-12
+Path from 43 to 15:
+43-65-15
+Path from 43 to 16:
+43-16
+Path from 43 to 19:
+43-65-19
+Path from 43 to 27:
+43-65-27
+Path from 43 to 28:
+43-28
+Path from 43 to 33:
+43-36-42-33
+Path from 43 to 35:
+43-35
+Path from 43 to 36:
+43-36
+Path from 43 to 41:
+43-35-41
+Path from 43 to 42:
+43-36-42
+Path from 43 to 46:
+43-65-19-46
+Path from 43 to 55:
+43-55
+Path from 43 to 56:
+43-36-42-33-56
+Path from 43 to 57:
+43-36-42-33-57
+Path from 43 to 65:
+43-65
+Path from 43 to 68:
+43-55-68
+Path from 43 to 72:
+43-55-68-72
+Path from 43 to 73:
+43-16-73
+Path from 43 to 75:
+43-35-75
+
+
+Path from 44 to 2:
+44-2
+Path from 44 to 3:
+44-25-3
+Path from 44 to 5:
+44-29-5
+Path from 44 to 6:
+44-2-6
+Path from 44 to 10:
+44-29-10
+Path from 44 to 11:
+44-64-11
+Path from 44 to 13:
+44-29-13
+Path from 44 to 22:
+44-2-22
+Path from 44 to 23:
+44-25-51-23
+Path from 44 to 24:
+44-2-6-24
+Path from 44 to 25:
+44-25
+Path from 44 to 29:
+44-29
+Path from 44 to 30:
+44-29-30
+Path from 44 to 31:
+44-25-31
+Path from 44 to 37:
+44-25-39-37
+Path from 44 to 39:
+44-25-39
+Path from 44 to 40:
+44-2-6-40
+Path from 44 to 45:
+44-29-13-61-45
+Path from 44 to 47:
+44-25-39-47
+Path from 44 to 51:
+44-25-51
+Path from 44 to 52:
+44-25-39-37-52
+Path from 44 to 61:
+44-29-13-61
+Path from 44 to 62:
+44-25-39-62
+Path from 44 to 64:
+44-64
+Path from 44 to 66:
+44-25-31-66
+Path from 44 to 67:
+44-25-3-67
+Path from 44 to 69:
+44-69
+Path from 44 to 70:
+44-2-70
+
+
+Path from 45 to 2:
+45-61-47-24-6-2
+Path from 45 to 3:
+45-61-3
+Path from 45 to 5:
+45-61-13-29-5
+Path from 45 to 6:
+45-61-47-24-6
+Path from 45 to 10:
+45-61-13-29-10
+Path from 45 to 11:
+45-61-47-11
+Path from 45 to 13:
+45-61-13
+Path from 45 to 22:
+45-61-47-24-6-2-22
+Path from 45 to 23:
+45-23
+Path from 45 to 24:
+45-61-47-24
+Path from 45 to 25:
+45-61-13-29-39-25
+Path from 45 to 29:
+45-61-13-29
+Path from 45 to 30:
+45-61-3-67-30
+Path from 45 to 31:
+45-69-31
+Path from 45 to 37:
+45-61-52-37
+Path from 45 to 39:
+45-61-13-29-39
+Path from 45 to 40:
+45-61-47-24-6-40
+Path from 45 to 44:
+45-61-13-29-44
+Path from 45 to 47:
+45-61-47
+Path from 45 to 51:
+45-61-13-29-39-25-51
+Path from 45 to 52:
+45-61-52
+Path from 45 to 61:
+45-61
+Path from 45 to 62:
+45-61-13-29-39-62
+Path from 45 to 64:
+45-61-47-11-64
+Path from 45 to 66:
+45-61-52-66
+Path from 45 to 67:
+45-61-3-67
+Path from 45 to 69:
+45-69
+Path from 45 to 70:
+45-61-13-29-70
+
+
+Path from 46 to 1:
+46-19-35-1
+Path from 46 to 7:
+46-56-33-7
+Path from 46 to 9:
+46-56-33-9
+Path from 46 to 12:
+46-56-12
+Path from 46 to 15:
+46-19-65-15
+Path from 46 to 16:
+46-56-33-16
+Path from 46 to 19:
+46-19
+Path from 46 to 27:
+46-56-27
+Path from 46 to 28:
+46-56-12-28
+Path from 46 to 33:
+46-56-33
+Path from 46 to 35:
+46-19-35
+Path from 46 to 36:
+46-56-33-42-36
+Path from 46 to 41:
+46-56-75-55-41
+Path from 46 to 42:
+46-56-33-42
+Path from 46 to 43:
+46-19-65-43
+Path from 46 to 55:
+46-56-75-55
+Path from 46 to 56:
+46-56
+Path from 46 to 57:
+46-56-33-57
+Path from 46 to 65:
+46-19-65
+Path from 46 to 68:
+46-56-75-55-68
+Path from 46 to 72:
+46-56-75-55-68-72
+Path from 46 to 73:
+46-73
+Path from 46 to 75:
+46-56-75
+
+
+Path from 47 to 2:
+47-24-6-2
+Path from 47 to 3:
+47-61-3
+Path from 47 to 5:
+47-24-5
+Path from 47 to 6:
+47-24-6
+Path from 47 to 10:
+47-24-29-10
+Path from 47 to 11:
+47-11
+Path from 47 to 13:
+47-61-13
+Path from 47 to 22:
+47-24-6-2-22
+Path from 47 to 23:
+47-24-6-23
+Path from 47 to 24:
+47-24
+Path from 47 to 25:
+47-39-25
+Path from 47 to 29:
+47-24-29
+Path from 47 to 30:
+47-24-6-2-22-30
+Path from 47 to 31:
+47-24-31
+Path from 47 to 37:
+47-24-6-37
+Path from 47 to 39:
+47-39
+Path from 47 to 40:
+47-24-6-40
+Path from 47 to 44:
+47-24-6-2-44
+Path from 47 to 45:
+47-61-45
+Path from 47 to 51:
+47-39-25-51
+Path from 47 to 52:
+47-61-52
+Path from 47 to 61:
+47-61
+Path from 47 to 62:
+47-39-62
+Path from 47 to 64:
+47-11-64
+Path from 47 to 66:
+47-24-31-66
+Path from 47 to 67:
+47-24-6-2-67
+Path from 47 to 69:
+47-61-52-69
+Path from 47 to 70:
+47-24-6-2-70
+
+
+Path from 48 to 4:
+48-58-4
+Path from 48 to 8:
+48-58-4-8
+Path from 48 to 14:
+48-59-53-50-14
+Path from 48 to 17:
+48-74-17
+Path from 48 to 18:
+48-59-18
+Path from 48 to 20:
+48-38-20
+Path from 48 to 21:
+48-59-53-50-21
+Path from 48 to 26:
+48-74-26
+Path from 48 to 32:
+48-59-18-32
+Path from 48 to 34:
+48-58-34
+Path from 48 to 38:
+48-38
+Path from 48 to 49:
+48-59-53-50-14-49
+Path from 48 to 50:
+48-59-53-50
+Path from 48 to 53:
+48-59-53
+Path from 48 to 54:
+48-74-17-54
+Path from 48 to 58:
+48-58
+Path from 48 to 59:
+48-59
+Path from 48 to 60:
+48-74-17-60
+Path from 48 to 63:
+48-74-17-63
+Path from 48 to 71:
+48-74-71
+Path from 48 to 74:
+48-74
+
+
+Path from 49 to 4:
+49-14-4
+Path from 49 to 8:
+49-14-4-8
+Path from 49 to 14:
+49-14
+Path from 49 to 17:
+49-14-21-20-38-17
+Path from 49 to 18:
+49-14-18
+Path from 49 to 20:
+49-14-21-20
+Path from 49 to 21:
+49-14-21
+Path from 49 to 26:
+49-26
+Path from 49 to 32:
+49-14-18-32
+Path from 49 to 34:
+49-14-34
+Path from 49 to 38:
+49-14-21-20-38
+Path from 49 to 48:
+49-14-50-53-59-48
+Path from 49 to 50:
+49-14-50
+Path from 49 to 53:
+49-14-50-53
+Path from 49 to 54:
+49-14-21-54
+Path from 49 to 58:
+49-14-50-53-58
+Path from 49 to 59:
+49-14-50-53-59
+Path from 49 to 60:
+49-14-18-32-63-60
+Path from 49 to 63:
+49-14-18-32-63
+Path from 49 to 71:
+49-14-21-20-71
+Path from 49 to 74:
+49-14-50-53-58-74
+
+
+Path from 50 to 4:
+50-14-4
+Path from 50 to 8:
+50-26-8
+Path from 50 to 14:
+50-14
+Path from 50 to 17:
+50-53-17
+Path from 50 to 18:
+50-14-18
+Path from 50 to 20:
+50-21-20
+Path from 50 to 21:
+50-21
+Path from 50 to 26:
+50-26
+Path from 50 to 32:
+50-14-18-32
+Path from 50 to 34:
+50-14-34
+Path from 50 to 38:
+50-21-20-38
+Path from 50 to 48:
+50-53-59-48
+Path from 50 to 49:
+50-14-49
+Path from 50 to 53:
+50-53
+Path from 50 to 54:
+50-54
+Path from 50 to 58:
+50-53-58
+Path from 50 to 59:
+50-53-59
+Path from 50 to 60:
+50-53-58-60
+Path from 50 to 63:
+50-14-18-32-63
+Path from 50 to 71:
+50-21-20-71
+Path from 50 to 74:
+50-53-58-74
+
+
+Path from 51 to 2:
+51-2
+Path from 51 to 3:
+51-25-3
+Path from 51 to 5:
+51-25-39-29-5
+Path from 51 to 6:
+51-2-6
+Path from 51 to 10:
+51-25-39-29-10
+Path from 51 to 11:
+51-25-39-62-64-11
+Path from 51 to 13:
+51-25-39-29-13
+Path from 51 to 22:
+51-2-22
+Path from 51 to 23:
+51-23
+Path from 51 to 24:
+51-2-6-24
+Path from 51 to 25:
+51-25
+Path from 51 to 29:
+51-25-39-29
+Path from 51 to 30:
+51-25-39-29-30
+Path from 51 to 31:
+51-31
+Path from 51 to 37:
+51-25-39-37
+Path from 51 to 39:
+51-25-39
+Path from 51 to 40:
+51-2-6-40
+Path from 51 to 44:
+51-25-44
+Path from 51 to 45:
+51-25-39-29-13-61-45
+Path from 51 to 47:
+51-25-39-47
+Path from 51 to 52:
+51-25-39-37-52
+Path from 51 to 61:
+51-25-39-29-13-61
+Path from 51 to 62:
+51-25-39-62
+Path from 51 to 64:
+51-25-39-62-64
+Path from 51 to 66:
+51-31-66
+Path from 51 to 67:
+51-25-3-67
+Path from 51 to 69:
+51-31-69
+Path from 51 to 70:
+51-2-70
+
+
+Path from 52 to 2:
+52-37-39-2
+Path from 52 to 3:
+52-61-3
+Path from 52 to 5:
+52-69-5
+Path from 52 to 6:
+52-37-6
+Path from 52 to 10:
+52-29-10
+Path from 52 to 11:
+52-37-39-62-64-11
+Path from 52 to 13:
+52-29-13
+Path from 52 to 22:
+52-37-39-2-22
+Path from 52 to 23:
+52-66-31-23
+Path from 52 to 24:
+52-61-47-24
+Path from 52 to 25:
+52-37-39-25
+Path from 52 to 29:
+52-29
+Path from 52 to 30:
+52-29-30
+Path from 52 to 31:
+52-66-31
+Path from 52 to 37:
+52-37
+Path from 52 to 39:
+52-37-39
+Path from 52 to 40:
+52-66-31-40
+Path from 52 to 44:
+52-37-39-25-44
+Path from 52 to 45:
+52-61-45
+Path from 52 to 47:
+52-61-47
+Path from 52 to 51:
+52-37-39-25-51
+Path from 52 to 61:
+52-61
+Path from 52 to 62:
+52-37-39-62
+Path from 52 to 64:
+52-37-39-62-64
+Path from 52 to 66:
+52-66
+Path from 52 to 67:
+52-61-3-67
+Path from 52 to 69:
+52-69
+Path from 52 to 70:
+52-66-31-70
+
+
+Path from 53 to 4:
+53-58-4
+Path from 53 to 8:
+53-58-4-8
+Path from 53 to 14:
+53-50-14
+Path from 53 to 17:
+53-17
+Path from 53 to 18:
+53-50-14-18
+Path from 53 to 20:
+53-50-21-20
+Path from 53 to 21:
+53-50-21
+Path from 53 to 26:
+53-50-26
+Path from 53 to 32:
+53-50-14-18-32
+Path from 53 to 34:
+53-58-34
+Path from 53 to 38:
+53-50-21-20-38
+Path from 53 to 48:
+53-59-48
+Path from 53 to 49:
+53-50-14-49
+Path from 53 to 50:
+53-50
+Path from 53 to 54:
+53-50-54
+Path from 53 to 58:
+53-58
+Path from 53 to 59:
+53-59
+Path from 53 to 60:
+53-58-60
+Path from 53 to 63:
+53-17-63
+Path from 53 to 71:
+53-50-21-20-71
+Path from 53 to 74:
+53-58-74
+
+
+Path from 54 to 4:
+54-17-60-58-4
+Path from 54 to 8:
+54-17-60-8
+Path from 54 to 14:
+54-21-14
+Path from 54 to 17:
+54-17
+Path from 54 to 18:
+54-17-63-32-18
+Path from 54 to 20:
+54-17-38-20
+Path from 54 to 21:
+54-21
+Path from 54 to 26:
+54-17-38-26
+Path from 54 to 32:
+54-17-63-32
+Path from 54 to 34:
+54-17-60-58-34
+Path from 54 to 38:
+54-17-38
+Path from 54 to 48:
+54-17-74-48
+Path from 54 to 49:
+54-21-14-49
+Path from 54 to 50:
+54-50
+Path from 54 to 53:
+54-17-53
+Path from 54 to 58:
+54-17-60-58
+Path from 54 to 59:
+54-17-74-48-59
+Path from 54 to 60:
+54-17-60
+Path from 54 to 63:
+54-17-63
+Path from 54 to 71:
+54-17-74-71
+Path from 54 to 74:
+54-17-74
+
+
+Path from 55 to 1:
+55-75-35-1
+Path from 55 to 7:
+55-15-7
+Path from 55 to 9:
+55-75-42-9
+Path from 55 to 12:
+55-68-12
+Path from 55 to 15:
+55-15
+Path from 55 to 16:
+55-75-42-16
+Path from 55 to 19:
+55-75-56-46-19
+Path from 55 to 27:
+55-75-56-27
+Path from 55 to 28:
+55-43-28
+Path from 55 to 33:
+55-75-42-33
+Path from 55 to 35:
+55-75-35
+Path from 55 to 36:
+55-75-42-36
+Path from 55 to 41:
+55-41
+Path from 55 to 42:
+55-75-42
+Path from 55 to 43:
+55-43
+Path from 55 to 46:
+55-75-56-46
+Path from 55 to 56:
+55-75-56
+Path from 55 to 57:
+55-75-42-33-57
+Path from 55 to 65:
+55-15-65
+Path from 55 to 68:
+55-68
+Path from 55 to 72:
+55-68-72
+Path from 55 to 73:
+55-75-42-16-73
+Path from 55 to 75:
+55-75
+
+
+Path from 56 to 1:
+56-75-35-1
+Path from 56 to 7:
+56-33-7
+Path from 56 to 9:
+56-33-9
+Path from 56 to 12:
+56-12
+Path from 56 to 15:
+56-15
+Path from 56 to 16:
+56-33-16
+Path from 56 to 19:
+56-46-19
+Path from 56 to 27:
+56-27
+Path from 56 to 28:
+56-12-28
+Path from 56 to 33:
+56-33
+Path from 56 to 35:
+56-75-35
+Path from 56 to 36:
+56-33-42-36
+Path from 56 to 41:
+56-75-55-41
+Path from 56 to 42:
+56-33-42
+Path from 56 to 43:
+56-33-42-36-43
+Path from 56 to 46:
+56-46
+Path from 56 to 55:
+56-75-55
+Path from 56 to 57:
+56-33-57
+Path from 56 to 65:
+56-15-65
+Path from 56 to 68:
+56-75-55-68
+Path from 56 to 72:
+56-75-55-68-72
+Path from 56 to 73:
+56-33-16-73
+Path from 56 to 75:
+56-75
+
+
+Path from 57 to 1:
+57-33-42-75-35-1
+Path from 57 to 7:
+57-33-7
+Path from 57 to 9:
+57-33-9
+Path from 57 to 12:
+57-33-56-12
+Path from 57 to 15:
+57-33-16-15
+Path from 57 to 16:
+57-33-16
+Path from 57 to 19:
+57-33-19
+Path from 57 to 27:
+57-33-56-27
+Path from 57 to 28:
+57-33-7-28
+Path from 57 to 33:
+57-33
+Path from 57 to 35:
+57-33-42-75-35
+Path from 57 to 36:
+57-33-42-36
+Path from 57 to 41:
+57-33-16-41
+Path from 57 to 42:
+57-33-42
+Path from 57 to 43:
+57-33-42-36-43
+Path from 57 to 46:
+57-33-56-46
+Path from 57 to 55:
+57-33-42-75-55
+Path from 57 to 56:
+57-33-56
+Path from 57 to 65:
+57-33-16-15-65
+Path from 57 to 68:
+57-33-42-75-55-68
+Path from 57 to 72:
+57-33-42-75-55-68-72
+Path from 57 to 73:
+57-73
+Path from 57 to 75:
+57-33-42-75
+
+
+Path from 58 to 4:
+58-4
+Path from 58 to 8:
+58-4-8
+Path from 58 to 14:
+58-53-50-14
+Path from 58 to 17:
+58-60-17
+Path from 58 to 18:
+58-18
+Path from 58 to 20:
+58-53-50-21-20
+Path from 58 to 21:
+58-53-50-21
+Path from 58 to 26:
+58-74-26
+Path from 58 to 32:
+58-18-32
+Path from 58 to 34:
+58-34
+Path from 58 to 38:
+58-60-17-38
+Path from 58 to 48:
+58-48
+Path from 58 to 49:
+58-53-50-14-49
+Path from 58 to 50:
+58-53-50
+Path from 58 to 53:
+58-53
+Path from 58 to 54:
+58-60-17-54
+Path from 58 to 59:
+58-53-59
+Path from 58 to 60:
+58-60
+Path from 58 to 63:
+58-60-63
+Path from 58 to 71:
+58-74-71
+Path from 58 to 74:
+58-74
+
+
+Path from 59 to 4:
+59-53-58-4
+Path from 59 to 8:
+59-53-58-4-8
+Path from 59 to 14:
+59-53-50-14
+Path from 59 to 17:
+59-48-74-17
+Path from 59 to 18:
+59-18
+Path from 59 to 20:
+59-53-50-21-20
+Path from 59 to 21:
+59-53-50-21
+Path from 59 to 26:
+59-53-50-26
+Path from 59 to 32:
+59-18-32
+Path from 59 to 34:
+59-53-58-34
+Path from 59 to 38:
+59-48-38
+Path from 59 to 48:
+59-48
+Path from 59 to 49:
+59-53-50-14-49
+Path from 59 to 50:
+59-53-50
+Path from 59 to 53:
+59-53
+Path from 59 to 54:
+59-48-74-17-54
+Path from 59 to 58:
+59-53-58
+Path from 59 to 60:
+59-53-58-60
+Path from 59 to 63:
+59-48-74-17-63
+Path from 59 to 71:
+59-48-74-71
+Path from 59 to 74:
+59-48-74
+
+
+Path from 60 to 4:
+60-58-4
+Path from 60 to 8:
+60-8
+Path from 60 to 14:
+60-63-32-18-14
+Path from 60 to 17:
+60-17
+Path from 60 to 18:
+60-63-32-18
+Path from 60 to 20:
+60-17-38-20
+Path from 60 to 21:
+60-58-53-50-21
+Path from 60 to 26:
+60-63-32-26
+Path from 60 to 32:
+60-63-32
+Path from 60 to 34:
+60-58-34
+Path from 60 to 38:
+60-17-38
+Path from 60 to 48:
+60-17-74-48
+Path from 60 to 49:
+60-63-32-18-14-49
+Path from 60 to 50:
+60-58-53-50
+Path from 60 to 53:
+60-58-53
+Path from 60 to 54:
+60-17-54
+Path from 60 to 58:
+60-58
+Path from 60 to 59:
+60-58-53-59
+Path from 60 to 63:
+60-63
+Path from 60 to 71:
+60-63-32-71
+Path from 60 to 74:
+60-17-74
+
+
+Path from 61 to 2:
+61-47-24-6-2
+Path from 61 to 3:
+61-3
+Path from 61 to 5:
+61-13-29-5
+Path from 61 to 6:
+61-47-24-6
+Path from 61 to 10:
+61-13-29-10
+Path from 61 to 11:
+61-47-11
+Path from 61 to 13:
+61-13
+Path from 61 to 22:
+61-47-24-6-2-22
+Path from 61 to 23:
+61-45-23
+Path from 61 to 24:
+61-47-24
+Path from 61 to 25:
+61-13-29-39-25
+Path from 61 to 29:
+61-13-29
+Path from 61 to 30:
+61-3-67-30
+Path from 61 to 31:
+61-52-66-31
+Path from 61 to 37:
+61-52-37
+Path from 61 to 39:
+61-13-29-39
+Path from 61 to 40:
+61-47-24-6-40
+Path from 61 to 44:
+61-13-29-44
+Path from 61 to 45:
+61-45
+Path from 61 to 47:
+61-47
+Path from 61 to 51:
+61-13-29-39-25-51
+Path from 61 to 52:
+61-52
+Path from 61 to 62:
+61-13-29-39-62
+Path from 61 to 64:
+61-47-11-64
+Path from 61 to 66:
+61-52-66
+Path from 61 to 67:
+61-3-67
+Path from 61 to 69:
+61-52-69
+Path from 61 to 70:
+61-13-29-70
+
+
+Path from 62 to 2:
+62-39-2
+Path from 62 to 3:
+62-39-25-3
+Path from 62 to 5:
+62-5
+Path from 62 to 6:
+62-39-2-6
+Path from 62 to 10:
+62-39-29-10
+Path from 62 to 11:
+62-64-11
+Path from 62 to 13:
+62-39-29-13
+Path from 62 to 22:
+62-22
+Path from 62 to 23:
+62-39-25-51-23
+Path from 62 to 24:
+62-39-2-6-24
+Path from 62 to 25:
+62-39-25
+Path from 62 to 29:
+62-39-29
+Path from 62 to 30:
+62-39-29-30
+Path from 62 to 31:
+62-39-25-31
+Path from 62 to 37:
+62-39-37
+Path from 62 to 39:
+62-39
+Path from 62 to 40:
+62-39-2-6-40
+Path from 62 to 44:
+62-39-25-44
+Path from 62 to 45:
+62-39-29-13-61-45
+Path from 62 to 47:
+62-39-47
+Path from 62 to 51:
+62-39-25-51
+Path from 62 to 52:
+62-39-37-52
+Path from 62 to 61:
+62-39-29-13-61
+Path from 62 to 64:
+62-64
+Path from 62 to 66:
+62-39-25-31-66
+Path from 62 to 67:
+62-39-25-3-67
+Path from 62 to 69:
+62-39-37-52-69
+Path from 62 to 70:
+62-39-29-70
+
+
+Path from 63 to 4:
+63-4
+Path from 63 to 8:
+63-60-8
+Path from 63 to 14:
+63-32-18-14
+Path from 63 to 17:
+63-17
+Path from 63 to 18:
+63-32-18
+Path from 63 to 20:
+63-17-38-20
+Path from 63 to 21:
+63-32-18-14-21
+Path from 63 to 26:
+63-32-26
+Path from 63 to 32:
+63-32
+Path from 63 to 34:
+63-32-34
+Path from 63 to 38:
+63-17-38
+Path from 63 to 48:
+63-17-74-48
+Path from 63 to 49:
+63-32-18-14-49
+Path from 63 to 50:
+63-32-18-14-50
+Path from 63 to 53:
+63-17-53
+Path from 63 to 54:
+63-17-54
+Path from 63 to 58:
+63-60-58
+Path from 63 to 59:
+63-17-74-48-59
+Path from 63 to 60:
+63-60
+Path from 63 to 71:
+63-32-71
+Path from 63 to 74:
+63-17-74
+
+
+Path from 64 to 2:
+64-62-39-2
+Path from 64 to 3:
+64-62-39-25-3
+Path from 64 to 5:
+64-62-5
+Path from 64 to 6:
+64-62-39-2-6
+Path from 64 to 10:
+64-62-39-29-10
+Path from 64 to 11:
+64-11
+Path from 64 to 13:
+64-62-39-29-13
+Path from 64 to 22:
+64-62-22
+Path from 64 to 23:
+64-62-39-25-51-23
+Path from 64 to 24:
+64-11-47-24
+Path from 64 to 25:
+64-62-39-25
+Path from 64 to 29:
+64-62-39-29
+Path from 64 to 30:
+64-62-39-29-30
+Path from 64 to 31:
+64-62-39-25-31
+Path from 64 to 37:
+64-62-39-37
+Path from 64 to 39:
+64-62-39
+Path from 64 to 40:
+64-62-39-2-6-40
+Path from 64 to 44:
+64-44
+Path from 64 to 45:
+64-11-47-61-45
+Path from 64 to 47:
+64-11-47
+Path from 64 to 51:
+64-62-39-25-51
+Path from 64 to 52:
+64-62-39-37-52
+Path from 64 to 61:
+64-11-47-61
+Path from 64 to 62:
+64-62
+Path from 64 to 66:
+64-62-39-25-31-66
+Path from 64 to 67:
+64-62-39-25-3-67
+Path from 64 to 69:
+64-69
+Path from 64 to 70:
+64-62-39-29-70
+
+
+Path from 65 to 1:
+65-43-35-1
+Path from 65 to 7:
+65-15-7
+Path from 65 to 9:
+65-15-9
+Path from 65 to 12:
+65-43-12
+Path from 65 to 15:
+65-15
+Path from 65 to 16:
+65-15-16
+Path from 65 to 19:
+65-19
+Path from 65 to 27:
+65-27
+Path from 65 to 28:
+65-43-28
+Path from 65 to 33:
+65-15-16-33
+Path from 65 to 35:
+65-43-35
+Path from 65 to 36:
+65-43-36
+Path from 65 to 41:
+65-15-16-41
+Path from 65 to 42:
+65-15-16-42
+Path from 65 to 43:
+65-43
+Path from 65 to 46:
+65-19-46
+Path from 65 to 55:
+65-15-55
+Path from 65 to 56:
+65-15-56
+Path from 65 to 57:
+65-15-16-33-57
+Path from 65 to 68:
+65-15-7-68
+Path from 65 to 72:
+65-15-7-68-72
+Path from 65 to 73:
+65-15-16-73
+Path from 65 to 75:
+65-15-16-42-75
+
+
+Path from 66 to 2:
+66-31-2
+Path from 66 to 3:
+66-52-61-3
+Path from 66 to 5:
+66-31-69-5
+Path from 66 to 6:
+66-31-2-6
+Path from 66 to 10:
+66-52-29-10
+Path from 66 to 11:
+66-31-11
+Path from 66 to 13:
+66-52-29-13
+Path from 66 to 22:
+66-31-2-22
+Path from 66 to 23:
+66-31-23
+Path from 66 to 24:
+66-31-24
+Path from 66 to 25:
+66-31-25
+Path from 66 to 29:
+66-52-29
+Path from 66 to 30:
+66-31-70-30
+Path from 66 to 31:
+66-31
+Path from 66 to 37:
+66-52-37
+Path from 66 to 39:
+66-31-25-39
+Path from 66 to 40:
+66-31-40
+Path from 66 to 44:
+66-31-25-44
+Path from 66 to 45:
+66-52-61-45
+Path from 66 to 47:
+66-31-24-47
+Path from 66 to 51:
+66-31-51
+Path from 66 to 52:
+66-52
+Path from 66 to 61:
+66-52-61
+Path from 66 to 62:
+66-31-25-39-62
+Path from 66 to 64:
+66-31-25-39-62-64
+Path from 66 to 67:
+66-52-61-3-67
+Path from 66 to 69:
+66-31-69
+Path from 66 to 70:
+66-31-70
+
+
+Path from 67 to 2:
+67-2
+Path from 67 to 3:
+67-3
+Path from 67 to 5:
+67-3-25-39-29-5
+Path from 67 to 6:
+67-2-6
+Path from 67 to 10:
+67-3-25-39-29-10
+Path from 67 to 11:
+67-3-25-39-62-64-11
+Path from 67 to 13:
+67-13
+Path from 67 to 22:
+67-2-22
+Path from 67 to 23:
+67-3-25-51-23
+Path from 67 to 24:
+67-2-6-24
+Path from 67 to 25:
+67-3-25
+Path from 67 to 29:
+67-3-25-39-29
+Path from 67 to 30:
+67-30
+Path from 67 to 31:
+67-2-31
+Path from 67 to 37:
+67-3-25-39-37
+Path from 67 to 39:
+67-3-25-39
+Path from 67 to 40:
+67-2-6-40
+Path from 67 to 44:
+67-3-25-44
+Path from 67 to 45:
+67-3-61-45
+Path from 67 to 47:
+67-3-61-47
+Path from 67 to 51:
+67-3-25-51
+Path from 67 to 52:
+67-3-61-52
+Path from 67 to 61:
+67-3-61
+Path from 67 to 62:
+67-3-25-39-62
+Path from 67 to 64:
+67-3-25-39-62-64
+Path from 67 to 66:
+67-3-61-52-66
+Path from 67 to 69:
+67-3-61-52-69
+Path from 67 to 70:
+67-30-70
+
+
+Path from 68 to 1:
+68-55-75-35-1
+Path from 68 to 7:
+68-7
+Path from 68 to 9:
+68-55-75-42-9
+Path from 68 to 12:
+68-12
+Path from 68 to 15:
+68-55-15
+Path from 68 to 16:
+68-55-75-42-16
+Path from 68 to 19:
+68-55-75-56-46-19
+Path from 68 to 27:
+68-55-75-56-27
+Path from 68 to 28:
+68-12-28
+Path from 68 to 33:
+68-55-75-42-33
+Path from 68 to 35:
+68-55-75-35
+Path from 68 to 36:
+68-55-75-42-36
+Path from 68 to 41:
+68-55-41
+Path from 68 to 42:
+68-55-75-42
+Path from 68 to 43:
+68-55-43
+Path from 68 to 46:
+68-55-75-56-46
+Path from 68 to 55:
+68-55
+Path from 68 to 56:
+68-55-75-56
+Path from 68 to 57:
+68-55-75-42-33-57
+Path from 68 to 65:
+68-55-15-65
+Path from 68 to 72:
+68-72
+Path from 68 to 73:
+68-55-75-42-16-73
+Path from 68 to 75:
+68-55-75
+
+
+Path from 69 to 2:
+69-31-2
+Path from 69 to 3:
+69-52-61-3
+Path from 69 to 5:
+69-5
+Path from 69 to 6:
+69-6
+Path from 69 to 10:
+69-52-29-10
+Path from 69 to 11:
+69-64-11
+Path from 69 to 13:
+69-52-29-13
+Path from 69 to 22:
+69-31-2-22
+Path from 69 to 23:
+69-31-23
+Path from 69 to 24:
+69-6-24
+Path from 69 to 25:
+69-52-37-39-25
+Path from 69 to 29:
+69-52-29
+Path from 69 to 30:
+69-31-70-30
+Path from 69 to 31:
+69-31
+Path from 69 to 37:
+69-52-37
+Path from 69 to 39:
+69-52-37-39
+Path from 69 to 40:
+69-31-40
+Path from 69 to 44:
+69-44
+Path from 69 to 45:
+69-45
+Path from 69 to 47:
+69-52-61-47
+Path from 69 to 51:
+69-31-51
+Path from 69 to 52:
+69-52
+Path from 69 to 61:
+69-52-61
+Path from 69 to 62:
+69-52-37-39-62
+Path from 69 to 64:
+69-64
+Path from 69 to 66:
+69-31-66
+Path from 69 to 67:
+69-52-61-3-67
+Path from 69 to 70:
+69-31-70
+
+
+Path from 70 to 2:
+70-2
+Path from 70 to 3:
+70-30-67-3
+Path from 70 to 5:
+70-5
+Path from 70 to 6:
+70-2-6
+Path from 70 to 10:
+70-29-10
+Path from 70 to 11:
+70-29-11
+Path from 70 to 13:
+70-29-13
+Path from 70 to 22:
+70-2-22
+Path from 70 to 23:
+70-31-23
+Path from 70 to 24:
+70-2-6-24
+Path from 70 to 25:
+70-29-39-25
+Path from 70 to 29:
+70-29
+Path from 70 to 30:
+70-30
+Path from 70 to 31:
+70-31
+Path from 70 to 37:
+70-31-66-52-37
+Path from 70 to 39:
+70-29-39
+Path from 70 to 40:
+70-2-6-40
+Path from 70 to 44:
+70-2-44
+Path from 70 to 45:
+70-29-13-61-45
+Path from 70 to 47:
+70-2-6-24-47
+Path from 70 to 51:
+70-2-51
+Path from 70 to 52:
+70-31-66-52
+Path from 70 to 61:
+70-29-13-61
+Path from 70 to 62:
+70-29-39-62
+Path from 70 to 64:
+70-29-39-62-64
+Path from 70 to 66:
+70-31-66
+Path from 70 to 67:
+70-30-67
+Path from 70 to 69:
+70-31-69
+
+
+Path from 71 to 4:
+71-26-8-4
+Path from 71 to 8:
+71-26-8
+Path from 71 to 14:
+71-20-21-14
+Path from 71 to 17:
+71-20-38-17
+Path from 71 to 18:
+71-32-18
+Path from 71 to 20:
+71-20
+Path from 71 to 21:
+71-20-21
+Path from 71 to 26:
+71-26
+Path from 71 to 32:
+71-32
+Path from 71 to 34:
+71-32-34
+Path from 71 to 38:
+71-20-38
+Path from 71 to 48:
+71-74-48
+Path from 71 to 49:
+71-20-21-14-49
+Path from 71 to 50:
+71-20-21-50
+Path from 71 to 53:
+71-20-21-50-53
+Path from 71 to 54:
+71-20-38-17-54
+Path from 71 to 58:
+71-74-58
+Path from 71 to 59:
+71-74-48-59
+Path from 71 to 60:
+71-32-63-60
+Path from 71 to 63:
+71-32-63
+Path from 71 to 74:
+71-74
+
+
+Path from 72 to 1:
+72-68-55-75-35-1
+Path from 72 to 7:
+72-68-7
+Path from 72 to 9:
+72-68-55-75-42-9
+Path from 72 to 12:
+72-68-12
+Path from 72 to 15:
+72-68-55-15
+Path from 72 to 16:
+72-68-55-75-42-16
+Path from 72 to 19:
+72-19
+Path from 72 to 27:
+72-68-55-75-56-27
+Path from 72 to 28:
+72-68-12-28
+Path from 72 to 33:
+72-68-55-75-42-33
+Path from 72 to 35:
+72-68-55-75-35
+Path from 72 to 36:
+72-68-55-75-42-36
+Path from 72 to 41:
+72-68-55-41
+Path from 72 to 42:
+72-68-55-75-42
+Path from 72 to 43:
+72-68-55-43
+Path from 72 to 46:
+72-68-55-75-56-46
+Path from 72 to 55:
+72-68-55
+Path from 72 to 56:
+72-68-55-75-56
+Path from 72 to 57:
+72-68-55-75-42-33-57
+Path from 72 to 65:
+72-68-55-15-65
+Path from 72 to 68:
+72-68
+Path from 72 to 73:
+72-68-55-75-42-16-73
+Path from 72 to 75:
+72-68-55-75
+
+
+Path from 73 to 1:
+73-16-42-75-35-1
+Path from 73 to 7:
+73-16-15-7
+Path from 73 to 9:
+73-16-15-9
+Path from 73 to 12:
+73-16-33-56-12
+Path from 73 to 15:
+73-16-15
+Path from 73 to 16:
+73-16
+Path from 73 to 19:
+73-46-19
+Path from 73 to 27:
+73-16-33-56-27
+Path from 73 to 28:
+73-16-15-7-28
+Path from 73 to 33:
+73-16-33
+Path from 73 to 35:
+73-16-42-75-35
+Path from 73 to 36:
+73-16-42-36
+Path from 73 to 41:
+73-16-41
+Path from 73 to 42:
+73-16-42
+Path from 73 to 43:
+73-16-43
+Path from 73 to 46:
+73-46
+Path from 73 to 55:
+73-16-42-75-55
+Path from 73 to 56:
+73-16-33-56
+Path from 73 to 57:
+73-57
+Path from 73 to 65:
+73-16-15-65
+Path from 73 to 68:
+73-16-42-75-55-68
+Path from 73 to 72:
+73-16-42-75-55-68-72
+Path from 73 to 75:
+73-16-42-75
+
+
+Path from 74 to 4:
+74-58-4
+Path from 74 to 8:
+74-26-8
+Path from 74 to 14:
+74-58-53-50-14
+Path from 74 to 17:
+74-17
+Path from 74 to 18:
+74-58-18
+Path from 74 to 20:
+74-17-38-20
+Path from 74 to 21:
+74-58-53-50-21
+Path from 74 to 26:
+74-26
+Path from 74 to 32:
+74-17-63-32
+Path from 74 to 34:
+74-58-34
+Path from 74 to 38:
+74-17-38
+Path from 74 to 48:
+74-48
+Path from 74 to 49:
+74-58-53-50-14-49
+Path from 74 to 50:
+74-58-53-50
+Path from 74 to 53:
+74-58-53
+Path from 74 to 54:
+74-17-54
+Path from 74 to 58:
+74-58
+Path from 74 to 59:
+74-48-59
+Path from 74 to 60:
+74-17-60
+Path from 74 to 63:
+74-17-63
+Path from 74 to 71:
+74-71
+
+
+Path from 75 to 1:
+75-35-1
+Path from 75 to 7:
+75-42-7
+Path from 75 to 9:
+75-42-9
+Path from 75 to 12:
+75-56-12
+Path from 75 to 15:
+75-42-16-15
+Path from 75 to 16:
+75-42-16
+Path from 75 to 19:
+75-56-46-19
+Path from 75 to 27:
+75-56-27
+Path from 75 to 28:
+75-35-43-28
+Path from 75 to 33:
+75-42-33
+Path from 75 to 35:
+75-35
+Path from 75 to 36:
+75-42-36
+Path from 75 to 41:
+75-55-41
+Path from 75 to 42:
+75-42
+Path from 75 to 43:
+75-35-43
+Path from 75 to 46:
+75-56-46
+Path from 75 to 55:
+75-55
+Path from 75 to 56:
+75-56
+Path from 75 to 57:
+75-42-33-57
+Path from 75 to 65:
+75-42-16-15-65
+Path from 75 to 68:
+75-55-68
+Path from 75 to 72:
+75-55-68-72
+Path from 75 to 73:
+75-42-16-73
+
