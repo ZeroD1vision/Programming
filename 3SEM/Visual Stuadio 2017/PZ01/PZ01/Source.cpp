@@ -309,14 +309,8 @@ RectFlashlight::~RectFlashlight() {}
 void RectFlashlight::Show()
 {
     visible = true;
-    COLORREF color;
 
-    if (broken)
-        color = RGB(128, 128, 128); // Серый цвет для разбитого фонарика
-    else
-        color = RGB(255, 0, 0);     // Красный цвет для целого
-
-    HPEN Pen = CreatePen(PS_SOLID, 2, color);
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
     SelectObject(hdc, Pen);
 
     // Корпус фонарика (прямоугольник)
@@ -333,14 +327,6 @@ void RectFlashlight::Show()
     int buttonX = x + bodyWidth - 20;
     int buttonY = y + bodyHeight - 25;
     Rectangle(hdc, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight);
-
-    // Рисуем повреждения в зависимости от уровня
-    if (damageLevel > 0) {
-        DrawCracks();
-    }
-    if (damageLevel >= 2) {
-        DrawStains();
-    }
 
     DeleteObject(Pen);
 }
@@ -366,66 +352,6 @@ void RectFlashlight::Hide()
     DeleteObject(Pen);
 }
 
-void RectFlashlight::DrawCracks()
-{
-    HPEN crackPen = CreatePen(PS_SOLID, 1, RGB(64, 64, 64));
-    SelectObject(hdc, crackPen);
-
-    // Рисуем трещины в зависимости от уровня повреждения
-    if (damageLevel >= 1) {
-        // Вертикальная трещина
-        MoveToEx(hdc, x + bodyWidth / 2, y + 5, NULL);
-        LineTo(hdc, x + bodyWidth / 2, y + bodyHeight - 5);
-    }
-
-    if (damageLevel >= 2) {
-        // Горизонтальная трещина
-        MoveToEx(hdc, x + 5, y + bodyHeight / 2, NULL);
-        LineTo(hdc, x + bodyWidth - 5, y + bodyHeight / 2);
-
-        // Диагональная трещина
-        MoveToEx(hdc, x + 10, y + 10, NULL);
-        LineTo(hdc, x + bodyWidth - 10, y + bodyHeight - 10);
-    }
-
-    if (damageLevel >= 3) {
-        // Дополнительные трещины для полностью разбитого состояния
-        MoveToEx(hdc, x + bodyWidth - 10, y + 10, NULL);
-        LineTo(hdc, x + 10, y + bodyHeight - 10);
-
-        // Мелкие трещины по углам
-        for (int i = 0; i < 3; i++) {
-            MoveToEx(hdc, x + 5 + i * 5, y + 5, NULL);
-            LineTo(hdc, x + 5 + i * 5, y + 15);
-        }
-    }
-
-    DeleteObject(crackPen);
-}
-
-void RectFlashlight::DrawStains()
-{
-    HPEN stainPen = CreatePen(PS_SOLID, 1, RGB(139, 69, 19));
-    SelectObject(hdc, stainPen);
-
-    // Рисуем ржавые пятна
-    if (damageLevel >= 2) {
-        // Пятно в левом верхнем углу
-        Ellipse(hdc, x + 5, y + 5, x + 20, y + 20);
-
-        // Пятно в правом нижнем углу
-        Ellipse(hdc, x + bodyWidth - 20, y + bodyHeight - 20,
-            x + bodyWidth - 5, y + bodyHeight - 5);
-    }
-
-    if (damageLevel >= 3) {
-        // Дополнительные пятна для полностью разбитого состояния
-        Ellipse(hdc, x + bodyWidth - 25, y + 10, x + bodyWidth - 10, y + 25);
-        Ellipse(hdc, x + 10, y + bodyHeight - 25, x + 25, y + bodyHeight - 10);
-    }
-
-    DeleteObject(stainPen);
-}
 
 /* =============== КРУГЛЫЙ ФОНАРИК =============== */
 
@@ -440,14 +366,7 @@ RoundFlashlight::~RoundFlashlight() {}
 void RoundFlashlight::Show()
 {
     visible = true;
-    COLORREF color;
-
-    if (broken)
-        color = RGB(128, 128, 128); // Серый цвет для разбитого фонарика
-    else
-        color = RGB(0, 255, 0);     // Зеленый цвет для целого
-
-    HPEN Pen = CreatePen(PS_SOLID, 2, color);
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
     SelectObject(hdc, Pen);
 
     // Корпус фонарика (овал)
@@ -469,15 +388,7 @@ void RoundFlashlight::Show()
     int buttonX = x + bodyWidth - 20;
     int buttonY = y + bodyHeight - 20;
     Ellipse(hdc, buttonX - buttonRadius, buttonY - buttonRadius,
-        buttonX + buttonRadius, buttonY + buttonRadius);
-
-    // Рисуем повреждения
-    if (damageLevel > 0) {
-        DrawCracks();
-    }
-    if (damageLevel >= 3) {
-        DrawBrokenPieces();
-    }
+            buttonX + buttonRadius, buttonY + buttonRadius);
 
     DeleteObject(Pen);
 }
@@ -509,125 +420,120 @@ void RoundFlashlight::Hide()
     DeleteObject(Pen);
 }
 
-void RoundFlashlight::DrawCracks()
+/* =============== ПОВРЕЖДЕННЫЙ ФОНАРИК =============== */
+
+BrokenFlashlight::BrokenFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+                                   int InitHeadWidth, int InitHeadHeight, int Type)
+    : BaseFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight)
 {
+    broken = true;
+    damageLevel = 3;
+    flashlightType = Type;
+}
+
+BrokenFlashlight::~BrokenFlashlight() {}
+
+void BrokenFlashlight::Show()
+{
+    visible = true;
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(128, 128, 128));
     HPEN crackPen = CreatePen(PS_SOLID, 1, RGB(64, 64, 64));
+
+    SelectObject(hdc, Pen);
+
+    // Основной корпус
+    Rectangle(hdc, x, y, x + bodyWidth, y + bodyHeight);
+
+    // Разная головка в зависимости от типа
+    if (flashlightType == 0) {
+        DrawRectHead();  // Прямоугольная головка
+    }
+    else {
+        DrawRoundHead(); // Круглая/сломанная головка
+    }
+
+    // Головка
+    // int headX = x + (bodyWidth - headWidth) / 2;
+    // int headY = y - headHeight;
+    // Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
+
+    // Кнопка
+    int buttonWidth = 10;
+    int buttonHeight = 15;
+    int buttonX = x + bodyWidth - 20;
+    int buttonY = y + bodyHeight - 25;
+    Rectangle(hdc, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight);
+
+    // Трещины
     SelectObject(hdc, crackPen);
-
-    int centerX = x + bodyWidth / 2;
-    int centerY = y + bodyHeight / 2;
-    int radius = bodyWidth / 2;
-
-    // Рисуем радиальные трещины от центра
-    if (damageLevel >= 1) {
-        // Трещина сверху вниз
-        MoveToEx(hdc, centerX, centerY - radius, NULL);
-        LineTo(hdc, centerX, centerY + radius);
-    }
-
-    if (damageLevel >= 2) {
-        // Трещина слева направо
-        MoveToEx(hdc, centerX - radius, centerY, NULL);
-        LineTo(hdc, centerX + radius, centerY);
-
-        // Диагональная трещина
-        double angle = 45 * 3.14159 / 180;
-        MoveToEx(hdc, centerX - radius * cos(angle), centerY - radius * sin(angle), NULL);
-        LineTo(hdc, centerX + radius * cos(angle), centerY + radius * sin(angle));
-    }
-
-    if (damageLevel >= 3) {
-        // Дополнительные трещины для полностью разбитого состояния
-        double angle = 30 * 3.14159 / 180;
-        MoveToEx(hdc, centerX - radius * cos(angle), centerY - radius * sin(angle), NULL);
-        LineTo(hdc, centerX + radius * cos(angle), centerY + radius * sin(angle));
-
-        angle = 60 * 3.14159 / 180;
-        MoveToEx(hdc, centerX - radius * cos(angle), centerY - radius * sin(angle), NULL);
-        LineTo(hdc, centerX + radius * cos(angle), centerY + radius * sin(angle));
-    }
+    MoveToEx(hdc, x + bodyWidth / 2, y + 5, NULL);
+    LineTo(hdc, x + bodyWidth / 2, y + bodyHeight - 5);
+    MoveToEx(hdc, x + 5, y + bodyHeight / 2, NULL);
+    LineTo(hdc, x + bodyWidth - 5, y + bodyHeight / 2);
+    MoveToEx(hdc, x + 10, y + 10, NULL);
+    LineTo(hdc, x + bodyWidth - 10, y + bodyHeight - 10);
 
     DeleteObject(crackPen);
+    DeleteObject(Pen);
 }
 
-void RoundFlashlight::DrawBrokenPieces()
+void BrokenFlashlight::Hide()
 {
-    HPEN piecePen = CreatePen(PS_SOLID, 1, RGB(100, 100, 100));
-    SelectObject(hdc, piecePen);
+    visible = false;
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    SelectObject(hdc, Pen);
 
-    int centerX = x + bodyWidth / 2;
-    int centerY = y + bodyHeight / 2;
-    int radius = bodyWidth / 2;
+    // Основной корпус
+    Rectangle(hdc, x, y, x + bodyWidth, y + bodyHeight);
 
-    // Рисуем отколовшиеся куски по краям
-    if (damageLevel >= 3) {
-        // Верхний левый кусок
-        Arc(hdc, centerX - radius, centerY - radius, centerX, centerY,
-            centerX - radius / 2, centerY - radius, centerX, centerY - radius / 2);
+    // Головка
+    int headX = x + (bodyWidth - headWidth) / 2;
+    int headY = y - headHeight;
+    Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
 
-        // Нижний правый кусок
-        Arc(hdc, centerX, centerY, centerX + radius, centerY + radius,
-            centerX, centerY + radius / 2, centerX + radius / 2, centerY + radius);
+    // Кнопка
+    int buttonWidth = 10;
+    int buttonHeight = 15;
+    int buttonX = x + bodyWidth - 20;
+    int buttonY = y + bodyHeight - 25;
+    Rectangle(hdc, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight);
 
-        // Рисуем линии, показывающие, что куски отколоты
-        MoveToEx(hdc, centerX - radius / 2, centerY - radius, NULL);
-        LineTo(hdc, centerX - radius / 2, centerY - radius / 2);
-        LineTo(hdc, centerX, centerY - radius / 2);
-
-        MoveToEx(hdc, centerX + radius / 2, centerY + radius, NULL);
-        LineTo(hdc, centerX + radius / 2, centerY + radius / 2);
-        LineTo(hdc, centerX, centerY + radius / 2);
-    }
-
-    DeleteObject(piecePen);
+    DeleteObject(Pen);
 }
 
-// Flashlight::Flashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight, 
-//                        int InitHeadWidth, int InitHeadHeight) 
-//     : MyRectangle(InitX, InitY, InitBodyWidth, InitBodyHeight)
-// {
-//     headWidth = InitHeadWidth;
-//     headHeight = InitHeadHeight;
-// }
+void BrokenFlashlight::DrawRectHead()
+{
+    // Обычная прямоугольная головка (как была)
+    int headX = x + (bodyWidth - headWidth) / 2;
+    int headY = y - headHeight;
+    Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
+}
 
-// void Flashlight::Show()
-// {
-//     visible = true;
-//     // 1. Создаем и показываем корпус фонарика (используем базовый класс)
-//     MyRectangle::Show();
+void BrokenFlashlight::DrawRoundHead()
+{
+    // Сломанная/деформированная головка для круглого фонарика
 
-//     // 2. Создаем и показываем головку фонарика (прямоугольник)
-//     int headX = x + (width - headWidth) / 2;
-//     int headY = y - headHeight;
-//     MyRectangle head(headX, headY, headWidth, headHeight);
-//     head.Show();
+    // Вариант 1: 
+    POINT triangle[3];
+    triangle[0].x = x + bodyWidth / 2;
+    triangle[0].y = y - headHeight;
+    triangle[1].x = x + bodyWidth / 2 - headWidth / 2;
+    triangle[1].y = y;
+    triangle[2].x = x + bodyWidth / 2 + headWidth / 2;
+    triangle[2].y = y;
+    Polygon(hdc, triangle, 3);
 
-//     // 3. Создаем и показываем кнопку фонарика (маленький прямоугольник)
-//     int buttonWidth = 15;
-//     int buttonHeight = 20;
-//     int buttonX = x + width - 25;
-//     int buttonY = y + height - 30;
-//     MyRectangle button(buttonX, buttonY, buttonWidth, buttonHeight);
-//     button.Show();
-// }
+    // Вариант 2: Сломанный эллипс
+    // Ellipse(hdc, x + (bodyWidth - headWidth)/2, y - headHeight, 
+    //          x + (bodyWidth + headWidth)/2, y);
 
-// void Flashlight::Hide()
-// {
-//     visible = false;
-//     // 1. Создаем и скрываем корпус фонарика
-//     MyRectangle::Hide();
-
-//     // 2. Создаем и скрываем головку фонарика
-//     int headX = x + (width - headWidth) / 2;
-//     int headY = y - headHeight;
-//     MyRectangle head(headX, headY, headWidth, headHeight);
-//     head.Hide();
-
-//     // 3. Создаем и скрываем кнопку фонарика
-//     int buttonX = x + width - 25;
-//     int buttonY = y + height - 30;
-//     int buttonWidth = 15;
-//     int buttonHeight = 20;
-//     MyRectangle button(buttonX, buttonY, buttonWidth, buttonHeight);
-//     button.Hide();
-// }
+    // Вариант 3: Треугольная голова (как у целого круглого)
+    // POINT triangle[3];
+    // triangle[0].x = x + bodyWidth / 2;
+    // triangle[0].y = y - headHeight;
+    // triangle[1].x = x + bodyWidth / 2 - headWidth / 2 - 2;
+    // triangle[1].y = y;
+    // triangle[2].x = x + bodyWidth / 2 + headWidth / 2 + 2;
+    // triangle[2].y = y - 3;
+    // Polygon(hdc, triangle, 3);
+}

@@ -15,6 +15,7 @@
  #include <iostream>
 #include <windows.h>
 #include "Header.h"
+#include "PZ01.h"
 
 using namespace std;
 
@@ -75,50 +76,30 @@ int main()
     RoundFlashlight roundFlashlight(500, 300, 50, 100, 70, 60);
     roundFlashlight.Show();
 
+    // Саздаем и прячем сразу сломанные фонарики
+    BrokenFlashlight brokenRect(300, 300, 40, 120, 60, 80, 0);
+    brokenRect.Hide();
+    BrokenFlashlight brokenRound(500, 300, 50, 100, 70, 60, 0);
+    brokenRound.Hide();
+
     // Отверткa
     Screwdriver screwdriver(400, 400, 60, 15);
     screwdriver.Show();
 
-    // cout << "All figures are shown!" << endl;
+    // Флаги для отслеживания состояния фонариков
+    bool rectIsBroken = false;
+    bool roundIsBroken = false;
 
-    // cout << "To drag use arrows, to exit - ESC" << endl;
-    // cout << "Choose the figure to drag:" << endl;
-    // cout << "1 - Point" << endl;
-    // cout << "2 - Circle" << endl;
-    // cout << "3 - Rectangle" << endl;
-    // cout << "4 - Flashlight" << endl;
-    
     cout << "To drag use arrows, to exit - ESC" << endl;
     cout << "Choose the figure to drag:" << endl;
     cout << "1 - Circle" << endl;
-    cout << "2 - Flashlight" << endl;
+    cout << "2 - RectFlashlight" << endl;
     cout << "3 - Point" << endl;
     cout << "4 - RoundFlashlight" << endl;
     cout << "5 - Screwdriver (repair tool)" << endl;
     cout << "Walls: (" << WALL_LEFT << "," << WALL_TOP << ") to ("
          << WALL_RIGHT << "," << WALL_BOTTOM << ")" << endl;
     cout << "Use screwdriver to repair broken flashlights!" << endl;
-
-    // int choice;
-    // cin >> choice;
-
-    // switch (choice)
-    // {
-    // case 1:
-    //     point.Drag(5);
-    //     break;
-    // case 2:
-    //     circle.Drag(5);
-    //     break;
-    // case 3:
-    //     rect.Drag(5);
-    //     break;
-    // case 4:
-    //     flashlight.Drag(5);
-    //     break;
-    // default:
-    //     cout << "Incorrect choice" << endl;
-    // }
 
     //                   РЕАЛИЗАЦИЯ ДВИЖЕНИЯ                 //
 
@@ -207,10 +188,24 @@ int main()
                 if (KEY_DOWN(VK_LEFT))
                 {
                     FigX = FigX - Step;
-                    rectFlashlight.MoveTo(FigX, FigY);
-                    // Проверяем столкновение со стеной
-                    if (rectFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
-                        cout << "RectFlashlight damaged! Damage level: " << rectFlashlight.GetDamage() << endl;
+                    if (!rectIsBroken) {
+                        // Двигаем целый фонарик
+                        rectFlashlight.MoveTo(FigX, FigY);
+                        if (rectFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
+                            cout << "RectFlashlight damage: " << rectFlashlight.GetDamage() << endl;
+                            if (rectFlashlight.IsBroken()) {
+                                cout << "RectFlashlight broken!" << endl;
+                                rectIsBroken = true;
+                                // Скрываем целый и показываем разбитый
+                                rectFlashlight.Hide();
+                                brokenRect.MoveTo(FigX, FigY);
+                                brokenRect.Show();
+                            }
+                        }
+                    }
+                    else {
+                        // Двигаем разбитый фонарик
+                        brokenRect.MoveTo(FigX, FigY);
                     }
                     Sleep(100);
                 }
@@ -218,9 +213,24 @@ int main()
                 // Стрелка вправо
                 if (KEY_DOWN(VK_RIGHT)) {
                     FigX += Step;
-                    rectFlashlight.MoveTo(FigX, FigY);
-                    if (rectFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
-                        cout << "RectFlashlight damaged! Damage level: " << rectFlashlight.GetDamage() << endl;
+                    if (!rectIsBroken) {
+                        // Двигаем целый фонарик
+                        rectFlashlight.MoveTo(FigX, FigY);
+                        if (rectFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
+                            cout << "RectFlashlight damage: " << rectFlashlight.GetDamage() << endl;
+                            if (rectFlashlight.IsBroken()) {
+                                cout << "RectFlashlight broken!" << endl;
+                                rectIsBroken = true;
+                                // Скрываем целый и показываем разбитый
+                                rectFlashlight.Hide();
+                                brokenRect.MoveTo(FigX, FigY);
+                                brokenRect.Show();
+                            }
+                        }
+                    }
+                    else {
+                        // Двигаем разбитый фонарик
+                        brokenRect.MoveTo(FigX, FigY);
                     }
                     Sleep(100);
                 }
@@ -228,9 +238,24 @@ int main()
                 // Стрелка вверх
                 if (KEY_DOWN(VK_UP)) {
                     FigY -= Step;
-                    rectFlashlight.MoveTo(FigX, FigY);
-                    if (rectFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
-                        cout << "RectFlashlight damaged! Damage level: " << rectFlashlight.GetDamage() << endl;
+                    if (!rectIsBroken) {
+                        // Двигаем целый фонарик
+                        rectFlashlight.MoveTo(FigX, FigY);
+                        if (rectFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
+                            cout << "RectFlashlight damage: " << rectFlashlight.GetDamage() << endl;
+                            if (rectFlashlight.IsBroken()) {
+                                cout << "RectFlashlight broken!" << endl;
+                                rectIsBroken = true;
+                                // Скрываем целый и показываем разбитый
+                                rectFlashlight.Hide();
+                                brokenRect.MoveTo(FigX, FigY);
+                                brokenRect.Show();
+                            }
+                        }
+                    }
+                    else {
+                        // Двигаем разбитый фонарик
+                        brokenRect.MoveTo(FigX, FigY);
                     }
                     Sleep(100);
                 }
@@ -238,9 +263,27 @@ int main()
                 // Стрелка вниз
                 if (KEY_DOWN(VK_DOWN)) {
                     FigY += Step;
-                    rectFlashlight.MoveTo(FigX, FigY);
-                    if (rectFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
-                        cout << "RectFlashlight damaged! Damage level: " << rectFlashlight.GetDamage() << endl;
+                    if (!rectIsBroken) {
+                        // Двигаем целый фонарик
+                        rectFlashlight.MoveTo(FigX, FigY);
+                        if (rectFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
+                            cout << "RectFlashlight damage: " << rectFlashlight.GetDamage() << endl;
+                            if (rectFlashlight.IsBroken()) {
+                                cout << "RectFlashlight broken!" << endl;
+                                rectIsBroken = true;
+                                // Скрываем целый и показываем разбитый
+                                rectFlashlight.Hide();
+                                // BrokenFlashlight brokenRect(FigX, FigY, 40, 120, 60, 80);
+                                brokenRect.MoveTo(FigX, FigY);
+                                brokenRect.Show();
+                            }
+                        }
+                    }
+                    else {
+                        // Двигаем разбитый фонарик
+                        //BrokenFlashlight brokenRect(FigX, FigY, 40, 120, 60, 80);
+                        //brokenRect.Show();
+                        brokenRect.MoveTo(FigX, FigY);
                     }
                     Sleep(100);
                 }
@@ -277,36 +320,102 @@ int main()
                 }
                 break;
 
+            // Для круглого
             case 4:
                 if (KEY_DOWN(VK_LEFT)) {
                     FigX -= Step;
-                    roundFlashlight.MoveTo(FigX, FigY);
-                    if (roundFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
-                        cout << "RoundFlashlight damaged! Damage level: " << roundFlashlight.GetDamage() << endl;
+                    if (!roundIsBroken) {
+                        // Двигаем целый фонарик
+                        roundFlashlight.MoveTo(FigX, FigY);
+                        if (roundFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
+                            cout << "RoundFlashlight damage: " << roundFlashlight.GetDamage() << endl;
+                            if (roundFlashlight.IsBroken()) {
+                                cout << "RoundFlashlight broken!" << endl;
+                                roundIsBroken = true;
+                                // Скрываем целый и показываем разбитый
+                                roundFlashlight.Hide();
+                                brokenRound.MoveTo(FigX, FigY);
+                                brokenRound.Show();
+                            }
+                        }
+                    }
+                    else {
+                        // Двигаем разбитый фонарик
+                        brokenRound.MoveTo(FigX, FigY);
                     }
                     Sleep(100);
                 }
+
                 if (KEY_DOWN(VK_RIGHT)) {
                     FigX += Step;
-                    roundFlashlight.MoveTo(FigX, FigY);
-                    if (roundFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
-                        cout << "RoundFlashlight damaged! Damage level: " << roundFlashlight.GetDamage() << endl;
+                    if (!roundIsBroken) {
+                        // Двигаем целый фонарик
+                        roundFlashlight.MoveTo(FigX, FigY);
+                        if (roundFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
+                            cout << "RoundFlashlight damage: " << roundFlashlight.GetDamage() << endl;
+                            if (roundFlashlight.IsBroken()) {
+                                cout << "RoundFlashlight broken!" << endl;
+                                roundIsBroken = true;
+                                // Скрываем целый и показываем разбитый
+                                roundFlashlight.Hide();
+                                brokenRound.MoveTo(FigX, FigY);
+                                brokenRound.Show();
+                            }
+                        }
+                    }
+                    else {
+                        // Двигаем разбитый фонарик
+                        brokenRound.MoveTo(FigX, FigY);
                     }
                     Sleep(100);
                 }
+
                 if (KEY_DOWN(VK_UP)) {
                     FigY -= Step;
-                    roundFlashlight.MoveTo(FigX, FigY);
-                    if (roundFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
-                        cout << "RoundFlashlight damaged! Damage level: " << roundFlashlight.GetDamage() << endl;
+                    if (!roundIsBroken) {
+                        // Двигаем целый фонарик
+                        roundFlashlight.MoveTo(FigX, FigY);
+                        if (roundFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
+                            cout << "RoundFlashlight damage: " << roundFlashlight.GetDamage() << endl;
+                            if (roundFlashlight.IsBroken()) {
+                                cout << "RoundFlashlight broken!" << endl;
+                                roundIsBroken = true;
+                                // Скрываем целый и показываем разбитый
+                                roundFlashlight.Hide();
+                                brokenRound.MoveTo(FigX, FigY);
+                                brokenRound.Show();
+                            }
+                        }
+                    }
+                    else {
+                        // Двигаем разбитый фонарик
+                        brokenRound.MoveTo(FigX, FigY);
                     }
                     Sleep(100);
                 }
                 if (KEY_DOWN(VK_DOWN)) {
                     FigY += Step;
-                    roundFlashlight.MoveTo(FigX, FigY);
-                    if (roundFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
-                        cout << "RoundFlashlight damaged! Damage level: " << roundFlashlight.GetDamage() << endl;
+                    if (!roundIsBroken) {
+                        // Двигаем целый фонарик
+                        roundFlashlight.MoveTo(FigX, FigY);
+                        if (roundFlashlight.CheckWallCollision(WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM)) {
+                            cout << "RoundFlashlight damage: " << roundFlashlight.GetDamage() << endl;
+                            if (roundFlashlight.IsBroken()) {
+                                cout << "RoundFlashlight broken!" << endl;
+                                roundIsBroken = true;
+                                // Скрываем целый и показываем разбитый
+                                roundFlashlight.Hide();
+                                //BrokenFlashlight brokenRound(FigX, FigY, 50, 100, 70, 60);
+                                brokenRound.MoveTo(FigX, FigY);
+                                brokenRound.Show();
+                            }
+                        }
+                    }
+                    else {
+                        // Двигаем разбитый фонарик
+                        //BrokenFlashlight brokenRound(FigX, FigY, 50, 100, 70, 60);
+                        //brokenRound.Show();
+                        brokenRound.MoveTo(FigX, FigY);
                     }
                     Sleep(100);
                 }
@@ -317,49 +426,142 @@ int main()
                     FigX -= Step;
                     screwdriver.MoveTo(FigX, FigY);
                     // Проверяем столкновение с фонариками для починки
-                    if (rectFlashlight.CheckScrewdriverCollision(&screwdriver) && rectFlashlight.GetDamage() > 0) {
-                        cout << "RectFlashlight repaired! Damage level: " << rectFlashlight.GetDamage() << endl;
+                    // Проверка починки прямоугольного фонарика
+                    if (rectIsBroken) {
+                        // Создаем временный разбитый фонарик для проверки столкновения
+                        BrokenFlashlight tempRect(rectFlashlight.GetX(), rectFlashlight.GetY(), 40, 120, 60, 80, 0);
+                        if (tempRect.CheckScrewdriverCollision(&screwdriver)) {
+                            cout << "Repairing RectFlashlight!" << endl;
+                            rectIsBroken = false;
+                            // Скрываем разбитый и показываем целый
+                            tempRect.Hide();
+                            rectFlashlight.SetDamage(0);
+                            rectFlashlight.Repair();
+                            rectFlashlight.MoveTo(brokenRect.GetX(), brokenRect.GetY());
+                            rectFlashlight.Show();
+                        }
                     }
-                    if (roundFlashlight.CheckScrewdriverCollision(&screwdriver) && roundFlashlight.GetDamage() > 0) {
-                        cout << "RoundFlashlight repaired! Damage level: " << roundFlashlight.GetDamage() << endl;
+
+                    // Проверка починки круглого фонарика
+                    if (roundIsBroken) {
+                        BrokenFlashlight tempRound(roundFlashlight.GetX(), roundFlashlight.GetY(), 50, 100, 70, 60, 1);
+                        if (tempRound.CheckScrewdriverCollision(&screwdriver)) {
+                            cout << "Repairing RoundFlashlight!" << endl;
+                            roundIsBroken = false;
+                            tempRound.Hide();
+                            roundFlashlight.SetDamage(0);
+                            roundFlashlight.Repair();
+                            roundFlashlight.MoveTo(brokenRound.GetX(), brokenRound.GetY());
+                            roundFlashlight.Show();
+                        }
                     }
                     Sleep(100);
                 }
                 if (KEY_DOWN(VK_RIGHT)) {
                     FigX += Step;
                     screwdriver.MoveTo(FigX, FigY);
-                    if (rectFlashlight.CheckScrewdriverCollision(&screwdriver) && rectFlashlight.GetDamage() > 0) {
-                        cout << "RectFlashlight repaired! Damage level: " << rectFlashlight.GetDamage() << endl;
+                    // Проверяем столкновение с фонариками для починки
+                    // Проверка починки прямоугольного фонарика
+                    if (rectIsBroken) {
+                        // Создаем временный разбитый фонарик для проверки столкновения
+                        BrokenFlashlight tempRect(rectFlashlight.GetX(), rectFlashlight.GetY(), 40, 120, 60, 80, 0);
+                        if (tempRect.CheckScrewdriverCollision(&screwdriver)) {
+                            cout << "Repairing RectFlashlight!" << endl;
+                            rectIsBroken = false;
+                            // Скрываем разбитый и показываем целый
+                            tempRect.Hide();
+                            rectFlashlight.SetDamage(0);
+                            rectFlashlight.Repair();
+                            rectFlashlight.MoveTo(brokenRect.GetX(), brokenRect.GetY());
+                            rectFlashlight.Show();
+                        }
                     }
-                    if (roundFlashlight.CheckScrewdriverCollision(&screwdriver) && roundFlashlight.GetDamage() > 0) {
-                        cout << "RoundFlashlight repaired! Damage level: " << roundFlashlight.GetDamage() << endl;
+
+                    // Проверка починки круглого фонарика
+                    if (roundIsBroken) {
+                        BrokenFlashlight tempRound(roundFlashlight.GetX(), roundFlashlight.GetY(), 50, 100, 70, 60, 1);
+                        if (tempRound.CheckScrewdriverCollision(&screwdriver)) {
+                            cout << "Repairing RoundFlashlight!" << endl;
+                            roundIsBroken = false;
+                            tempRound.Hide();
+                            roundFlashlight.SetDamage(0);
+                            roundFlashlight.Repair();
+                            roundFlashlight.MoveTo(brokenRound.GetX(), brokenRound.GetY());
+                            roundFlashlight.Show();
+                        }
                     }
                     Sleep(100);
                 }
                 if (KEY_DOWN(VK_UP)) {
                     FigY -= Step;
                     screwdriver.MoveTo(FigX, FigY);
-                    if (rectFlashlight.CheckScrewdriverCollision(&screwdriver) && rectFlashlight.GetDamage() > 0) {
-                        cout << "RectFlashlight repaired! Damage level: " << rectFlashlight.GetDamage() << endl;
+                    // Проверяем столкновение с фонариками для починки
+                    // Проверка починки прямоугольного фонарика
+                    if (rectIsBroken) {
+                        // Создаем временный разбитый фонарик для проверки столкновения
+                        BrokenFlashlight tempRect(rectFlashlight.GetX(), rectFlashlight.GetY(), 40, 120, 60, 80, 0);
+                        if (tempRect.CheckScrewdriverCollision(&screwdriver)) {
+                            cout << "Repairing RectFlashlight!" << endl;
+                            rectIsBroken = false;
+                            // Скрываем разбитый и показываем целый
+                            tempRect.Hide();
+                            rectFlashlight.SetDamage(0);
+                            rectFlashlight.Repair();
+                            rectFlashlight.MoveTo(brokenRect.GetX(), brokenRect.GetY());
+                            rectFlashlight.Show();
+                        }
                     }
-                    if (roundFlashlight.CheckScrewdriverCollision(&screwdriver) && roundFlashlight.GetDamage() > 0) {
-                        cout << "RoundFlashlight repaired! Damage level: " << roundFlashlight.GetDamage() << endl;
+
+                    // Проверка починки круглого фонарика
+                    if (roundIsBroken) {
+                        BrokenFlashlight tempRound(roundFlashlight.GetX(), roundFlashlight.GetY(), 50, 100, 70, 60, 1);
+                        if (tempRound.CheckScrewdriverCollision(&screwdriver)) {
+                            cout << "Repairing RoundFlashlight!" << endl;
+                            roundIsBroken = false;
+                            tempRound.Hide();
+                            roundFlashlight.SetDamage(0);
+                            roundFlashlight.Repair();
+                            roundFlashlight.MoveTo(brokenRound.GetX(), brokenRound.GetY());
+                            roundFlashlight.Show();
+                        }
                     }
                     Sleep(100);
                 }
                 if (KEY_DOWN(VK_DOWN)) {
                     FigY += Step;
                     screwdriver.MoveTo(FigX, FigY);
-                    if (rectFlashlight.CheckScrewdriverCollision(&screwdriver) && rectFlashlight.GetDamage() > 0) {
-                        cout << "RectFlashlight repaired! Damage level: " << rectFlashlight.GetDamage() << endl;
+                    // Проверяем столкновение с фонариками для починки
+                    // Проверка починки прямоугольного фонарика
+                    if (rectIsBroken) {
+                        // Создаем временный разбитый фонарик для проверки столкновения
+                        BrokenFlashlight tempRect(rectFlashlight.GetX(), rectFlashlight.GetY(), 40, 120, 60, 80, 0);
+                        if (tempRect.CheckScrewdriverCollision(&screwdriver)) {
+                            cout << "Repairing RectFlashlight!" << endl;
+                            rectIsBroken = false;
+                            // Скрываем разбитый и показываем целый
+                            tempRect.Hide();
+                            rectFlashlight.SetDamage(0);
+                            rectFlashlight.Repair();
+                            rectFlashlight.MoveTo(brokenRect.GetX(), brokenRect.GetY());
+                            rectFlashlight.Show();
+                        }
                     }
-                    if (roundFlashlight.CheckScrewdriverCollision(&screwdriver) && roundFlashlight.GetDamage() > 0) {
-                        cout << "RoundFlashlight repaired! Damage level: " << roundFlashlight.GetDamage() << endl;
+
+                    // Проверка починки круглого фонарика
+                    if (roundIsBroken) {
+                        BrokenFlashlight tempRound(roundFlashlight.GetX(), roundFlashlight.GetY(), 50, 100, 70, 60, 1);
+                        if (tempRound.CheckScrewdriverCollision(&screwdriver)) {
+                            cout << "Repairing RoundFlashlight!" << endl;
+                            roundIsBroken = false;
+                            tempRound.Hide();
+                            roundFlashlight.SetDamage(0);
+                            roundFlashlight.Repair();
+                            roundFlashlight.MoveTo(brokenRound.GetX(), brokenRound.GetY());
+                            roundFlashlight.Show();
+                        }
                     }
                     Sleep(100);
                 }
-                break;
-            default:
                 break;
             }
         }
@@ -399,6 +601,9 @@ int main()
     rectFlashlight.Hide();
     roundFlashlight.Hide();
     screwdriver.Hide();
+
+    if (!rectIsBroken) rectFlashlight.Hide();
+    if (!roundIsBroken) roundFlashlight.Hide();
 
     ReleaseDC(hwnd, hdc);
     cout << "Programm ended with code 0." << endl;

@@ -129,7 +129,7 @@ public:
     bool CheckScrewdriverCollision(Screwdriver* screwdriver);
 };
 
-// Первый тип фонарика - прямоугольный
+// Целый прямоугольный фонарик
 class RectFlashlight : public BaseFlashlight
 {
 public:
@@ -139,25 +139,34 @@ public:
 
     virtual void Show();
     virtual void Hide();
-
-private:
-    void DrawCracks(); // Рисует трещины на корпусе
-    void DrawStains(); // Рисует пятна на корпусе
 };
 
-// Второй тип фонарика - круглый
+// Целый круглый фонарик
 class RoundFlashlight : public BaseFlashlight
 {
 public:
     RoundFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
-                    int InitHeadWidth, int InitHeadHeight);
+        int InitHeadWidth, int InitHeadHeight);
     ~RoundFlashlight();
 
     virtual void Show();
     virtual void Hide();
+};
+
+// Поврежденный фонарик (универсальный класс)
+class BrokenFlashlight : public BaseFlashlight
+{
 private:
-    void DrawCracks(); // Рисует трещины на корпусе
-    void DrawBrokenPieces(); // Рисует отколовшиеся куски
+    int flashlightType; // 0 - прямоугольный, 1 - круглый
+    void DrawRectHead();   // Головка для прямоугольного
+    void DrawRoundHead();  // Головка для круглого
+public:
+    BrokenFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+        int InitHeadWidth, int InitHeadHeight, int Type);
+    ~BrokenFlashlight();
+
+    virtual void Show();
+    virtual void Hide();
 };
 
 
