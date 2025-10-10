@@ -1,16 +1,16 @@
 #pragma once
 /******************************************************************************
- *                               Курс Информатика                              *
+ *                               РљСѓСЂСЃ РРЅС„РѕСЂРјР°С‚РёРєР°                              *
  *******************************************************************************
  * Project type  : Windows Console Application                                 *
  * Project name  : Pt_1                                                        *
  * File name     : lib.h                                                       *
  * Language      : CPP                                                         *
- * Programmers   : Нарзиев Артемий Тимурович                                   *
+ * Programmers   : РќР°СЂР·РёРµРІ РђСЂС‚РµРјРёР№ РўРёРјСѓСЂРѕРІРёС‡                                   *
  * Modified By   :                                                             *
  * Created       : 13.09.2025                                                  *
  * Last Revision : 26.09.2025                                                  *
- * Comment       : Библиотека для работы с фигурами - фонарик                  *
+ * Comment       : Р‘РёР±Р»РёРѕС‚РµРєР° РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С„РёРіСѓСЂР°РјРё - С„РѕРЅР°СЂРёРє                  *
  ******************************************************************************/
 
 #ifndef LIB_H
@@ -18,55 +18,54 @@
 
 #include <Windows.h>
 
- // Контекст устройства (общий для всех фигур)
+ // РљРѕРЅС‚РµРєСЃС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР° (РѕР±С‰РёР№ РґР»СЏ РІСЃРµС… С„РёРіСѓСЂ)
 extern HDC hdc;
 
-// Класс места нахождения
+// РљР»Р°СЃСЃ РјРµСЃС‚Р° РЅР°С…РѕР¶РґРµРЅРёСЏ
 class Location
 {
 protected:
-    // координаты
+    // РєРѕРѕСЂРґРёРЅР°С‚С‹
     int x;
     int y;
 
 public:
-    Location(int InitX, int InitY); // конструктор
-    ~Location();                    // деструктор
+    Location(int InitX, int InitY); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+    ~Location();                    // РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 
-    // Получение координат
+    // РџРѕР»СѓС‡РµРЅРёРµ РєРѕРѕСЂРґРёРЅР°С‚
     int GetX();
     int GetY();
 
-    // Установка новых координат
+    // РЈСЃС‚Р°РЅРѕРІРєР° РЅРѕРІС‹С… РєРѕРѕСЂРґРёРЅР°С‚
     virtual void Show();
     virtual void Hide();
     void SetX(int NewX);
     void SetY(int NewY);
     void MoveTo(int NewX, int NewY);
-    void Drag(int Step);
 };
 
-// Класс точки с прародителем - место положение
+// РљР»Р°СЃСЃ С‚РѕС‡РєРё СЃ РїСЂР°СЂРѕРґРёС‚РµР»РµРј - РјРµСЃС‚Рѕ РїРѕР»РѕР¶РµРЅРёРµ
 class Point : public Location
 {
 protected:
-    bool visible; // видимость
+    bool visible; // РІРёРґРёРјРѕСЃС‚СЊ
 
 public:
-    Point(int InitX, int InitY); // конструктор
-    ~Point();                    // деструктор
+    Point(int InitX, int InitY); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+    ~Point();                    // РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 
-    bool GetVisible();                // Получение состояния видимости
-    void SetVisible(bool NewVisible); // Установка состояния видимости
+    bool GetVisible();                // РџРѕР»СѓС‡РµРЅРёРµ СЃРѕСЃС‚РѕСЏРЅРёСЏ РІРёРґРёРјРѕСЃС‚Рё
+    void SetVisible(bool NewVisible); // РЈСЃС‚Р°РЅРѕРІРєР° СЃРѕСЃС‚РѕСЏРЅРёСЏ РІРёРґРёРјРѕСЃС‚Рё
 
-    virtual void Show(); // "Показать точку"
-    virtual void Hide(); // "Спрятать" точку
+    virtual void Show() override; // "РџРѕРєР°Р·Р°С‚СЊ С‚РѕС‡РєСѓ"
+    virtual void Hide() override; // "РЎРїСЂСЏС‚Р°С‚СЊ" С‚РѕС‡РєСѓ
 
-    void MoveTo(int NewX, int NewY); // Переместить точку
+    void MoveTo(int NewX, int NewY); // РџРµСЂРµРјРµСЃС‚РёС‚СЊ С‚РѕС‡РєСѓ
     void Drag(int Step);
 };
 
-// Класс круга
+// РљР»Р°СЃСЃ РєСЂСѓРіР°
 class Circle : public Point
 {
 protected:
@@ -76,13 +75,13 @@ public:
     Circle(int InitX, int InitY, int InitRadius);
     ~Circle();
 
-    virtual void Show();
-    virtual void Hide();
+    virtual void Show() override;
+    virtual void Hide() override;
     void Expand(int DeltaRad);
     void Reduse(int DeltaRad);
 };
 
-// Класс отвертки
+// РљР»Р°СЃСЃ РѕС‚РІРµСЂС‚РєРё
 class Screwdriver : public Point
 {
 protected:
@@ -94,11 +93,11 @@ public:
     Screwdriver(int InitX, int InitY, int InitLength, int InitWidth);
     ~Screwdriver();
 
-    virtual void Show();
-    virtual void Hide();
+    virtual void Show() override;
+    virtual void Hide() override;
 };
 
-// Базовый класс для фонариков с общей функциональностью
+// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ С„РѕРЅР°СЂРёРєРѕРІ СЃ РѕР±С‰РµР№ С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅРѕСЃС‚СЊСЋ
 class BaseFlashlight : public Point
 {
 protected:
@@ -106,8 +105,8 @@ protected:
     int bodyHeight;
     int headWidth;
     int headHeight;
-    bool broken; // состояние фонарика
-    int damageLevel; // уровень повреждения (0-3)
+    bool broken; // СЃРѕСЃС‚РѕСЏРЅРёРµ С„РѕРЅР°СЂРёРєР°
+    int damageLevel; // СѓСЂРѕРІРµРЅСЊ РїРѕРІСЂРµР¶РґРµРЅРёСЏ (0-3)
 
 public:
     BaseFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
@@ -120,16 +119,16 @@ public:
     void SetDamage(int level) { damageLevel = level; if (level >= 3) broken = true; }
     int GetDamage() { return damageLevel; }
 
-    virtual void Show() = 0; // чистая виртуальная функция
-    virtual void Hide() = 0;
+    virtual void Show() override = 0; // С‡РёСЃС‚Р°СЏ РІРёСЂС‚СѓР°Р»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ
+    virtual void Hide() override = 0;
 
-    // Проверка столкновения со стеной
+    // РџСЂРѕРІРµСЂРєР° СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ СЃРѕ СЃС‚РµРЅРѕР№
     bool CheckWallCollision(int wallLeft, int wallTop, int wallRight, int wallBottom);
-    // Проверка столкновения с отверткой
+    // РџСЂРѕРІРµСЂРєР° СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ СЃ РѕС‚РІРµСЂС‚РєРѕР№
     bool CheckScrewdriverCollision(Screwdriver* screwdriver);
 };
 
-// Целый прямоугольный фонарик
+// Р¦РµР»С‹Р№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅС‹Р№ С„РѕРЅР°СЂРёРє
 class RectFlashlight : public BaseFlashlight
 {
 public:
@@ -141,7 +140,7 @@ public:
     virtual void Hide();
 };
 
-// Целый круглый фонарик
+// Р¦РµР»С‹Р№ РєСЂСѓРіР»С‹Р№ С„РѕРЅР°СЂРёРє
 class RoundFlashlight : public BaseFlashlight
 {
 public:
@@ -149,24 +148,24 @@ public:
         int InitHeadWidth, int InitHeadHeight);
     ~RoundFlashlight();
 
-    virtual void Show();
-    virtual void Hide();
+    virtual void Show() override;
+    virtual void Hide() override;
 };
 
-// Поврежденный фонарик (универсальный класс)
+// РџРѕРІСЂРµР¶РґРµРЅРЅС‹Р№ С„РѕРЅР°СЂРёРє (СѓРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Р№ РєР»Р°СЃСЃ)
 class BrokenFlashlight : public BaseFlashlight
 {
 private:
-    int flashlightType; // 0 - прямоугольный, 1 - круглый
-    void DrawRectHead();   // Головка для прямоугольного
-    void DrawRoundHead();  // Головка для круглого
+    int flashlightType; // 0 - РїСЂСЏРјРѕСѓРіРѕР»СЊРЅС‹Р№, 1 - РєСЂСѓРіР»С‹Р№
+    void DrawRectHead();   // Р“РѕР»РѕРІРєР° РґР»СЏ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРѕРіРѕ
+    void DrawRoundHead();  // Р“РѕР»РѕРІРєР° РґР»СЏ РєСЂСѓРіР»РѕРіРѕ
 public:
     BrokenFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
         int InitHeadWidth, int InitHeadHeight, int Type);
     ~BrokenFlashlight();
 
-    virtual void Show();
-    virtual void Hide();
+    virtual void Show() override;
+    virtual void Hide() override;
 };
 
 

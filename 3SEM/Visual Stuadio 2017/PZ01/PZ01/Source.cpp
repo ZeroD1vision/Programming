@@ -1,15 +1,15 @@
 /******************************************************************************
- *                               Курс Информатика                              *
+ *                               РљСѓСЂСЃ РРЅС„РѕСЂРјР°С‚РёРєР°                              *
  *******************************************************************************
  * Project type  : Windows Console Application                                 *
  * Project name  : Pt_1                                                        *
  * File name     : lib.h                                                       *
  * Language      : CPP                                                         *
- * Programmers   : Нарзиев Артемий Тимурович                                   *
+ * Programmers   : РќР°СЂР·РёРµРІ РђСЂС‚РµРјРёР№ РўРёРјСѓСЂРѕРІРёС‡                                   *
  * Modified By   :                                                             *
  * Created       : 13.09.2025                                                  *
  * Last Revision : 26.09.2025                                                  *
- * Comment       : Библиотека для работы с фигурами - фонарик                  *
+ * Comment       : Р‘РёР±Р»РёРѕС‚РµРєР° РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С„РёРіСѓСЂР°РјРё - С„РѕРЅР°СЂРёРє                  *
  ******************************************************************************/
 
 #include "Header.h"
@@ -17,14 +17,14 @@
 
 using namespace std;
 
-// Макрос для определения кода нажатой клавиши
+// РњР°РєСЂРѕСЃ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РєРѕРґР° РЅР°Р¶Р°С‚РѕР№ РєР»Р°РІРёС€Рё
 #define KEY_DOWN(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 1 : 0)
 
 /****************************************************************/
-/*           Р Е А Л И З А Ц И Я  М Е Т О Д О В                 */
+/*           Р  Р• Рђ Р› Р Р— Рђ Р¦ Р РЇ  Рњ Р• Рў Рћ Р” Рћ Р’                 */
 /****************************************************************/
 
-/* =============== КЛАСС Location =============== */
+/* =============== РљР›РђРЎРЎ Location =============== */
 
 Location::Location(int InitX, int InitY)
 {
@@ -48,10 +48,10 @@ void Location::MoveTo(int NewX, int NewY)
     Show();
 }
 
-void Location::Show() { /* Ничего не делаем, реализация в наследниках */ }
-void Location::Hide() { /* Ничего не делаем, реализация в наследниках */ }
+void Location::Show() { /* РќРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј, СЂРµР°Р»РёР·Р°С†РёСЏ РІ РЅР°СЃР»РµРґРЅРёРєР°С… */ }
+void Location::Hide() { /* РќРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј, СЂРµР°Р»РёР·Р°С†РёСЏ РІ РЅР°СЃР»РµРґРЅРёРєР°С… */ }
 
-/* =============== КЛАСС Point =============== */
+/* =============== РљР›РђРЎРЎ Point =============== */
 
 Point::Point(int InitX, int InitY) : Location(InitX, InitY)
 {
@@ -128,64 +128,64 @@ void Point::Drag(int Step)
     }
 }
 
-/* =============== КЛАСС Circle =============== */
+/* =============== РљР›РђРЎРЎ Circle =============== */
 
-// Конструктор круга (класса Circle)
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєСЂСѓРіР° (РєР»Р°СЃСЃР° Circle)
 Circle::Circle(int InitX, int InitY, int InitRadius) :
     Point(InitX, InitY) {
     radius = InitRadius;
 }
 
-// Деконструктор
+// Р”РµРєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 Circle::~Circle() {}
 
-// Показать круг
+// РџРѕРєР°Р·Р°С‚СЊ РєСЂСѓРі
 void Circle::Show() {
-    visible = true;	// значение видимости на правду
+    visible = true;	// Р·РЅР°С‡РµРЅРёРµ РІРёРґРёРјРѕСЃС‚Рё РЅР° РїСЂР°РІРґСѓ
 
-    // создаём ручку для рисования
+    // СЃРѕР·РґР°С‘Рј СЂСѓС‡РєСѓ РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
     SelectObject(hdc, Pen);
 
-    // рисуем красный круг
+    // СЂРёСЃСѓРµРј РєСЂР°СЃРЅС‹Р№ РєСЂСѓРі
     Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);
 
-    // удаляем ручку
+    // СѓРґР°Р»СЏРµРј СЂСѓС‡РєСѓ
     DeleteObject(Pen);
 }
 
-// Спрятать круг
+// РЎРїСЂСЏС‚Р°С‚СЊ РєСЂСѓРі
 void Circle::Hide() {
-    visible = false;	// значение видимости на фальш
+    visible = false;	// Р·РЅР°С‡РµРЅРёРµ РІРёРґРёРјРѕСЃС‚Рё РЅР° С„Р°Р»СЊС€
 
-    // создаём ручку для рисования
+    // СЃРѕР·РґР°С‘Рј СЂСѓС‡РєСѓ РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(0, 0, 255));
     SelectObject(hdc, Pen);
 
-    // рисуем синий круг
+    // СЂРёСЃСѓРµРј СЃРёРЅРёР№ РєСЂСѓРі
     Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);
 
-    // удаляем ручку
+    // СѓРґР°Р»СЏРµРј СЂСѓС‡РєСѓ
     DeleteObject(Pen);
 }
 
-// Расширить круг
+// Р Р°СЃС€РёСЂРёС‚СЊ РєСЂСѓРі
 void Circle::Expand(int DeltaRad) {
-    Hide();	// прячем круг
+    Hide();	// РїСЂСЏС‡РµРј РєСЂСѓРі
 
-    // изменяем радиус
+    // РёР·РјРµРЅСЏРµРј СЂР°РґРёСѓСЃ
     radius = radius + DeltaRad;
-    if (radius < 2) { radius = 2; } // проверка для Reduce
+    if (radius < 2) { radius = 2; } // РїСЂРѕРІРµСЂРєР° РґР»СЏ Reduce
 
-    Show();	// возвращаем круг
+    Show();	// РІРѕР·РІСЂР°С‰Р°РµРј РєСЂСѓРі
 }
 
-// Сжать круг
+// РЎР¶Р°С‚СЊ РєСЂСѓРі
 void Circle::Reduse(int DeltaRad) {
     Expand(-DeltaRad);
 }
 
-/* =============== КЛАСС Screwdriver =============== */
+/* =============== РљР›РђРЎРЎ Screwdriver =============== */
 
 Screwdriver::Screwdriver(int InitX, int InitY, int InitLength, int InitWidth)
     : Point(InitX, InitY)
@@ -200,19 +200,19 @@ Screwdriver::~Screwdriver() {}
 void Screwdriver::Show()
 {
     visible = true;
-    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(139, 69, 19)); // Коричневый цвет
-    HPEN ThinPen = CreatePen(PS_SOLID, 1, RGB(192, 192, 192)); // Серебряный цвет
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(139, 69, 19)); // РљРѕСЂРёС‡РЅРµРІС‹Р№ С†РІРµС‚
+    HPEN ThinPen = CreatePen(PS_SOLID, 1, RGB(192, 192, 192)); // РЎРµСЂРµР±СЂСЏРЅС‹Р№ С†РІРµС‚
 
     SelectObject(hdc, Pen);
 
-    // Ручка отвертки
+    // Р СѓС‡РєР° РѕС‚РІРµСЂС‚РєРё
     Rectangle(hdc, x, y, x + width, y - length + 5);
 
-    // Металлическая часть
+    // РњРµС‚Р°Р»Р»РёС‡РµСЃРєР°СЏ С‡Р°СЃС‚СЊ
     SelectObject(hdc, ThinPen);
     Rectangle(hdc, x + 3, y, x + width / 2 + 3, y + length);
 
-    // Наконечник
+    // РќР°РєРѕРЅРµС‡РЅРёРє
     POINT tip[3];
     tip[0].x = x + width / 4 + 3;
     tip[0].y = y + length;
@@ -232,14 +232,14 @@ void Screwdriver::Hide()
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
     SelectObject(hdc, Pen);
 
-    // Ручка отвертки
+    // Р СѓС‡РєР° РѕС‚РІРµСЂС‚РєРё
     Rectangle(hdc, x, y, x + width, y - length + 5);
 
-    // Металлическая часть
+    // РњРµС‚Р°Р»Р»РёС‡РµСЃРєР°СЏ С‡Р°СЃС‚СЊ
     SelectObject(hdc, Pen);
     Rectangle(hdc, x + 3, y, x + width / 2 + 3, y + length);
 
-    // Наконечник
+    // РќР°РєРѕРЅРµС‡РЅРёРє
     POINT tip[3];
     tip[0].x = x + width / 4 + 3;
     tip[0].y = y + length;
@@ -252,7 +252,7 @@ void Screwdriver::Hide()
     DeleteObject(Pen);
 }
 
-/* =============== БАЗОВЫЙ КЛАСС Flashlight =============== */
+/* =============== Р‘РђР—РћР’Р«Р™ РљР›РђРЎРЎ Flashlight =============== */
 
 BaseFlashlight::BaseFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
     int InitHeadWidth, int InitHeadHeight) : Point(InitX, InitY)
@@ -269,7 +269,7 @@ BaseFlashlight::~BaseFlashlight() {}
 
 bool BaseFlashlight::CheckWallCollision(int wallLeft, int wallTop, int wallRight, int wallBottom)
 {
-    // Проверяем столкновение корпуса фонарика со стеной
+    // РџСЂРѕРІРµСЂСЏРµРј СЃС‚РѕР»РєРЅРѕРІРµРЅРёРµ РєРѕСЂРїСѓСЃР° С„РѕРЅР°СЂРёРєР° СЃРѕ СЃС‚РµРЅРѕР№
     if (x < wallLeft || x + bodyWidth > wallRight ||
         y < wallTop || y + bodyHeight > wallBottom)
     {
@@ -285,7 +285,7 @@ bool BaseFlashlight::CheckScrewdriverCollision(Screwdriver* screwdriver)
     int screwX = screwdriver->GetX();
     int screwY = screwdriver->GetY();
 
-    // Простая проверка столкновения - пересечение прямоугольников
+    // РџСЂРѕСЃС‚Р°СЏ РїСЂРѕРІРµСЂРєР° СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ - РїРµСЂРµСЃРµС‡РµРЅРёРµ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРѕРІ
     if (screwX >= x && screwX <= x + bodyWidth &&
         screwY >= y && screwY <= y + bodyHeight)
     {
@@ -296,7 +296,7 @@ bool BaseFlashlight::CheckScrewdriverCollision(Screwdriver* screwdriver)
     return false;
 }
 
-/* =============== ПРЯМОУГОЛЬНЫЙ ФОНАРИК =============== */
+/* =============== РџР РЇРњРћРЈР“РћР›Р¬РќР«Р™ Р¤РћРќРђР РРљ =============== */
 
 RectFlashlight::RectFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
     int InitHeadWidth, int InitHeadHeight)
@@ -313,15 +313,15 @@ void RectFlashlight::Show()
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
     SelectObject(hdc, Pen);
 
-    // Корпус фонарика (прямоугольник)
+    // РљРѕСЂРїСѓСЃ С„РѕРЅР°СЂРёРєР° (РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє)
     Rectangle(hdc, x, y, x + bodyWidth, y + bodyHeight);
 
-    // Головка фонарика (прямоугольник)
+    // Р“РѕР»РѕРІРєР° С„РѕРЅР°СЂРёРєР° (РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє)
     int headX = x + (bodyWidth - headWidth) / 2;
     int headY = y - headHeight;
     Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
 
-    // Кнопка фонарика
+    // РљРЅРѕРїРєР° С„РѕРЅР°СЂРёРєР°
     int buttonWidth = 10;
     int buttonHeight = 15;
     int buttonX = x + bodyWidth - 20;
@@ -353,7 +353,7 @@ void RectFlashlight::Hide()
 }
 
 
-/* =============== КРУГЛЫЙ ФОНАРИК =============== */
+/* =============== РљР РЈР“Р›Р«Р™ Р¤РћРќРђР РРљ =============== */
 
 RoundFlashlight::RoundFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
     int InitHeadWidth, int InitHeadHeight)
@@ -369,10 +369,10 @@ void RoundFlashlight::Show()
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
     SelectObject(hdc, Pen);
 
-    // Корпус фонарика (овал)
+    // РљРѕСЂРїСѓСЃ С„РѕРЅР°СЂРёРєР° (РѕРІР°Р»)
     Ellipse(hdc, x, y, x + bodyWidth, y + bodyHeight);
 
-    // Головка фонарика (треугольник)
+    // Р“РѕР»РѕРІРєР° С„РѕРЅР°СЂРёРєР° (С‚СЂРµСѓРіРѕР»СЊРЅРёРє)
     POINT triangle[3];
     triangle[0].x = x + bodyWidth / 2;
     triangle[0].y = y - headHeight;
@@ -383,7 +383,7 @@ void RoundFlashlight::Show()
 
     Polygon(hdc, triangle, 3);
 
-    // Кнопка фонарика (круг)
+    // РљРЅРѕРїРєР° С„РѕРЅР°СЂРёРєР° (РєСЂСѓРі)
     int buttonRadius = 8;
     int buttonX = x + bodyWidth - 20;
     int buttonY = y + bodyHeight - 20;
@@ -420,7 +420,7 @@ void RoundFlashlight::Hide()
     DeleteObject(Pen);
 }
 
-/* =============== ПОВРЕЖДЕННЫЙ ФОНАРИК =============== */
+/* =============== РџРћР’Р Р•Р–Р”Р•РќРќР«Р™ Р¤РћРќРђР РРљ =============== */
 
 BrokenFlashlight::BrokenFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
                                    int InitHeadWidth, int InitHeadHeight, int Type)
@@ -441,30 +441,30 @@ void BrokenFlashlight::Show()
 
     SelectObject(hdc, Pen);
 
-    // Основной корпус
+    // РћСЃРЅРѕРІРЅРѕР№ РєРѕСЂРїСѓСЃ
     Rectangle(hdc, x, y, x + bodyWidth, y + bodyHeight);
 
-    // Разная головка в зависимости от типа
+    // Р Р°Р·РЅР°СЏ РіРѕР»РѕРІРєР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РёРїР°
     if (flashlightType == 0) {
-        DrawRectHead();  // Прямоугольная головка
+        DrawRectHead();  // РџСЂСЏРјРѕСѓРіРѕР»СЊРЅР°СЏ РіРѕР»РѕРІРєР°
     }
     else {
-        DrawRoundHead(); // Круглая/сломанная головка
+        DrawRoundHead(); // РљСЂСѓРіР»Р°СЏ/СЃР»РѕРјР°РЅРЅР°СЏ РіРѕР»РѕРІРєР°
     }
 
-    // Головка
+    // Р“РѕР»РѕРІРєР°
     // int headX = x + (bodyWidth - headWidth) / 2;
     // int headY = y - headHeight;
     // Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
 
-    // Кнопка
+    // РљРЅРѕРїРєР°
     int buttonWidth = 10;
     int buttonHeight = 15;
     int buttonX = x + bodyWidth - 20;
     int buttonY = y + bodyHeight - 25;
     Rectangle(hdc, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight);
 
-    // Трещины
+    // РўСЂРµС‰РёРЅС‹
     SelectObject(hdc, crackPen);
     MoveToEx(hdc, x + bodyWidth / 2, y + 5, NULL);
     LineTo(hdc, x + bodyWidth / 2, y + bodyHeight - 5);
@@ -483,15 +483,15 @@ void BrokenFlashlight::Hide()
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
     SelectObject(hdc, Pen);
 
-    // Основной корпус
+    // РћСЃРЅРѕРІРЅРѕР№ РєРѕСЂРїСѓСЃ
     Rectangle(hdc, x, y, x + bodyWidth, y + bodyHeight);
 
-    // Головка
+    // Р“РѕР»РѕРІРєР°
     int headX = x + (bodyWidth - headWidth) / 2;
     int headY = y - headHeight;
     Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
 
-    // Кнопка
+    // РљРЅРѕРїРєР°
     int buttonWidth = 10;
     int buttonHeight = 15;
     int buttonX = x + bodyWidth - 20;
@@ -503,7 +503,7 @@ void BrokenFlashlight::Hide()
 
 void BrokenFlashlight::DrawRectHead()
 {
-    // Обычная прямоугольная головка (как была)
+    // РћР±С‹С‡РЅР°СЏ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅР°СЏ РіРѕР»РѕРІРєР° (РєР°Рє Р±С‹Р»Р°)
     int headX = x + (bodyWidth - headWidth) / 2;
     int headY = y - headHeight;
     Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
@@ -511,9 +511,9 @@ void BrokenFlashlight::DrawRectHead()
 
 void BrokenFlashlight::DrawRoundHead()
 {
-    // Сломанная/деформированная головка для круглого фонарика
+    // РЎР»РѕРјР°РЅРЅР°СЏ/РґРµС„РѕСЂРјРёСЂРѕРІР°РЅРЅР°СЏ РіРѕР»РѕРІРєР° РґР»СЏ РєСЂСѓРіР»РѕРіРѕ С„РѕРЅР°СЂРёРєР°
 
-    // Вариант 1: 
+    // Р’Р°СЂРёР°РЅС‚ 1: 
     POINT triangle[3];
     triangle[0].x = x + bodyWidth / 2;
     triangle[0].y = y - headHeight;
@@ -523,11 +523,11 @@ void BrokenFlashlight::DrawRoundHead()
     triangle[2].y = y;
     Polygon(hdc, triangle, 3);
 
-    // Вариант 2: Сломанный эллипс
+    // Р’Р°СЂРёР°РЅС‚ 2: РЎР»РѕРјР°РЅРЅС‹Р№ СЌР»Р»РёРїСЃ
     // Ellipse(hdc, x + (bodyWidth - headWidth)/2, y - headHeight, 
     //          x + (bodyWidth + headWidth)/2, y);
 
-    // Вариант 3: Треугольная голова (как у целого круглого)
+    // Р’Р°СЂРёР°РЅС‚ 3: РўСЂРµСѓРіРѕР»СЊРЅР°СЏ РіРѕР»РѕРІР° (РєР°Рє Сѓ С†РµР»РѕРіРѕ РєСЂСѓРіР»РѕРіРѕ)
     // POINT triangle[3];
     // triangle[0].x = x + bodyWidth / 2;
     // triangle[0].y = y - headHeight;
