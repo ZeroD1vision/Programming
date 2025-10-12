@@ -38,11 +38,8 @@ public:
     int GetY();
 
     // Установка новых координат
-    virtual void Show();
-    virtual void Hide();
     void SetX(int NewX);
     void SetY(int NewY);
-    void MoveTo(int NewX, int NewY);
 };
 
 // Класс точки с прародителем - место положение
@@ -58,8 +55,8 @@ public:
     bool GetVisible();                // Получение состояния видимости
     void SetVisible(bool NewVisible); // Установка состояния видимости
 
-    virtual void Show() override; // "Показать точку"
-    virtual void Hide() override; // "Спрятать" точку
+    virtual void Show(); // "Показать точку"
+    virtual void Hide(); // "Спрятать" точку
 
     void MoveTo(int NewX, int NewY); // Переместить точку
     void Drag(int Step);
@@ -95,6 +92,14 @@ public:
 
     virtual void Show() override;
     virtual void Hide() override;
+
+    int GetWidth() {
+        return width;
+    }
+
+    int GetLength() {
+        return length;
+    }
 };
 
 // Базовый класс для фонариков с общей функциональностью
@@ -113,6 +118,11 @@ public:
                    int InitHeadWidth, int InitHeadHeight);
     ~BaseFlashlight();
 
+    int GetBodyWidth() { return bodyWidth; }
+    int GetBodyHeight() { return bodyHeight; }
+    int GetHeadWidth() { return headWidth; }
+    int GetHeadHeight() { return headHeight; }
+
     bool IsBroken() { return broken; }
     void Break() { broken = true; }
     void Repair() { broken = false; damageLevel = 0; }
@@ -121,11 +131,6 @@ public:
 
     virtual void Show() override = 0; // чистая виртуальная функция
     virtual void Hide() override = 0;
-
-    // Проверка столкновения со стеной
-    bool CheckWallCollision(int wallLeft, int wallTop, int wallRight, int wallBottom);
-    // Проверка столкновения с отверткой
-    bool CheckScrewdriverCollision(Screwdriver* screwdriver);
 };
 
 // Целый прямоугольный фонарик
@@ -168,6 +173,17 @@ public:
     virtual void Hide() override;
 };
 
+class Stone : public Point {
+protected:
+    int width, height;
+public:
+    Stone(int InitX, int InitY, int InitWidth, int InitHeight);
+    ~Stone();
 
+    void Show() override;
+    void Hide() override;
+    int GetStoneWidth() { return width; }
+    int GetStoneHeight() { return height; }
+};
 #endif
 

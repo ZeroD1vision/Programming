@@ -40,17 +40,6 @@ int Location::GetY() { return y; }
 void Location::SetX(int NewX) { x = NewX; }
 void Location::SetY(int NewY) { y = NewY; }
 
-void Location::MoveTo(int NewX, int NewY)
-{
-    Hide();
-    x = NewX;
-    y = NewY;
-    Show();
-}
-
-void Location::Show() { /* Ничего не делаем, реализация в наследниках */ }
-void Location::Hide() { /* Ничего не делаем, реализация в наследниках */ }
-
 /* =============== КЛАСС Point =============== */
 
 Point::Point(int InitX, int InitY) : Location(InitX, InitY)
@@ -267,35 +256,6 @@ BaseFlashlight::BaseFlashlight(int InitX, int InitY, int InitBodyWidth, int Init
 
 BaseFlashlight::~BaseFlashlight() {}
 
-bool BaseFlashlight::CheckWallCollision(int wallLeft, int wallTop, int wallRight, int wallBottom)
-{
-    // Проверяем столкновение корпуса фонарика со стеной
-    if (x < wallLeft || x + bodyWidth > wallRight ||
-        y < wallTop || y + bodyHeight > wallBottom)
-    {
-        if (damageLevel < 3) damageLevel++;
-        if (damageLevel >= 3) Break();
-        return true;
-    }
-    return false;
-}
-
-bool BaseFlashlight::CheckScrewdriverCollision(Screwdriver* screwdriver)
-{
-    int screwX = screwdriver->GetX();
-    int screwY = screwdriver->GetY();
-
-    // Простая проверка столкновения - пересечение прямоугольников
-    if (screwX >= x && screwX <= x + bodyWidth &&
-        screwY >= y && screwY <= y + bodyHeight)
-    {
-        if (damageLevel > 0) damageLevel--;
-        if (damageLevel == 0) Repair();
-        return true;
-    }
-    return false;
-}
-
 /* =============== ПРЯМОУГОЛЬНЫЙ ФОНАРИК =============== */
 
 RectFlashlight::RectFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
@@ -427,7 +387,6 @@ BrokenFlashlight::BrokenFlashlight(int InitX, int InitY, int InitBodyWidth, int 
     : BaseFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight)
 {
     broken = true;
-    damageLevel = 3;
     flashlightType = Type;
 }
 
@@ -536,4 +495,80 @@ void BrokenFlashlight::DrawRoundHead()
     // triangle[2].x = x + bodyWidth / 2 + headWidth / 2 + 2;
     // triangle[2].y = y - 3;
     // Polygon(hdc, triangle, 3);
+}
+
+Stone::Stone(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Point(InitX, InitY) {
+    width = InitWidth;
+    height = InitHeight;
+}
+
+Stone::~Stone() {}
+
+void Stone::Show() {
+    visible = true;
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(128, 128, 128)); // Серый цвет
+    SelectObject(hdc, Pen);
+
+    // Рисуем камень как неровный многоугольник
+    POINT stoneShape[8];
+    stoneShape[0].x = x + width / 4;
+    stoneShape[0].y = y;
+    stoneShape[1].x = x + width * 3 / 4;
+    stoneShape[1].y = y;
+    stoneShape[2].x = x + width;
+    stoneShape[2].y = y + height / 3;
+    stoneShape[3].x = x + width * 3 / 4;
+    stoneShape[3].y = y + height * 2 / 3;
+    stoneShape[4].x = x + width;
+    stoneShape[4].y = y + height;
+    stoneShape[5].x = x + width / 2;
+    stoneShape[5].y = y + height;
+    stoneShape[6].x = x;
+    stoneShape[6].y = y + height * 2 / 3;
+    stoneShape[7].x = x + width / 4;
+    stoneShape[7].y = y + height / 3;
+
+    Polygon(hdc, stoneShape, 8);
+
+    // Добавляем текстуру камня
+    HPEN CrackPen = CreatePen(PS_SOLID, 1, RGB(64, 64, 64));
+    SelectObject(hdc, CrackPen);
+
+    MoveToEx(hdc, x + width / 3, y + height / 4, NULL);
+    LineTo(hdc, x + width / 2, y + height / 2);
+    MoveToEx(hdc, x + width * 2 / 3, y + height / 3, NULL);
+    LineTo(hdc, x + width / 3, y + height * 3 / 4);
+
+    DeleteObject(CrackPen);
+    DeleteObject(Pen);
+}
+
+void Stone::Hide() {
+    visible = false;
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    SelectObject(hdc, Pen);
+
+    // Стираем тем же белым цветом
+    POINT stoneShape[8];
+    stoneShape[0].x = x + width / 4;
+    stoneShape[0].y = y;
+    stoneShape[1].x = x + width * 3 / 4;
+    stoneShape[1].y = y;
+    stoneShape[2].x = x + width;
+    stoneShape[2].y = y + height / 3;
+    stoneShape[3].x = x + width * 3 / 4;
+    stoneShape[3].y = y + height * 2 / 3;
+    stoneShape[4].x = x + width;
+    stoneShape[4].y = y + height;
+    stoneShape[5].x = x + width / 2;
+    stoneShape[5].y = y + height;
+    stoneShape[6].x = x;
+    stoneShape[6].y = y + height * 2 / 3;
+    stoneShape[7].x = x + width / 4;
+    stoneShape[7].y = y + height / 3;
+
+    Polygon(hdc, stoneShape, 8);
+
+    DeleteObject(Pen);
 }
