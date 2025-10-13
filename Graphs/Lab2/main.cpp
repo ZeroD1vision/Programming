@@ -77,14 +77,15 @@ int main() {
 
     // ========= ОТЛАДКА ===========
     int successCount = 0;
+    auto start = high_resolution_clock::now();
     for (int num : numbers) {
         if (tree.insert(num)) {
             successCount++;
-        } else {
-            cout << "Failed to insert: " << num << endl;
-        }
+        } 
+        // else {
+        //     cout << "Failed to insert: " << num << endl;
+        // }
     }
-    cout << "Successfully inserted: " << successCount << " elements" << endl;
     cout << "Read " << numbers.size() << " numbers: ";
     for (int i = 0; i < min(10, (int)numbers.size()); i++) {
         cout << numbers[i] << " ";
@@ -92,7 +93,7 @@ int main() {
     cout << endl;
     
     // // Вставляем все числа в дерево
-    auto start = high_resolution_clock::now();
+    
     // int insertedCount = 0;
     // for (int num : numbers) {
     //     if (tree.insert(num)) {
@@ -100,10 +101,10 @@ int main() {
     //     }
     // }
     auto end = high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(end - start);
+    auto duration = duration_cast<microseconds>(end - start);
     
-    // cout << "Successfully inserted " << insertedCount << " elements in " 
-    //      << duration.count() << " ms" << endl;
+    cout << "Successfully inserted " << successCount << " elements in " 
+         << duration.count() << " ms" << endl;
     
     // Командный интерфейс
     string command;
@@ -121,7 +122,7 @@ int main() {
             start = high_resolution_clock::now();
             Node* foundNode = tree.search(inputValue);
             end = high_resolution_clock::now();
-            duration = duration_cast<milliseconds>(end - start);
+            duration = duration_cast<microseconds>(end - start);
             
             if (foundNode != nullptr) {
                 cout << "Element " << inputValue << " found at address " << foundNode 
@@ -138,7 +139,7 @@ int main() {
             start = high_resolution_clock::now();
             bool success = tree.insert(inputValue);
             end = high_resolution_clock::now();
-            duration = duration_cast<milliseconds>(end - start);
+            duration = duration_cast<microseconds>(end - start);
             
             if (success) {
                 cout << "Element " << inputValue << " inserted successfully in " 
@@ -154,7 +155,7 @@ int main() {
             start = high_resolution_clock::now();
             bool success = tree.remove(inputValue);
             end = high_resolution_clock::now();
-            duration = duration_cast<milliseconds>(end - start);
+            duration = duration_cast<microseconds>(end - start);
             
             if (success) {
                 cout << "Element " << inputValue << " removed successfully in " 
@@ -168,7 +169,7 @@ int main() {
             start = high_resolution_clock::now();
             int minVal = tree.findMin();
             end = high_resolution_clock::now();
-            duration = duration_cast<milliseconds>(end - start);
+            duration = duration_cast<microseconds>(end - start);
             
             if (minVal != -1) {
                 cout << "Minimum element: " << minVal 
@@ -181,7 +182,7 @@ int main() {
             start = high_resolution_clock::now();
             vector<int> min10 = tree.getMin10();
             end = high_resolution_clock::now();
-            duration = duration_cast<milliseconds>(end - start);
+            duration = duration_cast<microseconds>(end - start);
             
             cout << "10 smallest elements: ";
             for (int val : min10) {
@@ -193,7 +194,7 @@ int main() {
             start = high_resolution_clock::now();
             int maxVal = tree.findMax();
             end = high_resolution_clock::now();
-            duration = duration_cast<milliseconds>(end - start);
+            duration = duration_cast<microseconds>(end - start);
             
             if (maxVal != -1) {
                 cout << "Maximum element: " << maxVal 
@@ -206,7 +207,7 @@ int main() {
             start = high_resolution_clock::now();
             vector<int> max10 = tree.getMax10();
             end = high_resolution_clock::now();
-            duration = duration_cast<milliseconds>(end - start);
+            duration = duration_cast<microseconds>(end - start);
             
             cout << "10 largest elements: ";
             for (int val : max10) {
