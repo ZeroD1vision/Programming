@@ -35,6 +35,11 @@ private:
     Node* maximum(Node* node);
     void deleteTree(Node* node);
 
+    void getAllMax(Node* node, vector <int>& result, int& count);
+    void getAllMin(Node* node, vector <int>& result, int& count);
+    void inOrderTraversal(Node* node, vector<int>& elements);
+    void generateDot(Node* node, std::stringstream& ss, int& nullCount);
+
 public:
     RBT();
     ~RBT();
@@ -51,5 +56,8 @@ public:
     std::vector<int> getMax10();
 
     void printTree();
+
+    void visualize(const std::string& filename = "tree.dot");
+    std::string generateDotString(); // Для веб-визуализации
 };
 #endif
