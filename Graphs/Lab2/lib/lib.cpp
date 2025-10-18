@@ -141,14 +141,14 @@ void RBT::fixInsert(Node*z) {
     while (z->parent->color == RED) {
         if (z->parent == z->parent->parent->left) {
             Node* y = z->parent->parent->right;
-            if (y->color == RED) { // Если брат отца красный
+            if (y != listnode && y->color == RED) { // Если брат отца красный
                                    // parent.color = BLACK;
                                    // uncle.color = BLACK;
                                    // grandparent.color = RED;
                                    // z = grandparent;
-                z->parent->color = BLACK;
-                y->color = BLACK;
-                z->parent->parent->color = RED;
+                if (z->parent != listnode) z->parent->color = BLACK;
+                if (y != listnode) y->color = BLACK;
+                if (z->parent->parent != listnode) z->parent->parent->color = RED;
                 z = z->parent->parent;
             } else {                // Если брат отца черный
                 if (z == z->parent->right) {
@@ -158,18 +158,18 @@ void RBT::fixInsert(Node*z) {
                     // cout << "  Rotation complete." << endl;
                 }
                 // z - левый ребенок, нужна правая ротация
-                z->parent->color = BLACK;
-                z->parent->parent->color = RED;
+                if (z->parent != listnode) z->parent->color = BLACK;
+                if (z->parent->parent != listnode) z->parent->parent->color = RED;
                 rightRotate(z->parent->parent);
                 // cout << "  Rotation complete." << endl;
             }
         } else { 
             // Симметричный случай, когда родитель является правым ребенком
             Node* y = z->parent->parent->left;
-            if (y->color == RED) {
-                z->parent->color = BLACK;
-                y->color = BLACK;
-                z->parent->parent->color = RED;
+            if (y != listnode && y->color == RED) {
+                if (z->parent != listnode) z->parent->color = BLACK;
+                if (y != listnode) y->color = BLACK;
+                if (z->parent->parent != listnode) z->parent->parent->color = RED;
                 z = z->parent->parent;
             } else {
                 if (z == z->parent->left) {
@@ -177,8 +177,8 @@ void RBT::fixInsert(Node*z) {
                     rightRotate(z);
                     // cout << "  Rotation complete." << endl;
                 }
-                z->parent->color = BLACK;
-                z->parent->parent->color = RED;
+                if (z->parent != listnode) z->parent->color = BLACK;
+                if (z->parent->parent != listnode) z->parent->parent->color = RED;
                 leftRotate(z->parent->parent);
                 // cout << "  Rotation complete." << endl;
             }
