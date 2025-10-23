@@ -6,58 +6,26 @@
 
 using namespace std;
 
-enum Color { RED, BLACK };
-
-struct Node {
-    int data;
-    Color color;
-    Node* left;
-    Node* right;
-    Node* parent;
-
-    Node(int value) : data(value), color(RED), left(nullptr), 
-        right(nullptr), parent(nullptr) {};
-};
-
-class RBT {
+class Graph {
 private:
-    Node* root;
-    Node* listnode; // (всегда черный)
-
-    // Вспомогательные методы
-    void leftRotate(Node* x); // Параметр - относительно кого ротируем
-    void rightRotate(Node* y);
-    void fixInsert(Node* z); // Делает балансировку и перекрашивание
-    void fixRemove(Node* x);
-    void transplant(Node* u, Node* v); // Заменяем узел при удалении, 
-                                       // чтобы не потерять поддерево
-    Node* minimum(Node* node);
-    Node* maximum(Node* node);
-    void deleteTree(Node* node);
-
-    void getAllMax(Node* node, vector <int>& result, int& count);
-    void getAllMin(Node* node, vector <int>& result, int& count);
-    void inOrderTraversal(Node* node, vector<int>& elements);
-    void generateDot(Node* node, std::stringstream& ss, int& nullCount);
+    int n;
+    vector<vector<int>> capacity_;
+    vector<vector<int>> flow_;
+    vector<vector<int>> residual_;
+    int sink_, source_, maxFlow_;
+    void defineSourceAndSink();
 
 public:
-    RBT();
-    ~RBT();
-
-    // Основные операции
-    bool insert(int value); // Просто вставляет узел в дерево по правилам бинарного поиска.
-    bool remove(int value);
-    Node* search(int value);
-
-    // Получение min max
-    int findMin();
-    int findMax();
-    std::vector<int> getMin10();
-    std::vector<int> getMax10();
-
-    void printTree();
-
-    void visualize(const std::string& filename = "tree.dot");
-    std::string generateDotString(); // Для веб-визуализации
+    Graph(); // Конструктор по умолчанию
+    Graph(const vector<vector<int>>& capacity);
+    int getMaxFlow(int s, int t);
+    void readMatrix(const string& filename);
+    const vector<vector<int>>& getFlows() { return flow_; };
+    const vector<vector<int>>& getCapacities() { return capacity_; };
+    int getSink() { return sink_; };
+    int getSource() {return source_; };
 };
+
+void ParseArguments(int argc, char* argv[], string& inputFile, string& outputFile);
+
 #endif
