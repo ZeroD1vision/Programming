@@ -35,7 +35,7 @@ void Graph::readMatrix(const string& filename) {
         for (int j = 0; j < n; j++) {
             if (!(file >> capacity_[i][j])) {
                 cerr << "Error reading matrix element [" 
-                     << i << "][" << j "]" << endl;
+                     << i << "][" << j << "]" << endl;
                 exit(1);
             }
         }
@@ -125,31 +125,6 @@ int Graph::getMaxFlow(int s, int t) {
     }
 
     return maxFlow_;
-}
-
-void ParseArguments(int argc, char* argv[], string& inputFile, string& outputFile) {
-    inputFile = "";
-    outputFile = "ans.txt";
-
-    // Начинаем с 1, потому что argv[0] - это имя программы
-    for (int i = 1; i < argc; i++) {
-        string arg = argv[i];
-
-        if (arg == "-o" && i + 1 < argc) {
-            outputFile = argv[i + 1]; // Следующий аргумент - имя выходного файла
-            i++; // Пропускаем следующий аргумент, так как его уже обработали
-        } else if (inputFile.empty()) {
-            inputFile = arg;
-        } else {
-            cerr << "Warning: Unknown arguments: " << arg << endl;
-        }
-    }
-
-    if (inputFile.empty()) {
-        cerr << "Error: Input file name is required" << endl;
-        cerr << "Usage: " << argv[0] << " <input_file> [-o <output_file>]" << endl;
-        exit(1);
-    }
 }
 
 bool Graph::bfs(vector<vector<int>>& residual, int source, int sink, vector<int>& parent) {
