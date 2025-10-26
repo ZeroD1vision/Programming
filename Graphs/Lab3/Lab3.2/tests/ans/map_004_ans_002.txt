@@ -1,0 +1,3 @@
+0 - length of path between (0, 0) and (50, 50) points.
+Path:
+[]
