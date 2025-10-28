@@ -60,7 +60,7 @@ void writeResultsToFile(const Graph& graph, const string& filename) {
     // a) Суммарный поток
     out << "Maximum flow value: " << graph.getMaxFlow() << "\n\n";
     // b) Источник и сток
-    out << "Source: " << graph.getSource() << ", sink: " << graph.getSink() << "\n\n";
+    out << "Source: " << (graph.getSource() + 1) << ", sink: " << (graph.getSink() + 1) << "\n\n";
     // c) Список рёбер
     out << "Flow: \n";
     const vector<vector<int>>& flows = graph.getFlows();
@@ -68,8 +68,9 @@ void writeResultsToFile(const Graph& graph, const string& filename) {
     int n = capacities.size();
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
-            if (flows[i][j] > 0 || capacities[i][j]> 0){
-                out << i + 1 << "->" << j << ": " << flows[i][j] << "\n";
+            // if (flows[i][j] > 0 || capacities[i][j]> 0){
+            if (flows[i][j] > 0){
+                out << i + 1 << "->" << j + 1 << ": " << flows[i][j] << "\n";
             }
         }
     }
