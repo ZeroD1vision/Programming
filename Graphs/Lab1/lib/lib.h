@@ -18,11 +18,6 @@ private:
     void expand_matrix();              // Увеличить размер матрицы при необходимости
 
 public:
-    /**
-     * @brief Конструктор графа
-     * @param filename Путь к файлу с матрицей смежности (nullptr для пустого графа)
-     * @param directed Тип графа: true - ориентированный, false - неориентированный
-     */
     Graph(const char *filename, bool directed);
     // Деструктор - освобождает всю выделенную память
     ~Graph();
