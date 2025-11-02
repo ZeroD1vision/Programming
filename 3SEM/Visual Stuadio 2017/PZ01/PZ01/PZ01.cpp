@@ -3,7 +3,8 @@
  *******************************************************************************
  * Project type  : Windows Console Application                                 *
  * Project name  : Pt_1                                                        *
- * File name     : lib.h                                                       *
+ * Project name  : Pt_1                                                        *
+ * File name     : main.cpp                                                    *
  * Language      : CPP                                                         *
  * Programmers   : Нарзиев Артемий Тимурович                                   *
  * Modified By   :                                                             *
@@ -16,13 +17,19 @@
 #include <windows.h>
 #include "Header.h"
 
-    using namespace std;
+using namespace std;
 
 // Макрос для определения кода нажатой клавиши
 #define KEY_DOWN(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 1 : 0)
 
-// Глобальная переменная контекста устройства
-HDC hdc;
+/****************************************************************/
+/*Г Л О Б А Л Ь Н Ы Е  К О Н С Т А Н Т Ы  И  П Е Р Е М Е Н Н Ы Е*/
+/****************************************************************/
+
+HDC hdc;    // Объявим контекст устройства
+            // Контекст устройства это структура, содержащая
+            // описание видеокарты на вашем компьютере
+            // и всех необходимых графических элементов
 
 /****************************************************************/
 /*             О С Н О В Н А Я    П Р О Г Р А М М А             */
@@ -34,19 +41,27 @@ int main()
     //  Н А Ч А Л О  М О Л И Т В А
     // Получим дескриптор консольного окна
     HWND hwnd = GetConsoleWindow();
+
+    // если дескриптор НЕ существует
     if (hwnd == NULL)
     {
         cout << "Console Window Descriptor NOT FOUND !\n";
-        return 1;
-    } // if (дескриптор окна не найден)
+        return 1; // ERROR
+    } // if (hwnd == NULL)
 
-    // Получим контекст устройства для консольного окна
+    // дескриптор существует
+
+    // получим контекст устройства для консольного окна
     hdc = GetWindowDC(hwnd);
+
+    // если контекст НЕ существует
     if (hdc == 0)
     {
         cout << "Handle Device Context NOT FOUND !\n";
-        return 2;
-    } // if (контекст устройства не найден)
+        return 2; // ERROR
+    } // if (hdc == 0)
+
+    // контекст существует - можем работать
     // К О Н Е Ц  М О Л И Т В А 
     //===============================================================
 
@@ -54,28 +69,22 @@ int main()
     // Н А Ч А Л О  К О Н С Т А Н Т Ы
 
     // константы выбранных фигур
-    const int CIRCLE = 1;              // круг
-    const int RECT_FLASHLIGHT = 2;     // прямоугольный фонарик
-    const int POINT = 3;               // точка
-    const int ROUND_FLASHLIGHT = 4;    // круглый фонарик
-    const int SCREWDRIVER = 5;         // отвертка
+    const int CIRCLE = 1;
+    const int RECT_FLASHLIGHT = 2;
+    const int POINT = 3;
+    const int ROUND_FLASHLIGHT = 4;
+    const int SCREWDRIVER = 5;
 
     // константы состояний фонариков
     const int USUAL_FLASHLIGHT = 0;    // обычный фонарик
-    const int BROKEN_FLASHLIGHT = -1;  // сломанный фонарик
+    const int BROKEN_FLASHLIGHT = -1;  // сломанный
 
-    int STEP = 5;           // шаг перемещения фигур
-    const int DELAY = 50;   // задержка между движениями
-
-    // Границы стен
-    const int WALL_LEFT = 50;      // левая граница стены
-    const int WALL_TOP = 50;       // верхняя граница стены
-    const int WALL_RIGHT = 750;    // правая граница стены
-    const int WALL_BOTTOM = 550;   // нижняя граница стены
+    int STEP = 5;           // шаг в Drag
+    const int DELAY = 50;   // задержка
 
     // Размеры камня
-    const int STONE_WIDTH = 80;    // ширина камня
-    const int STONE_HEIGHT = 60;   // высота камня
+    const int STONE_WIDTH = 80;
+    const int STONE_HEIGHT = 60;
 
     //  К О Н Е Ц  К О Н С Т А Н Т Ы
     //===============================================================
@@ -83,49 +92,107 @@ int main()
     //===============================================================
     //  Н А Ч А Л О  П Е Р Е М Е Н Н Ы Е
 
-    // Координаты статичных объектов
-    int stone_x = 400;  // координата X камня
-    int stone_y = 200;  // координата Y камня
+      // --------------------//
+     // ===== РАЗМЕРЫ ===== //
+    // --------------------//
 
-    // Состояния фонариков
-    int rect_state = USUAL_FLASHLIGHT;   // состояние прямоугольного фонарика
-    int round_state = USUAL_FLASHLIGHT;  // состояние круглого фонарика
+    // для круга (класса Circle)
+    int Radius = 30;    // начальное значение радиуса КРУГА
 
-    // Урон фонариков (для будущего расширения функционала)
-    int rect_damage = 0;    // уровень урона прямоугольного фонарика
-    int round_damage = 0;   // уровень урона круглого фонарика
+    // для прямоугольного фонарика (класса RectFlashlight)
+    int RectBodyWidth = 40;     // ширина корпуса
+    int RectBodyHeight = 120;   // высота корпуса
+    int RectHeadWidth = 60;     // ширина головки
+    int RectHeadHeight = 80;    // высота головки
 
-    // Объекты на сцене
-    Point point(100, 100);      // точка
-    Circle circle(200, 200, 30); // круг
-    RectFlashlight rectFlashlight(300, 300, 40, 120, 60, 80);       // прямоугольный фонарик
-    RoundFlashlight roundFlashlight(500, 300, 50, 100, 70, 60);     // круглый фонарик
-    BrokenFlashlight brokenRect(300, 300, 40, 120, 60, 80, 0);      // сломанный прямоугольный фонарик
-    BrokenFlashlight brokenRound(500, 300, 50, 100, 70, 60, 1);     // сломанный круглый фонарик
-    Screwdriver screwdriver(400, 400, 60, 15);                      // отвертка
-    Stone stone(stone_x, stone_y, STONE_WIDTH, STONE_HEIGHT);       // камень
+    // для круглого фонарика (класса RoundFlashlight)
+    int RoundBodyWidth = 50;    // ширина корпуса
+    int RoundBodyHeight = 100;  // высота корпуса
+    int RoundHeadWidth = 70;    // ширина головки
+    int RoundHeadHeight = 60;   // высота головки
 
-    // Переменные для управления
-    int fig_x, fig_y;           // текущие координаты фигуры
-    int current_figure = 0;     // выбранная фигура для управления
-    bool was_pressed = false;   // флаг нажатия клавиши управления
+    // для отвертки (класса Screwdriver)
+    int ScrewLength = 60;       // длина отвертки
+    int ScrewWidth = 15;        // ширина отвертки
+
+
+      // -----------------------//
+     // ===== КООРДИНАТЫ ===== //
+    // -----------------------//
+
+    // стартовые координаты
+    int x0 = 100;
+    int y0 = 100;
+
+    // текущие координаты прямоугольного фонарика
+    int rect_x = x0 + 300;
+    int rect_y = y0 + 300;
+
+    // текущие координаты круглого фонарика
+    int round_x = x0 + 500;
+    int round_y = y0 + 300;
+
+    // текущие координаты круга
+    int circle_x = x0 + 200;
+    int circle_y = y0 + 200;
+
+    // текущие координаты точки
+    int point_x = x0 + 100;
+    int point_y = y0 + 100;
+
+    // текущие координаты отвертки
+    int screw_x = x0 + 400;
+    int screw_y = y0 + 400;
+
+    // координаты камня
+    int stone_x = x0 + 400;
+    int stone_y = y0 + 200;
+
+
+    // -------------------------------//
+   // ===== ОБЪЕКТЫ НА "СЦЕНЕ" ===== //
+  // -------------------------------//
+
+  // фонарики
+    RectFlashlight rectFlashlight(rect_x, rect_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
+    RoundFlashlight roundFlashlight(round_x, round_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
+    BrokenFlashlight brokenRect(rect_x, rect_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight, 0);
+    BrokenFlashlight brokenRound(round_x, round_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight, 1);
+
+    // другие фигуры
+    Point point(point_x, point_y);
+    Circle circle(circle_x, circle_y, Radius);
+    Screwdriver screwdriver(screw_x, screw_y, ScrewLength, ScrewWidth);
+
+    // камень
+    Stone stone(stone_x, stone_y, STONE_WIDTH, STONE_HEIGHT);
+
+
+    // -------------------------------//
+   // ===== СОСТОЯНИЕ ОБЪЕКТОВ ===== //
+  // -------------------------------//
+
+    int rect_state = USUAL_FLASHLIGHT;
+    int round_state = USUAL_FLASHLIGHT;
+
+
+    // -------------------------- //
+   // ===== ДЛЯ УПРАВЛЕНИЯ ===== //
+  // -------------------------- //
+
+    int fig_x, fig_y;           // координаты текущей фигуры
+    int current_figure = 0;     // нажатая клавиша (1 - круг, 2 - прямоугольный фонарик, 3 - точка, 4 - круглый фонарик, 5 - отвертка)
 
     //  К О Н Е Ц  П Е Р Е М Е Н Н Ы Е
     //===============================================================
 
-    // Рисуем стены
-    HPEN wallPen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
-    SelectObject(hdc, wallPen);
-    Rectangle(hdc, WALL_LEFT, WALL_TOP, WALL_RIGHT, WALL_BOTTOM);
-    DeleteObject(wallPen);
-
     // Показываем стартовые фигуры
-    point.Show();           // показываем точку
-    circle.Show();          // показываем круг
-    rectFlashlight.Show();  // показываем прямоугольный фонарик
-    roundFlashlight.Show(); // показываем круглый фонарик
-    screwdriver.Show();     // показываем отвертку
-    stone.Show();           // показываем камень
+    point.Show();           // точка
+    circle.Show();          // круг
+    rectFlashlight.Show();  // прямоугольный фонарик
+    roundFlashlight.Show(); // круглый фонарик
+    screwdriver.Show();     // отвертка
+    stone.Show();           // камень
 
     cout << "To drag use arrows, to exit - ESC" << endl;
     cout << "Choose the figure to drag:" << endl;
@@ -135,58 +202,60 @@ int main()
     cout << "4 - RoundFlashlight" << endl;
     cout << "5 - Screwdriver (repair tool)" << endl;
 
-    //===============================================================
-    //                   РЕАЛИЗАЦИЯ ДВИЖЕНИЯ                 
-    //===============================================================
-
-    // Цикл для выбора и перемещения фигур
     while (true)
     {
         // при нажатии escape выходим
-        if (KEY_DOWN(VK_ESCAPE))
-        {
-            break;
-        } // if (нажата клавиша ESC)
+        if (KEY_DOWN(VK_ESCAPE)) { break; }
 
         // Выбор фигуры - круг
         if (KEY_DOWN(49))
         {
             current_figure = CIRCLE;    // изменяем текущую фигуру
-            fig_x = circle.GetX();      // запоминаем координату X круга
-            fig_y = circle.GetY();      // запоминаем координату Y круга
-        } // if (нажата клавиша 1)
+
+            // и изменяем координаты
+            fig_x = circle.GetX();
+            fig_y = circle.GetY();
+        } // if (KEY_DOWN(49))
 
         // Выбор фигуры - прямоугольный фонарик
         if (KEY_DOWN(50))
         {
-            current_figure = RECT_FLASHLIGHT;   // изменяем текущую фигуру
-            fig_x = rectFlashlight.GetX();      // запоминаем координату X фонарика
-            fig_y = rectFlashlight.GetY();      // запоминаем координату Y фонарика
-        } // if (нажата клавиша 2)
+            current_figure = RECT_FLASHLIGHT;    // изменяем текущую фигуру
+
+            // и изменяем координаты
+            fig_x = rect_x;
+            fig_y = rect_y;
+        } // if (KEY_DOWN(50))
 
         // Выбор фигуры - точка
         if (KEY_DOWN(51))
         {
-            current_figure = POINT;     // изменяем текущую фигуру
-            fig_x = point.GetX();       // запоминаем координату X точки
-            fig_y = point.GetY();       // запоминаем координату Y точки
-        } // if (нажата клавиша 3)
+            current_figure = POINT;    // изменяем текущую фигуру
+
+            // и изменяем координаты
+            fig_x = point.GetX();
+            fig_y = point.GetY();
+        } // if (KEY_DOWN(51))
 
         // Выбор фигуры - круглый фонарик
         if (KEY_DOWN(52))
         {
-            current_figure = ROUND_FLASHLIGHT;  // изменяем текущую фигуру
-            fig_x = roundFlashlight.GetX();     // запоминаем координату X фонарика
-            fig_y = roundFlashlight.GetY();     // запоминаем координату Y фонарика
-        } // if (нажата клавиша 4)
+            current_figure = ROUND_FLASHLIGHT;    // изменяем текущую фигуру
+
+            // и изменяем координаты
+            fig_x = round_x;
+            fig_y = round_y;
+        } // if (KEY_DOWN(52))
 
         // Выбор фигуры - отвертка
         if (KEY_DOWN(53))
         {
-            current_figure = SCREWDRIVER;   // изменяем текущую фигуру
-            fig_x = screwdriver.GetX();     // запоминаем координату X отвертки
-            fig_y = screwdriver.GetY();     // запоминаем координату Y отвертки
-        } // if (нажата клавиша 5)
+            current_figure = SCREWDRIVER;    // изменяем текущую фигуру
+
+            // и изменяем координаты
+            fig_x = screw_x;
+            fig_y = screw_y;
+        } // if (KEY_DOWN(53))
 
         // Обработка управления для выбранной фигуры
         switch (current_figure)
@@ -195,351 +264,293 @@ int main()
             // влево
             if (KEY_DOWN(VK_LEFT))
             {
-                fig_x = fig_x - STEP;           // уменьшаем координату X
-                circle.MoveTo(fig_x, fig_y);    // перемещаем круг
-                Sleep(DELAY);                   // задержка
-            } // if (нажата стрелка влево)
+                fig_x = fig_x - STEP;
+                circle.MoveTo(fig_x, fig_y);
+                Sleep(DELAY);
+            } // if (KEY_DOWN(VK_LEFT))
 
             // вправо
             if (KEY_DOWN(VK_RIGHT))
             {
-                fig_x = fig_x + STEP;           // увеличиваем координату X
-                circle.MoveTo(fig_x, fig_y);    // перемещаем круг
-                Sleep(DELAY);                   // задержка
-            } // if (нажата стрелка вправо)
+                fig_x = fig_x + STEP;
+                circle.MoveTo(fig_x, fig_y);
+                Sleep(DELAY);
+            } // if (KEY_DOWN(VK_RIGHT))
 
             // вверх
             if (KEY_DOWN(VK_UP))
             {
-                fig_y = fig_y - STEP;           // уменьшаем координату Y
-                circle.MoveTo(fig_x, fig_y);    // перемещаем круг
-                Sleep(DELAY);                   // задержка
-            } // if (нажата стрелка вверх)
+                fig_y = fig_y - STEP;
+                circle.MoveTo(fig_x, fig_y);
+                Sleep(DELAY);
+            } // if (KEY_DOWN(VK_UP))
 
             // вниз
             if (KEY_DOWN(VK_DOWN))
             {
-                fig_y = fig_y + STEP;           // увеличиваем координату Y
-                circle.MoveTo(fig_x, fig_y);    // перемещаем круг
-                Sleep(DELAY);                   // задержка
-            } // if (нажата стрелка вниз)
+                fig_y = fig_y + STEP;
+                circle.MoveTo(fig_x, fig_y);
+                Sleep(DELAY);
+            } // if (KEY_DOWN(VK_DOWN))
             break;
 
         case RECT_FLASHLIGHT: // Управление прямоугольным фонариком
-            was_pressed = false;  // сбрасываем флаг нажатия
-
             // влево
             if (KEY_DOWN(VK_LEFT))
             {
-                fig_x = fig_x - STEP;   // уменьшаем координату X
-                was_pressed = true;     // устанавливаем флаг нажатия
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (нажата стрелка влево)
+                fig_x = fig_x - STEP;
+            } // if (KEY_DOWN(VK_LEFT))
 
             // вправо
             if (KEY_DOWN(VK_RIGHT))
             {
-                fig_x = fig_x + STEP;   // увеличиваем координату X
-                was_pressed = true;     // устанавливаем флаг нажатия
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (нажата стрелка вправо)
+                fig_x = fig_x + STEP;
+            } // if (KEY_DOWN(VK_RIGHT))
 
             // вверх
             if (KEY_DOWN(VK_UP))
             {
-                fig_y = fig_y - STEP;   // уменьшаем координату Y
-                was_pressed = true;     // устанавливаем флаг нажатия
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (нажата стрелка вверх)
+                fig_y = fig_y - STEP;
+            } // if (KEY_DOWN(VK_UP))
 
             // вниз
             if (KEY_DOWN(VK_DOWN))
             {
-                fig_y = fig_y + STEP;   // увеличиваем координату Y
-                was_pressed = true;     // устанавливаем флаг нажатия
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (нажата стрелка вниз)
+                fig_y = fig_y + STEP;
+            } // if (KEY_DOWN(VK_DOWN))
 
-            // если ни одна стрелка не была нажата, пропускаем обновление
-            if (!was_pressed) { break; } // if (не было нажатия стрелок)
+            // СКРЫВАЕМ ОБЕ ВЕРСИИ ФОНАРИКА ПЕРЕД ПЕРЕМЕЩЕНИЕМ
+            rectFlashlight.Hide();
+            brokenRect.Hide();
 
-            // Проверяем столкновения только если фонарик не сломан
-            if (rect_state == USUAL_FLASHLIGHT)
+            // Обновляем координаты прямоугольного фонарика
+            rect_x = fig_x;
+            rect_y = fig_y;
+            rectFlashlight.SetX(rect_x);
+            rectFlashlight.SetY(rect_y);
+            brokenRect.SetX(rect_x);
+            brokenRect.SetY(rect_y);
+
+            // Проверяем столкновения с камнем
+            if (rect_x < stone_x + STONE_WIDTH &&
+                rect_x + RectBodyWidth > stone_x &&
+                rect_y < stone_y + STONE_HEIGHT &&
+                rect_y + RectBodyHeight > stone_y)
             {
-                // Проверка столкновения со стенами
-                if (fig_x < WALL_LEFT || fig_x + 40 > WALL_RIGHT ||
-                    fig_y < WALL_TOP || fig_y + 120 > WALL_BOTTOM)
-                {
-                    rect_state = BROKEN_FLASHLIGHT; // ломаем фонарик
-                } // if (фонарик вышел за границы стен)
+                rect_state = BROKEN_FLASHLIGHT; // сломанный
+            } // if (столкнулся с камнем)
 
-                // Проверка столкновения с камнем
-                if (fig_x < stone_x + STONE_WIDTH &&
-                    fig_x + 40 > stone_x &&
-                    fig_y < stone_y + STONE_HEIGHT &&
-                    fig_y + 120 > stone_y)
-                {
-                    rect_state = BROKEN_FLASHLIGHT; // ломаем фонарик
-                    roundFlashlight.Show(); // показываем круглый фонарик
-                    screwdriver.Show();     // показываем отвертку
-                    stone.Show();           // показываем камень
-                } // if (фонарик столкнулся с камнем)
-            } // if (фонарик не сломан)
-
-            // Перемещаем и отображаем фонарик в зависимости от состояния
-            if (rect_state == USUAL_FLASHLIGHT)
+            // Перемещаем и отображаем прямоугольный фонарик в зависимости от состояния
+            switch (rect_state)
             {
-                brokenRect.Hide();                  // скрываем сломанный фонарик
-                rectFlashlight.MoveTo(fig_x, fig_y); // перемещаем целый фонарик
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (фонарик целый)
-            else
-            {
-                rectFlashlight.Hide();              // скрываем целый фонарик
-                brokenRect.MoveTo(fig_x, fig_y);    // перемещаем сломанный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // else (фонарик сломан)
+            case USUAL_FLASHLIGHT: // обычный фонарик
+                brokenRect.Hide(); // скрываем сломанный фонарик
 
-            Sleep(DELAY);   // задержка
+                stone.Show();      // показываем камень
+
+                // и перемещаем обычный фонарик
+                rectFlashlight.MoveTo(rect_x, rect_y);
+                break;
+
+            case BROKEN_FLASHLIGHT: // сломанный фонарик
+                rectFlashlight.Hide(); // прячем обычный фонарик
+
+                stone.Show();          // показываем камень
+
+                // и перемещаем сломанный фонарик
+                brokenRect.MoveTo(rect_x, rect_y);
+                break;
+            }
+
+            Sleep(DELAY);
             break;
 
         case POINT: // Управление точкой
             // влево
             if (KEY_DOWN(VK_LEFT))
             {
-                fig_x = fig_x - STEP;           // уменьшаем координату X
-                point.MoveTo(fig_x, fig_y);     // перемещаем точку
-                Sleep(DELAY);                   // задержка
-            } // if (нажата стрелка влево)
+                fig_x = fig_x - STEP;
+                point.MoveTo(fig_x, fig_y);
+                Sleep(DELAY);
+            } // if (KEY_DOWN(VK_LEFT))
 
             // вправо
             if (KEY_DOWN(VK_RIGHT))
             {
-                fig_x = fig_x + STEP;           // увеличиваем координату X
-                point.MoveTo(fig_x, fig_y);     // перемещаем точку
-                Sleep(DELAY);                   // задержка
-            } // if (нажата стрелка вправо)
+                fig_x = fig_x + STEP;
+                point.MoveTo(fig_x, fig_y);
+                Sleep(DELAY);
+            } // if (KEY_DOWN(VK_RIGHT))
 
             // вверх
             if (KEY_DOWN(VK_UP))
             {
-                fig_y = fig_y - STEP;           // уменьшаем координату Y
-                point.MoveTo(fig_x, fig_y);     // перемещаем точку
-                Sleep(DELAY);                   // задержка
-            } // if (нажата стрелка вверх)
+                fig_y = fig_y - STEP;
+                point.MoveTo(fig_x, fig_y);
+                Sleep(DELAY);
+            } // if (KEY_DOWN(VK_UP))
 
             // вниз
             if (KEY_DOWN(VK_DOWN))
             {
-                fig_y = fig_y + STEP;           // увеличиваем координату Y
-                point.MoveTo(fig_x, fig_y);     // перемещаем точку
-                Sleep(DELAY);                   // задержка
-            } // if (нажата стрелка вниз)
+                fig_y = fig_y + STEP;
+                point.MoveTo(fig_x, fig_y);
+                Sleep(DELAY);
+            } // if (KEY_DOWN(VK_DOWN))
             break;
 
         case ROUND_FLASHLIGHT: // Управление круглым фонариком
-            was_pressed = false;  // сбрасываем флаг нажатия
-
             // влево
             if (KEY_DOWN(VK_LEFT))
             {
-                fig_x = fig_x - STEP;   // уменьшаем координату X
-                was_pressed = true;     // устанавливаем флаг нажатия
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (нажата стрелка влево)
+                fig_x = fig_x - STEP;
+            } // if (KEY_DOWN(VK_LEFT))
 
             // вправо
             if (KEY_DOWN(VK_RIGHT))
             {
-                fig_x = fig_x + STEP;   // увеличиваем координату X
-                was_pressed = true;     // устанавливаем флаг нажатия
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (нажата стрелка вправо)
+                fig_x = fig_x + STEP;
+            } // if (KEY_DOWN(VK_RIGHT))
 
             // вверх
             if (KEY_DOWN(VK_UP))
             {
-                fig_y = fig_y - STEP;   // уменьшаем координату Y
-                was_pressed = true;     // устанавливаем флаг нажатия
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (нажата стрелка вверх)
+                fig_y = fig_y - STEP;
+            } // if (KEY_DOWN(VK_UP))
 
             // вниз
             if (KEY_DOWN(VK_DOWN))
             {
-                fig_y = fig_y + STEP;   // увеличиваем координату Y
-                was_pressed = true;     // устанавливаем флаг нажатия
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (нажата стрелка вниз)
+                fig_y = fig_y + STEP;
+            } // if (KEY_DOWN(VK_DOWN))
 
-            // если ни одна стрелка не была нажата, пропускаем обновление
-            if (!was_pressed) { break; } // if (не было нажатия стрелок)
+            roundFlashlight.Hide();
+            brokenRound.Hide();
 
-            // Проверяем столкновения только если фонарик не сломан
-            if (round_state == USUAL_FLASHLIGHT)
+            // Обновляем координаты круглого фонарика
+            round_x = fig_x;
+            round_y = fig_y;
+            roundFlashlight.SetX(round_x);
+            roundFlashlight.SetY(round_y);
+            brokenRound.SetX(round_x);
+            brokenRound.SetY(round_y);
+
+            // Проверяем столкновения с камнем
+            if (round_x < stone_x + STONE_WIDTH &&
+                round_x + RoundBodyWidth > stone_x &&
+                round_y < stone_y + STONE_HEIGHT &&
+                round_y + RoundBodyHeight > stone_y)
             {
-                // Проверка столкновения со стенами
-                if (fig_x < WALL_LEFT || fig_x + 50 > WALL_RIGHT ||
-                    fig_y < WALL_TOP || fig_y + 100 > WALL_BOTTOM)
-                {
-                    round_state = BROKEN_FLASHLIGHT; // ломаем фонарик
-                } // if (фонарик вышел за границы стен)
+                round_state = BROKEN_FLASHLIGHT; // сломанный
+            } // if (столкнулся с камнем)
 
-                // Проверка столкновения с камнем
-                if (fig_x < stone_x + STONE_WIDTH &&
-                    fig_x + 50 > stone_x &&
-                    fig_y < stone_y + STONE_HEIGHT &&
-                    fig_y + 100 > stone_y)
-                {
-                    round_state = BROKEN_FLASHLIGHT; // ломаем фонарик
-                } // if (фонарик столкнулся с камнем)
-            } // if (фонарик не сломан)
-
-            // Перемещаем и отображаем фонарик в зависимости от состояния
-            if (round_state == USUAL_FLASHLIGHT)
+            // Перемещаем и отображаем круглый фонарик в зависимости от состояния
+            switch (round_state)
             {
-                brokenRound.Hide();                 // скрываем сломанный фонарик
-                roundFlashlight.MoveTo(fig_x, fig_y); // перемещаем целый фонарик
-                rectFlashlight.Show();  // показываем прямоугольный фонарик
-                roundFlashlight.Show(); // показываем круглый фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // if (фонарик целый)
-            else
-            {
-                roundFlashlight.Hide();             // скрываем целый фонарик
-                brokenRound.MoveTo(fig_x, fig_y);   // перемещаем сломанный фонарик
-                screwdriver.Show();     // показываем отвертку
-                stone.Show();           // показываем камень
-            } // else (фонарик сломан)
+            case USUAL_FLASHLIGHT: // обычный фонарик
+                stone.Show();       // показываем 
+                roundFlashlight.Show(); // показываем обычный фонарик
+                break;
 
-            Sleep(DELAY);   // задержка
+            case BROKEN_FLASHLIGHT: // сломанный фонарик
+                stone.Show();           // показываем 
+                brokenRound.Show();     // показываем сломанный фонарик
+                break;
+            }
+
+            Sleep(DELAY);
             break;
 
         case SCREWDRIVER: // Управление отверткой
-            was_pressed = false;  // сбрасываем флаг нажатия
-
             // влево
             if (KEY_DOWN(VK_LEFT))
             {
-                fig_x = fig_x - STEP;   // уменьшаем координату X
-                was_pressed = true;     // устанавливаем флаг нажатия
-            } // if (нажата стрелка влево)
+                fig_x = fig_x - STEP;
+            } // if (KEY_DOWN(VK_LEFT))
 
             // вправо
             if (KEY_DOWN(VK_RIGHT))
             {
-                fig_x = fig_x + STEP;   // увеличиваем координату X
-                was_pressed = true;     // устанавливаем флаг нажатия
-            } // if (нажата стрелка вправо)
+                fig_x = fig_x + STEP;
+            } // if (KEY_DOWN(VK_RIGHT))
 
             // вверх
             if (KEY_DOWN(VK_UP))
             {
-                fig_y = fig_y - STEP;   // уменьшаем координату Y
-                was_pressed = true;     // устанавливаем флаг нажатия
-            } // if (нажата стрелка вверх)
+                fig_y = fig_y - STEP;
+            } // if (KEY_DOWN(VK_UP))
 
             // вниз
             if (KEY_DOWN(VK_DOWN))
             {
-                fig_y = fig_y + STEP;   // увеличиваем координату Y
-                was_pressed = true;     // устанавливаем флаг нажатия
-            } // if (нажата стрелка вниз)
+                fig_y = fig_y + STEP;
+            } // if (KEY_DOWN(VK_DOWN))
 
-            // если ни одна стрелка не была нажата, пропускаем обновление
-            if (!was_pressed) { break; } // if (не было нажатия стрелок)
+            // Обновляем координаты отвертки
+            screw_x = fig_x;
+            screw_y = fig_y;
 
-            screwdriver.MoveTo(fig_x, fig_y);   // перемещаем отвертку
-            screwdriver.Show();     // показываем отвертку
-            stone.Show();           // показываем камень
-
-            // Проверяем столкновения для починки фонариков
-
-            // Ремонт прямоугольного фонарика
+            // Проверяем столкновения для починки
+            // только сломанные фонарики можно починить
             if (rect_state == BROKEN_FLASHLIGHT)
             {
-                // Если отвертка попала в область сломанного фонарика (проверка пересечения прямоугольников)
-                if (fig_x < brokenRect.GetX() + brokenRect.GetBodyWidth() &&   // левая граница отвертки < правой границы фонарика
-                    fig_x + screwdriver.GetWidth() > brokenRect.GetX() &&      // правая граница отвертки > левой границы фонарика
-                    fig_y < brokenRect.GetY() + brokenRect.GetBodyHeight() &&  // верхняя граница отвертки < нижней границы фонарика
-                    fig_y + screwdriver.GetLength() + 10 > brokenRect.GetY())  // нижняя граница отвертки > верхней границы фонарика
+                // ЕСЛИ отвертка столкнулась с прямоугольным фонариком!
+                if (screw_x < rect_x + RectBodyWidth &&
+                    screw_x + ScrewWidth > rect_x &&
+                    screw_y < rect_y + RectBodyHeight &&
+                    screw_y + ScrewLength > rect_y)
                 {
-                    rect_state = USUAL_FLASHLIGHT;  // восстанавливаем состояние
-                    rect_damage = 0;                // сбрасываем урон
-                    brokenRect.Hide();              // скрываем сломанный фонарик
-                    rectFlashlight.MoveTo(brokenRect.GetX(), brokenRect.GetY()); // перемещаем целый фонарик
-                    rectFlashlight.Show();          // показываем целый фонарик
-                    roundFlashlight.Show(); // показываем круглый фонарик
-                    screwdriver.Show();     // показываем отвертку
-                } // if (отвертка столкнулась с прямоугольным фонариком)
-            } // if (прямоугольный фонарик сломан)
+                    rectFlashlight.SetX(rect_x);
+                    rectFlashlight.SetY(rect_y);
+                    brokenRect.Hide();
+                    rect_state = USUAL_FLASHLIGHT; // чиним фонарик
+                } // if (столкнулся с прямоугольным фонариком)
+            } // if (rect_state == BROKEN_FLASHLIGHT)
 
-            // Ремонт круглого фонарика
             if (round_state == BROKEN_FLASHLIGHT)
             {
-                // Если отвертка попала в область сломанного фонарика (проверка пересечения прямоугольников)
-                if (fig_x < brokenRound.GetX() + brokenRound.GetBodyWidth() &&   // левая граница отвертки < правой границы фонарика
-                    fig_x + screwdriver.GetWidth() > brokenRound.GetX() &&       // правая граница отвертки > левой границы фонарика
-                    fig_y < brokenRound.GetY() + brokenRound.GetBodyHeight() &&  // верхняя граница отвертки < нижней границы фонарика
-                    fig_y + screwdriver.GetLength() + 10 > brokenRound.GetY())   // нижняя граница отвертки > верхней границы фонарика
+                // ЕСЛИ отвертка столкнулась с круглым фонариком!
+                if (screw_x < round_x + RoundBodyWidth &&
+                    screw_x + ScrewWidth > round_x &&
+                    screw_y < round_y + RoundBodyHeight &&
+                    screw_y + ScrewLength > round_y)
                 {
-                    round_state = USUAL_FLASHLIGHT; // восстанавливаем состояние
-                    round_damage = 0;               // сбрасываем урон
-                    brokenRound.Hide();             // скрываем сломанный фонарик
-                    roundFlashlight.MoveTo(brokenRound.GetX(), brokenRound.GetY()); // перемещаем целый фонарик
-                    roundFlashlight.Show();         // показываем целый фонарик
-                    rectFlashlight.Show();  // показываем прямоугольный фонарик
-                    screwdriver.Show();     // показываем отвертку
-                } // if (отвертка столкнулась с круглым фонариком)
-            } // if (круглый фонарик сломан)
+                    roundFlashlight.SetX(round_x);
+                    roundFlashlight.SetY(round_y);
+                    brokenRound.Hide();
+                    round_state = USUAL_FLASHLIGHT; // чиним фонарик
+                } // if (столкнулся с круглым фонариком)
+            } // if (round_state == BROKEN_FLASHLIGHT)
 
-            Sleep(DELAY);   // задержка
+            // Перемещаем отвертку
+            screwdriver.MoveTo(screw_x, screw_y);
+
+            // Перерисовываем все объекты
+            stone.Show();           // камень
+            if (rect_state == USUAL_FLASHLIGHT)
+            {
+                rectFlashlight.Show();  // обычный прямоугольный фонарик
+            }
+            else
+            {
+                brokenRect.Show();      // сломанный прямоугольный фонарик
+            }
+            if (round_state == USUAL_FLASHLIGHT)
+            {
+                roundFlashlight.Show(); // обычный круглый фонарик
+            }
+            else
+            {
+                brokenRound.Show();     // сломанный круглый фонарик
+            }
+
+            Sleep(DELAY);
             break;
-        } // switch (выбранная фигура)
-    } // while (главный цикл программы)
+        }
+    }
 
     //===============================================================
-    // Очистка ресурсов
-    point.Hide();           // скрываем точку
-    circle.Hide();          // скрываем круг
-    rectFlashlight.Hide();  // скрываем прямоугольный фонарик
-    roundFlashlight.Hide(); // скрываем круглый фонарик
-    screwdriver.Hide();     // скрываем отвертку
-    stone.Hide();           // скрываем камень
-    brokenRect.Hide();      // скрываем сломанный прямоугольный фонарик
-    brokenRound.Hide();     // скрываем сломанный круглый фонарик
+    ReleaseDC(hwnd, hdc);
 
-    ReleaseDC(hwnd, hdc);   // освобождаем контекст устройства
-    cout << "Program ended with code 0." << endl;
     return 0;
 }

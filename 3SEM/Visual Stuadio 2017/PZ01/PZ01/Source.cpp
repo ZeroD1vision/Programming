@@ -446,8 +446,8 @@ void BrokenFlashlight::Hide()
     Rectangle(hdc, x, y, x + bodyWidth, y + bodyHeight);
 
     // Головка
-    int headX = x + (bodyWidth - headWidth) / 2;
-    int headY = y - headHeight;
+    int headX = x + (bodyWidth - headWidth) / 2 + 1;
+    int headY = y - headHeight + 0.8;
     Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
 
     // Кнопка
