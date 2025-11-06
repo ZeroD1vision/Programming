@@ -1,0 +1,4 @@
+Size of maximum matching: 2.
+Maximum matching:
+{(2, 5), (3, 8), }
+
