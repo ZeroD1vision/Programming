@@ -8,61 +8,85 @@
 #include <string>
 #include "lib/lib.h"
 
+// Функция для формирования пути к файлу теста
+string getTestFilePath(int testNumber) {
+    stringstream ss;
+    ss << "tests/matrix/gpg_t3_";
+    ss << setw(3) << setfill('0') << testNumber;
+    ss << ".txt";
+    return ss.str();
+}
+
+// Функция для проверки существования файла
+bool fileExists(const string& filename) {
+    ifstream file(filename);
+    return file.good();
+}
+
 int main() {
-    string inputFile = "tests/matrix/gpg_t3_001.txt";
+    int testNumber;
+    
+    // Запрос номера теста у пользователя
+    cout << "Enter test file number (1-11): ";
+    cin >> testNumber;
+    
+    // Проверка корректности ввода
+    if (testNumber < 1 || testNumber > 11) {
+        cerr << "Error: test number must be from 1 to 11" << endl;
+        return 1;
+    }
+    
+    // Формирование путей к файлам
+    string inputFile = getTestFilePath(testNumber);
     string outputFile = "result.txt";
-
-    Graph g(inputFile);
-    int n = g.getSize();
-    auto matrix = g.getMatrix();
-
-    vector<int> colors;
-    bool bipartite = g.isBipartite(colors);
-
-    ofstream fout(outputFile);
-
-    if(bipartite) {
-        fout << "Граф двудольный\n";
-
-        // Формируем матрицу двудольного графа (часто в виде двух частей: U и V)
-        vector<int> U, V;
-        for(int i=0; i<n; i++) {
-            if(colors[i] == 1) U.push_back(i);
-            else V.push_back(i);
-        }
-        int nLeft = U.size();
-        int nRight = V.size();
-
-        // Создаем матрицу для алгоритма
-        vector<vector<int>> bipartiteMatrix(nLeft, vector<int>(nRight, 0));
-        for(int i=0; i<nLeft; i++) {
-            for(int j=0; j<nRight; j++) {
-                if(matrix[U[i]][V[j]] != 0) {
-                    bipartiteMatrix[i][j] = 1;
+    
+    // Проверка существования файла
+    if (!fileExists(inputFile)) {
+        cerr << "Error: test file not found: " << inputFile << endl;
+        return 1;
+    }
+    
+    cout << "Testing: " << inputFile << endl;
+    
+    try {
+        // Загрузка и обработка графа
+        Graph g(inputFile);
+        vector<int> colors;
+        bool bipartite = g.isBipartite(colors);
+        
+        ofstream fout(outputFile);
+        
+        // a) Проверка двудольности
+        if (bipartite) {
+            fout << "Graph is bipartite\n";
+            
+            // Поиск максимального паросочетания
+            auto [matchingSize, matchingEdges] = g.findMaxMatching(colors);
+            
+            // c) Размер максимального паросочетания
+            fout << "Size of maximum matching: " << matchingSize << ".\n";
+            
+            // d) Рёбра паросочетания
+            fout << "Maximum matching:\n{";
+            for (size_t i = 0; i < matchingEdges.size(); i++) {
+                fout << "(" << matchingEdges[i].first << ", " << matchingEdges[i].second << ")";
+                if (i != matchingEdges.size() - 1) {
+                    fout << ", ";
                 }
             }
+            fout << "}\n";
+            
+        } else {
+            fout << "Graph is not bipartite.\n";
         }
-
-        // BipartiteMatcher matcher(bipartiteMatrix, nLeft);
-        // int maxMatch = matcher.maxMatching();
-
-        // // Ребра паросочетания
-        // auto matchingEdges = matcher.getMatchingEdges();
-
-        // // Записи
-        // fout << "Количество паросочетаний: " << maxMatch << "\n";
-        // fout << "Размер максимального паросочетания: " << maxMatch << "\n";
-        // fout << "Ребра, входящие в паросочетание:\n";
-        // for(auto& edge : matchingEdges) {
-        //     int u = U[edge.first];
-        //     int v = V[edge.second];
-        //     fout << u << " - " << v << "\n";
-        // }
-
-    } else {
-        fout << "Граф не двудольный\n";
+        
+        fout.close();
+        cout << "Result is written to file: " << outputFile << endl;
+        
+    } catch (const exception& e) {
+        cerr << "Error in operating graph: " << e.what() << endl;
+        return 1;
     }
-
-    fout.close();
+    
     return 0;
 }
