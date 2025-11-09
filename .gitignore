@@ -5,7 +5,7 @@
 *.a
 *.o
 result.txt 
-.dot
+*.dot
 
 # Игнорировать папки
 node_modules/
