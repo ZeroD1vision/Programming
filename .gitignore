@@ -4,6 +4,8 @@
 *.exe
 *.a
 *.o
+result.txt 
+.dot
 
 # Игнорировать папки
 node_modules/
@@ -17,3 +19,4 @@ launch.json
 
 # Игнорировать все файлы конфигурации
 .vscode/
+
