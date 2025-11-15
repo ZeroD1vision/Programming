@@ -300,21 +300,6 @@ int main()
             currentRound->Show();
             Sleep(DELAY);
             break;
-
-        case SCREWDRIVER: // Управление отверткой
-            if (HandleMovement(fig_x, fig_y, STEP))
-            {
-                screw_x = fig_x;
-                screw_y = fig_y;
-                screwdriver.MoveTo(screw_x, screw_y);
-
-                // Перерисовываем все объекты
-                stone.Show();
-                currentRect->Show();
-                currentRound->Show();
-                Sleep(DELAY);
-            }
-            break;
         }
     }
 
