@@ -3,7 +3,7 @@
  *******************************************************************************
  * Project type  : Windows Console Application                                 *
  * Project name  : Pt_1                                                        *
- * File name     : lib.h                                                       *
+ * File name     : lib.cpp                                                     *
  * Language      : CPP                                                         *
  * Programmers   : Нарзиев Артемий Тимурович                                   *
  * Modified By   :                                                             *
@@ -117,128 +117,55 @@ void Point::Drag(int Step)
     }
 }
 
+/* =============== КЛАСС Conflict =============== */
+
+Conflict::Conflict(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Point(InitX, InitY)
+{
+    width = InitWidth;
+    height = InitHeight;
+}
+
+Conflict::~Conflict() {}
+
 /* =============== КЛАСС Circle =============== */
 
-// Конструктор круга (класса Circle)
-Circle::Circle(int InitX, int InitY, int InitRadius) :
-    Point(InitX, InitY) {
+Circle::Circle(int InitX, int InitY, int InitRadius) : Point(InitX, InitY)
+{
     radius = InitRadius;
 }
 
-// Деконструктор
 Circle::~Circle() {}
 
-// Показать круг
-void Circle::Show() {
-    visible = true;	// значение видимости на правду
-
-    // создаём ручку для рисования
-    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-    SelectObject(hdc, Pen);
-
-    // рисуем красный круг
-    Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);
-
-    // удаляем ручку
-    DeleteObject(Pen);
-}
-
-// Спрятать круг
-void Circle::Hide() {
-    visible = false;	// значение видимости на фальш
-
-    // создаём ручку для рисования
-    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(0, 0, 255));
-    SelectObject(hdc, Pen);
-
-    // рисуем синий круг
-    Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);
-
-    // удаляем ручку
-    DeleteObject(Pen);
-}
-
-// Расширить круг
-void Circle::Expand(int DeltaRad) {
-    Hide();	// прячем круг
-
-    // изменяем радиус
-    radius = radius + DeltaRad;
-    if (radius < 2) { radius = 2; } // проверка для Reduce
-
-    Show();	// возвращаем круг
-}
-
-// Сжать круг
-void Circle::Reduse(int DeltaRad) {
-    Expand(-DeltaRad);
-}
-
-/* =============== КЛАСС Screwdriver =============== */
-
-Screwdriver::Screwdriver(int InitX, int InitY, int InitLength, int InitWidth)
-    : Point(InitX, InitY)
-{
-    length = InitLength;
-    width = InitWidth;
-    visible = false;
-}
-
-Screwdriver::~Screwdriver() {}
-
-void Screwdriver::Show()
+void Circle::Show()
 {
     visible = true;
-    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(139, 69, 19)); // Коричневый цвет
-    HPEN ThinPen = CreatePen(PS_SOLID, 1, RGB(192, 192, 192)); // Серебряный цвет
-
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
     SelectObject(hdc, Pen);
-
-    // Ручка отвертки
-    Rectangle(hdc, x, y, x + width, y - length + 5);
-
-    // Металлическая часть
-    SelectObject(hdc, ThinPen);
-    Rectangle(hdc, x + 3, y, x + width / 2 + 3, y + length);
-
-    // Наконечник
-    POINT tip[3];
-    tip[0].x = x + width / 4 + 3;
-    tip[0].y = y + length;
-    tip[1].x = x + 3;
-    tip[1].y = y + length + 10;
-    tip[2].x = x + width / 2 + 3;
-    tip[2].y = y + length + 10;
-    Polygon(hdc, tip, 3);
-
+    Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);
     DeleteObject(Pen);
-    DeleteObject(ThinPen);
 }
 
-void Screwdriver::Hide()
+void Circle::Hide()
 {
     visible = false;
-    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(0, 0, 255));
     SelectObject(hdc, Pen);
-
-    // Ручка отвертки
-    Rectangle(hdc, x, y, x + width, y - length + 5);
-
-    // Металлическая часть
-    SelectObject(hdc, Pen);
-    Rectangle(hdc, x + 3, y, x + width / 2 + 3, y + length);
-
-    // Наконечник
-    POINT tip[3];
-    tip[0].x = x + width / 4 + 3;
-    tip[0].y = y + length;
-    tip[1].x = x + 3;
-    tip[1].y = y + length + 10;
-    tip[2].x = x + width / 2 + 3;
-    tip[2].y = y + length + 10;
-    Polygon(hdc, tip, 3);
-
+    Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);
     DeleteObject(Pen);
+}
+
+void Circle::Expand(int DeltaRad)
+{
+    Hide();
+    radius = radius + DeltaRad;
+    if (radius < 2) { radius = 2; }
+    Show();
+}
+
+void Circle::Reduse(int DeltaRad)
+{
+    Expand(-DeltaRad);
 }
 
 /* =============== БАЗОВЫЙ КЛАСС Flashlight =============== */
@@ -251,7 +178,6 @@ BaseFlashlight::BaseFlashlight(int InitX, int InitY, int InitBodyWidth, int Init
     headWidth = InitHeadWidth;
     headHeight = InitHeadHeight;
     broken = false;
-    damageLevel = 0;
 }
 
 BaseFlashlight::~BaseFlashlight() {}
@@ -269,14 +195,13 @@ RectFlashlight::~RectFlashlight() {}
 void RectFlashlight::Show()
 {
     visible = true;
-
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
     SelectObject(hdc, Pen);
 
-    // Корпус фонарика (прямоугольник)
+    // Корпус фонарика
     Rectangle(hdc, x, y, x + bodyWidth, y + bodyHeight);
 
-    // Головка фонарика (прямоугольник)
+    // Головка фонарика
     int headX = x + (bodyWidth - headWidth) / 2;
     int headY = y - headHeight;
     Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
@@ -312,7 +237,6 @@ void RectFlashlight::Hide()
     DeleteObject(Pen);
 }
 
-
 /* =============== КРУГЛЫЙ ФОНАРИК =============== */
 
 RoundFlashlight::RoundFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
@@ -340,7 +264,6 @@ void RoundFlashlight::Show()
     triangle[1].y = y;
     triangle[2].x = x + bodyWidth / 2 + headWidth / 2;
     triangle[2].y = y;
-
     Polygon(hdc, triangle, 3);
 
     // Кнопка фонарика (круг)
@@ -348,7 +271,7 @@ void RoundFlashlight::Show()
     int buttonX = x + bodyWidth - 20;
     int buttonY = y + bodyHeight - 20;
     Ellipse(hdc, buttonX - buttonRadius, buttonY - buttonRadius,
-            buttonX + buttonRadius, buttonY + buttonRadius);
+        buttonX + buttonRadius, buttonY + buttonRadius);
 
     DeleteObject(Pen);
 }
@@ -368,7 +291,6 @@ void RoundFlashlight::Hide()
     triangle[1].y = y;
     triangle[2].x = x + bodyWidth / 2 + headWidth / 2;
     triangle[2].y = y;
-
     Polygon(hdc, triangle, 3);
 
     int buttonRadius = 8;
@@ -380,19 +302,19 @@ void RoundFlashlight::Hide()
     DeleteObject(Pen);
 }
 
-/* =============== ПОВРЕЖДЕННЫЙ ФОНАРИК =============== */
 
-BrokenFlashlight::BrokenFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
-                                   int InitHeadWidth, int InitHeadHeight, int Type)
+/* =============== СЛОМАННЫЙ ПРЯМОУГОЛЬНЫЙ ФОНАРИК =============== */
+
+BrokenRectFlashlight::BrokenRectFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+    int InitHeadWidth, int InitHeadHeight)
     : BaseFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight)
 {
     broken = true;
-    flashlightType = Type;
 }
 
-BrokenFlashlight::~BrokenFlashlight() {}
+BrokenRectFlashlight::~BrokenRectFlashlight() {}
 
-void BrokenFlashlight::Show()
+void BrokenRectFlashlight::Show()
 {
     visible = true;
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(128, 128, 128));
@@ -403,18 +325,10 @@ void BrokenFlashlight::Show()
     // Основной корпус
     Rectangle(hdc, x, y, x + bodyWidth, y + bodyHeight);
 
-    // Разная головка в зависимости от типа
-    if (flashlightType == 0) {
-        DrawRectHead();  // Прямоугольная головка
-    }
-    else {
-        DrawRoundHead(); // Круглая/сломанная головка
-    }
-
-    // Головка
-    // int headX = x + (bodyWidth - headWidth) / 2;
-    // int headY = y - headHeight;
-    // Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
+    // Головка фонарика
+    int headX = x + (bodyWidth - headWidth) / 2;
+    int headY = y - headHeight;
+    Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
 
     // Кнопка
     int buttonWidth = 10;
@@ -436,7 +350,7 @@ void BrokenFlashlight::Show()
     DeleteObject(Pen);
 }
 
-void BrokenFlashlight::Hide()
+void BrokenRectFlashlight::Hide()
 {
     visible = false;
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
@@ -446,8 +360,8 @@ void BrokenFlashlight::Hide()
     Rectangle(hdc, x, y, x + bodyWidth, y + bodyHeight);
 
     // Головка
-    int headX = x + (bodyWidth - headWidth) / 2 + 1;
-    int headY = y - headHeight + 0.8;
+    int headX = x + (bodyWidth - headWidth) / 2;
+    int headY = y - headHeight;
     Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
 
     // Кнопка
@@ -460,52 +374,157 @@ void BrokenFlashlight::Hide()
     DeleteObject(Pen);
 }
 
-void BrokenFlashlight::DrawRectHead()
+/* =============== СЛОМАННЫЙ КРУГЛЫЙ ФОНАРИК =============== */
+
+BrokenRoundFlashlight::BrokenRoundFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+    int InitHeadWidth, int InitHeadHeight)
+    : BaseFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight)
 {
-    // Обычная прямоугольная головка (как была)
-    int headX = x + (bodyWidth - headWidth) / 2;
-    int headY = y - headHeight;
-    Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight);
+    broken = true;
 }
 
-void BrokenFlashlight::DrawRoundHead()
-{
-    // Сломанная/деформированная головка для круглого фонарика
+BrokenRoundFlashlight::~BrokenRoundFlashlight() {}
 
-    // Вариант 1: 
+void BrokenRoundFlashlight::Show()
+{
+    visible = true;
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(128, 128, 128));
+    HPEN crackPen = CreatePen(PS_SOLID, 1, RGB(64, 64, 64));
+
+    SelectObject(hdc, Pen);
+
+    // Корпус фонарика (овал)
+    Ellipse(hdc, x, y, x + bodyWidth, y + bodyHeight);
+
+    // Деформированная головка фонарика
     POINT triangle[3];
     triangle[0].x = x + bodyWidth / 2;
     triangle[0].y = y - headHeight;
-    triangle[1].x = x + bodyWidth / 2 - headWidth / 2;
+    triangle[1].x = x + bodyWidth / 2 - headWidth / 2 - 2; // Смещена влево
     triangle[1].y = y;
-    triangle[2].x = x + bodyWidth / 2 + headWidth / 2;
-    triangle[2].y = y;
+    triangle[2].x = x + bodyWidth / 2 + headWidth / 2 + 2; // Смещена вправо
+    triangle[2].y = y - 3; // Немного поднята
     Polygon(hdc, triangle, 3);
 
-    // Вариант 2: Сломанный эллипс
-    // Ellipse(hdc, x + (bodyWidth - headWidth)/2, y - headHeight, 
-    //          x + (bodyWidth + headWidth)/2, y);
+    // Кнопка фонарика
+    int buttonRadius = 8;
+    int buttonX = x + bodyWidth - 20;
+    int buttonY = y + bodyHeight - 20;
+    Ellipse(hdc, buttonX - buttonRadius, buttonY - buttonRadius,
+        buttonX + buttonRadius, buttonY + buttonRadius);
 
-    // Вариант 3: Треугольная голова (как у целого круглого)
-    // POINT triangle[3];
-    // triangle[0].x = x + bodyWidth / 2;
-    // triangle[0].y = y - headHeight;
-    // triangle[1].x = x + bodyWidth / 2 - headWidth / 2 - 2;
-    // triangle[1].y = y;
-    // triangle[2].x = x + bodyWidth / 2 + headWidth / 2 + 2;
-    // triangle[2].y = y - 3;
-    // Polygon(hdc, triangle, 3);
+    // Трещины
+    SelectObject(hdc, crackPen);
+    MoveToEx(hdc, x + bodyWidth * 0.3, y + bodyHeight * 0.2, NULL);
+    LineTo(hdc, x + bodyWidth * 0.7, y + bodyHeight * 0.8);
+    MoveToEx(hdc, x + bodyWidth * 0.2, y + bodyHeight * 0.7, NULL);
+    LineTo(hdc, x + bodyWidth * 0.8, y + bodyHeight * 0.3);
+
+    DeleteObject(crackPen);
+    DeleteObject(Pen);
 }
 
+void BrokenRoundFlashlight::Hide()
+{
+    visible = false;
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    SelectObject(hdc, Pen);
+
+    Ellipse(hdc, x, y, x + bodyWidth, y + bodyHeight);
+
+    POINT triangle[3];
+    triangle[0].x = x + bodyWidth / 2;
+    triangle[0].y = y - headHeight;
+    triangle[1].x = x + bodyWidth / 2 - headWidth / 2 - 2;
+    triangle[1].y = y;
+    triangle[2].x = x + bodyWidth / 2 + headWidth / 2 + 2;
+    triangle[2].y = y - 3;
+    Polygon(hdc, triangle, 3);
+
+    int buttonRadius = 8;
+    int buttonX = x + bodyWidth - 20;
+    int buttonY = y + bodyHeight - 20;
+    Ellipse(hdc, buttonX - buttonRadius, buttonY - buttonRadius,
+        buttonX + buttonRadius, buttonY + buttonRadius);
+
+    DeleteObject(Pen);
+}
+
+/* =============== КЛАСС Screwdriver =============== */
+
+Screwdriver::Screwdriver(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Conflict(InitX, InitY, InitWidth, InitHeight)
+{
+}
+
+Screwdriver::~Screwdriver() {}
+
+void Screwdriver::Show()
+{
+    visible = true;
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(139, 69, 19)); // Коричневый цвет
+    HPEN ThinPen = CreatePen(PS_SOLID, 1, RGB(192, 192, 192)); // Серебряный цвет
+
+    SelectObject(hdc, Pen);
+
+    // Ручка отвертки
+    Rectangle(hdc, x, y, x + width, y - height + 5);
+
+    // Металлическая часть
+    SelectObject(hdc, ThinPen);
+    Rectangle(hdc, x + 3, y, x + width / 2 + 3, y + height);
+
+    // Наконечник
+    POINT tip[3];
+    tip[0].x = x + width / 4 + 3;
+    tip[0].y = y + height;
+    tip[1].x = x + 3;
+    tip[1].y = y + height + 10;
+    tip[2].x = x + width / 2 + 3;
+    tip[2].y = y + height + 10;
+    Polygon(hdc, tip, 3);
+
+    DeleteObject(Pen);
+    DeleteObject(ThinPen);
+}
+
+void Screwdriver::Hide()
+{
+    visible = false;
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    SelectObject(hdc, Pen);
+
+    // Ручка отвертки
+    Rectangle(hdc, x, y, x + width, y - height + 5);
+
+    // Металлическая часть
+    SelectObject(hdc, Pen);
+    Rectangle(hdc, x + 3, y, x + width / 2 + 3, y + height);
+
+    // Наконечник
+    POINT tip[3];
+    tip[0].x = x + width / 4 + 3;
+    tip[0].y = y + height;
+    tip[1].x = x + 3;
+    tip[1].y = y + height + 10;
+    tip[2].x = x + width / 2 + 3;
+    tip[2].y = y + height + 10;
+    Polygon(hdc, tip, 3);
+
+    DeleteObject(Pen);
+}
+
+/* =============== КЛАСС Stone =============== */
+
 Stone::Stone(int InitX, int InitY, int InitWidth, int InitHeight)
-    : Point(InitX, InitY) {
-    width = InitWidth;
-    height = InitHeight;
+    : Conflict(InitX, InitY, InitWidth, InitHeight)
+{
 }
 
 Stone::~Stone() {}
 
-void Stone::Show() {
+void Stone::Show()
+{
     visible = true;
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(128, 128, 128)); // Серый цвет
     SelectObject(hdc, Pen);
@@ -544,7 +563,8 @@ void Stone::Show() {
     DeleteObject(Pen);
 }
 
-void Stone::Hide() {
+void Stone::Hide()
+{
     visible = false;
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
     SelectObject(hdc, Pen);

@@ -78,28 +78,21 @@ public:
     void Reduse(int DeltaRad);
 };
 
-// Класс отвертки
-class Screwdriver : public Point
+// Класс конфликтных объектов (имеют размеры)
+class Conflict : public Point
 {
 protected:
-    int length;
     int width;
-    bool visible;
+    int height;
 
 public:
-    Screwdriver(int InitX, int InitY, int InitLength, int InitWidth);
-    ~Screwdriver();
+    Conflict(int InitX, int InitY, int InitWidth, int InitHeight);
+    ~Conflict();
 
-    virtual void Show() override;
-    virtual void Hide() override;
-
-    int GetWidth() {
-        return width;
-    }
-
-    int GetLength() {
-        return length;
-    }
+    int GetWidth() { return width; }
+    int GetHeight() { return height; }
+    void SetWidth(int NewWidth) { width = NewWidth; }
+    void SetHeight(int NewHeight) { height = NewHeight; }
 };
 
 // Базовый класс для фонариков с общей функциональностью
@@ -111,26 +104,19 @@ protected:
     int headWidth;
     int headHeight;
     bool broken; // состояние фонарика
-    int damageLevel; // уровень повреждения (0-3)
 
 public:
     BaseFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
-                   int InitHeadWidth, int InitHeadHeight);
+        int InitHeadWidth, int InitHeadHeight);
     ~BaseFlashlight();
 
     int GetBodyWidth() { return bodyWidth; }
     int GetBodyHeight() { return bodyHeight; }
     int GetHeadWidth() { return headWidth; }
     int GetHeadHeight() { return headHeight; }
-
     bool IsBroken() { return broken; }
     void Break() { broken = true; }
-    void Repair() { broken = false; damageLevel = 0; }
-    void SetDamage(int level) { damageLevel = level; if (level >= 3) broken = true; }
-    int GetDamage() { return damageLevel; }
-
-    virtual void Show() override = 0; // чистая виртуальная функция
-    virtual void Hide() override = 0;
+    void Repair() { broken = false; }
 };
 
 // Целый прямоугольный фонарик
@@ -141,8 +127,8 @@ public:
         int InitHeadWidth, int InitHeadHeight);
     ~RectFlashlight();
 
-    virtual void Show();
-    virtual void Hide();
+    virtual void Show() override;
+    virtual void Hide() override;
 };
 
 // Целый круглый фонарик
@@ -157,33 +143,51 @@ public:
     virtual void Hide() override;
 };
 
-// Поврежденный фонарик (универсальный класс)
-class BrokenFlashlight : public BaseFlashlight
+// Сломанный прямоугольный фонарик
+class BrokenRectFlashlight : public BaseFlashlight
 {
-private:
-    int flashlightType; // 0 - прямоугольный, 1 - круглый
-    void DrawRectHead();   // Головка для прямоугольного
-    void DrawRoundHead();  // Головка для круглого
 public:
-    BrokenFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
-        int InitHeadWidth, int InitHeadHeight, int Type);
-    ~BrokenFlashlight();
+    BrokenRectFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+        int InitHeadWidth, int InitHeadHeight);
+    ~BrokenRectFlashlight();
 
     virtual void Show() override;
     virtual void Hide() override;
 };
 
-class Stone : public Point {
-protected:
-    int width, height;
+// Сломанный круглый фонарик
+class BrokenRoundFlashlight : public BaseFlashlight
+{
+public:
+    BrokenRoundFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+        int InitHeadWidth, int InitHeadHeight);
+    ~BrokenRoundFlashlight();
+
+    virtual void Show() override;
+    virtual void Hide() override;
+};
+
+
+// Класс отвертки (недвижимый)
+class Screwdriver : public Conflict
+{
+public:
+    Screwdriver(int InitX, int InitY, int InitWidth, int InitHeight);
+    ~Screwdriver();
+
+    void Show();
+    void Hide();
+};
+
+// Класс камня
+class Stone : public Conflict
+{
 public:
     Stone(int InitX, int InitY, int InitWidth, int InitHeight);
     ~Stone();
 
-    void Show() override;
-    void Hide() override;
-    int GetStoneWidth() { return width; }
-    int GetStoneHeight() { return height; }
+    void Show();
+    void Hide();
 };
-#endif
 
+#endif
