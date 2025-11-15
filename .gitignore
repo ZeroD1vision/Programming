@@ -20,3 +20,42 @@ launch.json
 # Игнорировать все файлы конфигурации
 .vscode/
 
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sln.docstates
+*.cache
+*.VC.db
+*.VC.VC.opendb
+*.VC.db-shm
+*.VC.db-wal
+*.ipch
+*.idb
+*.pdb
+*.ilk
+*.obj
+*.tlog
+*.lastbuildstate
+*.exe.recipe
+
+# Build outputs (Debug/Release папки)
+Debug/
+Release/
+x64/
+bin/
+obj/
+
+# C++ build artifacts
+*.exe
+*.dll
+*.lib
+*.a
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Игнорировать большие файлы явно (на всякий случай)
+*.ipch
+*.pdb
