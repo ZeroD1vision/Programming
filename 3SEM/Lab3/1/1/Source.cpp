@@ -231,9 +231,9 @@ void BaseFlashlight::Hide()
     SelectObject(hdc, whitePen);
 
     // Замазываем всю область фонарика с большим запасом для света
-    int left = x - headWidth;
+    int left = x - headWidth/2;
     int top = y - headHeight * 2; // дополнительное место для света
-    int right = x + bodyWidth + headWidth;
+    int right = x + bodyWidth + headWidth/2;
     int bottom = y + bodyHeight; // дополнительное место для света
 
     Rectangle(hdc, left, top, right, bottom);
