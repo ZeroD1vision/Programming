@@ -55,6 +55,7 @@ obj/
 # Logs and temp files
 *.log
 *.tmp
+*.txt
 
 # Игнорировать большие файлы явно (на всякий случай)
 *.ipch
