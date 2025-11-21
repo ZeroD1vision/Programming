@@ -24,7 +24,7 @@ const int INF = numeric_limits<int>::max();
 
 struct Segment {
     int type; // 0 - A), 1 - Б) типы
-    set<int> cantact_vertices; // Контактные вершины
+    set<int> contact_vertices; // Контактные вершины
 
     // Тип А) Ребро, оба конца которого принадлежат GPlane, но само оно не принадлежит
     int u, v; 

@@ -127,3 +127,72 @@ vector<int> LayingGraph::findFirstCycle() {
     }
     return {}; // Цикла нет
 }
+
+vector<Segment> LayingGraph::findSegments() {
+    vector<Segment> segments;
+    // Найти все неуложенные (спать)
+    set<int> not_laying_vertices;
+    for (int i = 0; i < n; i++) {
+        // Если не найден среди уложенных
+        if (laying_vertices.find(i) == laying_vertices.end()) {
+            not_laying_vertices.insert(i);
+        }
+    }
+    // Найти тип А) сегменты
+    // Проходим по всем парам возможным
+    for (int u = 0; u < n; u++) {
+        for (int v = u + 1; v < n; v++) {
+            // Если есть ребро НЕ уложено но оба конца УЛОЖЕНЫ
+            if (graph[u][v] && 
+                laying_edges.find({u, v} && 
+                laying_vertices.find(u) && 
+                laying_vertices.find(v))) {
+                
+                // Создаем сегмент
+                Segment seg;
+                seg.type = 0; // Типа А)
+                seg.u = u;
+                seg.v = v;
+                seg.contact_vertices = {u, v}; // Устанавливаем контактные вершины
+                segments.push_back(seg); // Суем в выходной массив
+            }
+        }
+    }
+
+    // Найти тип Б) сегменты
+    // Делим на компоненты связности (для размещения, удобной работы)
+    vector<set<int>> components = findConnectedComponents(not_laying_vertices);
+
+    // Делаем каждую такую компоненту сегментом типа А) 
+    for (const auto& comp : components) {
+        Segment seg;
+        seg.type = 1; // Типа Б)
+        seg.vertices = comp;
+
+        // Находим все контактные вершины сегмента
+        // Для каждой точки из компоненты среди всех соседей ищем контакных уложенных
+        for (int u : comp) {
+            for (int v = 0; v < n; v++) {
+                if (graph[u][v] && laying_vertices.find(v) != laying_vertices.end()) {
+                    seg.contact_vertices.insert(v);
+                    seg.edges.insert({min(u, v), max(u, v)});
+                }
+            }
+        }
+
+        // Добавляем внутренние ребра из компоненты
+        for (int u : comp) {
+            for (int v : comp) {
+                if (graph[u][v] && u < v) {
+                    seg.edges.insert({u, v});
+                }
+            }
+        }
+
+        // Если есть хоть один контактный вертис
+        if (!seg.contact_vertices.empty()) {
+            segments.push_back(seg);
+        }
+    }
+    return segments;
+}
