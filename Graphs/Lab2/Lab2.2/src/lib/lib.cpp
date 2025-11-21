@@ -85,3 +85,45 @@ bool LayingGraph::isLaying() {
 
     return true;
 }
+
+vector<int> LayingGraph::findFirstCycle() {
+    vector<int> parent(n, -1);
+    vector<bool> visited(n, false);
+
+    // Из всех вершин
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            stack<int> st; // Закидываем каждую в стек
+            st.push(i);
+            parent[i] = -1;
+            visited[i] = true;
+
+            // Пока стек не пуст
+            while(!st.empty()) {
+                // Забираем вершину из него как u
+                int u = st.top();
+                st.pop();
+
+                // Для всех соседей u
+                for (int v = 0; v < n; v++) {
+                    if (graph[u][v] && u != v) { // Соседи
+                        st.push(v); // Суем в стек
+                        parent[v] = u; // Устанавливаем родителя текущей
+                        visited[v] = true; // Посещена
+                    } else if (visited[v] && v != parent[u]) { // Пришли к знакомому, но не родитель
+                        vector<int> cycle; // Массив для хранения вершин цикла
+                        int curr = u; // Текущая врешина как curr
+                        while (curr != v) { // Пока не дошли до той с кого начали 
+                            cycle.push_back(curr); // Суем в цикл
+                            curr = parent[curr]; // Устанавливаем родителя
+                        }
+                        cycle.push_back(v); // Суем в цикл последнюю v
+                        // Итог: [a, b, c] в дальнейшем коде будет интерпретировано как [a, b, c, a] 
+                        return cycle;
+                    }
+                }
+            }
+        }
+    }
+    return {}; // Цикла нет
+}
