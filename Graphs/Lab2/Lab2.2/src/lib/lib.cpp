@@ -196,3 +196,29 @@ vector<Segment> LayingGraph::findSegments() {
     }
     return segments;
 }
+
+vector<int> LayingGraph::findFacesForSegment(const Segment& seg) {
+    vector<int> suitable_faces; // Индексы подходящих граней
+
+    // Цикл по уложенным граням
+    for (size_t i = 0; i < faces.size(); i++) {
+        // Создаем для каждой грани список точек ее границы (отсортированный)
+        const auto& face = faces[i];
+        set<int> face_vertices(face.begin(), face.end()); // Заносим все точки границы в список
+
+        bool suitable = true;
+        // Проверка, что все контактные вершины сегмента лежат на границе грани
+        for (int v : seg.contact_vertices) {
+            if (face_vertices.find(v) == face_vertices.end()) {
+                suitable = false;
+                break;
+            }
+        }
+
+        if (suitable) {
+            suitable_faces.push_back(i);
+        }
+    }
+    
+    return suitable_faces;
+}
