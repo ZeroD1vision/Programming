@@ -51,7 +51,7 @@ private:
     // Вспомогательные функции
     vector<int> findFirstCycle(); // Поиск начального цикла
     vector<Segment> findSegments(); // Поиск сегментов
-    vector<int> findFacesForSegments(const Segment& seg); // Найти грани вмещающие сегмент (вернет их ID)
+    vector<int> findFacesForSegment(const Segment& seg); // Найти грани вмещающие сегмент (вернет их ID)
     vector<int> findPathInSegment(const Segment& seg, int face_id); // Найти путь от контакта до контакта сегмента в грани
     void placeSegment(const Segment& seg, int face_id, const vector<int>& path); // Интегрирует сегмент в укладку
     void splitFace(int face_id, const vector<int>& path); // Когда добавляется путь (ребро/сегмент), грань делится
