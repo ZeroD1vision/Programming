@@ -222,3 +222,39 @@ vector<int> LayingGraph::findFacesForSegment(const Segment& seg) {
     
     return suitable_faces;
 }
+
+vector<int> LayingGraph::findPathInSegment(const Segment& seg, int face_id) {
+    // Для сегмента А) путь - просто ребро 
+    if (seg.type == 0) {
+        return {seg.u, seg.v};
+    }
+
+    // Извлекаем список контактных вершин сегмента
+    const auto& contact_vertices = seg.contact_vertices;
+    if (contact_vertices < 2) {
+        return {};
+    }
+
+    // Перебираем пары контактных вершин, пока не найдем путь
+    vector<int> contacts(contact_vertices.begin(), contact_vertices.end());
+    set<int> allowed_vertices = seg.vertices;
+    allowed_vertices.insert(contacts.begin(), contacts.end());
+
+    // Находим первый попавшийся путь между контактными вершинами сегмента
+    // Цикл по всем точкам (начало)
+    for (size_t i = 0; i < contacts.size(); i++) {
+        for (size_t j = i + 1; j < contacts.size(); j++) { // Цикл по всем точкам после начала (конец)
+            // Произвольные начало и конец
+            int start = contacts[i];
+            int end = contacts[j];
+
+            // Есть ли путь между ними
+            vector<int> path = bfs(start, end, allowed_vertices);
+            if (!path.empty()) {
+                return path;
+            }
+        }
+    }
+
+    return {};
+}
