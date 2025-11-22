@@ -258,3 +258,15 @@ vector<int> LayingGraph::findPathInSegment(const Segment& seg, int face_id) {
 
     return {};
 }
+
+void LayingGraph::placeSegment(const Segment& seg, int face_id, vector<int> path) {
+    for (int v : path) {
+        laying_vertices.insert();
+    }
+    for (size_t i = 0; i < path.size() - 1; i++) {
+        int u = path[i], v = path[i + 1];
+        laying_edges.insert({min(u, v), max(u, v)});
+    }
+
+    splitFace(face_id, path);
+}
