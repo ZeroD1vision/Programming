@@ -259,7 +259,7 @@ vector<int> LayingGraph::findPathInSegment(const Segment& seg, int face_id) {
     return {};
 }
 
-void LayingGraph::placeSegment(const Segment& seg, int face_id, vector<int> path) {
+void LayingGraph::placeSegment(const Segment& seg, int face_id, vector<int>& path) {
     for (int v : path) {
         laying_vertices.insert();
     }
@@ -270,3 +270,73 @@ void LayingGraph::placeSegment(const Segment& seg, int face_id, vector<int> path
 
     splitFace(face_id, path);
 }
+
+void LayingGraph::splitFace(int face_id, vector<int>& path) {
+    if (face_id >= faces.size() || path.size() < 2) return;
+
+    vector<int> face = faces[face_id];
+    vector<int> new_face_1, new_face_2;
+
+    int start = path[0], end = path[path.size() - 1];
+    
+    // Шаг 1: Поиск итераторов start и end в face
+    auto start_it = find(face.begin(), face.end(), start);
+    auto end_it = find(face.begin(), face.end(), end);
+
+    // Если start и end не найдены — выходим (предполагаем, что они должны быть)
+    if (start_it == face.end() || end_it == face.end()) return;
+
+    // Определим направление
+    bool start_before_end = (start_it < end_it);
+    
+    if (start_before_end) {
+        // new_face_1: часть face от start до end + внутренние вершины пути (в обратном порядке)
+        new_face_1.insert(new_face_1.end(), start_it, end_it + 1);
+        for (auto i = path.rbegin() + 1; i != path.rend() - 1; ++i) {
+            if (find(face.begin(), face.end(), *i) == face.end()) {
+                new_face_1.push_back(*i);
+            }
+        }
+
+        // new_face_2: от end до конца face + от начала face до start + внутренние вершины пути (прямой порядок)
+        new_face_2.insert(new_face_2.end(), end_it, face.end());
+        new_face_2.insert(new_face_2.end(), face.begin(), start_it + 1);
+        for (auto i = path.begin() + 1; i != path.end() - 1; ++i) {
+            if (find(face.begin(), face.end(), *i) == face.end()) {
+                new_face_2.push_back(*i);
+            }
+        }
+    } else {
+        // Симметричный случай
+        new_face_1.insert(new_face_1.end(), end_it, start_it + 1);
+        for (auto i = path.begin() + 1; i != path.end() - 1; ++i) {
+            if (find(face.begin(), face.end(), *i) == face.end()) {
+                new_face_1.push_back(*i);
+            }
+        }
+
+        new_face_2.insert(new_face_2.end(), start_it, face.end());
+        new_face_2.insert(new_face_2.end(), face.begin(), end_it + 1);
+        for (auto i = path.rbegin() + 1; i != path.rend() - 1; ++i) {
+            if (find(face.begin(), face.end(), *i) == face.end()) {
+                new_face_2.push_back(*i);
+            }
+        }
+    }
+
+    // Замыкание граней: если не замкнуты, добавляем первый элемент в конец
+    if (!new_face_1.empty() && new_face_1.front() != new_face_1.back()) {
+        new_face_1.push_back(new_face_1[0]);
+    }
+    if (!new_face_2.empty() && new_face_2.front() != new_face_2.back()) {
+        new_face_2.push_back(new_face_2[0]);
+    }
+
+    // Убираем старую грань и добавляем новые (если не пусты)
+    if (!new_face_1.empty() && !new_face_2.empty()) {
+        faces.erase(faces.begin() + face_id);
+        faces.push_back(new_face_1);
+        faces.push_back(new_face_2);
+    }
+}
+
