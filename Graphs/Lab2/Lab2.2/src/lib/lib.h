@@ -59,6 +59,6 @@ private:
     vector<int> bfs(int start, int end, const set<int>& allowed_vertices); // Поиск путей в сегментах или гранях
     bool isConnected(const set<int>& vertices); // Сегменты должны быть связными для размещения
     vector<set<int>> findConnectedComponents(const set<int>& vertices); // Для рамзещения в разных местах разных компонент по отдельности (если одна не плананрна граф не планарен)
-}
+};
 
 #endif
