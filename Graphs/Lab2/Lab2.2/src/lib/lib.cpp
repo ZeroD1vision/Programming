@@ -557,23 +557,34 @@ void LayingGraph::splitFace(int face_id, const vector<int>& path) {
                 new_face2.push_back(path[i]);
             }
         } else {
-            // start_idx > end_idx
-            // Грань 1: от start до end через конец массива
+            // === ОШИБКА БЫЛА ЗДЕСЬ (start_idx > end_idx) ===
+            
+            // Грань 1: Идем start -> конец массива -> начало массива -> end.
+            // Мы пришли в end. Нам нужно вернуться в start.
+            // Путь path: start -> ... -> end.
+            // Значит, добавляем путь В ОБРАТНОМ ПОРЯДКЕ (path reverse).
+            
             for (int i = start_idx; i < face.size() - 1; i++) {
                 new_face1.push_back(face[i]);
             }
             for (int i = 0; i <= end_idx; i++) {
                 new_face1.push_back(face[i]);
             }
-            for (int i = 1; i < path.size() - 1; i++) {
+            // ИСПРАВЛЕНИЕ: Был прямой цикл, меняем на обратный
+            for (int i = path.size() - 2; i >= 1; i--) { 
                 new_face1.push_back(path[i]);
             }
 
-            // Грань 2: от end до start напрямую
+            // Грань 2: Идем end -> start напрямую.
+            // Мы пришли в start. Нам нужно вернуться в end.
+            // Путь path: start -> ... -> end.
+            // Значит, добавляем путь В ПРЯМОМ ПОРЯДКЕ (path forward).
+
             for (int i = end_idx; i <= start_idx; i++) {
                 new_face2.push_back(face[i]);
             }
-            for (int i = path.size() - 2; i >= 1; i--) {
+            // ИСПРАВЛЕНИЕ: Был обратный цикл, меняем на прямой
+            for (int i = 1; i < path.size() - 1; i++) {
                 new_face2.push_back(path[i]);
             }
         }
