@@ -14,8 +14,8 @@ MAIN_OBJ     := $(BUILD_DIR)/$(MAIN_NAME).o
 EXECUTABLE   := $(BUILD_DIR)/$(MAIN_NAME).exe
 
 # Компилятор и флаги
-CXX			 := g++
-CXXFLAGS     := -fdiagnostics-color=always -g -I. -std=c++17 -pthread
+CXX			 := @g++
+CXXFLAGS     := @-fdiagnostics-color=always -g -I. -std=c++17 -pthread
 
 # Команды
 MKDIR        := @mkdir -p "$(BUILD_DIR)"
@@ -68,7 +68,7 @@ N = 1
 
 # Функция для генерации имени тестового файла
 TEST_FILE = ../tests/epg_t2_$(shell printf "%03d" $(N)).txt
-OUTPUT_FILE = ./output/result_$(shell printf "%03d" $(N)).txt
+OUTPUT_FILE = ./output/result_debug.txt
 
 # Создание выходной директории
 create-output-dir:

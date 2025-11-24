@@ -19,7 +19,7 @@
 #include <iomanip>
 #include <chrono>
 #include "lib/lib.h"
-#include <locale> // Для темыча с виндой
+#include <locale>
 
 using namespace std;
 using namespace std::chrono;
@@ -57,13 +57,13 @@ void displayProgressBar(int current, int total, int barWidth = 50) {
     float progress = static_cast<float>(current) / total;
     int pos = static_cast<int>(barWidth * progress);
     
-    cout << "[";
+    cout << COLOR_BLUE << "[" << COLOR_RESET;
     for (int i = 0; i < barWidth; ++i) {
-        if (i < pos) cout << "=";
-        else if (i == pos) cout << ">";
+        if (i < pos) cout << COLOR_GREEN << "=" << COLOR_RESET;
+        else if (i == pos) cout << COLOR_GREEN << ">" << COLOR_RESET;
         else cout << " ";
     }
-    cout << "] " << int(progress * 100.0) << " %\r";
+    cout << COLOR_BLUE << "] " << int(progress * 100.0) << " %\r" << COLOR_RESET;
     cout.flush();
 }
 
@@ -79,7 +79,7 @@ vector<vector<int>> readGraph(const string& filename) {
         throw runtime_error("Cannot open file: " + filename);
     }
     
-    cout << "📁 Reading graph from: " << filename << endl;
+    INFO_OUT("Reading graph from: " << filename);
     
     int n;
     file >> n;
@@ -93,7 +93,7 @@ vector<vector<int>> readGraph(const string& filename) {
     }
     cout << endl;
     
-    cout << "✅ Graph loaded: " << n << " vertices" << endl;
+    SUCCESS_OUT("Graph loaded successfully: " << n << " vertices");
     return graph;
 }
 
@@ -113,7 +113,7 @@ void writeResult(const string& filename, bool is_planar,
     file << "Execution time: " << duration << " ms" << endl << endl;
     
     if (is_planar) {
-        file << "✓ Graph is PLANAR" << endl << endl;
+        file << "RESULT: Graph is PLANAR" << endl << endl;
         file << "Faces of planar embedding:" << endl;
         file << "--------------------------" << endl;
         for (size_t i = 0; i < faces.size(); i++) {
@@ -125,7 +125,7 @@ void writeResult(const string& filename, bool is_planar,
             file << endl;
         }
     } else {
-        file << "✗ Graph is NOT PLANAR" << endl;
+        file << "RESULT: Graph is NOT PLANAR" << endl;
         file << "The graph cannot be embedded in the plane without edge crossings." << endl;
     }
 }
@@ -143,23 +143,25 @@ int main(int argc, char* argv[]) {
     setlocale(LC_ALL, ".UTF-8");
     string input_file, output_file = "result.txt";
     
-    cout << "=========================================" << endl;
-    cout << "    Graph Planarity Checker" << endl;
-    cout << "    Gamma Algorithm Implementation" << endl;
-    cout << "=========================================" << endl;
+    // ==================== ЗАГОЛОВОК ПРОГРАММЫ ====================
+    cout << COLOR_CYAN << "=========================================" << COLOR_RESET << endl;
+    cout << COLOR_CYAN << "    Graph Planarity Checker" << COLOR_RESET << endl;
+    cout << COLOR_CYAN << "    Gamma Algorithm Implementation" << COLOR_RESET << endl;
+    cout << COLOR_CYAN << "=========================================" << COLOR_RESET << endl;
     
-    // Парсинг аргументов командной строки
+    // ==================== ПАРСИНГ АРГУМЕНТОВ ====================
     for (int i = 1; i < argc; i++) {
         string arg = argv[i];
         if (arg == "-o" && i + 1 < argc) {
             output_file = argv[++i];
+            INFO_OUT("Output file set to: " << output_file);
         } else {
             // Проверяем, является ли аргумент номером теста (1-15)
             if (isNumber(arg)) {
                 int test_num = stoi(arg);
                 if (test_num >= 1 && test_num <= 15) {
                     input_file = getTestFileName(test_num);
-                    cout << "Using test file: " << input_file << endl;
+                    INFO_OUT("Using test file: " << input_file);
                 } else {
                     input_file = arg;
                 }
@@ -170,8 +172,9 @@ int main(int argc, char* argv[]) {
     }
     
     if (input_file.empty()) {
-        cerr << "❌ Usage: " << argv[0] << " <input_file|test_number(1-15)> [-o output_file]" << endl;
-        cerr << "Examples:" << endl;
+        ERROR_OUT("No input file specified!");
+        cerr << COLOR_RED << "Usage: " << argv[0] << " <input_file|test_number(1-15)> [-o output_file]" << COLOR_RESET << endl;
+        cerr << COLOR_YELLOW << "Examples:" << COLOR_RESET << endl;
         cerr << "  " << argv[0] << " 1                    # Use test file epg_t2_001.txt" << endl;
         cerr << "  " << argv[0] << " input.txt            # Use specific file" << endl;
         cerr << "  " << argv[0] << " 5 -o result.txt      # Use test file 5 with custom output" << endl;
@@ -179,11 +182,11 @@ int main(int argc, char* argv[]) {
     }
     
     try {
-        // Загрузка графа
+        // ==================== ЗАГРУЗКА ГРАФА ====================
         auto graph = readGraph(input_file);
         
-        // Проверка планарности
-        cout << "Checking planarity using Gamma algorithm..." << endl;
+        // ==================== ПРОВЕРКА ПЛАНАРНОСТИ ====================
+        INFO_OUT("Starting planarity check using Gamma algorithm...");
         
         auto start = high_resolution_clock::now();
         LayingGraph laying_graph(graph);
@@ -194,27 +197,27 @@ int main(int argc, char* argv[]) {
         
         vector<vector<int>> faces = laying_graph.getFaces();
         
-        // Запись результатов
+        // ==================== ЗАПИСЬ РЕЗУЛЬТАТОВ ====================
         writeResult(output_file, is_planar, faces, duration);
         
-        // Вывод результатов в консоль
-        cout << endl << "   RESULTS:" << endl;
-        cout << "──────────" << endl;
+        // ==================== ВЫВОД РЕЗУЛЬТАТОВ ====================
+        cout << endl << COLOR_CYAN << "   FINAL RESULTS:" << COLOR_RESET << endl;
+        cout << COLOR_CYAN << "   ──────────" << COLOR_RESET << endl;
         if (is_planar) {
-            cout << "✅ Graph is PLANAR" << endl;
+            SUCCESS_OUT("Graph is PLANAR");
             cout << "   Number of faces: " << faces.size() << endl;
             cout << "   Execution time: " << duration << " ms" << endl;
         } else {
-            cout << "❌ Graph is NOT PLANAR" << endl;
+            ERROR_OUT("Graph is NOT PLANAR");
             cout << "   Execution time: " << duration << " ms" << endl;
         }
-        cout << "   Results saved to: " << output_file << endl;
+        SUCCESS_OUT("Results saved to: " << output_file);
         
     } catch (const exception& e) {
-        cerr << "   Error: " << e.what() << endl;
+        ERROR_OUT("Exception occurred: " << e.what());
         return 1;
     }
     
-    cout << endl << "   Program completed successfully!" << endl;
+    SUCCESS_OUT("Program completed successfully!");
     return 0;
 }
