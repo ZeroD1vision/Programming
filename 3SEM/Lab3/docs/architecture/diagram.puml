@@ -1,0 +1,241 @@
+@startuml "Диаграмма классов - Фонарик (ЛР №3)"
+
+' Интерфейс и базовые классы
+interface IFlashlight {
+  +PrintBody()
+  +PrintHead()
+  +PrintButton()
+  +PrintLight()
+  +PrintCrack()
+}
+
+class Location {
+  -int x
+  -int y
+  +Location(int, int)
+  +GetX() int
+  +GetY() int
+  +SetX(int)
+  +SetY(int)
+}
+
+class Point {
+  -bool visible
+  +Point(int, int)
+  +GetVisible() bool
+  +SetVisible(bool)
+  +Show()*
+  +Hide()*
+  +MoveTo(int, int)
+  +Drag(int)
+}
+
+class Conflict {
+  -int width
+  -int height
+  +Conflict(int, int, int, int)
+  +GetWidth() int
+  +GetHeight() int
+  +SetWidth(int)
+  +SetHeight(int)
+}
+
+' Геометрические фигуры
+class Circle {
+  -int radius
+  +Circle(int, int, int)
+  +Show() override
+  +Hide() override
+  +Expand(int)
+  +Reduse(int)
+}
+
+class Square {
+  +Square(int, int, int, int)
+  +Show()
+  +Hide()
+}
+
+' Базовый класс фонариков (двойное наследование)
+class BaseFlashlight {
+  -int bodyWidth
+  -int bodyHeight
+  -int headWidth
+  -int headHeight
+  +BaseFlashlight(int, int, int, int, int, int)
+  +GetBodyWidth() int
+  +GetBodyHeight() int
+  +GetHeadWidth() int
+  +GetHeadHeight() int
+  +Show() override
+  +Hide() override
+}
+
+' Прямоугольные фонарики (иерархия)
+class RectFlashlight {
+  +RectFlashlight(int, int, int, int, int, int)
+  +PrintBody() override
+  +PrintHead() override
+  +PrintButton() override
+  +PrintLight() override
+  +PrintCrack() override
+  +Hide() override
+}
+
+class BrokenRectFlashlight {
+  +BrokenRectFlashlight(int, int, int, int, int, int)
+  +PrintCrack() override
+  +Hide() override
+}
+
+class LitRectFlashlight {
+  +LitRectFlashlight(int, int, int, int, int, int)
+  +PrintLight() override
+  +Hide() override
+}
+
+' Круглые фонарики (иерархия)
+class RoundFlashlight {
+  +RoundFlashlight(int, int, int, int, int, int)
+  +PrintBody() override
+  +PrintHead() override
+  +PrintButton() override
+  +PrintLight() override
+  +PrintCrack() override
+}
+
+class BrokenRoundFlashlight {
+  +BrokenRoundFlashlight(int, int, int, int, int, int)
+  +PrintCrack() override
+  +Hide() override
+}
+
+class LitRoundFlashlight {
+  +LitRoundFlashlight(int, int, int, int, int, int)
+  +PrintLight() override
+  +Hide() override
+}
+
+' Конфликтные объекты (предметы)
+class Screwdriver {
+  +Screwdriver(int, int, int, int)
+  +Show() override
+  +Hide() override
+}
+
+class Stone {
+  +Stone(int, int, int, int)
+  +Show() override
+  +Hide() override
+}
+
+class Battery {
+  +Battery(int, int, int, int)
+  +Show() override
+  +Hide() override
+}
+
+' Иерархия наследования
+Location <|-- Point
+Point <|-- Conflict
+
+' Двойное наследование BaseFlashlight
+Point <|-- BaseFlashlight
+IFlashlight <|.. BaseFlashlight
+
+' Конфликтные объекты
+Conflict <|-- Circle
+Conflict <|-- Square
+Conflict <|-- Screwdriver
+Conflict <|-- Stone
+Conflict <|-- Battery
+
+' Иерархия фонариков
+BaseFlashlight <|-- RectFlashlight
+BaseFlashlight <|-- RoundFlashlight
+
+RectFlashlight <|-- BrokenRectFlashlight
+RectFlashlight <|-- LitRectFlashlight
+
+RoundFlashlight <|-- BrokenRoundFlashlight
+RoundFlashlight <|-- LitRoundFlashlight
+
+' Аннотации для наглядности
+note top of IFlashlight
+  Интерфейс фонарика
+end note
+
+note top of BaseFlashlight
+  Базовый класс фонариков
+  Двойное наследование:
+  Point + IFlashlight
+end note
+
+note top of Conflict
+  Класс конфликтных объектов
+  Используется для проверки
+  столкновений
+end note
+
+note bottom of RectFlashlight
+  Прямоугольные фонарики:
+  - RectFlashlight (обычный)
+  - BrokenRectFlashlight (сломанный)
+  - LitRectFlashlight (горящий)
+end note
+
+note bottom of RoundFlashlight
+  Круглые фонарики:
+  - RoundFlashlight (обычный)
+  - BrokenRoundFlashlight (сломанный)
+  - LitRoundFlashlight (горящий)
+end note
+
+note right of Circle
+  Смена формы:
+  прямоугольный → круглый
+end note
+
+note right of Square
+  Смена формы:
+  круглый → прямоугольный
+end note
+
+note right of Battery
+  Включение/выключение
+  фонарика
+end note
+
+note right of Stone
+  Поломка фонарика
+end note
+
+note right of Screwdriver
+  Починка фонарика
+end note
+
+' Группировки (пакеты)
+package "Прямоугольные фонарики" {
+  RectFlashlight
+  BrokenRectFlashlight
+  LitRectFlashlight
+}
+
+package "Круглые фонарики" {
+  RoundFlashlight
+  BrokenRoundFlashlight
+  LitRoundFlashlight
+}
+
+package "Геометрические фигуры" {
+  Circle
+  Square
+}
+
+package "Инструменты и предметы" {
+  Screwdriver
+  Stone
+  Battery
+}
+
+@enduml

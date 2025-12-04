@@ -231,8 +231,8 @@ public:
     Screwdriver(int InitX, int InitY, int InitWidth, int InitHeight);
     ~Screwdriver();
 
-    void Show();
-    void Hide();
+    virtual void Show();
+    virtual void Hide();
 };
 
 // Класс камня
@@ -242,8 +242,8 @@ public:
     Stone(int InitX, int InitY, int InitWidth, int InitHeight);
     ~Stone();
 
-    void Show();
-    void Hide();
+    virtual void Show();
+    virtual void Hide();
 };
 
 // Класс батарейки
@@ -253,8 +253,8 @@ public:
     Battery(int InitX, int InitY, int InitWidth, int InitHeight);
     ~Battery();
 
-    void Show();
-    void Hide();
+    virtual void Show();
+    virtual void Hide();
 };
 
 #endif
