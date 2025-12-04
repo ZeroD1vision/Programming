@@ -53,7 +53,7 @@ $(EXECUTABLE): $(MAIN_OBJ) $(LIB_STATIC)
 #			Т Е С Т Ы	  		  #
 ###################################
 
-N = 4
+N = 13
 # Запуск с тестом 1 по умолчанию
 run: $(EXECUTABLE)
 	./$(EXECUTABLE) 1

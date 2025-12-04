@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
             // Проверяем, является ли аргумент числом от 1 до 10
             try {
                 int test_num = stoi(arg);
-                if (test_num >= 1 && test_num <= 10) {
+                if (test_num >= 1 && test_num <= 13) {
                     input_file = getTestFileName(test_num);
                 } else {
                     input_file = arg;
