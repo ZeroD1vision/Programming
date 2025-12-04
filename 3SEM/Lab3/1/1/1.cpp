@@ -27,22 +27,31 @@ using namespace std;
 
 HDC hdc;    // Объявим контекст устройства
 
-bool IsCollision(BaseFlashlight& flashlight, Conflict& conflict)
+/****************************************************************/
+/*           Ф У Н К Ц И Я  П Р О В Е Р К И  С Т О Л К Н О В Е Н И Я       */
+/****************************************************************/
+
+bool IsCollision(Conflict& conflict, BaseFlashlight& flashlight)
 {
-    int x = flashlight.GetX();
-    int y = flashlight.GetY();
-    int width = flashlight.GetBodyWidth();
-    int height = flashlight.GetBodyHeight();
+    // Получаем координаты и размеры конфликтного объекта
+    int conflictX = conflict.GetX();
+    int conflictY = conflict.GetY();
+    int conflictWidth = conflict.GetWidth();
+    int conflictHeight = conflict.GetHeight();
+
+    // Получаем координаты и размеры фонарика
+    int flashlightX = flashlight.GetX();
+    int flashlightY = flashlight.GetY();
+    int bodyWidth = flashlight.GetBodyWidth();
+    int bodyHeight = flashlight.GetBodyHeight();
 
     // Проверка столкновения по прямоугольникам
-    if (x < conflict.GetX() + conflict.GetWidth() &&
-        x + width > conflict.GetX() &&
-        y < conflict.GetY() + conflict.GetHeight() &&
-        y + height > conflict.GetY())
-    {
-        return true;
-    }
-    return false;
+    bool bodyCollision = !(flashlightX + bodyWidth < conflictX ||
+        flashlightX > conflictX + conflictWidth ||
+        flashlightY + bodyHeight < conflictY ||
+        flashlightY > conflictY + conflictHeight);
+
+    return bodyCollision;
 }
 
 /****************************************************************/
@@ -103,13 +112,19 @@ int main()
     // Н А Ч А Л О  К О Н С Т А Н Т Ы
 
     const int CIRCLE = 1;
-    const int RECT_FLASHLIGHT = 2;
+    const int FLASHLIGHT = 2;
     const int POINT = 3;
-    const int ROUND_FLASHLIGHT = 4;
-    const int SCREWDRIVER = 5;
+    const int SQUARE = 4;
 
     int STEP = 5;
-    const int DELAY = 50;
+    const int DELAY = 33;
+
+    const int TRANSITIONS_COUNT = 10;        // 10 переходов со столкновением
+    const int NOT_TRANSITIONS_COUNT = 2;     // 2 перехода без столкновения
+    const int TOTAL_STATES = TRANSITIONS_COUNT + NOT_TRANSITIONS_COUNT;
+
+    const int FLASHLIGHT_COUNT = 6;          // 6 состояний фонарика
+    const int CONFLICT_COUNT = 5;            // 5 конфликтных объектов
 
     //  К О Н Е Ц  К О Н С Т А Н Т Ы
     //===============================================================
@@ -121,117 +136,139 @@ int main()
     // ===== РАЗМЕРЫ ===== //
     // --------------------//
 
-    // Уменьшенные размеры для большего пространства
-    int Radius = 20;
+    // Уменьшенные размеры как в первом проекте
+    int Radius = 20;                    // Круг
+    int SquareSize = 40;                // Квадрат
+    int BatteryWidth = 15, BatteryHeight = 25;  // Батарейка
+
+    // Прямоугольный фонарик (как в первом проекте)
     int RectBodyWidth = 30, RectBodyHeight = 90;
     int RectHeadWidth = 45, RectHeadHeight = 60;
+
+    // Круглый фонарик (как в первом проекте)  
     int RoundBodyWidth = 35, RoundBodyHeight = 70;
     int RoundHeadWidth = 50, RoundHeadHeight = 40;
-    int ScrewLength = 40, ScrewWidth = 12;
+
+    // Другие объекты (уменьшенные)
+    int ScrewLength = 50, ScrewWidth = 12;
     int StoneWidth = 50, StoneHeight = 40;
-    int BatteryWidth = 20, BatteryHeight = 35;
 
     // -----------------------//
     // ===== КООРДИНАТЫ ===== //
     // -----------------------//
 
-    int x0 = 50, y0 = 50;
+    // Начальные координаты - сдвинуты ниже по вертикали
+    int x0 = 50, y0 = 150;  // y0 увеличен с 50 до 150
 
-    // Два фонарика слева
-    int rect_x = x0 + 50, rect_y = y0 + 300;    // прямоугольный сверху слева
-    int round_x = x0 + 50, round_y = y0 + 450;  // круглый снизу слева
+    // Фонарик в центре (сдвинут вниз)
+    int flashlight_x = x0 + 200, flashlight_y = y0 + 200;
 
-    // Другие фигуры
-    int circle_x = x0 + 200, circle_y = y0 + 400;
-    int point_x = x0 + 100, point_y = y0 + 300;
+    // Конфликтные объекты по кругу (все сдвинуты вниз)
+    int circle_x = x0 + 100, circle_y = y0 + 100;      // Круг слева сверху
+    int square_x = x0 + 300, square_y = y0 + 100;      // Квадрат справа сверху
+    int stone_x = x0 + 100, stone_y = y0 + 300;        // Камень слева снизу  
+    int screw_x = x0 + 300, screw_y = y0 + 300;        // Отвертка справа снизу
+    int battery_x = x0 + 200, battery_y = y0 + 50;     // Батарейка сверху по центру
 
-    // Объекты на сцене
-    int screw_x = x0 + 500, screw_y = y0 + 500;  // отвертка справа снизу
-    int stone_x = x0 + 300, stone_y = y0 + 400;  // камень в центре
-    int battery_x = x0 + 500, battery_y = y0 + 300;  // батарейка справа сверху
+    // Точка для управления
+    int point_x = x0 + 50, point_y = y0 + 150;
 
     // -------------------------------//
     // ===== ОБЪЕКТЫ НА "СЦЕНЕ" ===== //
     // -------------------------------//
 
-    // Фонарики
-    RectFlashlight rectFlashlight(rect_x, rect_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
-    BrokenRectFlashlight brokenRect(rect_x, rect_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
-    LitRectFlashlight litRectFlashlight(rect_x, rect_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
+    // Фонарики (6 состояний)
+    RectFlashlight rectFlashlight(flashlight_x, flashlight_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
+    RoundFlashlight roundFlashlight(flashlight_x, flashlight_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
+    BrokenRectFlashlight brokenRect(flashlight_x, flashlight_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
+    BrokenRoundFlashlight brokenRound(flashlight_x, flashlight_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
+    LitRectFlashlight litRectFlashlight(flashlight_x, flashlight_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
+    LitRoundFlashlight litRoundFlashlight(flashlight_x, flashlight_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
 
-    RoundFlashlight roundFlashlight(round_x, round_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
-    BrokenRoundFlashlight brokenRound(round_x, round_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
-    LitRoundFlashlight litRoundFlashlight(round_x, round_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
-
-    // Указатели на текущие фонарики
-    BaseFlashlight* currentRect = &rectFlashlight;
-    BaseFlashlight* currentRound = &roundFlashlight;
+    // Указатель на текущий фонарик
+    BaseFlashlight* currentFlashlight = &rectFlashlight;
 
     // Другие фигуры
     Point point(point_x, point_y);
     Circle circle(circle_x, circle_y, Radius);
     Screwdriver screwdriver(screw_x, screw_y, ScrewWidth, ScrewLength);
     Stone stone(stone_x, stone_y, StoneWidth, StoneHeight);
+    Square square(square_x, square_y, SquareSize, SquareSize);
     Battery battery(battery_x, battery_y, BatteryWidth, BatteryHeight);  // Батарейка
 
+    // Массивы для удобного управления
+    BaseFlashlight* allFlashlights[FLASHLIGHT_COUNT] = {
+        &rectFlashlight, &brokenRect, &litRectFlashlight,
+        &roundFlashlight, &brokenRound, &litRoundFlashlight
+    };
+
+    Conflict* allConflicts[CONFLICT_COUNT] = {
+        &stone, &screwdriver, &circle, &square, &battery
+    };
+
     // -------------------------------//
-    // ===== СИСТЕМА СОСТОЯНИЙ ===== //
+    // ===== СИСТЕМА ПЕРЕХОДОВ ===== //
     // -------------------------------//
 
-    // Для прямоугольного фонарика
-    const int RECT_TRANSITIONS_COUNT = 3;
-    const int RECT_NOT_TRANSITIONS_COUNT = 1;
-
-    BaseFlashlight* from_states_rect[RECT_TRANSITIONS_COUNT + RECT_NOT_TRANSITIONS_COUNT] =
+    // УНИВЕРСАЛЬНЫЕ МАССИВЫ ПЕРЕХОДОВ (12 состояний)
+    BaseFlashlight* from_states[TOTAL_STATES] =
     {
-        &rectFlashlight,    // обычный -> камень
-        &brokenRect,        // сломанный -> отвертка  
-        &rectFlashlight,    // обычный -> батарейка
-        &litRectFlashlight  // горящий -> отсутствие батарейки
+        // ТРАНЗИТИВНЫЕ ПЕРЕХОДЫ (при столкновении) - 10 переходов
+        &rectFlashlight,      // 0: обычный прямоугольный -> камень
+        &brokenRect,          // 1: сломанный прямоугольный -> отвертка  
+        &rectFlashlight,      // 2: обычный прямоугольный -> батарейка
+        &litRectFlashlight,   // 3: горящий прямоугольный -> отсутствие батарейки
+        &rectFlashlight,      // 4: обычный прямоугольный -> круг (переход формы)
+
+        &roundFlashlight,     // 5: обычный круглый -> камень
+        &brokenRound,         // 6: сломанный круглый -> отвертка
+        &roundFlashlight,     // 7: обычный круглый -> батарейка
+        &litRoundFlashlight,  // 8: горящий круглый -> отсутствие батарейки
+        &roundFlashlight,     // 9: обычный круглый -> квадрат (переход формы)
+
+        // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ (без столкновения) - 2 перехода
+        &litRectFlashlight,   // 10: горящий прямоугольный -> обычный (без батарейки)
+        &litRoundFlashlight   // 11: горящий круглый -> обычный (без батарейки)
     };
 
-    Conflict* conflicts_rect[RECT_TRANSITIONS_COUNT + RECT_NOT_TRANSITIONS_COUNT] =
+    Conflict* conflicts[TOTAL_STATES] =
     {
-        &stone,        // переход 0: столкновение с камнем
-        &screwdriver,  // переход 1: столкновение с отверткой
-        &battery,      // переход 2: столкновение с батарейкой
-        &battery       // переход 3: отсутствие столкновения с батарейкой
+        // ТРАНЗИТИВНЫЕ ПЕРЕХОДЫ
+        &stone,        // 0: прямоугольный с камнем
+        &screwdriver,  // 1: сломанный прямоугольный с отверткой
+        &battery,      // 2: прямоугольный с батарейкой
+        &battery,      // 3: горящий прямоугольный без батарейки
+        &circle,       // 4: прямоугольный с кругом
+
+        &stone,        // 5: круглый с камнем
+        &screwdriver,  // 6: сломанный круглый с отверткой
+        &battery,      // 7: круглый с батарейкой
+        &battery,      // 8: горящий круглый без батарейки
+        &square,       // 9: круглый с квадратом
+
+        // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ
+        &battery,      // 10: горящий прямоугольный без батарейки
+        &battery       // 11: горящий круглый без батарейки
     };
 
-    BaseFlashlight* to_states_rect[RECT_TRANSITIONS_COUNT + RECT_NOT_TRANSITIONS_COUNT] =
+    BaseFlashlight* to_states[TOTAL_STATES] =
     {
-        &brokenRect,       // переход 0: обычный -> сломанный
-        &rectFlashlight,   // переход 1: сломанный -> обычный
-        &litRectFlashlight,// переход 2: обычный -> горящий
-        &rectFlashlight    // переход 3: горящий -> обычный
-    };
+        // ТРАНЗИТИВНЫЕ ПЕРЕХОДЫ
+        &brokenRect,        // 0: прямоугольный -> сломанный прямоугольный
+        &rectFlashlight,    // 1: сломанный прямоугольный -> прямоугольный
+        &litRectFlashlight, // 2: прямоугольный -> горящий прямоугольный
+        &rectFlashlight,    // 3: горящий прямоугольный -> прямоугольный
+        &roundFlashlight,   // 4: прямоугольный -> круглый
 
-    // Для круглого фонарика
-    const int ROUND_TRANSITIONS_COUNT = 3;
-    const int ROUND_NOT_TRANSITIONS_COUNT = 1;
+        &brokenRound,       // 5: круглый -> сломанный круглый
+        &roundFlashlight,   // 6: сломанный круглый -> круглый
+        &litRoundFlashlight,// 7: круглый -> горящий круглый
+        &roundFlashlight,   // 8: горящий круглый -> круглый
+        &rectFlashlight,    // 9: круглый -> прямоугольный
 
-    BaseFlashlight* from_states_round[ROUND_TRANSITIONS_COUNT + ROUND_NOT_TRANSITIONS_COUNT] =
-    {
-        &roundFlashlight,    // обычный -> камень
-        &brokenRound,        // сломанный -> отвертка
-        &roundFlashlight,    // обычный -> батарейка
-        &litRoundFlashlight  // горящий -> отсутствие батарейки
-    };
-
-    Conflict* conflicts_round[ROUND_TRANSITIONS_COUNT + ROUND_NOT_TRANSITIONS_COUNT] =
-    {
-        &stone,        // переход 0: столкновение с камнем
-        &screwdriver,  // переход 1: столкновение с отверткой
-        &battery,      // переход 2: столкновение с батарейкой
-        &battery       // переход 3: отсутствие столкновения с батарейкой
-    };
-
-    BaseFlashlight* to_states_round[ROUND_TRANSITIONS_COUNT + ROUND_NOT_TRANSITIONS_COUNT] =
-    {
-        &brokenRound,       // переход 0: обычный -> сломанный
-        &roundFlashlight,   // переход 1: сломанный -> обычный
-        &litRoundFlashlight,// переход 2: обычный -> горящий
-        &roundFlashlight    // переход 3: горящий -> обычный
+        // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ
+        &rectFlashlight,    // 10: горящий прямоугольный -> обычный прямоугольный
+        &roundFlashlight    // 11: горящий круглый -> обычный круглый
     };
 
     // -------------------------- //
@@ -240,7 +277,6 @@ int main()
 
     int fig_x, fig_y;
     int current_figure = 0;
-
     bool collision;
     bool valid_transition;
 
@@ -249,144 +285,83 @@ int main()
 
     // Показываем стартовые фигуры
     point.Show();
-    circle.Show();
-    currentRect->Show();
-    currentRound->Show();
-    screwdriver.Show();
-    stone.Show();
-    battery.Show();
+    for (int i = 0; i < CONFLICT_COUNT; i++)
+    {
+        allConflicts[i]->Show();
+    }
+    currentFlashlight->Show();
 
+    // Выводим инструкции
     cout << "To drag use arrows, to exit - ESC" << endl;
     cout << "Choose the figure to drag:" << endl;
-    cout << "1 - Circle" << endl;
-    cout << "2 - RectFlashlight" << endl;
+    cout << "2 - Flashlight (starts rectangular)" << endl;
     cout << "3 - Point" << endl;
-    cout << "4 - RoundFlashlight" << endl;
 
     while (true)
     {
         if (KEY_DOWN(VK_ESCAPE)) { break; }
 
         // Выбор фигуры
-        if (KEY_DOWN(49))
+        if (KEY_DOWN(50)) // 2 - Фонарик
         {
-            current_figure = CIRCLE;
-            fig_x = circle.GetX();
-            fig_y = circle.GetY();
+            current_figure = FLASHLIGHT;
+            fig_x = currentFlashlight->GetX();
+            fig_y = currentFlashlight->GetY();
         }
-        if (KEY_DOWN(50))
-        {
-            current_figure = RECT_FLASHLIGHT;
-            fig_x = rect_x;
-            fig_y = rect_y;
-        }
-        if (KEY_DOWN(51))
+        if (KEY_DOWN(51)) // 3 - Точка
         {
             current_figure = POINT;
             fig_x = point.GetX();
             fig_y = point.GetY();
         }
-        if (KEY_DOWN(52))
-        {
-            current_figure = ROUND_FLASHLIGHT;
-            fig_x = round_x;
-            fig_y = round_y;
-        }
 
         // Обработка управления
         switch (current_figure)
         {
-        case CIRCLE: // Управление кругом
-            if (HandleMovement(fig_x, fig_y, STEP))
-            {
-                circle.MoveTo(fig_x, fig_y);
-                Sleep(DELAY);
-            }
-            break;
-
-        case RECT_FLASHLIGHT: // Управление прямоугольным фонариком
+        case FLASHLIGHT: // Управление фонариком
             if (!HandleMovement(fig_x, fig_y, STEP)) { break; }
 
-            currentRect->Hide();
+            currentFlashlight->Hide();
 
-            // Проверяем переходы для прямоугольного фонарика
-            for (int i = 0; i < RECT_TRANSITIONS_COUNT + RECT_NOT_TRANSITIONS_COUNT; i++)
+            // Обновляем координаты всех фонариков
+            for (int i = 0; i < FLASHLIGHT_COUNT; i++)
             {
-                collision = IsCollision(*currentRect, *conflicts_rect[i]);
+                allFlashlights[i]->SetX(fig_x);
+                allFlashlights[i]->SetY(fig_y);
+            }
 
-                valid_transition = (i < RECT_TRANSITIONS_COUNT&& collision) ||
-                    (i == RECT_TRANSITIONS_COUNT && !collision);
+            flashlight_x = fig_x;
+            flashlight_y = fig_y;
 
-                if (currentRect == from_states_rect[i] && valid_transition)
+            // Проверяем переходы
+            for (int i = 0; i < TOTAL_STATES; i++)
+            {
+                collision = IsCollision(*conflicts[i], *currentFlashlight);
+
+                // Для горящих фонариков проверяем ОТСУТСТВИЕ батарейки
+                if (i == 3 || i == 8 || i == 10 || i == 11)
                 {
-                    currentRect = to_states_rect[i];
+                    valid_transition = !collision;  // Нет столкновения с батарейкой
+                }
+                else
+                {
+                    valid_transition = collision;   // Есть столкновение
+                }
+
+                if (currentFlashlight == from_states[i] && valid_transition)
+                {
+                    currentFlashlight = to_states[i];
                     break;
                 }
             }
 
-            // Обновляем координаты всех прямоугольных фонариков
-            rect_x = fig_x;
-            rect_y = fig_y;
-            rectFlashlight.SetX(rect_x);
-            rectFlashlight.SetY(rect_y);
-            brokenRect.SetX(rect_x);
-            brokenRect.SetY(rect_y);
-            litRectFlashlight.SetX(rect_x);
-            litRectFlashlight.SetY(rect_y);
-
-            // Перерисовываем конфликтные объекты
-            stone.Show();
-            screwdriver.Show();
-            battery.Show();
-            currentRect->Show();
-
-            Sleep(DELAY);
-            break;
-
-        case POINT: // Управление точкой
-            if (HandleMovement(fig_x, fig_y, STEP))
+            // Перерисовываем все конфликтные объекты
+            for (int i = 0; i < CONFLICT_COUNT; i++)
             {
-                point.MoveTo(fig_x, fig_y);
-                Sleep(DELAY);
-            }
-            break;
-
-        case ROUND_FLASHLIGHT: // Управление круглым фонариком
-            if (!HandleMovement(fig_x, fig_y, STEP)) { break; }
-
-            currentRound->Hide();
-
-            // Проверяем переходы для круглого фонарика
-            for (int i = 0; i < ROUND_TRANSITIONS_COUNT + ROUND_NOT_TRANSITIONS_COUNT; i++)
-            {
-                collision = IsCollision(*currentRound, *conflicts_round[i]);
-
-                valid_transition = (i < ROUND_TRANSITIONS_COUNT&& collision) ||
-                    (i == ROUND_TRANSITIONS_COUNT && !collision);
-
-                if (currentRound == from_states_round[i] && valid_transition)
-                {
-                    currentRound = to_states_round[i];
-                    break;
-                }
+                allConflicts[i]->Show();
             }
 
-            // Обновляем координаты всех круглых фонариков
-            round_x = fig_x;
-            round_y = fig_y;
-            roundFlashlight.SetX(round_x);
-            roundFlashlight.SetY(round_y);
-            brokenRound.SetX(round_x);
-            brokenRound.SetY(round_y);
-            litRoundFlashlight.SetX(round_x);
-            litRoundFlashlight.SetY(round_y);
-
-            // Перерисовываем конфликтные объекты
-            stone.Show();
-            screwdriver.Show();
-            battery.Show();
-            currentRound->Show();
-
+            currentFlashlight->Show();
             Sleep(DELAY);
             break;
         }

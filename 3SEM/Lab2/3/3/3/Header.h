@@ -21,17 +21,6 @@
  // Контекст устройства (общий для всех фигур)
 extern HDC hdc;
 
-// Интерфейс для компонентов фонарика
-class IFlashlight
-{
-public:
-    virtual void PrintBody() = 0;              // Корпус
-    virtual void PrintHead() = 0;              // Головка
-    virtual void PrintButton() = 0;            // Кнопка
-    virtual void PrintLight() = 0;             // Свет
-    virtual void PrintCrack() = 0;             // Трещины
-};
-
 // Класс места нахождения
 class Location
 {
@@ -90,6 +79,16 @@ public:
     void SetHeight(int NewHeight) { height = NewHeight; }
 };
 
+class Square : public Conflict
+{
+public:
+    Square(int InitX, int InitY, int InitWidth, int InitHeight);
+    ~Square();
+
+    void Show();
+    void Hide();
+};
+
 // Класс круга
 class Circle : public Conflict
 {
@@ -106,23 +105,15 @@ public:
     void Reduse(int DeltaRad);
 };
 
-class Square : public Conflict
-{
-public:
-    Square(int InitX, int InitY, int InitWidth, int InitHeight);
-    ~Square();
-
-    void Show();
-    void Hide();
-};
-// Базовый класс для фонариков с интерфейсом
-class BaseFlashlight : public Point, public IFlashlight
+// Базовый класс для фонариков с общей функциональностью
+class BaseFlashlight : public Point
 {
 protected:
     int bodyWidth;
     int bodyHeight;
     int headWidth;
     int headHeight;
+    bool broken; // состояние фонарика
 
 public:
     BaseFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
@@ -133,16 +124,9 @@ public:
     int GetBodyHeight() { return bodyHeight; }
     int GetHeadWidth() { return headWidth; }
     int GetHeadHeight() { return headHeight; }
-
-    // Методы интерфейса IFlashlight
-    virtual void PrintBody() = 0;
-    virtual void PrintHead() = 0;
-    virtual void PrintButton() = 0;
-    virtual void PrintLight() = 0;
-    virtual void PrintCrack() = 0;
-
-    virtual void Show() override;
-    virtual void Hide() override;
+    bool IsBroken() { return broken; }
+    void Break() { broken = true; }
+    void Repair() { broken = false; }
 };
 
 // Целый прямоугольный фонарик
@@ -153,15 +137,11 @@ public:
         int InitHeadWidth, int InitHeadHeight);
     ~RectFlashlight();
 
-    virtual void PrintBody() override;
-    virtual void PrintHead() override;
-    virtual void PrintButton() override;
-    virtual void PrintLight() override;
-    virtual void PrintCrack() override;
+    virtual void Show() override;
     virtual void Hide() override;
 };
 
-// Сломанный прямоугольный фонарик
+// Сломанный прямоугольный фонарик (наследуется от RectFlashlight)
 class BrokenRectFlashlight : public RectFlashlight
 {
 public:
@@ -169,19 +149,7 @@ public:
         int InitHeadWidth, int InitHeadHeight);
     ~BrokenRectFlashlight();
 
-    virtual void PrintCrack() override;
-    virtual void Hide() override;
-};
-
-// Горящий прямоугольный фонарик
-class LitRectFlashlight : public RectFlashlight
-{
-public:
-    LitRectFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
-        int InitHeadWidth, int InitHeadHeight);
-    ~LitRectFlashlight();
-
-    virtual void PrintLight() override;
+    virtual void Show() override;
     virtual void Hide() override;
 };
 
@@ -193,14 +161,11 @@ public:
         int InitHeadWidth, int InitHeadHeight);
     ~RoundFlashlight();
 
-    virtual void PrintBody() override;
-    virtual void PrintHead() override;
-    virtual void PrintButton() override;
-    virtual void PrintLight() override;
-    virtual void PrintCrack() override;
+    virtual void Show() override;
+    virtual void Hide() override;
 };
 
-// Сломанный круглый фонарик
+// Сломанный круглый фонарик (наследуется от RoundFlashlight)
 class BrokenRoundFlashlight : public RoundFlashlight
 {
 public:
@@ -208,23 +173,11 @@ public:
         int InitHeadWidth, int InitHeadHeight);
     ~BrokenRoundFlashlight();
 
-    virtual void PrintCrack() override;
+    virtual void Show() override;
     virtual void Hide() override;
 };
 
-// Горящий круглый фонарик
-class LitRoundFlashlight : public RoundFlashlight
-{
-public:
-    LitRoundFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
-        int InitHeadWidth, int InitHeadHeight);
-    ~LitRoundFlashlight();
-
-    virtual void PrintLight() override;
-    virtual void Hide() override;
-};
-
-// Класс отвертки
+// Класс отвертки (недвижимый)
 class Screwdriver : public Conflict
 {
 public:
@@ -241,17 +194,6 @@ class Stone : public Conflict
 public:
     Stone(int InitX, int InitY, int InitWidth, int InitHeight);
     ~Stone();
-
-    void Show();
-    void Hide();
-};
-
-// Класс батарейки
-class Battery : public Conflict
-{
-public:
-    Battery(int InitX, int InitY, int InitWidth, int InitHeight);
-    ~Battery();
 
     void Show();
     void Hide();
