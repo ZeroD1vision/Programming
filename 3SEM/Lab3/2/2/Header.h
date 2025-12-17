@@ -88,6 +88,9 @@ public:
     int GetHeight() { return height; }
     void SetWidth(int NewWidth) { width = NewWidth; }
     void SetHeight(int NewHeight) { height = NewHeight; }
+
+    // јЅ—“–ј “Ќџ… ћ≈“ќƒ ƒЋя ƒ¬»∆≈Ќ»я
+    virtual void Move();
 };
 
 //  ласс круга
@@ -135,11 +138,11 @@ public:
     int GetHeadHeight() { return headHeight; }
 
     // ћетоды интерфейса IFlashlight
-    //virtual void PrintBody() = 0;
-    //virtual void PrintHead() = 0;
-    //virtual void PrintButton() = 0;
-    //virtual void PrintLight() = 0;
-    //virtual void PrintCrack() = 0;
+    virtual void PrintBody() = 0;
+    virtual void PrintHead() = 0;
+    virtual void PrintButton() = 0;
+    virtual void PrintLight() = 0;
+    virtual void PrintCrack() = 0;
 
     virtual void Show() override;
     virtual void Hide() override;
@@ -253,6 +256,46 @@ public:
 
     virtual void Show();
     virtual void Hide();
+};
+
+//  ласс мухи
+class Fly : public Conflict
+{
+private:
+    double angle;    // угол дл€ движени€ по кругу
+    int centerX;     // центр круга по X
+    int centerY;     // центр круга по Y
+    int circleRadius; // радиус круга
+
+public:
+    Fly(int InitX, int InitY, int InitWidth, int InitHeight);
+    ~Fly();
+
+    virtual void Show();
+    virtual void Hide();
+    virtual void Move() override;     // движение по кругу
+};
+
+//  ласс призрака
+class Ghost : public Conflict
+{
+private:
+    double angle;           // угол дл€ движени€
+    int targetX;           // цель по X (фонарик)
+    int targetY;           // цель по Y (фонарик)
+    int chaseSpeed;        // скорость погони
+    bool active;           // активен ли призрак
+
+public:
+    Ghost(int InitX, int InitY, int InitWidth, int InitHeight);
+    ~Ghost();
+
+    virtual void Show();
+    virtual void Hide();
+    virtual void Move() override;
+    void UpdateTarget(int targetX, int targetY);  // обновить цель
+    void SetActive(bool state) { active = state; }
+    bool IsActive() { return active; }
 };
 
 #endif

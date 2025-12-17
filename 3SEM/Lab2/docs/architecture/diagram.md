@@ -82,13 +82,13 @@ classDiagram
 
     %% Конфликтные объекты
     class Screwdriver {
-        +Show()
-        +Hide()
+        +Show() override
+        +Hide() override
     }
 
     class Stone {
-        +Show()
-        +Hide()
+        +Show() override
+        +Hide() override
     }
 
     %% Иерархия наследования

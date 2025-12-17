@@ -105,8 +105,8 @@ classDiagram
 
     class Square {
         +Square(int, int, int, int)
-        +Show()
-        +Hide()
+        +Show() override
+        +Hide() override
     }
 
     class Screwdriver {
@@ -146,7 +146,6 @@ classDiagram
 
     %% Аннотации
     note for IFlashlight "Интерфейс фонарика"
-    note for BaseFlashlight "Базовый класс фонариков"
 
     note for Conflict "Класс конфликтных обьектов"
     

@@ -177,7 +177,7 @@ int main()
     const int NOT_TRANSITIONS_COUNT = 4;
     const int TOTAL_STATES = TRANSITIONS_COUNT + NOT_TRANSITIONS_COUNT;
 
-    const int CONFLICT_COUNT = 4; // Статические объекты: камни, отвертка, круг
+    const int CONFLICT_COUNT = 7; // Убрали батарейки из общего массива
     const int GHOST_COUNT = 2;
     const int MOVING_COUNT = 3;
     const int FLASHLIGHT_COUNT = 6;
@@ -304,19 +304,15 @@ int main()
         &roundFlashlight, &brokenRound, &litRoundFlashlight
     };
 
-    // Массив движущихся конфликтных объектов (призраки и муха)
-    Conflict* movingConflicts[MOVING_COUNT] = {
-        &ghost1,    // 0 - призрак 1
-        &ghost2,    // 1 - призрак 2
-        &fly        // 2 - муха
-    };
-
-    // Массив статических конфликтных объектов (камни, отвертка, круг)
-    Conflict* staticConflicts[CONFLICT_COUNT] = {
-        &stone1,        // 0 - камень 1
-        &stone2,        // 1 - камень 2
-        &screwdriver,   // 2 - отвертка
-        &circle         // 3 - круг
+    // Массив всех конфликтных объектов (без батареек)
+    Conflict* allConflicts[CONFLICT_COUNT] = {
+        &ghost1,        // 0 - призрак 1
+        &ghost2,        // 1 - призрак 2
+        &fly,           // 2 - муха
+        &stone1,        // 3 - камень 1
+        &stone2,        // 4 - камень 2
+        &screwdriver,   // 5 - отвертка
+        &circle         // 6 - круг
     };
 
     // -------------------------------//
@@ -371,7 +367,7 @@ int main()
         &ghost1,       // 10: с призраком 1
         &ghost2,       // 11: с призраком 2
 
-        // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ
+        // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ (используем любые объекты)
         &stone1,       // 12: для перехода
         &stone2,       // 13: для перехода
         &circle,       // 14: для перехода
@@ -440,15 +436,9 @@ int main()
 
     // Показываем стартовые фигуры
     square.Show(); // Квадрат отдельно
-    // Показываем стартовые фигуры
-    square.Show(); // Квадрат отдельно
     for (int i = 0; i < CONFLICT_COUNT; i++)
     {
-        staticConflicts[i]->Show();
-    }
-    for (int i = 0; i < MOVING_COUNT; i++)
-    {
-        movingConflicts[i]->Show();
+        allConflicts[i]->Show();
     }
 
     // Показываем батарейки
@@ -484,6 +474,102 @@ int main()
 
         // Обновление времени
         time_t currentTime = time(NULL);
+        if (currentTime - lastTimeUpdate >= 1)
+        {
+            gameTime++;
+            lastTimeUpdate = currentTime;
+
+            // Уменьшаем время свечения
+            if (lightTimeRemaining > 0)
+            {
+                lightTimeRemaining--;
+                if (lightTimeRemaining == 0)
+                {
+                    // Выключаем свет
+                    if (currentFlashlight == &litRectFlashlight)
+                    {
+                        currentFlashlight->Hide();
+                        currentFlashlight = &rectFlashlight;
+                        currentFlashlight->Show();
+                    }
+                    else if (currentFlashlight == &litRoundFlashlight)
+                    {
+                        currentFlashlight->Hide();
+                        currentFlashlight = &roundFlashlight;
+                        currentFlashlight->Show();
+                    }
+                    isLightOn = false;
+                    cout << "Свет погас! Найдите новую батарейку!" << endl;
+                }
+            }
+
+            // Спавн новых батареек
+            if (currentTime - lastBatterySpawn >= BATTERY_SPAWN_TIME && activeBatteries < MAX_BATTERIES)
+            {
+                // Находим свободный слот
+                for (int i = 0; i < MAX_BATTERIES; i++)
+                {
+                    if (batteries[i] == NULL)
+                    {
+                        batteries[i] = CreateRandomBattery(SCREEN_WIDTH, SCREEN_HEIGHT);
+                        batteries[i]->Show();
+                        activeBatteries++;
+                        lastBatterySpawn = currentTime;
+                        cout << "Появилась новая батарейка!" << endl;
+                        break;
+                    }
+                }
+            }
+
+            // Проверка рекорда
+            if (gameTime == RECORD_TIME && !recordBeaten)
+            {
+                recordBeaten = true;
+                cout << "ПОЗДРАВЛЯЕМ! Вы продержались 1.5 минуты!" << endl;
+            }
+
+            // Проверка победы
+            if (gameTime >= GAME_DURATION)
+            {
+                gameWon = true;
+                gameActive = false;
+                cout << "УРА! ВЫ ВЫИГРАЛИ! Вы продержались 3 минуты!" << endl;
+                cout << "Ваше время: " << FormatTime(gameTime) << endl;
+                break;
+            }
+        }
+
+        // Отображение игровой информации
+        string timeStr = "Время: " + FormatTime(gameTime);
+        string batteriesStr = "Батарейки: " + to_string(batteriesCollected);
+        string lightStr = "Свет: " + to_string(lightTimeRemaining) + " сек";
+        string activeBatStr = "На поле: " + to_string(activeBatteries);
+
+        if (recordBeaten)
+        {
+            string recordStr = "РЕКОРД!";
+            DrawTextOnScreen(10, 50, recordStr, RGB(255, 215, 0));
+        }
+
+        DrawTextOnScreen(10, 10, timeStr);
+        DrawTextOnScreen(10, 30, batteriesStr);
+        DrawTextOnScreen(10, 50, lightStr);
+        DrawTextOnScreen(10, 70, activeBatStr);
+
+        if (isLightOn)
+        {
+            string safetyStr = "В БЕЗОПАСНОСТИ";
+            DrawTextOnScreen(SCREEN_WIDTH - 200, 10, safetyStr, RGB(0, 255, 0));
+        }
+        else
+        {
+            string dangerStr = "ОПАСНОСТЬ!";
+            DrawTextOnScreen(SCREEN_WIDTH - 200, 10, dangerStr, RGB(255, 0, 0));
+        }
+
+        string remainingStr = "Цель: " + FormatTime(GAME_DURATION - gameTime);
+        DrawTextOnScreen(CENTER_X - 100, 10, remainingStr, isLightOn ? RGB(0, 255, 0) : RGB(255, 255, 0));
+
         if (!gameActive) continue;
 
         // 1. ОБНОВЛЯЕМ ЦЕЛИ ДЛЯ ПРИЗРАКОВ
@@ -495,50 +581,59 @@ int main()
             currentFlashlight == &litRoundFlashlight);
 
         // Управляем активностью призраков
-        bool ghostsActive = !isLightOn;
-        ghost1.SetActive(ghostsActive && ghost1Active);
-        ghost2.SetActive(ghostsActive && ghost2Active);
+        ghost1.SetActive(!isLightOn && ghost1Active);
+        ghost2.SetActive(!isLightOn && ghost2Active);
 
-        // 3. ОБРАБОТКА ДВИЖУЩИХСЯ ОБЪЕКТОВ ОДНИМ ЦИКЛОМ
+        // 3. ДВИЖЕНИЕ ДВИЖУЩИХСЯ ОБЪЕКТОВ
         for (int i = 0; i < MOVING_COUNT; i++)
         {
-            // Двигаем объект
-            movingConflicts[i]->Move();
+            allConflicts[i]->Move();
 
             // Проверяем столкновение
-            if (IsCollision(*movingConflicts[i], *currentFlashlight))
+            if (IsCollision(*allConflicts[i], *currentFlashlight))
             {
-                // Для всех движущихся объектов одинаковая логика: ломают фонарик
-                // кроме случаев когда это призрак и свет включен
-                bool shouldBreakFlashlight = true;
-
-                // Если это призрак (i < 2) и свет включен - не ломаем
-                if (i < GHOST_COUNT && isLightOn)
+                // Для призраков
+                if (i < GHOST_COUNT)
                 {
-                    shouldBreakFlashlight = false;
+                    if (!isLightOn)
+                    {
+                        // Ломаем фонарик
+                        if (currentFlashlight == &rectFlashlight ||
+                            currentFlashlight == &litRectFlashlight)
+                        {
+                            currentFlashlight->Hide();
+                            currentFlashlight = &brokenRect;
+                            currentFlashlight->Show();
+                            cout << "Призрак сломал фонарик!" << endl;
+                        }
+                        else if (currentFlashlight == &roundFlashlight ||
+                            currentFlashlight == &litRoundFlashlight)
+                        {
+                            currentFlashlight->Hide();
+                            currentFlashlight = &brokenRound;
+                            currentFlashlight->Show();
+                            cout << "Призрак сломал фонарик!" << endl;
+                        }
+                    }
                 }
-
-                if (shouldBreakFlashlight)
+                // Для мухи
+                else if (i == 2)
                 {
-                    // Определяем тип текущего фонарика
-                    bool isRectType = (currentFlashlight == &rectFlashlight ||
-                        currentFlashlight == &litRectFlashlight);
-                    bool isRoundType = (currentFlashlight == &roundFlashlight ||
-                        currentFlashlight == &litRoundFlashlight);
-
-                    if (isRectType)
+                    if (currentFlashlight == &rectFlashlight ||
+                        currentFlashlight == &litRectFlashlight)
                     {
                         currentFlashlight->Hide();
                         currentFlashlight = &brokenRect;
                         currentFlashlight->Show();
-                        cout << (i < GHOST_COUNT ? "Призрак сломал фонарик!" : "Муха врезалась в фонарик!") << endl;
+                        cout << "Муха врезалась в фонарик!" << endl;
                     }
-                    else if (isRoundType)
+                    else if (currentFlashlight == &roundFlashlight ||
+                        currentFlashlight == &litRoundFlashlight)
                     {
                         currentFlashlight->Hide();
                         currentFlashlight = &brokenRound;
                         currentFlashlight->Show();
-                        cout << (i < GHOST_COUNT ? "Призрак сломал фонарик!" : "Муха врезалась в фонарик!") << endl;
+                        cout << "Муха врезалась в фонарик!" << endl;
                     }
                 }
             }
@@ -552,6 +647,12 @@ int main()
 
             if (HandleMovement(fig_x, fig_y, STEP))
             {
+                // Проверяем выход за границы экрана
+                if (fig_x < 0) fig_x = 0;
+                if (fig_y < 0) fig_y = 0;
+                if (fig_x > SCREEN_WIDTH - RectBodyWidth) fig_x = SCREEN_WIDTH - RectBodyWidth;
+                if (fig_y > SCREEN_HEIGHT - RectBodyHeight) fig_y = SCREEN_HEIGHT - RectBodyHeight;
+
                 currentFlashlight->Hide();
 
                 // Обновляем координаты всех фонариков
@@ -564,13 +665,15 @@ int main()
                 flashlight_x = fig_x;
                 flashlight_y = fig_y;
 
-                // ОДИН ЦИКЛ ДЛЯ ВСЕХ ПЕРЕХОДОВ
+                // Проверяем переходы (без батареек)
                 for (int i = 0; i < TOTAL_STATES; i++)
                 {
-                    bool collision = IsCollision(*conflicts[i], *currentFlashlight);
-                    bool valid_transition = false;
+                    // Пропускаем переходы для батареек
+                    if (i == 2 || i == 6) continue; // Старые переходы с батарейками
 
-                    // Для горящих фонариков переход когда кончилось время света
+                    collision = IsCollision(*conflicts[i], *currentFlashlight);
+
+                    // Для горящих фонариков проверяем ОТСУТСТВИЕ света по времени
                     if (i >= TRANSITIONS_COUNT)
                     {
                         valid_transition = (lightTimeRemaining == 0);
@@ -589,8 +692,7 @@ int main()
             }
         }
 
-        // 5. ОБРАБОТКА СТОЛКНОВЕНИЙ ОДНИМ ЦИКЛОМ
-        // Батарейки
+        // 5. ПРОВЕРКА СТОЛКНОВЕНИЙ С БАТАРЕЙКАМИ
         for (int i = 0; i < MAX_BATTERIES; i++)
         {
             if (batteries[i] != NULL && IsCollision(*batteries[i], *currentFlashlight))
@@ -607,22 +709,18 @@ int main()
 
                 if (!isLightOn)
                 {
-                    // Переключаем на горящий фонарик
-                    bool isRectType = (currentFlashlight == &rectFlashlight ||
-                        currentFlashlight == &brokenRect);
-                    bool isRoundType = (currentFlashlight == &roundFlashlight ||
-                        currentFlashlight == &brokenRound);
-
-                    currentFlashlight->Hide();
-                    if (isRectType)
+                    if (currentFlashlight == &rectFlashlight || currentFlashlight == &brokenRect)
                     {
+                        currentFlashlight->Hide();
                         currentFlashlight = &litRectFlashlight;
+                        currentFlashlight->Show();
                     }
-                    else if (isRoundType)
+                    else if (currentFlashlight == &roundFlashlight || currentFlashlight == &brokenRound)
                     {
+                        currentFlashlight->Hide();
                         currentFlashlight = &litRoundFlashlight;
+                        currentFlashlight->Show();
                     }
-                    currentFlashlight->Show();
                     isLightOn = true;
                 }
 
@@ -637,44 +735,43 @@ int main()
             }
         }
 
-        // Статические объекты (камни)
-        for (int i = 0; i < 2; i++) // Только первые 2 элемента - камни
+        // 6. ПРОВЕРКА СТОЛКНОВЕНИЙ С КАМНЯМИ И ДРУГИМИ ОБЪЕКТАМИ
+        for (int i = 3; i < CONFLICT_COUNT; i++)
         {
-            if (IsCollision(*staticConflicts[i], *currentFlashlight))
+            if (IsCollision(*allConflicts[i], *currentFlashlight))
             {
-                bool isRectType = (currentFlashlight == &rectFlashlight ||
-                    currentFlashlight == &litRectFlashlight);
-                bool isRoundType = (currentFlashlight == &roundFlashlight ||
-                    currentFlashlight == &litRoundFlashlight);
-
-                if (isRectType)
+                // Камни ломают фонарик
+                if (i == 3 || i == 4) // Камни
                 {
-                    currentFlashlight->Hide();
-                    currentFlashlight = &brokenRect;
-                    currentFlashlight->Show();
-                    cout << "Наткнулись на камень!" << endl;
-                }
-                else if (isRoundType)
-                {
-                    currentFlashlight->Hide();
-                    currentFlashlight = &brokenRound;
-                    currentFlashlight->Show();
-                    cout << "Наткнулись на камень!" << endl;
+                    if (currentFlashlight == &rectFlashlight || currentFlashlight == &litRectFlashlight)
+                    {
+                        currentFlashlight->Hide();
+                        currentFlashlight = &brokenRect;
+                        currentFlashlight->Show();
+                        cout << "Наткнулись на камень!" << endl;
+                    }
+                    else if (currentFlashlight == &roundFlashlight || currentFlashlight == &litRoundFlashlight)
+                    {
+                        currentFlashlight->Hide();
+                        currentFlashlight = &brokenRound;
+                        currentFlashlight->Show();
+                        cout << "Наткнулись на камень!" << endl;
+                    }
                 }
             }
         }
 
-        // 6. ПЕРЕРИСОВКА ВСЕХ ОБЪЕКТОВ
-        // Очищаем движущиеся объекты
+        // 7. ПЕРЕРИСОВКА
+        // Очищаем старые позиции движущихся объектов
         for (int i = 0; i < MOVING_COUNT; i++)
         {
-            movingConflicts[i]->Hide();
+            allConflicts[i]->Hide();
         }
 
-        // Показываем статические объекты
-        for (int i = 0; i < CONFLICT_COUNT; i++)
+        // Показываем все статические объекты
+        for (int i = MOVING_COUNT; i < CONFLICT_COUNT; i++)
         {
-            staticConflicts[i]->Show();
+            allConflicts[i]->Show();
         }
         square.Show();
 
@@ -688,7 +785,7 @@ int main()
         // Показываем движущиеся объекты
         for (int i = 0; i < MOVING_COUNT; i++)
         {
-            movingConflicts[i]->Show();
+            allConflicts[i]->Show();
         }
 
         // Показываем фонарик

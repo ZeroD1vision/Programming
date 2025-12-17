@@ -518,20 +518,19 @@ void BaseFlashlight::Show()
 void BaseFlashlight::Hide()
 {
     visible = false;
-    // Создаем белые кисти и перья для замазывания
     HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
     HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
 
     SelectObject(hdc, whiteBrush);
     SelectObject(hdc, whitePen);
 
-    // Замазываем всю область фонарика с большим запасом для света
-    int left = x - headWidth / 2;
-    int top = y - headHeight * 2;
-    int right = x + bodyWidth + headWidth / 2;
+    // ТОЛЬКО область самого фонарика (без огромного запаса)
+    int left = x - 15;
+    int top = y - headHeight; // только головка и корпус
+    int right = x + max(bodyWidth, headWidth);
     int bottom = y + bodyHeight + 5;
 
-    Rectangle(hdc, left, top, right, bottom);
+    Rectangle(hdc, left - 2, top - 2, right + 2, bottom + 2); // маленький запас
 
     DeleteObject(whitePen);
     DeleteObject(whiteBrush);
@@ -704,50 +703,6 @@ void BrokenRectFlashlight::PrintCrack()
     LineTo(hdc, buttonX, buttonY + buttonHeight);
 
     DeleteObject(crackPen); DeleteObject(deepCrackPen);
-}
-
-void BrokenRectFlashlight::Hide()
-{
-    visible = false;
-    // Создаем белые кисти и перья для замазывания
-    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
-    HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
-
-    SelectObject(hdc, whiteBrush);
-    SelectObject(hdc, whitePen);
-
-    // Замазываем трещины дополнительными линиями
-    // Основная трещина через корпус
-    MoveToEx(hdc, x + bodyWidth * 0.2, y + 5, NULL);
-    LineTo(hdc, x + bodyWidth * 0.4, y + bodyHeight * 0.3);
-    LineTo(hdc, x + bodyWidth * 0.6, y + bodyHeight * 0.6);
-    LineTo(hdc, x + bodyWidth * 0.8, y + bodyHeight - 5);
-    MoveToEx(hdc, x + bodyWidth * 0.5, y + 10, NULL);
-    LineTo(hdc, x + bodyWidth * 0.5, y + bodyHeight - 10);
-
-    // Трещина на головке
-    int headX = x + (bodyWidth - headWidth) / 2;
-    int headY = y - headHeight;
-    MoveToEx(hdc, headX + headWidth * 0.2, headY + 5, NULL);
-    LineTo(hdc, headX + headWidth * 0.8, headY + headHeight - 5);
-    MoveToEx(hdc, headX + headWidth * 0.8, headY + 5, NULL);
-    LineTo(hdc, headX + headWidth * 0.2, headY + headHeight - 5);
-
-    // Сломанная кнопка
-    int buttonWidth = 14;
-    int buttonHeight = 20;
-    int buttonX = x + bodyWidth - 28;
-    int buttonY = y + bodyHeight - 35;
-    MoveToEx(hdc, buttonX, buttonY, NULL);
-    LineTo(hdc, buttonX + buttonWidth, buttonY + buttonHeight);
-    MoveToEx(hdc, buttonX + buttonWidth, buttonY, NULL);
-    LineTo(hdc, buttonX, buttonY + buttonHeight);
-
-    // Замазываем основную область фонарика
-    BaseFlashlight::Hide();
-
-    DeleteObject(whitePen);
-    DeleteObject(whiteBrush);
 }
 
 /* =============== ГОРЯЩИЙ ПРЯМОУГОЛЬНЫЙ ФОНАРИК =============== */
@@ -1030,40 +985,6 @@ void BrokenRoundFlashlight::PrintCrack()
     LineTo(hdc, x + bodyWidth * 0.8, y + bodyHeight * 0.3);
 
     DeleteObject(crackPen); DeleteObject(deepCrackPen);
-}
-
-void BrokenRoundFlashlight::Hide()
-{
-    visible = false;
-
-    // Создаем белые кисти и перья для замазывания
-    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
-    HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
-
-    SelectObject(hdc, whiteBrush);
-    SelectObject(hdc, whitePen);
-
-    // Замазываем трещины дополнительными линиями
-    // Основная трещина через корпус
-    MoveToEx(hdc, x + bodyWidth * 0.3, y + bodyHeight * 0.2, NULL);
-    LineTo(hdc, x + bodyWidth * 0.7, y + bodyHeight * 0.8);
-
-    // Вторая трещина
-    MoveToEx(hdc, x + bodyWidth * 0.2, y + bodyHeight * 0.7, NULL);
-    LineTo(hdc, x + bodyWidth * 0.8, y + bodyHeight * 0.3);
-
-    // Сломанная кнопка
-    int buttonRadius = 10;
-    int buttonX = x + bodyWidth - 25;
-    int buttonY = y + bodyHeight - 25;
-    MoveToEx(hdc, buttonX - buttonRadius / 2, buttonY - buttonRadius / 2, NULL);
-    LineTo(hdc, buttonX + buttonRadius / 2, buttonY + buttonRadius / 2);
-
-    // Замазываем основную область фонарика
-    BaseFlashlight::Hide();
-
-    DeleteObject(whitePen);
-    DeleteObject(whiteBrush);
 }
 
 /* =============== ГОРЯЩИЙ КРУГЛЫЙ ФОНАРИК =============== */

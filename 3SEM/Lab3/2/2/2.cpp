@@ -28,7 +28,7 @@ using namespace std;
 HDC hdc;    // Объявим контекст устройства
 
 /****************************************************************/
-/*           Ф У Н К Ц И Я  П Р О В Е Р К И  С Т О Л К Н О В Е Н И Я       */
+/*    Ф У Н К Ц И Я  П Р О В Е Р К И  С Т О Л К Н О В Е Н И Я   */
 /****************************************************************/
 
 bool IsCollision(Conflict& conflict, BaseFlashlight& flashlight)
@@ -119,12 +119,13 @@ int main()
     int STEP = 5;
     const int DELAY = 33;
 
-    const int TRANSITIONS_COUNT = 8;        // 8 переходов со столкновением (было 10)
-    const int NOT_TRANSITIONS_COUNT = 4;    // 4 перехода без столкновения (было 2)
+    const int TRANSITIONS_COUNT = 10;        // 10 переходов со столкновением
+    const int NOT_TRANSITIONS_COUNT = 4;    // 4 перехода без столкновения
     const int TOTAL_STATES = TRANSITIONS_COUNT + NOT_TRANSITIONS_COUNT; // 12
 
     const int FLASHLIGHT_COUNT = 6;          // 6 состояний фонарика
-    const int CONFLICT_COUNT = 5;            // 5 конфликтных объектов
+    const int CONFLICT_COUNT = 6;
+    const int MOVING_COUNT = 1;  // количество движущихся объектов (только муха сейчас)
 
     //  К О Н Е Ц  К О Н С Т А Н Т Ы
     //===============================================================
@@ -152,6 +153,7 @@ int main()
     // Другие объекты (уменьшенные)
     int ScrewLength = 50, ScrewWidth = 12;
     int StoneWidth = 50, StoneHeight = 40;
+    int FlyWidth = 15, FlyHeight = 8;        // Муха
 
     // -----------------------//
     // ===== КООРДИНАТЫ ===== //
@@ -169,6 +171,7 @@ int main()
     int stone_x = x0 + 100, stone_y = y0 + 300;        // Камень слева снизу  
     int screw_x = x0 + 300, screw_y = y0 + 300;        // Отвертка справа снизу
     int battery_x = x0 + 200, battery_y = y0 + 50;     // Батарейка сверху по центру
+    int fly_x = x0 + 500, fly_y = y0 + 200;            // Центр круга для мухи (сильно сдвинуто вправо)            // Центр круга для мухи
 
     // Точка для управления
     int point_x = x0 + 50, point_y = y0 + 150;
@@ -184,6 +187,7 @@ int main()
     BrokenRoundFlashlight brokenRound(flashlight_x, flashlight_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
     LitRectFlashlight litRectFlashlight(flashlight_x, flashlight_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
     LitRoundFlashlight litRoundFlashlight(flashlight_x, flashlight_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
+    Fly fly(fly_x, fly_y, FlyWidth, FlyHeight);
 
     // Указатель на текущий фонарик
     BaseFlashlight* currentFlashlight = &rectFlashlight;
@@ -203,7 +207,7 @@ int main()
     };
 
     Conflict* allConflicts[CONFLICT_COUNT] = {
-        &stone, &screwdriver, &circle, &square, &battery
+        &fly, &stone, &screwdriver, &circle, &square, &battery
     };
 
     // -------------------------------//
@@ -211,24 +215,29 @@ int main()
     // -------------------------------//
 
     // УНИВЕРСАЛЬНЫЕ МАССИВЫ ПЕРЕХОДОВ (12 состояний)
+    // Обновить массивы переходов:
     BaseFlashlight* from_states[TOTAL_STATES] =
     {
-        // ТРАНЗИТИВНЫЕ ПЕРЕХОДЫ (при столкновении) - ПЕРВЫЕ 8
+        // ТРАНЗИТИВНЫЕ ПЕРЕХОДЫ (при столкновении) - ПЕРВЫЕ 10
         &rectFlashlight,      // 0: обычный прямоугольный -> камень
         &brokenRect,          // 1: сломанный прямоугольный -> отвертка  
         &rectFlashlight,      // 2: обычный прямоугольный -> батарейка
-        &rectFlashlight,      // 3: обычный прямоугольный -> круг (переход формы) ← СМЕЩАЕМ!
+        &rectFlashlight,      // 3: обычный прямоугольный -> круг (переход формы)
 
         &roundFlashlight,     // 4: обычный круглый -> камень
         &brokenRound,         // 5: сломанный круглый -> отвертка
         &roundFlashlight,     // 6: обычный круглый -> батарейка
-        &roundFlashlight,     // 7: обычный круглый -> квадрат (переход формы) ← СМЕЩАЕМ!
+        &roundFlashlight,     // 7: обычный круглый -> квадрат (переход формы)
+
+        // ДОБАВЛЯЕМ ПЕРЕХОДЫ ДЛЯ МУХИ
+        &rectFlashlight,      // 8: обычный прямоугольный -> муха
+        &roundFlashlight,     // 9: обычный круглый -> муха
 
         // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ (без столкновения) - ПОСЛЕДНИЕ 4
-        &litRectFlashlight,   // 8: горящий прямоугольный -> отсутствие батарейки
-        &litRoundFlashlight,  // 9: горящий круглый -> отсутствие батарейки
-        &litRectFlashlight,   // 10: горящий прямоугольный -> обычный (без батарейки)
-        &litRoundFlashlight   // 11: горящий круглый -> обычный (без батарейки)
+        &litRectFlashlight,   // 10: горящий прямоугольный -> отсутствие батарейки
+        &litRoundFlashlight,  // 11: горящий круглый -> отсутствие батарейки
+        &litRectFlashlight,   // 12: горящий прямоугольный -> обычный (без батарейки)
+        &litRoundFlashlight   // 13: горящий круглый -> обычный (без батарейки)
     };
 
     Conflict* conflicts[TOTAL_STATES] =
@@ -237,18 +246,22 @@ int main()
         &stone,        // 0: прямоугольный с камнем
         &screwdriver,  // 1: сломанный прямоугольный с отверткой
         &battery,      // 2: прямоугольный с батарейкой
-        &circle,       // 3: прямоугольный с кругом ← СМЕЩАЕМ!
+        &circle,       // 3: прямоугольный с кругом
 
         &stone,        // 4: круглый с камнем
         &screwdriver,  // 5: сломанный круглый с отверткой
         &battery,      // 6: круглый с батарейкой
-        &square,       // 7: круглый с квадратом ← СМЕЩАЕМ!
+        &square,       // 7: круглый с квадратом
+
+        // ДОБАВЛЯЕМ МУХУ
+        &fly,          // 8: прямоугольный с мухой
+        &fly,          // 9: круглый с мухой
 
         // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ
-        &battery,      // 8: горящий прямоугольный без батарейки
-        &battery,      // 9: горящий круглый без батарейки
         &battery,      // 10: горящий прямоугольный без батарейки
-        &battery       // 11: горящий круглый без батарейки
+        &battery,      // 11: горящий круглый без батарейки
+        &battery,      // 12: горящий прямоугольный без батарейки
+        &battery       // 13: горящий круглый без батарейки
     };
 
     BaseFlashlight* to_states[TOTAL_STATES] =
@@ -257,18 +270,22 @@ int main()
         &brokenRect,        // 0: прямоугольный -> сломанный прямоугольный
         &rectFlashlight,    // 1: сломанный прямоугольный -> прямоугольный
         &litRectFlashlight, // 2: прямоугольный -> горящий прямоугольный
-        &roundFlashlight,   // 3: прямоугольный -> круглый ← СМЕЩАЕМ!
+        &roundFlashlight,   // 3: прямоугольный -> круглый
 
         &brokenRound,       // 4: круглый -> сломанный круглый
         &roundFlashlight,   // 5: сломанный круглый -> круглый
         &litRoundFlashlight,// 6: круглый -> горящий круглый
-        &rectFlashlight,    // 7: круглый -> прямоугольный ← СМЕЩАЕМ!
+        &rectFlashlight,    // 7: круглый -> прямоугольный
+
+        // ДОБАВЛЯЕМ ПЕРЕХОДЫ ДЛЯ МУХИ
+        &brokenRect,        // 8: прямоугольный -> сломанный прямоугольный
+        &brokenRound,       // 9: круглый -> сломанный круглый
 
         // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ
-        &rectFlashlight,    // 8: горящий прямоугольный -> прямоугольный
-        &roundFlashlight,   // 9: горящий круглый -> круглый
-        &rectFlashlight,    // 10: горящий прямоугольный -> обычный прямоугольный
-        &roundFlashlight    // 11: горящий круглый -> обычный круглый
+        &rectFlashlight,    // 10: горящий прямоугольный -> прямоугольный
+        &roundFlashlight,   // 11: горящий круглый -> круглый
+        &rectFlashlight,    // 12: горящий прямоугольный -> обычный прямоугольный
+        &roundFlashlight    // 13: горящий круглый -> обычный круглый
     };
 
     // -------------------------- //
@@ -300,6 +317,36 @@ int main()
     while (true)
     {
         if (KEY_DOWN(VK_ESCAPE)) { break; }
+
+        // 1. ДВИЖЕНИЕ И ПРОВЕРКА СТОЛКНОВЕНИЙ С ДВИЖУЩИМИСЯ ОБЪЕКТАМИ
+        for (int i = 0; i < MOVING_COUNT; i++)
+        {
+            // Двигаем объект
+            allConflicts[i]->Move();
+
+            // Проверяем столкновение с текущим фонариком
+            if (IsCollision(*allConflicts[i], *currentFlashlight))
+            {
+                // Просто проверяем тип фонарика и меняем
+                if (currentFlashlight == &rectFlashlight ||
+                    currentFlashlight == &litRectFlashlight)
+                {
+                    // Прямоугольный -> сломанный прямоугольный
+                    currentFlashlight->Hide();
+                    currentFlashlight = &brokenRect;
+                    currentFlashlight->Show();
+                }
+                else if (currentFlashlight == &roundFlashlight ||
+                    currentFlashlight == &litRoundFlashlight)
+                {
+                    // Круглый -> сломанный круглый
+                    currentFlashlight->Hide();
+                    currentFlashlight = &brokenRound;
+                    currentFlashlight->Show();
+                }
+                // Для сломанных ничего не делаем
+            }
+        }
 
         // Выбор фигуры
         if (KEY_DOWN(50)) // 2 - Фонарик
@@ -338,7 +385,7 @@ int main()
             {
                 collision = IsCollision(*conflicts[i], *currentFlashlight);
 
-                // Для горящих фонариков провряем ОТСУТСТВИЕ батарейки
+                // Для горящих фонариков проверяем ОТСУТСТВИЕ батарейки
                 if (i >= TRANSITIONS_COUNT)
                 {
                     valid_transition = !collision;  // Нет столкновения с батарейкой
@@ -354,17 +401,18 @@ int main()
                     break;
                 }
             }
-
-            // Перерисовываем все конфликтные объекты
-            for (int i = 0; i < CONFLICT_COUNT; i++)
-            {
-                allConflicts[i]->Show();
-            }
-
-            currentFlashlight->Show();
-            Sleep(DELAY);
             break;
         }
+
+        // Перерисовываем все конфликтные объекты
+        for (int i = 0; i < CONFLICT_COUNT; i++)
+        {
+            allConflicts[i]->Show();
+        }
+
+        currentFlashlight->Show();
+        fly.Move();  // Двигаем муху по кругу
+        Sleep(DELAY);
     }
 
     //===============================================================

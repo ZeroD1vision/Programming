@@ -195,7 +195,7 @@ int main()
         &rectFlashlight,    // 2: обычный прямоугольный -> круг
         &roundFlashlight,   // 3: обычный круглый -> камень
         &brokenRound,       // 4: сломанный круглый -> отвертка
-        &roundFlashlight,   // 5: обычный круглый -> квадрат (НОВЫЙ ПЕРЕХОД)
+        &roundFlashlight,   // 5: обычный круглый -> квадрат
 
         // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ (без столкновения)
         &rectFlashlight,    // 6: обычный прямоугольный -> обычный прямоугольный (без столкновения)
@@ -211,7 +211,7 @@ int main()
         &circle,       // переход 2
         &stone,        // переход 3
         &screwdriver,  // переход 4
-        &square,       // переход 5 (НОВЫЙ: круглый -> квадрат)
+        &square,       // переход 5 (круглый -> квадрат)
 
         // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ
         &circle,       // переход 6 (проверяем отсутствие столкновения с кругом)
@@ -227,7 +227,7 @@ int main()
         &roundFlashlight,  // переход 2: прямоугольный -> круглый
         &brokenRound,      // переход 3: круглый -> сломанный круглый
         &roundFlashlight,  // переход 4: сломанный круглый -> круглый
-        &rectFlashlight,   // переход 5: круглый -> прямоугольный (через квадрат) (НОВЫЙ)
+        &rectFlashlight,   // переход 5: круглый -> прямоугольный (через квадрат)
 
         // НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ
         &rectFlashlight,   // переход 6: прямоугольный остается прямоугольным
@@ -298,44 +298,28 @@ int main()
 
             flashlight_x = fig_x;
             flashlight_y = fig_y;
-            hadCollision = false;
 
             // === ДИНАМИЧЕСКИЙ ПОЛИМОРФИЗМ - проверяем столкновения === //
             for (int i = 0; i < TOTAL_STATES; i++)
             {
-                // Используем нашу новую функцию IsCollision с указателями
+                // Используем нашу функцию IsCollision с указателями
                 collision = IsCollision(*conflicts[i], *currentFlashlight);
 
                 // Первые TRANSITIONS_COUNT переходов - должны БЫТЬ столкновения
                 // Последние NOT_TRANSITIONS_COUNT переходов - должно НЕ БЫТЬ столкновения 
-                valid_transition = (i < TRANSITIONS_COUNT && collision) ||
-                    (i >= TRANSITIONS_COUNT && !collision);
+                valid_transition = (i < TRANSITIONS_COUNT && collision) || (i >= TRANSITIONS_COUNT && !collision);
 
                 if (currentFlashlight == from_states[i] && valid_transition)
                 {
                     currentFlashlight = to_states[i];
                     break; // применяем только первый подходящий переход
                 }
-                if (i < TRANSITIONS_COUNT) // Если это транзитивный переход (было столкновение)
-                {
-                    hadCollision = true;
-                }
             }
 
-            // ПЕРЕРИСОВЫВАЕМ КОНФЛИКТНЫЕ ОБЪЕКТЫ ТОЛЬКО ПРИ НЕОБХОДИМОСТИ:
-            // 1. Если было столкновение сейчас
-            // 2. Если фонарик изменился (даже если не было столкновения в этот момент)
-            // 3. Если предыдущее состояние было со столкновением, а сейчас нет
-            if (hadCollision || (wasCollision && !hadCollision))
+            for (int i = 0; i < CONFLICT_COUNT; i++)
             {
-                for (int i = 0; i < CONFLICT_COUNT; i++)
-                {
-                    allConflicts[i]->Show();
-                }
+                allConflicts[i]->Show();
             }
-
-            // Обновляем флаг предыдущего состояния столкновения
-            wasCollision = hadCollision;
 
             currentFlashlight->Show();
             Sleep(DELAY);
