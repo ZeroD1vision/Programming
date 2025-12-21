@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({startOnLoad:true});
+  </script>
+</head>
+<body>
+  <div class="mermaid">
+classDiagram
+    %% Базовые классы
+    class Location {
+        -int x
+        -int y
+        +Location(int, int)
+        +GetX() int
+        +GetY() int
+        +SetX(int)
+        +SetY(int)
+    }
+    
+    class IFlashlight {
+        <<interface>>
+        +PrintBody()*
+        +PrintHead()*
+        +PrintButton()*
+        +PrintLight()*
+        +PrintCrack()*
+    }
+    
+    %% Основная иерархия
+    Location <|-- Point
+    Point <|-- Conflict
+    Point <|-- BaseFlashlight
+    IFlashlight <|.. BaseFlashlight
+    
+    class Point {
+        -bool visible
+        +Point(int, int)
+        +Show()*
+        +Hide()*
+        +MoveTo(int, int)
+        +Drag(int)
+    }
+    
+    class Conflict {
+        -int width
+        -int height
+        +Conflict(int, int, int, int)
+        +Move()*
+    }
+    
+    class BaseFlashlight {
+        -int bodyWidth
+        -int bodyHeight
+        -int headWidth
+        -int headHeight
+        +BaseFlashlight(int, int, int, int, int, int)
+        +Show()
+        +Hide()
+        +DecreaseTimer() bool
+        +AddTime(int)
+        +GetTimeRemaining() int
+        +IsLit() bool
+    }
+    
+    %% Конфликтные объекты
+    Conflict <|-- Circle
+    Conflict <|-- Square
+    Conflict <|-- Screwdriver
+    Conflict <|-- Stone
+    Conflict <|-- Battery
+    Conflict <|-- Fly
+    Conflict <|-- Ghost
+    
+    class Circle {
+        -int radius
+        +Circle(int, int, int)
+        +Show()
+        +Hide()
+        +Expand(int)
+        +Reduse(int)
+    }
+    
+    class Square {
+        +Square(int, int, int, int)
+        +Show()
+        +Hide()
+    }
+    
+    class Screwdriver {
+        +Screwdriver(int, int, int, int)
+        +Show()
+        +Hide()
+    }
+    
+    class Stone {
+        +Stone(int, int, int, int)
+        +Show()
+        +Hide()
+    }
+    
+    class Battery {
+        +Battery(int, int, int, int)
+        +Show()
+        +Hide()
+    }
+    
+    class Fly {
+        -double angle
+        -int centerX
+        -int centerY
+        -int circleRadius
+        +Fly(int, int, int, int)
+        +Show()
+        +Hide()
+        +Move()
+    }
+    
+    class Ghost {
+        -double angle
+        -int targetX
+        -int targetY
+        -int chaseSpeed
+        -bool active
+        +Ghost(int, int, int, int)
+        +Show()
+        +Hide()
+        +Move()
+        +UpdateTarget(int, int)
+        +SetActive(bool)
+        +IsActive() bool
+    }
+    
+    %% Иерархия фонариков
+    BaseFlashlight <|-- RectFlashlight
+    BaseFlashlight <|-- RoundFlashlight
+    
+    class RectFlashlight {
+        +RectFlashlight(int, int, int, int, int, int)
+        +PrintBody()
+        +PrintHead()
+        +PrintButton()
+        +PrintLight()
+        +PrintCrack()
+        +Hide()
+    }
+    
+    class RoundFlashlight {
+        +RoundFlashlight(int, int, int, int, int, int)
+        +PrintBody()
+        +PrintHead()
+        +PrintButton()
+        +PrintLight()
+        +PrintCrack()
+    }
+    
+    RectFlashlight <|-- BrokenRectFlashlight
+    RectFlashlight <|-- LitRectFlashlight
+    RoundFlashlight <|-- BrokenRoundFlashlight
+    RoundFlashlight <|-- LitRoundFlashlight
+    
+    class BrokenRectFlashlight {
+        +BrokenRectFlashlight(int, int, int, int, int, int)
+        +PrintCrack()
+    }
+    
+    class LitRectFlashlight {
+        +LitRectFlashlight(int, int, int, int, int, int)
+        +PrintLight()
+        +Hide()
+    }
+    
+    class BrokenRoundFlashlight {
+        +BrokenRoundFlashlight(int, int, int, int, int, int)
+        +PrintCrack()
+    }
+    
+    class LitRoundFlashlight {
+        +LitRoundFlashlight(int, int, int, int, int, int)
+        +PrintLight()
+        +Hide()
+    }
+    
+    %% Новые классы с таймерами
+    LitRectFlashlight <|-- LitRectFlashlightWithTimer
+    LitRoundFlashlight <|-- LitRoundFlashlightWithTimer
+    
+    class LitRectFlashlightWithTimer {
+        -int lightTime
+        +LitRectFlashlightWithTimer(int, int, int, int, int, int)
+        +DecreaseTimer() bool
+        +AddTime(int)
+        +GetTimeRemaining() int
+    }
+    
+    class LitRoundFlashlightWithTimer {
+        -int lightTime
+        +LitRoundFlashlightWithTimer(int, int, int, int, int, int)
+        +DecreaseTimer() bool
+        +AddTime(int)
+        +GetTimeRemaining() int
+    }
+  </div>
+</body>
+</html>
