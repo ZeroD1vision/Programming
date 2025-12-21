@@ -33,8 +33,11 @@ HDC hdc;    // Объявим контекст устройства
 // Глобальные переменные для игры
 int BATTERY_COUNT = 3;                    // Количество батареек на поле
 const int MAX_BATTERIES = 10;             // Максимальное количество батареек
-const int BATTERY_SPAWN_TIME = 10;        // Секунд между появлением батареек
-const int LIGHT_DURATION = 3;            // Длительность свечения от батарейки (сек)
+const int BATTERY_SPAWN_TIME = 5;        // Секунд между появлением батареек
+const int LIGHT_DURATION = 5;            // Длительность свечения от батарейки (сек)
+// Размеры экрана
+const int SCREEN_WIDTH = GetSystemMetrics(SM_CXSCREEN);
+const int SCREEN_HEIGHT = GetSystemMetrics(SM_CYSCREEN);
 
 /****************************************************************/
 /*    Ф У Н К Ц И Я  П Р О В Е Р К И  С Т О Л К Н О В Е Н И Я   */
@@ -61,14 +64,6 @@ bool IsCollision(Conflict& conflict, BaseFlashlight& flashlight)
         flashlightY > conflictY + conflictHeight);
 
     return bodyCollision;
-}
-
-// Функция для отображения текста на экране
-void DrawTextOnScreen(int x, int y, string text, COLORREF color = RGB(255, 255, 255))
-{
-    SetTextColor(hdc, color);
-    SetBkColor(hdc, RGB(0, 0, 0));
-    TextOutA(hdc, x, y, text.c_str(), text.length());
 }
 
 // Функция для получения случайного числа в диапазоне
@@ -168,14 +163,14 @@ int main()
     const int FLASHLIGHT = 2;
 
     int STEP = 5;
-    const int DELAY = 33;
+    const int DELAY = 30;
 
     // Количество проверок столкновений со статическими объектами
     // Камень, отвертка, круг, квадрат для обоих типов фонариков
-    const int STATIC_TRANSITIONS_COUNT = 8;
+    const int STATIC_TRANSITIONS_COUNT = 10;
 
     // Количество нетранзитивных переходов (конец света)
-    const int NON_TRANSITIONS_COUNT = 4;
+    const int NON_TRANSITIONS_COUNT = 0;
 
     // Количество призраков (легко изменить)
     const int GHOST_COUNT = 2;
@@ -184,7 +179,7 @@ int main()
     const int GHOST_TRANSITIONS_COUNT = GHOST_COUNT * 2;
 
     // Количество переходов с мухой
-    const int FLY_TRANSITIONS_COUNT = 2;
+    const int FLY_TRANSITIONS_COUNT = 4;
 
     // Общее количество переходов
     const int TOTAL_TRANSITIONS = STATIC_TRANSITIONS_COUNT + 
@@ -199,7 +194,7 @@ int main()
     const int TOTAL_MOVING = GHOST_COUNT + 1; // Призраки + муха
 
     // Разные типы фонариков
-    const int FLASHLIGHT_COUNT = 6;
+    const int FLASHLIGHT_COUNT = 8;
 
     // Размеры экрана
     const int SCREEN_WIDTH = GetSystemMetrics(SM_CXSCREEN);
@@ -208,8 +203,11 @@ int main()
     // Индексы начала разных типов переходов
     const int STATIC_START_INDEX = 0;
     const int NON_TRANS_START_INDEX = STATIC_TRANSITIONS_COUNT; // 8
-    const int FLY_START_INDEX = NON_TRANS_START_INDEX + NON_TRANSITIONS_COUNT; // 12
+    const int FLY_START_INDEX = STATIC_TRANSITIONS_COUNT; // 12
     const int GHOST_START_INDEX = FLY_START_INDEX + FLY_TRANSITIONS_COUNT; // 14
+
+    // Новые константы для массивов движущихся объектов
+    const int MOVING_TRANSITIONS_COUNT = FLY_TRANSITIONS_COUNT + GHOST_TRANSITIONS_COUNT; // 6
 
     // Центр экрана
     const int CENTER_X = SCREEN_WIDTH / 2;
@@ -279,11 +277,16 @@ int main()
     BrokenRoundFlashlight brokenRound(flashlight_x, flashlight_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
     LitRectFlashlight litRectFlashlight(flashlight_x, flashlight_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
     LitRoundFlashlight litRoundFlashlight(flashlight_x, flashlight_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
+    // Светящиеся с таймером
+    LitRectFlashlightWithTimer litRectWithTimer(flashlight_x, flashlight_y, RectBodyWidth, RectBodyHeight, RectHeadWidth, RectHeadHeight);
+    LitRoundFlashlightWithTimer litRoundWithTimer(flashlight_x, flashlight_y, RoundBodyWidth, RoundBodyHeight, RoundHeadWidth, RoundHeadHeight);
 
     // Все фонарики в одном массиве
     BaseFlashlight* allFlashlights[FLASHLIGHT_COUNT] = {
-        &rectFlashlight, &brokenRect, &litRectFlashlight,
-        &roundFlashlight, &brokenRound, &litRoundFlashlight
+        &rectFlashlight, &brokenRect,
+        &litRectFlashlight, &litRectWithTimer, // Оба светящихся прямоугольных
+        &roundFlashlight, &brokenRound,
+        &litRoundFlashlight, &litRoundWithTimer  // Оба светящихся круглых
     };
 
     // Текущий фонарик
@@ -327,11 +330,11 @@ int main()
         movingConflicts[i + 1] = ghosts[i]; // Призраки после
     }
 
-    // Батарейки
+    // Батарейки - создаем недалеко от начальной позиции фонарика
     Battery* batteries[MAX_BATTERIES] = { 0 };
-    for (int i = 0; i < BATTERY_COUNT; i++) 
+    for (int i = 0; i < BATTERY_COUNT; i++)
     {
-        batteries[i] = CreateRandomBattery(SCREEN_WIDTH, SCREEN_HEIGHT);
+        batteries[i] = CreateBatteryNearFlashlight(flashlight_x, flashlight_y, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
 
     // -------------------------------//
@@ -339,7 +342,7 @@ int main()
     // -------------------------------//
 
     // Массив с состояниями фонариков из которых переходим
-    BaseFlashlight* from_states[TOTAL_TRANSITIONS] = {
+    BaseFlashlight* from_states[STATIC_TRANSITIONS_COUNT] = {
         // ============== СТАТИЧЕСКИЕ ПЕРЕХОДЫ (0-7) ============== //
         // Прямоугольный фонарик + камни
         &rectFlashlight,    // 0: прямоугольный + камень 1 -> сломанный
@@ -355,28 +358,13 @@ int main()
         &rectFlashlight,    // 6: прямоугольный + круг -> круглый
         &roundFlashlight,   // 7: круглый + квадрат -> прямоугольный
 
-        // ============== НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ (8-11) ============== //
-        &litRectFlashlight,  // 8: горящий прямоугольный -> обычный
-        &litRectFlashlight,  // 9: горящий прямоугольный -> обычный
-        &litRoundFlashlight, // 10: горящий круглый -> обычный
-        &litRoundFlashlight, // 11: горящий круглый -> обычный
-
-        // ============== ПЕРЕХОДЫ С МУХОЙ (12-13) ============== //
-        &rectFlashlight,    // 12: обычный прямоугольный -> муха
-        &roundFlashlight,   // 13: обычный круглый -> муха
-
-        // ============== ПЕРЕХОДЫ С ПРИЗРАКАМИ (14-17) ============== //
-        // Призрак 0
-        &rectFlashlight,    // 14: обычный прямоугольный -> призрак 0
-        &roundFlashlight,   // 15: обычный круглый -> призрак 0
-
-        // Призрак 1
-        &rectFlashlight,    // 16: обычный прямоугольный -> призрак 1
-        &roundFlashlight,   // 17: обычный круглый -> призрак 1
+        // ============== СВЕТЯЩИЕСЯ ПЕРЕХОДЫ ============== //
+        &litRectWithTimer,  // 8: горящий прямоугольный -> обычный
+        &litRectWithTimer,  // 9: горящий прямоугольный -> обычный
     };
 
     // Массив с конфликтными объектами
-    Conflict* conflicts[TOTAL_TRANSITIONS] = {
+    Conflict* conflicts[STATIC_TRANSITIONS_COUNT] = {
         // ============== СТАТИЧЕСКИЕ ОБЪЕКТЫ (0-7) ============== //
         &stone1,        // 0: прямоугольный + камень 1 -> сломанный
         &screwdriver,   // 1: сломанный прямоугольный + отвертка -> целый
@@ -389,25 +377,13 @@ int main()
         &circle,        // 6: прямоугольный + круг -> круглый
         &square,        // 7: круглый + квадрат -> прямоугольный
 
-        // ============== НЕТРАНЗИТИВНЫЕ ============== //
+        // ============== СВЕТЯЩИЕСЯ ПЕРЕХОДЫ ============== //
         &stone1,        // 8: для проверки конца света
         &stone2,        // 9: для проверки конца света
-        &circle,        // 10: для проверки конца света
-        &square,        // 11: для проверки конца света
-
-        // ============== МУХА ============== //
-        &fly,           // 12: прямоугольный + муха
-        &fly,           // 13: круглый + муха
-
-        // ============== ПРИЗРАКИ ============== //
-        ghosts[0],      // 14: прямоугольный + призрак 0
-        ghosts[0],      // 15: круглый + призрак 0
-        ghosts[1],      // 16: прямоугольный + призрак 1
-        ghosts[1],      // 17: круглый + призрак 1
     };
 
     // Массив с состояниями фонариков в которые переходим
-    BaseFlashlight* to_states[TOTAL_TRANSITIONS] = {
+    BaseFlashlight* to_states[STATIC_TRANSITIONS_COUNT] = {
         // ============== СТАТИЧЕСКИЕ ПЕРЕХОДЫ (0-7) ============== //
         &brokenRect,        // 0: прямоугольный -> сломанный (камень 1)
         &rectFlashlight,    // 1: сломанный -> целый (отвертка)
@@ -420,21 +396,62 @@ int main()
         &roundFlashlight,   // 6: прямоугольный -> круглый (круг)
         &rectFlashlight,    // 7: круглый -> прямоугольный (квадрат)
 
-        // ============== НЕТРАНЗИТИВНЫЕ ПЕРЕХОДЫ ============== //
-        &rectFlashlight,    // 8: горящий прямоугольный -> обычный
-        &rectFlashlight,    // 9: горящий прямоугольный -> обычный
-        &roundFlashlight,   // 10: горящий круглый -> обычный
-        &roundFlashlight,   // 11: горящий круглый -> обычный
+        // ============== СВЕТЯЩИЕСЯ ПЕРЕХОДЫ ============== //
+        &brokenRect,    // 8: горящий прямоугольный -> обычный
+        &brokenRect,    // 9: горящий прямоугольный -> обычный
+    };
 
-        // ============== ПЕРЕХОДЫ С МУХОЙ ============== //
-        &brokenRect,        // 12: прямоугольный -> сломанный
-        &brokenRound,       // 13: круглый -> сломанный
+    // Отдельные массивы для движущихся объектов
+    BaseFlashlight* moving_from_states[MOVING_TRANSITIONS_COUNT] = {
+        // Муха для обычных фонариков (индексы 0-1)
+        &rectFlashlight,    // 0: обычный прямоугольный -> муха
+        &roundFlashlight,   // 1: обычный круглый -> муха
 
-        // ============== ПЕРЕХОДЫ С ПРИЗРАКАМИ ============== //
-        &brokenRect,        // 14: прямоугольный -> сломанный
-        &brokenRound,       // 15: круглый -> сломанный
-        &brokenRect,        // 16: прямоугольный -> сломанный
-        &brokenRound,       // 17: круглый -> сломанный
+        // Муха для светящихся фонариков (индексы 2-5)
+        &litRectWithTimer,  // 2: горящий прямоугольный -> муха
+        &litRoundWithTimer, // 4: горящий круглый -> муха
+
+        // Призрак 0 (индексы 6-7)
+        &rectFlashlight,    // 6: обычный прямоугольный -> призрак 0
+        &roundFlashlight,   // 7: обычный круглый -> призрак 0
+
+        // Призрак 1 (индексы 8-9)
+        &rectFlashlight,    // 8: обычный прямоугольный -> призрак 1
+        &roundFlashlight    // 9: обычный круглый -> призрак 1
+    };
+
+    Conflict* moving_conflicts[MOVING_TRANSITIONS_COUNT] = {
+        // Муха для обычных (0-1)
+        &fly,          // 0: прямоугольный + муха
+        &fly,          // 1: круглый + муха
+
+        // Муха для светящихся (2-5)
+        &fly,          // 2: горящий прямоугольный + муха
+        &fly,          // 4: горящий круглый + муха
+
+        // Призрак 0 (6-7)
+        ghosts[0],     // 6: прямоугольный + призрак 0
+        ghosts[0],     // 7: круглый + призрак 0
+
+        // Призрак 1 (8-9)
+        ghosts[1],     // 8: прямоугольный + призрак 1
+        ghosts[1]      // 9: круглый + призрак 1
+    };
+
+    BaseFlashlight* moving_to_states[MOVING_TRANSITIONS_COUNT] = {
+        // Муха для обычных (0-1)
+        &brokenRect,   // 0: прямоугольный -> сломанный
+        &brokenRound,  // 1: круглый -> сломанный
+
+        // Муха для светящихся (2-5) 
+        &brokenRect,   // 2: горящий прямоугольный -> сломанный прямоугольный
+        &brokenRound,  // 4: горящий круглый -> сломанный круглый
+
+        // Призраки (6-9)
+        &brokenRect,   // 6: прямоугольный -> сломанный
+        &brokenRound,  // 7: круглый -> сломанный
+        &brokenRect,   // 8: прямоугольный -> сломанный
+        &brokenRound   // 9: круглый -> сломанный
     };
 
     // -------------------------- //
@@ -449,6 +466,12 @@ int main()
     bool isLightOn = false;
     int batteriesCollected = 0;
     int activeBatteries = BATTERY_COUNT;
+    int batterySpawnTimer = 0;
+
+    // Таймер для обновления
+    int frameCounter = 0;
+
+    string currentFlashlightState;
 
     //  К О Н Е Ц  П Е Р Е М Е Н Н Ы Е
     //===============================================================
@@ -461,6 +484,20 @@ int main()
     /************************************************************/
     while (true)
     {
+        /************************************************************/
+        /*     И Н Ф О Р М А Ц И О Н Н А Я   П А Н Е Л Ь           */
+        /************************************************************/
+
+        // Проверяем, светится ли фонарик (просто сравниваем указатели)
+        bool isLit = (currentFlashlight == &litRectWithTimer ||
+                      currentFlashlight == &litRoundWithTimer);
+
+        // Рисуем информационную панель ПЕРЕД отрисовкой объектов
+        DrawInfoPanel(hdc, SCREEN_WIDTH, SCREEN_HEIGHT,
+            isLit,
+            currentFlashlight->GetTimeRemaining(),
+            batteriesCollected, currentFlashlightState);
+
         Sleep(DELAY);
         if (KEY_DOWN(VK_ESCAPE)) { break; }
 
@@ -468,14 +505,17 @@ int main()
         /*     О Б Н О В Л Е Н И Е  С О С Т О Я Н И Й               */
         /************************************************************/
 
-        isLightOn = (currentFlashlight == &litRectFlashlight ||
-            currentFlashlight == &litRoundFlashlight);
+        currentFlashlightState = GetFlashlightState(currentFlashlight);
+
+        // ПРИЗРАК АКТИВЕН ТОЛЬКО ЕСЛИ:
+            // 1. Таймер возрождения = 0
+            // 2. Свет выключен (не litRectWithTimer или litRoundWithTimer)
 
         // Обновляем ВСЕХ призраков
         for (int i = 0; i < GHOST_COUNT; i++)
         {
             ghosts[i]->UpdateTarget(currentFlashlight->GetX(), currentFlashlight->GetY());
-            ghostActive[i] = !isLightOn && (ghostRespawnTimers[i] == 0);
+            ghostActive[i] = (ghostRespawnTimers[i] == 0) && !(currentFlashlight == &litRoundWithTimer) && !(currentFlashlight == &litRectWithTimer);
             ghosts[i]->SetActive(ghostActive[i]);
         }
 
@@ -491,23 +531,24 @@ int main()
         /*   П Р О В Е Р К А  С Т О Л К Н О В Е Н И Й               */
         /*          С  Д В И Ж У Щ И М И  О Б Ъ Е К Т А М И         */
         /************************************************************/
-        // Флаг для предотвращения повторных переходов в одном кадре
-        bool transitionMade = false;
-
+        
         // Проверяем ВСЕ переходы с движущимися объектами одним циклом
-        for (int i = FLY_START_INDEX; i < TOTAL_TRANSITIONS && !transitionMade; i++)
+        // Используем отдельный массив для движущихся объектов
+        for (int i = 0; i < MOVING_TRANSITIONS_COUNT; i++)
         {
-            if (IsCollision(*conflicts[i], *currentFlashlight) &&
-                currentFlashlight == from_states[i])
+            if (IsCollision(*moving_conflicts[i], *currentFlashlight) &&
+                currentFlashlight == moving_from_states[i])
             {
                 // Проверяем, является ли это столкновением с призраком
-                bool isGhostCollision = (i >= GHOST_START_INDEX && i < TOTAL_TRANSITIONS);
+                // (первые 2 элемента - муха, остальные - призраки)
+                bool isGhostCollision = (i >= FLY_TRANSITIONS_COUNT); // Индексы 0-1: муха, 2-5: призраки
 
                 if (isGhostCollision)
                 {
                     // Для призраков: проверяем активность и свет
-                    int ghostIdx = (i - GHOST_START_INDEX) / 2;
-                    if (!ghostActive[ghostIdx] || isLightOn)
+                    // Вычисляем индекс призрака: 0 для i=2,3; 1 для i=4,5
+                    int ghostIdx = (i - FLY_TRANSITIONS_COUNT) / 2;
+                    if (!ghostActive[ghostIdx])
                     {
                         continue; // Пропускаем неактивных призраков или когда свет включен
                     }
@@ -517,13 +558,17 @@ int main()
                     ghostRespawnTimers[ghostIdx] = 100;
                 }
 
+                // Если ломаем светящийся фонарик - сбрасываем таймер
+                int remainingTime = currentFlashlight->GetTimeRemaining();
+                currentFlashlight->AddTime(-remainingTime); // Обнуляем таймер
+
                 // Выполняем переход
                 currentFlashlight->Hide();
-                currentFlashlight = to_states[i];
+                currentFlashlight = moving_to_states[i];
                 currentFlashlight->Show();
-                transitionMade = true;
             }
         }
+
 
         /************************************************************/
         /*     У П Р А В Л Е Н И Е  Ф О Н А Р И К О М               */
@@ -556,50 +601,49 @@ int main()
                 /*********************************************************************/
 
                 // Все статические столкновения одним циклом (индексы 0-7)
-                for (int i = STATIC_START_INDEX; i < NON_TRANS_START_INDEX && !transitionMade; i++)
+                for (int i = STATIC_START_INDEX; i < NON_TRANS_START_INDEX; i++)
                 {
                     bool collision = IsCollision(*conflicts[i], *currentFlashlight);
 
                     if (currentFlashlight == from_states[i] && collision)
                     {
+                        int remainingTime = currentFlashlight->GetTimeRemaining();
+                        currentFlashlight->AddTime(-remainingTime); // Обнуляем таймер
                         currentFlashlight = to_states[i];
-                        transitionMade = true;
-
-                        // Если включился свет
-                        if (currentFlashlight == &litRectFlashlight ||
-                            currentFlashlight == &litRoundFlashlight)
-                        {
-                            lightTimeRemaining = LIGHT_DURATION;
-                            isLightOn = true;
-                        }
                     }
                 }
+
 
                 /************************************************************/
                 /*   П Р О В Е Р К А  С Б О Р А  Б А Т А Р Е Е К            */
                 /************************************************************/
 
                 // Все батарейки одним циклом
-                for (int i = 0; i < MAX_BATTERIES && !transitionMade; i++)
+                for (int i = 0; i < MAX_BATTERIES; i++)
                 {
                     if (batteries[i] != NULL && IsCollision(*batteries[i], *currentFlashlight))
                     {
                         delete batteries[i];
                         batteries[i] = NULL;
                         batteriesCollected++;
-                        lightTimeRemaining += LIGHT_DURATION;
 
-                        if (!isLightOn)
+                        // Если фонарик не светится - включаем его
+                        if (currentFlashlight != &litRectWithTimer &&
+                            currentFlashlight != &litRoundWithTimer)
                         {
-                            if (currentFlashlight == &rectFlashlight ||
-                                currentFlashlight == &brokenRect)
-                                currentFlashlight = &litRectFlashlight;
-                            else if (currentFlashlight == &roundFlashlight ||
-                                currentFlashlight == &brokenRound)
-                                currentFlashlight = &litRoundFlashlight;
-                            isLightOn = true;
+                            currentFlashlight->Hide();
+
+                            // Простая проверка типа
+                            if (currentFlashlight == &rectFlashlight)
+                                currentFlashlight = &litRectWithTimer;
+                            else if (currentFlashlight == &roundFlashlight)
+                                currentFlashlight = &litRoundWithTimer;
+
+                            currentFlashlight->Show();
                         }
-                        transitionMade = true;
+
+                        // добавляем время независимо от типа фонарика
+                        currentFlashlight->AddTime(LIGHT_DURATION);
                     }
                 }
             }
@@ -609,13 +653,42 @@ int main()
         /*     О Б Н О В Л Е Н И Е  Т А Й М Е Р О В                */
         /************************************************************/
         
-        static int frameCounter = 0;
+        /* НАБРОСОК ОТ ВИТАЛИЯ ЕВГЕНЬЕВИЧА
+        //litRoundWithTimer
+        bool res = currentFlashlight->DecreaseTimer();
+        if (res == false)
+        {
+            currentFlashlight = &rectFlashlight;//?????
+        }*/
+
         frameCounter++;
         
+        // КОРОТКАЯ ВЕРСИЯ С ООП
+        // Обновляем таймер раз в секунду (примерно 30 кадров)
+        if (frameCounter >= 30)
+        {
+            // Уменьшаем таймер у любого фонарика (работает только у светящихся с таймером)
+            if (currentFlashlight->DecreaseTimer())
+            {
+                // Время вышло - переключаем на обычный фонарик
+                currentFlashlight->Hide();
+
+                // Простая проверка круглый или квадратный
+                if (currentFlashlight == &litRectWithTimer)
+                    currentFlashlight = &rectFlashlight;
+                else if (currentFlashlight == &litRoundWithTimer)
+                    currentFlashlight = &roundFlashlight;
+
+                currentFlashlight->Show();
+            }
+            frameCounter = 0;
+        }
+
+        /* ДЛИННАЯ ВЕРСИЯ БЕЗ ООП
         if (frameCounter >= 33) // Каждую секунду
         {
             // Таймер света
-            if (isLightOn && lightTimeRemaining > 0) 
+            if (isLightOn && lightTimeRemaining > 0)
             {
                 lightTimeRemaining--;
                 if (lightTimeRemaining <= 0)
@@ -623,13 +696,10 @@ int main()
                     // Нетранзитивные переходы
                     for (int i = NON_TRANS_START_INDEX; i < FLY_START_INDEX && !transitionMade; i++)
                     {
-                        if (currentFlashlight == from_states[i]) 
+                        if (currentFlashlight == from_states[i])
                         {
-                            // Прячем текущий (светящийся) фонарик
                             currentFlashlight->Hide();
-                            // Меняем состояние
                             currentFlashlight = to_states[i];
-                            // Отображаем новый фонарик
                             currentFlashlight->Show();
                             isLightOn = false;
                             break;
@@ -637,8 +707,35 @@ int main()
                     }
                 }
             }
-        }
+        */
+        
+        /************************************************************/
+        /*     Г Е Н Е Р А Ц И Я  Б А Т А Р Е Е К                  */
+        /************************************************************/
 
+        // Генерация новых батареек каждые 5 секунд
+        batterySpawnTimer++;
+
+        if (batterySpawnTimer >= (BATTERY_SPAWN_TIME * 30)) // 5 секунд * 30 кадров
+        {
+            batterySpawnTimer = 0;
+
+            // Ищем свободный слот для батарейки
+            for (int i = 0; i < MAX_BATTERIES; i++)
+            {
+                if (batteries[i] == NULL)
+                {
+                    // Создаем батарейку недалеко от текущей позиции фонарика
+                    batteries[i] = CreateBatteryNearFlashlight(
+                        currentFlashlight->GetX(),
+                        currentFlashlight->GetY(),
+                        SCREEN_WIDTH, SCREEN_HEIGHT
+                    );
+                    break;
+                }
+            }
+        }
+        
         /************************************************************/
         /*     П О Л Н А Я  О Т Р И С О В К А  К А Д Р А            */
         /************************************************************/

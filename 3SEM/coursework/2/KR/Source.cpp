@@ -1,0 +1,1606 @@
+/******************************************************************************
+ *                               Курс Информатика                              *
+ *******************************************************************************
+ * Project type  : Windows Console Application                                 *
+ * Project name  : Pt_1                                                        *
+ * File name     : lib.cpp                                                     *
+ * Language      : CPP                                                         *
+ * Programmers   : Нарзиев Артемий Тимурович                                   *
+ * Modified By   :                                                             *
+ * Created       : 13.09.2025                                                  *
+ * Last Revision : 24.10.2025                                                  *
+ * Comment       : ЛР №3. Фигура: фонарик                                      *
+ ******************************************************************************/
+
+#include "Header.h"
+#include <iostream>
+#include <cmath>
+#include <sstream>
+#include <cmath>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+#define KEY_DOWN(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 1 : 0)
+
+/* =============== КЛАСС Location =============== */
+Location::Location(int InitX, int InitY) {
+    x = InitX;
+    y = InitY;
+}
+Location::~Location() {}
+int Location::GetX() { return x; }
+int Location::GetY() { return y; }
+void Location::SetX(int NewX) { x = NewX; }
+void Location::SetY(int NewY) { y = NewY; }
+
+/* =============== КЛАСС Point =============== */
+Point::Point(int InitX, int InitY) : Location(InitX, InitY) {
+    visible = false;
+}
+Point::~Point() {}
+bool Point::GetVisible() { return visible; }
+void Point::SetVisible(bool NewVisible) { visible = NewVisible; }
+
+void Point::Show()
+{
+    visible = true;
+    SetPixel(hdc, x, y, RGB(255, 0, 0));
+    SetPixel(hdc, x, y + 1, RGB(255, 0, 0));
+    SetPixel(hdc, x + 1, y, RGB(255, 0, 0));
+    SetPixel(hdc, x + 1, y + 1, RGB(255, 0, 0));
+}
+
+void Point::Hide()
+{
+    visible = false;
+    SetPixel(hdc, x, y, RGB(0, 0, 255));
+    SetPixel(hdc, x, y + 1, RGB(0, 0, 255));
+    SetPixel(hdc, x + 1, y, RGB(0, 0, 255));
+    SetPixel(hdc, x + 1, y + 1, RGB(255, 0, 0));
+}
+
+void Point::MoveTo(int NewX, int NewY)
+{
+    Hide();
+    x = NewX;
+    y = NewY;
+    Show();
+}
+
+void Point::Drag(int Step)
+{
+    int FigX = x;
+    int FigY = y;
+
+    while (true)
+    {
+        if (KEY_DOWN(VK_ESCAPE)) { break; }
+
+        if (KEY_DOWN(VK_LEFT))
+        {
+            FigX = FigX - Step;
+            MoveTo(FigX, FigY);
+            Sleep(100);
+        }
+
+        if (KEY_DOWN(VK_RIGHT))
+        {
+            FigX = FigX + Step;
+            MoveTo(FigX, FigY);
+            Sleep(100);
+        }
+
+        if (KEY_DOWN(VK_UP))
+        {
+            FigY = FigY - Step;
+            MoveTo(FigX, FigY);
+            Sleep(100);
+        }
+
+        if (KEY_DOWN(VK_DOWN))
+        {
+            FigY = FigY + Step;
+            MoveTo(FigX, FigY);
+            Sleep(100);
+        }
+    }
+}
+
+/* =============== КЛАСС Circle =============== */
+Circle::Circle(int InitX, int InitY, int InitRadius) :
+    Conflict(InitX, InitY, InitRadius * 2, InitRadius * 2) {
+    radius = InitRadius;
+}
+
+Circle::~Circle() {}
+
+void Circle::Show() {
+    visible = true;
+
+    // Цвета для градиента и теней
+    HBRUSH darkRedBrush = CreateSolidBrush(RGB(139, 0, 0));
+    HBRUSH mediumRedBrush = CreateSolidBrush(RGB(205, 0, 0));
+    HBRUSH lightRedBrush = CreateSolidBrush(RGB(255, 69, 0));
+    HBRUSH highlightBrush = CreateSolidBrush(RGB(255, 99, 71));
+
+    HPEN darkRedPen = CreatePen(PS_SOLID, 2, RGB(128, 0, 0));
+    HPEN mediumRedPen = CreatePen(PS_SOLID, 2, RGB(178, 34, 34));
+    HPEN lightRedPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+
+    HBRUSH shadowBrush = CreateSolidBrush(RGB(100, 40, 40));
+    HBRUSH mediumShadowBrush = CreateSolidBrush(RGB(140, 80, 80));
+
+    // Тени
+    SelectObject(hdc, shadowBrush);
+    SelectObject(hdc, darkRedPen);
+    Ellipse(hdc, x - radius + 3, y - radius + 3, x + radius + 3, y + radius + 3);
+
+    SelectObject(hdc, mediumShadowBrush);
+    Ellipse(hdc, x - radius + 1, y - radius + 1, x + radius + 1, y + radius + 1);
+
+    // Основной круг с градиентом
+    SelectObject(hdc, darkRedBrush);
+    SelectObject(hdc, darkRedPen);
+    Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);
+
+    SelectObject(hdc, mediumRedBrush);
+    SelectObject(hdc, mediumRedPen);
+    Ellipse(hdc, x - radius * 0.7, y - radius * 0.7, x + radius * 0.7, y + radius * 0.7);
+
+    SelectObject(hdc, lightRedBrush);
+    SelectObject(hdc, lightRedPen);
+    Ellipse(hdc, x - radius * 0.4, y - radius * 0.4, x + radius * 0.4, y + radius * 0.4);
+
+    // Блик
+    SelectObject(hdc, highlightBrush);
+    Ellipse(hdc, x - radius * 0.2, y - radius * 0.2, x + radius * 0.1, y + radius * 0.1);
+
+    // Контур
+    SelectObject(hdc, GetStockObject(NULL_BRUSH));
+    SelectObject(hdc, darkRedPen);
+    Ellipse(hdc, x - radius, y - radius, x + radius, y + radius);
+
+    // Удаляем объекты
+    DeleteObject(darkRedPen); DeleteObject(mediumRedPen); DeleteObject(lightRedPen);
+    DeleteObject(darkRedBrush); DeleteObject(mediumRedBrush); DeleteObject(lightRedBrush);
+    DeleteObject(highlightBrush); DeleteObject(shadowBrush); DeleteObject(mediumShadowBrush);
+}
+
+void Circle::Hide() {
+    visible = false;
+    HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+    SelectObject(hdc, whiteBrush);
+    SelectObject(hdc, whitePen);
+    Ellipse(hdc, x - radius - 2, y - radius - 2, x + radius + 5, y + radius + 5);
+    DeleteObject(whitePen); DeleteObject(whiteBrush);
+}
+
+void Circle::Expand(int DeltaRad) {
+    Hide();
+    radius = radius + DeltaRad;
+    if (radius < 2) radius = 2;
+    Show();
+}
+
+void Circle::Reduse(int DeltaRad) { Expand(-DeltaRad); }
+
+/* =============== КЛАСС Conflict =============== */
+Conflict::Conflict(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Point(InitX, InitY) {
+    width = InitWidth;
+    height = InitHeight;
+}
+Conflict::~Conflict() {}
+
+void Conflict::Move() {}
+
+/* =============== КЛАСС Square =============== */
+Square::Square(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Conflict(InitX, InitY, InitWidth, InitHeight) {}
+Square::~Square() {}
+
+void Square::Show() {
+    visible = true;
+    HBRUSH darkBlueBrush = CreateSolidBrush(RGB(0, 0, 139));
+    HBRUSH mediumBlueBrush = CreateSolidBrush(RGB(0, 0, 205));
+    HBRUSH lightBlueBrush = CreateSolidBrush(RGB(30, 144, 255));
+    HPEN darkBluePen = CreatePen(PS_SOLID, 1, RGB(0, 0, 128));
+    HPEN mediumBluePen = CreatePen(PS_SOLID, 1, RGB(0, 0, 200));
+    HPEN lightBluePen = CreatePen(PS_SOLID, 1, RGB(70, 130, 255));
+    HBRUSH shadowBrush = CreateSolidBrush(RGB(40, 40, 100));
+    HBRUSH mediumShadowBrush = CreateSolidBrush(RGB(80, 80, 140));
+
+    // Тени
+    SelectObject(hdc, shadowBrush);
+    SelectObject(hdc, GetStockObject(NULL_PEN));
+    Rectangle(hdc, x + 4, y + 4, x + width + 4, y + height + 4);
+    SelectObject(hdc, mediumShadowBrush);
+    Rectangle(hdc, x + 2, y + 2, x + width + 2, y + height + 2);
+
+    // Основной квадрат
+    SelectObject(hdc, darkBlueBrush);
+    SelectObject(hdc, darkBluePen);
+    Rectangle(hdc, x, y + height / 2, x + width, y + height);
+    SelectObject(hdc, mediumBlueBrush);
+    Rectangle(hdc, x, y + height / 4, x + width, y + height / 2);
+    SelectObject(hdc, lightBlueBrush);
+    Rectangle(hdc, x, y, x + width, y + height / 4);
+
+    // Блики
+    HPEN highlightPen = CreatePen(PS_SOLID, 1, RGB(100, 150, 255));
+    HBRUSH highlightBrush = CreateSolidBrush(RGB(100, 150, 255));
+    SelectObject(hdc, highlightBrush);
+    SelectObject(hdc, highlightPen);
+    Rectangle(hdc, x + 2, y + 2, x + width - 2, y + 4);
+    Rectangle(hdc, x + 2, y + 2, x + 4, y + height - 2);
+
+    // Контур
+    SelectObject(hdc, GetStockObject(NULL_BRUSH));
+    SelectObject(hdc, darkBluePen);
+    Rectangle(hdc, x, y, x + width, y + height);
+
+    // Удаляем объекты
+    DeleteObject(darkBluePen); DeleteObject(mediumBluePen); DeleteObject(lightBluePen);
+    DeleteObject(highlightPen); DeleteObject(darkBlueBrush); DeleteObject(mediumBlueBrush);
+    DeleteObject(lightBlueBrush); DeleteObject(highlightBrush);
+    DeleteObject(shadowBrush); DeleteObject(mediumShadowBrush);
+}
+
+void Square::Hide() {
+    visible = false;
+    HPEN whitePen = CreatePen(PS_SOLID, 1, RGB(255, 255, 255));
+    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+    SelectObject(hdc, whiteBrush);
+    SelectObject(hdc, whitePen);
+    Rectangle(hdc, x - 2, y - 2, x + width + 6, y + height + 6);
+    DeleteObject(whitePen); DeleteObject(whiteBrush);
+}
+
+/* =============== КЛАСС Screwdriver =============== */
+Screwdriver::Screwdriver(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Conflict(InitX, InitY, InitWidth, InitHeight) {}
+Screwdriver::~Screwdriver() {}
+
+void Screwdriver::Show() {
+    visible = true;
+    HBRUSH handleBrush = CreateSolidBrush(RGB(139, 69, 19));
+    HBRUSH metalBrush = CreateSolidBrush(RGB(192, 192, 192));
+    HPEN darkPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
+    SelectObject(hdc, handleBrush);
+    SelectObject(hdc, darkPen);
+    Rectangle(hdc, x, y, x + width, y - height + 5);
+    SelectObject(hdc, metalBrush);
+    Rectangle(hdc, x + 3, y, x + width / 2 + 3, y + height);
+    POINT tip[3];
+    tip[0].x = x + width / 4 + 3; tip[0].y = y + height;
+    tip[1].x = x + 3; tip[1].y = y + height + 10;
+    tip[2].x = x + width / 2 + 3; tip[2].y = y + height + 10;
+    Polygon(hdc, tip, 3);
+    DeleteObject(darkPen); DeleteObject(metalBrush); DeleteObject(handleBrush);
+}
+
+void Screwdriver::Hide() {
+    visible = true;
+    HBRUSH handleBrush = CreateSolidBrush(RGB(255, 255, 255));
+    HBRUSH metalBrush = CreateSolidBrush(RGB(255, 255, 255));
+    HPEN darkPen = CreatePen(PS_SOLID, 1, RGB(255, 255, 255));
+    SelectObject(hdc, handleBrush);
+    SelectObject(hdc, darkPen);
+    Rectangle(hdc, x, y, x + width, y - height + 5);
+    SelectObject(hdc, metalBrush);
+    Rectangle(hdc, x + 3, y, x + width / 2 + 3, y + height);
+    POINT tip[3];
+    tip[0].x = x + width / 4 + 3; tip[0].y = y + height;
+    tip[1].x = x + 3; tip[1].y = y + height + 10;
+    tip[2].x = x + width / 2 + 3; tip[2].y = y + height + 10;
+    Polygon(hdc, tip, 3);
+    DeleteObject(darkPen); DeleteObject(metalBrush); DeleteObject(handleBrush);
+}
+
+/* =============== КЛАСС Stone =============== */
+Stone::Stone(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Conflict(InitX, InitY, InitWidth, InitHeight) {}
+Stone::~Stone() {}
+
+void Stone::Show() {
+    visible = true;
+    HBRUSH darkStoneBrush = CreateSolidBrush(RGB(80, 80, 80));
+    HBRUSH mediumStoneBrush = CreateSolidBrush(RGB(120, 120, 120));
+    HBRUSH lightStoneBrush = CreateSolidBrush(RGB(160, 160, 160));
+    HPEN stonePen = CreatePen(PS_SOLID, 2, RGB(60, 60, 60));
+    HPEN crackPen = CreatePen(PS_SOLID, 1, RGB(40, 40, 40));
+    HPEN highlightPen = CreatePen(PS_SOLID, 1, RGB(180, 180, 180));
+    HBRUSH stoneShadowBrush = CreateSolidBrush(RGB(60, 60, 60));
+
+    // Тень
+    SelectObject(hdc, stoneShadowBrush);
+    SelectObject(hdc, stonePen);
+    POINT shadowShape[8];
+    shadowShape[0].x = x + width / 4 + 2; shadowShape[0].y = y + 2;
+    shadowShape[1].x = x + width * 3 / 4 + 2; shadowShape[1].y = y + 2;
+    shadowShape[2].x = x + width + 2; shadowShape[2].y = y + height / 3 + 2;
+    shadowShape[3].x = x + width * 3 / 4 + 2; shadowShape[3].y = y + height * 2 / 3 + 2;
+    shadowShape[4].x = x + width + 2; shadowShape[4].y = y + height + 2;
+    shadowShape[5].x = x + width / 2 + 2; shadowShape[5].y = y + height + 2;
+    shadowShape[6].x = x + 2; shadowShape[6].y = y + height * 2 / 3 + 2;
+    shadowShape[7].x = x + width / 4 + 2; shadowShape[7].y = y + height / 3 + 2;
+    Polygon(hdc, shadowShape, 8);
+
+    // Основной камень
+    SelectObject(hdc, darkStoneBrush);
+    POINT stoneShape[8];
+    stoneShape[0].x = x + width / 4; stoneShape[0].y = y;
+    stoneShape[1].x = x + width * 3 / 4; stoneShape[1].y = y;
+    stoneShape[2].x = x + width; stoneShape[2].y = y + height / 3;
+    stoneShape[3].x = x + width * 3 / 4; stoneShape[3].y = y + height * 2 / 3;
+    stoneShape[4].x = x + width; stoneShape[4].y = y + height;
+    stoneShape[5].x = x + width / 2; stoneShape[5].y = y + height;
+    stoneShape[6].x = x; stoneShape[6].y = y + height * 2 / 3;
+    stoneShape[7].x = x + width / 4; stoneShape[7].y = y + height / 3;
+    Polygon(hdc, stoneShape, 8);
+
+    // Блик и трещины
+    SelectObject(hdc, highlightPen);
+    SelectObject(hdc, GetStockObject(NULL_BRUSH));
+    MoveToEx(hdc, x + width / 3, y + height / 5, NULL);
+    LineTo(hdc, x + width * 2 / 3, y + height / 6);
+    LineTo(hdc, x + width * 3 / 4, y + height / 4);
+    SelectObject(hdc, crackPen);
+    MoveToEx(hdc, x + width / 3, y + height / 4, NULL);
+    LineTo(hdc, x + width / 2, y + height / 2);
+    MoveToEx(hdc, x + width * 2 / 3, y + height / 3, NULL);
+    LineTo(hdc, x + width / 3, y + height * 3 / 4);
+
+    DeleteObject(stonePen); DeleteObject(crackPen); DeleteObject(highlightPen);
+    DeleteObject(darkStoneBrush); DeleteObject(mediumStoneBrush); DeleteObject(lightStoneBrush);
+    DeleteObject(stoneShadowBrush);
+}
+
+void Stone::Hide() {
+    visible = false;
+    HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    SelectObject(hdc, Pen);
+    POINT stoneShape[8];
+    stoneShape[0].x = x + width / 4; stoneShape[0].y = y;
+    stoneShape[1].x = x + width * 3 / 4; stoneShape[1].y = y;
+    stoneShape[2].x = x + width; stoneShape[2].y = y + height / 3;
+    stoneShape[3].x = x + width * 3 / 4; stoneShape[3].y = y + height * 2 / 3;
+    stoneShape[4].x = x + width; stoneShape[4].y = y + height;
+    stoneShape[5].x = x + width / 2; stoneShape[5].y = y + height;
+    stoneShape[6].x = x; stoneShape[6].y = y + height * 2 / 3;
+    stoneShape[7].x = x + width / 4; stoneShape[7].y = y + height / 3;
+    Polygon(hdc, stoneShape, 8);
+    DeleteObject(Pen);
+}
+
+/* =============== КЛАСС Battery =============== */
+Battery::Battery(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Conflict(InitX, InitY, InitWidth, InitHeight) {}
+Battery::~Battery() {}
+
+void Battery::Show()
+{
+    visible = true;
+
+    // Создаем градиентные кисти для более продвинутой батарейки
+    HBRUSH darkSilverBrush = CreateSolidBrush(RGB(150, 150, 160));
+    HBRUSH mediumSilverBrush = CreateSolidBrush(RGB(180, 180, 190));
+    HBRUSH lightSilverBrush = CreateSolidBrush(RGB(210, 210, 220));
+
+    HBRUSH darkGreenBrush = CreateSolidBrush(RGB(0, 100, 0));
+    HBRUSH mediumGreenBrush = CreateSolidBrush(RGB(0, 150, 0));
+    HBRUSH lightGreenBrush = CreateSolidBrush(RGB(0, 200, 0));
+    HBRUSH highlightGreenBrush = CreateSolidBrush(RGB(100, 255, 100));
+
+    HPEN darkPen = CreatePen(PS_SOLID, 1, RGB(50, 50, 50));
+    HPEN mediumPen = CreatePen(PS_SOLID, 1, RGB(80, 80, 80));
+    HPEN lightPen = CreatePen(PS_SOLID, 1, RGB(120, 120, 120));
+
+    HBRUSH shadowBrush = CreateSolidBrush(RGB(100, 100, 110));
+    HBRUSH mediumShadowBrush = CreateSolidBrush(RGB(120, 120, 130));
+
+    // Тени
+    SelectObject(hdc, shadowBrush);
+    SelectObject(hdc, darkPen);
+    Rectangle(hdc, x + 3, y + 3, x + width + 3, y + height + 3);
+
+    SelectObject(hdc, mediumShadowBrush);
+    Rectangle(hdc, x + 1, y + 1, x + width + 1, y + height + 1);
+
+    // Основной корпус батарейки
+    SelectObject(hdc, darkSilverBrush);
+    SelectObject(hdc, darkPen);
+    Rectangle(hdc, x, y, x + width, y + height);
+
+    SelectObject(hdc, mediumSilverBrush);
+    Rectangle(hdc, x + width * 0.1, y + height * 0.1,
+        x + width * 0.9, y + height * 0.9);
+
+    SelectObject(hdc, lightSilverBrush);
+    Rectangle(hdc, x + width * 0.2, y + height * 0.2,
+        x + width * 0.8, y + height * 0.8);
+
+    // Верхний контакт
+    int contactWidth = width / 3;
+    int contactHeight = height / 6;
+    SelectObject(hdc, darkSilverBrush);
+    Rectangle(hdc, x + (width - contactWidth) / 2, y - contactHeight,
+        x + (width + contactWidth) / 2, y);
+
+    SelectObject(hdc, mediumSilverBrush);
+    Rectangle(hdc, x + (width - contactWidth) / 2 + 1, y - contactHeight + 1,
+        x + (width + contactWidth) / 2 - 1, y - 1);
+
+    // Индикатор заряда с градиентом
+    int indicatorWidth = width * 0.6;
+    int indicatorHeight = height * 0.4;
+    int indicatorX = x + (width - indicatorWidth) / 2;
+    int indicatorY = y + height * 0.3;
+
+    SelectObject(hdc, darkGreenBrush);
+    Rectangle(hdc, indicatorX, indicatorY,
+        indicatorX + indicatorWidth, indicatorY + indicatorHeight);
+
+    SelectObject(hdc, mediumGreenBrush);
+    Rectangle(hdc, indicatorX + 2, indicatorY + 2,
+        indicatorX + indicatorWidth - 2, indicatorY + indicatorHeight * 0.7);
+
+    SelectObject(hdc, lightGreenBrush);
+    Rectangle(hdc, indicatorX + 4, indicatorY + 4,
+        indicatorX + indicatorWidth - 4, indicatorY + indicatorHeight * 0.5);
+
+    SelectObject(hdc, highlightGreenBrush);
+    Rectangle(hdc, indicatorX + 6, indicatorY + 6,
+        indicatorX + indicatorWidth - 6, indicatorY + indicatorHeight * 0.3);
+
+    // Знак плюса
+    HPEN plusPen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    SelectObject(hdc, plusPen);
+    int centerX = x + width / 2;
+    int centerY = y + height / 2;
+
+    // Горизонтальная линия плюса
+    MoveToEx(hdc, centerX - indicatorWidth / 4, centerY, NULL);
+    LineTo(hdc, centerX + indicatorWidth / 4, centerY);
+
+    // Вертикальная линия плюса
+    MoveToEx(hdc, centerX, centerY - indicatorHeight / 4, NULL);
+    LineTo(hdc, centerX, centerY + indicatorHeight / 4);
+
+    // Контур батарейки
+    SelectObject(hdc, GetStockObject(NULL_BRUSH));
+    SelectObject(hdc, darkPen);
+    Rectangle(hdc, x, y - contactHeight, x + width, y + height);
+
+    // Удаляем объекты
+    DeleteObject(plusPen);
+    DeleteObject(darkPen); DeleteObject(mediumPen); DeleteObject(lightPen);
+    DeleteObject(darkSilverBrush); DeleteObject(mediumSilverBrush); DeleteObject(lightSilverBrush);
+    DeleteObject(darkGreenBrush); DeleteObject(mediumGreenBrush); DeleteObject(lightGreenBrush);
+    DeleteObject(highlightGreenBrush);
+    DeleteObject(shadowBrush); DeleteObject(mediumShadowBrush);
+}
+
+void Battery::Hide()
+{
+    visible = false;
+    HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+
+    SelectObject(hdc, whitePen);
+    SelectObject(hdc, whiteBrush);
+
+    // Замазываем всю область батарейки с запасом для контакта
+    int contactHeight = height / 6;
+    Rectangle(hdc, x - 5, y - contactHeight - 5, x + width + 10, y + height + 10);
+
+    DeleteObject(whitePen);
+    DeleteObject(whiteBrush);
+}
+
+/* =============== БАЗОВЫЙ КЛАСС Flashlight =============== */
+BaseFlashlight::BaseFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+    int InitHeadWidth, int InitHeadHeight) : Point(InitX, InitY) {
+    bodyWidth = InitBodyWidth;
+    bodyHeight = InitBodyHeight;
+    headWidth = InitHeadWidth;
+    headHeight = InitHeadHeight;
+}
+BaseFlashlight::~BaseFlashlight() {}
+
+void BaseFlashlight::Show()
+{
+    visible = true;
+    PrintLight();   // свет
+    PrintBody();    // корпус
+    PrintHead();    // головка
+    PrintCrack();   // трещины
+    PrintButton();  // кнопка
+}
+
+void BaseFlashlight::Hide()
+{
+    visible = false;
+    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+    HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+
+    SelectObject(hdc, whiteBrush);
+    SelectObject(hdc, whitePen);
+
+    // ТОЛЬКО область самого фонарика (без огромного запаса)
+    int left = x - 15;
+    int top = y - headHeight; // только головка и корпус
+    int right = x + max(bodyWidth, headWidth);
+    int bottom = y + bodyHeight + 5;
+
+    Rectangle(hdc, left - 2, top - 2, right + 2, bottom + 2); // маленький запас
+
+    DeleteObject(whitePen);
+    DeleteObject(whiteBrush);
+}
+
+
+/* =============== ПРЯМОУГОЛЬНЫЙ ФОНАРИК =============== */
+RectFlashlight::RectFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+    int InitHeadWidth, int InitHeadHeight)
+    : BaseFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight) {}
+RectFlashlight::~RectFlashlight() {}
+
+void RectFlashlight::PrintBody()
+{
+    HBRUSH darkMetalBrush = CreateSolidBrush(RGB(70, 70, 80));
+    HBRUSH mediumMetalBrush = CreateSolidBrush(RGB(90, 90, 100));
+    HBRUSH lightMetalBrush = CreateSolidBrush(RGB(110, 110, 120));
+    HBRUSH shadowBrush = CreateSolidBrush(RGB(50, 50, 60));
+    HBRUSH mediumShadowBrush = CreateSolidBrush(RGB(60, 60, 70));
+    HPEN softDarkPen = CreatePen(PS_SOLID, 1, RGB(65, 65, 75));
+    HPEN softMediumPen = CreatePen(PS_SOLID, 1, RGB(85, 85, 95));
+
+    // Тени
+    SelectObject(hdc, shadowBrush);
+    SelectObject(hdc, GetStockObject(NULL_PEN));
+    Rectangle(hdc, x + 3, y + 3, x + bodyWidth + 3, y + bodyHeight + 3);
+    SelectObject(hdc, mediumShadowBrush);
+    Rectangle(hdc, x + 1, y + 1, x + bodyWidth + 1, y + bodyHeight + 1);
+
+    // Корпус с градиентом
+    SelectObject(hdc, darkMetalBrush);
+    SelectObject(hdc, softDarkPen);
+    Rectangle(hdc, x, y, x + bodyWidth * 0.3, y + bodyHeight);
+    SelectObject(hdc, mediumMetalBrush);
+    Rectangle(hdc, x + bodyWidth * 0.3, y, x + bodyWidth * 0.7, y + bodyHeight);
+    SelectObject(hdc, lightMetalBrush);
+    Rectangle(hdc, x + bodyWidth * 0.7, y, x + bodyWidth, y + bodyHeight);
+
+    DeleteObject(softDarkPen); DeleteObject(softMediumPen);
+    DeleteObject(darkMetalBrush); DeleteObject(mediumMetalBrush); DeleteObject(lightMetalBrush);
+    DeleteObject(shadowBrush); DeleteObject(mediumShadowBrush);
+}
+
+void RectFlashlight::PrintHead()
+{
+    HBRUSH darkHeadBrush = CreateSolidBrush(RGB(60, 60, 70));
+    HBRUSH mediumHeadBrush = CreateSolidBrush(RGB(80, 80, 90));
+    HBRUSH lightHeadBrush = CreateSolidBrush(RGB(100, 100, 110));
+    HBRUSH shadowBrush = CreateSolidBrush(RGB(50, 50, 60));
+    HBRUSH mediumShadowBrush = CreateSolidBrush(RGB(60, 60, 70));
+    HPEN softDarkPen = CreatePen(PS_SOLID, 1, RGB(65, 65, 75));
+
+    int headX = x + (bodyWidth - headWidth) / 2;
+    int headY = y - headHeight;
+
+    // Тени
+    SelectObject(hdc, shadowBrush);
+    SelectObject(hdc, GetStockObject(NULL_PEN));
+    Rectangle(hdc, headX + 2, headY + 2, headX + headWidth + 2, headY + headHeight + 2);
+    SelectObject(hdc, mediumShadowBrush);
+    Rectangle(hdc, headX + 1, headY + 1, headX + headWidth + 1, headY + headHeight + 1);
+
+    // Головка с градиентом
+    SelectObject(hdc, darkHeadBrush);
+    SelectObject(hdc, softDarkPen);
+    Rectangle(hdc, headX, headY, headX + headWidth, headY + headHeight * 0.2);
+    SelectObject(hdc, mediumHeadBrush);
+    Rectangle(hdc, headX, headY + headHeight * 0.2, headX + headWidth, headY + headHeight * 0.5);
+    SelectObject(hdc, lightHeadBrush);
+    Rectangle(hdc, headX, headY + headHeight * 0.5, headX + headWidth, headY + headHeight * 0.8);
+    SelectObject(hdc, CreateSolidBrush(RGB(120, 120, 130)));
+    Rectangle(hdc, headX, headY + headHeight * 0.8, headX + headWidth, headY + headHeight);
+
+    DeleteObject(softDarkPen);
+    DeleteObject(darkHeadBrush); DeleteObject(mediumHeadBrush); DeleteObject(lightHeadBrush);
+    DeleteObject(shadowBrush); DeleteObject(mediumShadowBrush);
+}
+
+void RectFlashlight::PrintButton()
+{
+    HBRUSH lightRedBrush = CreateSolidBrush(RGB(220, 40, 40));
+    HBRUSH mediumRedBrush = CreateSolidBrush(RGB(180, 20, 20));
+    HBRUSH darkRedBrush = CreateSolidBrush(RGB(140, 0, 0));
+    HBRUSH indicatorBrush = CreateSolidBrush(RGB(255, 255, 200));
+    HBRUSH shadowBrush = CreateSolidBrush(RGB(50, 50, 60));
+    HBRUSH mediumShadowBrush = CreateSolidBrush(RGB(60, 60, 70));
+
+    int buttonWidth = 14;
+    int buttonHeight = 20;
+    int buttonX = x + bodyWidth - 28;
+    int buttonY = y + bodyHeight - 35;
+
+    // Тени
+    SelectObject(hdc, shadowBrush);
+    SelectObject(hdc, GetStockObject(NULL_PEN));
+    Rectangle(hdc, buttonX + 2, buttonY + 2, buttonX + buttonWidth + 2, buttonY + buttonHeight + 2);
+    SelectObject(hdc, mediumShadowBrush);
+    Rectangle(hdc, buttonX + 1, buttonY + 1, buttonX + buttonWidth + 1, buttonY + buttonHeight + 1);
+
+    // Кнопка с градиентом
+    SelectObject(hdc, lightRedBrush);
+    Rectangle(hdc, buttonX, buttonY, buttonX + buttonWidth, buttonY + buttonHeight * 0.3);
+    SelectObject(hdc, mediumRedBrush);
+    Rectangle(hdc, buttonX, buttonY + buttonHeight * 0.3, buttonX + buttonWidth, buttonY + buttonHeight * 0.7);
+    SelectObject(hdc, darkRedBrush);
+    Rectangle(hdc, buttonX, buttonY + buttonHeight * 0.7, buttonX + buttonWidth, buttonY + buttonHeight);
+
+    // Индикатор
+    SelectObject(hdc, indicatorBrush);
+    Ellipse(hdc, buttonX + buttonWidth * 0.3, buttonY + buttonHeight * 0.4,
+        buttonX + buttonWidth * 0.7, buttonY + buttonHeight * 0.6);
+
+    DeleteObject(lightRedBrush); DeleteObject(mediumRedBrush); DeleteObject(darkRedBrush);
+    DeleteObject(indicatorBrush); DeleteObject(shadowBrush); DeleteObject(mediumShadowBrush);
+}
+
+void RectFlashlight::PrintLight()
+{
+    // Обычный фонарик не светит
+}
+
+void RectFlashlight::PrintCrack()
+{
+    // Обычный фонарик не имеет трещин
+}
+
+void RectFlashlight::Hide() {
+    // Просто вызываем Hide из BaseFlashlight - он уже делает всё правильно
+    BaseFlashlight::Hide();
+}
+
+/* =============== СЛОМАННЫЙ ПРЯМОУГОЛЬНЫЙ ФОНАРИК =============== */
+BrokenRectFlashlight::BrokenRectFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+    int InitHeadWidth, int InitHeadHeight)
+    : RectFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight) {}
+BrokenRectFlashlight::~BrokenRectFlashlight() {}
+
+void BrokenRectFlashlight::PrintCrack()
+{
+    HPEN crackPen = CreatePen(PS_SOLID, 2, RGB(30, 30, 35));
+    HPEN deepCrackPen = CreatePen(PS_SOLID, 1, RGB(120, 30, 30));
+
+    SelectObject(hdc, crackPen);
+    SelectObject(hdc, GetStockObject(NULL_BRUSH));
+
+    // Трещины на корпусе
+    MoveToEx(hdc, x + bodyWidth * 0.2, y + 5, NULL);
+    LineTo(hdc, x + bodyWidth * 0.4, y + bodyHeight * 0.3);
+    LineTo(hdc, x + bodyWidth * 0.6, y + bodyHeight * 0.6);
+    LineTo(hdc, x + bodyWidth * 0.8, y + bodyHeight - 5);
+    MoveToEx(hdc, x + bodyWidth * 0.5, y + 10, NULL);
+    LineTo(hdc, x + bodyWidth * 0.5, y + bodyHeight - 10);
+
+    // Трещины на головке
+    int headX = x + (bodyWidth - headWidth) / 2;
+    int headY = y - headHeight;
+    SelectObject(hdc, deepCrackPen);
+    MoveToEx(hdc, headX + headWidth * 0.2, headY + 5, NULL);
+    LineTo(hdc, headX + headWidth * 0.8, headY + headHeight - 5);
+    MoveToEx(hdc, headX + headWidth * 0.8, headY + 5, NULL);
+    LineTo(hdc, headX + headWidth * 0.2, headY + headHeight - 5);
+
+    // Сломанная кнопка
+    int buttonWidth = 14;
+    int buttonHeight = 20;
+    int buttonX = x + bodyWidth - 28;
+    int buttonY = y + bodyHeight - 35;
+    MoveToEx(hdc, buttonX, buttonY, NULL);
+    LineTo(hdc, buttonX + buttonWidth, buttonY + buttonHeight);
+    MoveToEx(hdc, buttonX + buttonWidth, buttonY, NULL);
+    LineTo(hdc, buttonX, buttonY + buttonHeight);
+
+    DeleteObject(crackPen); DeleteObject(deepCrackPen);
+}
+
+/* =============== ГОРЯЩИЙ ПРЯМОУГОЛЬНЫЙ ФОНАРИК =============== */
+LitRectFlashlight::LitRectFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+    int InitHeadWidth, int InitHeadHeight)
+    : RectFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight) {}
+LitRectFlashlight::~LitRectFlashlight() {}
+
+void LitRectFlashlight::PrintLight()
+{
+    // Свет из головки (теплые оттенки желтого)
+    HBRUSH darkYellowBrush = CreateSolidBrush(RGB(255, 220, 100));
+    HBRUSH mediumYellowBrush = CreateSolidBrush(RGB(255, 240, 160));
+    HBRUSH lightYellowBrush = CreateSolidBrush(RGB(255, 250, 200));
+    HBRUSH highlightBrush = CreateSolidBrush(RGB(255, 255, 230));
+
+    HPEN yellowPen = CreatePen(PS_SOLID, 1, RGB(255, 220, 100));
+    HPEN lightYellowPen = CreatePen(PS_SOLID, 1, RGB(255, 240, 180));
+
+    int headX = x + (bodyWidth - headWidth) / 2;
+    int headY = y - headHeight;
+
+    // Рисуем луч света (трапеция) с градиентом
+    POINT light[4];
+    light[0].x = headX + headWidth * 0.2;
+    light[0].y = headY;
+    light[1].x = headX + headWidth * 0.8;
+    light[1].y = headY;
+    light[2].x = headX + headWidth * 1.5;
+    light[2].y = headY - headHeight * 2;
+    light[3].x = headX - headWidth * 0.5;
+    light[3].y = headY - headHeight * 2;
+
+    // Основной луч
+    SelectObject(hdc, darkYellowBrush);
+    SelectObject(hdc, yellowPen);
+    Polygon(hdc, light, 4);
+
+    // Внутренняя часть луча (более светлая)
+    POINT innerLight[4];
+    for (int i = 0; i < 4; i++) {
+        innerLight[i].x = (light[i].x + headX + headWidth / 2) / 2;
+        innerLight[i].y = (light[i].y + headY) / 2;
+    }
+    SelectObject(hdc, mediumYellowBrush);
+    SelectObject(hdc, lightYellowPen);
+    Polygon(hdc, innerLight, 4);
+
+    // Яркое ядро луча
+    POINT coreLight[4];
+    for (int i = 0; i < 4; i++) {
+        coreLight[i].x = (innerLight[i].x + headX + headWidth / 2) / 2;
+        coreLight[i].y = (innerLight[i].y + headY) / 2;
+    }
+    SelectObject(hdc, lightYellowBrush);
+    Polygon(hdc, coreLight, 4);
+
+    // Центральная точка (самое яркое)
+    POINT centerLight[4];
+    for (int i = 0; i < 4; i++) {
+        centerLight[i].x = (coreLight[i].x + headX + headWidth / 2) / 2;
+        centerLight[i].y = (coreLight[i].y + headY) / 2;
+    }
+    SelectObject(hdc, highlightBrush);
+    Polygon(hdc, centerLight, 4);
+
+    // Лучики света
+    HPEN rayPen = CreatePen(PS_SOLID, 1, RGB(255, 255, 180));
+    SelectObject(hdc, rayPen);
+    SelectObject(hdc, GetStockObject(NULL_BRUSH));
+
+    // Рисуем несколько лучей
+    for (int i = 0; i < 8; i++) {
+        double angle = 3.14159 * i / 4;
+        int rayLength = headHeight * 2.5;
+        MoveToEx(hdc, headX + headWidth / 2, headY, NULL);
+        LineTo(hdc, headX + headWidth / 2 + cos(angle) * rayLength,
+            headY + sin(angle) * rayLength);
+    }
+
+    DeleteObject(yellowPen); DeleteObject(lightYellowPen); DeleteObject(rayPen);
+    DeleteObject(darkYellowBrush); DeleteObject(mediumYellowBrush); DeleteObject(lightYellowBrush);
+    DeleteObject(highlightBrush);
+}
+
+void LitRectFlashlight::Hide()
+{
+    visible = false;
+
+    // Создаем белые кисти и перья для замазывания
+    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+    HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+
+    SelectObject(hdc, whiteBrush);
+    SelectObject(hdc, whitePen);
+
+    // Замазываем область света отдельно (трапецию)
+    int headX = x + (bodyWidth - headWidth) / 2;
+    int headY = y - headHeight;
+
+    POINT light[4];
+    light[0].x = headX + headWidth * 0.2;
+    light[0].y = headY;
+    light[1].x = headX + headWidth * 0.8;
+    light[1].y = headY;
+    light[2].x = headX + headWidth * 1.5;
+    light[2].y = headY - headHeight * 2;
+    light[3].x = headX - headWidth * 0.5;
+    light[3].y = headY - headHeight * 2;
+
+    // Замазываем область света
+    Polygon(hdc, light, 4);
+
+    // Замазываем лучики
+    for (int i = 0; i < 8; i++) {
+        double angle = 3.14159 * i / 4;
+        int rayLength = headHeight * 2.5;
+        MoveToEx(hdc, headX + headWidth / 2, headY, NULL);
+        LineTo(hdc, headX + headWidth / 2 + cos(angle) * rayLength,
+            headY + sin(angle) * rayLength);
+    }
+
+    // Замазываем основную область фонарика
+    BaseFlashlight::Hide();
+
+    DeleteObject(whitePen);
+    DeleteObject(whiteBrush);
+}
+
+/* =============== КРУГЛЫЙ ФОНАРИК =============== */
+RoundFlashlight::RoundFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+    int InitHeadWidth, int InitHeadHeight)
+    : BaseFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight) {}
+RoundFlashlight::~RoundFlashlight() {}
+
+void RoundFlashlight::PrintBody()
+{
+    HBRUSH darkBaseBrush = CreateSolidBrush(RGB(80, 80, 90));
+    HBRUSH mediumBaseBrush = CreateSolidBrush(RGB(100, 100, 110));
+    HBRUSH lightBaseBrush = CreateSolidBrush(RGB(120, 120, 130));
+    HBRUSH shadowBrush = CreateSolidBrush(RGB(60, 60, 70));
+    HBRUSH mediumShadowBrush = CreateSolidBrush(RGB(70, 70, 80));
+    HPEN softDarkPen = CreatePen(PS_SOLID, 1, RGB(75, 75, 85));
+    HPEN softMediumPen = CreatePen(PS_SOLID, 1, RGB(95, 95, 105));
+
+    // Основание с тенями
+    SelectObject(hdc, shadowBrush);
+    SelectObject(hdc, softDarkPen);
+    Ellipse(hdc, x + 3, y + 3, x + bodyWidth + 3, y + bodyHeight + 3);
+    SelectObject(hdc, mediumShadowBrush);
+    Ellipse(hdc, x + 1, y + 1, x + bodyWidth + 1, y + bodyHeight + 1);
+    SelectObject(hdc, darkBaseBrush);
+    Ellipse(hdc, x, y, x + bodyWidth, y + bodyHeight);
+    SelectObject(hdc, mediumBaseBrush);
+    Ellipse(hdc, x + bodyWidth * 0.1, y + bodyHeight * 0.1,
+        x + bodyWidth * 0.9, y + bodyHeight * 0.9);
+    SelectObject(hdc, lightBaseBrush);
+    Ellipse(hdc, x + bodyWidth * 0.2, y + bodyHeight * 0.2,
+        x + bodyWidth * 0.8, y + bodyHeight * 0.8);
+
+    DeleteObject(softDarkPen); DeleteObject(softMediumPen);
+    DeleteObject(darkBaseBrush); DeleteObject(mediumBaseBrush); DeleteObject(lightBaseBrush);
+    DeleteObject(shadowBrush); DeleteObject(mediumShadowBrush);
+}
+
+void RoundFlashlight::PrintHead()
+{
+    HBRUSH darkShadeBrush = CreateSolidBrush(RGB(210, 200, 180));
+    HBRUSH mediumShadeBrush = CreateSolidBrush(RGB(230, 220, 200));
+    HBRUSH lightShadeBrush = CreateSolidBrush(RGB(250, 240, 220));
+    HBRUSH shadeShadowBrush = CreateSolidBrush(RGB(180, 170, 160));
+
+    // Абажур
+    POINT shade[7];
+    int shadeTop = y - headHeight;
+    int shadeBottom = y;
+    shade[0].x = x + bodyWidth / 2 - headWidth * 0.3; shade[0].y = shadeTop;
+    shade[1].x = x + bodyWidth / 2 + headWidth * 0.3; shade[1].y = shadeTop;
+    shade[2].x = x + bodyWidth / 2 + headWidth * 0.45; shade[2].y = shadeTop + headHeight * 0.3;
+    shade[3].x = x + bodyWidth / 2 + headWidth * 0.5; shade[3].y = shadeTop + headHeight * 0.6;
+    shade[4].x = x + bodyWidth / 2 + headWidth * 0.45; shade[4].y = shadeBottom;
+    shade[5].x = x + bodyWidth / 2 - headWidth * 0.45; shade[5].y = shadeBottom;
+    shade[6].x = x + bodyWidth / 2 - headWidth * 0.5; shade[6].y = shadeTop + headHeight * 0.6;
+
+    // Тень абажура
+    POINT shadowShade[7];
+    for (int i = 0; i < 7; i++) {
+        shadowShade[i].x = shade[i].x + 2;
+        shadowShade[i].y = shade[i].y + 2;
+    }
+    SelectObject(hdc, shadeShadowBrush);
+    Polygon(hdc, shadowShade, 7);
+
+    // Основной абажур с градиентом
+    SelectObject(hdc, darkShadeBrush);
+    Polygon(hdc, shade, 7);
+
+    // Внутренняя часть абажура
+    POINT innerShade[7];
+    for (int i = 0; i < 7; i++) {
+        innerShade[i].x = (shade[i].x + x + bodyWidth / 2) / 2;
+        innerShade[i].y = (shade[i].y + y - headHeight / 2) / 2;
+    }
+    SelectObject(hdc, mediumShadeBrush);
+    Polygon(hdc, innerShade, 7);
+
+    // Центральная часть абажура
+    POINT centerShade[7];
+    for (int i = 0; i < 7; i++) {
+        centerShade[i].x = (innerShade[i].x + x + bodyWidth / 2) / 2;
+        centerShade[i].y = (innerShade[i].y + y - headHeight / 2) / 2;
+    }
+    SelectObject(hdc, lightShadeBrush);
+    Polygon(hdc, centerShade, 7);
+
+    DeleteObject(darkShadeBrush); DeleteObject(mediumShadeBrush); DeleteObject(lightShadeBrush);
+    DeleteObject(shadeShadowBrush);
+}
+
+void RoundFlashlight::PrintButton()
+{
+    HBRUSH darkEmeraldBrush = CreateSolidBrush(RGB(0, 100, 80));
+    HBRUSH mediumEmeraldBrush = CreateSolidBrush(RGB(0, 150, 120));
+    HBRUSH lightEmeraldBrush = CreateSolidBrush(RGB(0, 200, 160));
+    HBRUSH shadowBrush = CreateSolidBrush(RGB(60, 60, 70));
+
+    int buttonRadius = 10;
+    int buttonX = x + bodyWidth - 25;
+    int buttonY = y + bodyHeight - 25;
+
+    // Тень кнопки
+    SelectObject(hdc, shadowBrush);
+    Ellipse(hdc, buttonX - buttonRadius + 1, buttonY - buttonRadius + 1,
+        buttonX + buttonRadius + 1, buttonY + buttonRadius + 1);
+
+    // Кнопка с градиентом
+    SelectObject(hdc, darkEmeraldBrush);
+    Ellipse(hdc, buttonX - buttonRadius, buttonY - buttonRadius,
+        buttonX + buttonRadius, buttonY + buttonRadius);
+    SelectObject(hdc, mediumEmeraldBrush);
+    Ellipse(hdc, buttonX - buttonRadius * 0.7, buttonY - buttonRadius * 0.7,
+        buttonX + buttonRadius * 0.7, buttonY + buttonRadius * 0.7);
+    SelectObject(hdc, lightEmeraldBrush);
+    Ellipse(hdc, buttonX - buttonRadius * 0.4, buttonY - buttonRadius * 0.4,
+        buttonX + buttonRadius * 0.4, buttonY + buttonRadius * 0.4);
+
+    DeleteObject(darkEmeraldBrush); DeleteObject(mediumEmeraldBrush); DeleteObject(lightEmeraldBrush);
+    DeleteObject(shadowBrush);
+}
+
+void RoundFlashlight::PrintLight()
+{
+    // Обычный фонарик не светит
+}
+
+void RoundFlashlight::PrintCrack()
+{
+    // Обычный фонарик не имеет трещин
+}
+
+/* =============== СЛОМАННЫЙ КРУГЛЫЙ ФОНАРИК =============== */
+BrokenRoundFlashlight::BrokenRoundFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+    int InitHeadWidth, int InitHeadHeight)
+    : RoundFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight) {}
+BrokenRoundFlashlight::~BrokenRoundFlashlight() {}
+
+void BrokenRoundFlashlight::PrintCrack()
+{
+    HPEN crackPen = CreatePen(PS_SOLID, 2, RGB(140, 130, 120));
+    HPEN deepCrackPen = CreatePen(PS_SOLID, 1, RGB(100, 40, 40));
+
+    SelectObject(hdc, crackPen);
+    SelectObject(hdc, GetStockObject(NULL_BRUSH));
+
+    // Трещины
+    MoveToEx(hdc, x + bodyWidth * 0.3, y + bodyHeight * 0.2, NULL);
+    LineTo(hdc, x + bodyWidth * 0.7, y + bodyHeight * 0.8);
+    SelectObject(hdc, deepCrackPen);
+    MoveToEx(hdc, x + bodyWidth * 0.2, y + bodyHeight * 0.7, NULL);
+    LineTo(hdc, x + bodyWidth * 0.8, y + bodyHeight * 0.3);
+
+    DeleteObject(crackPen); DeleteObject(deepCrackPen);
+}
+
+/* =============== ГОРЯЩИЙ КРУГЛЫЙ ФОНАРИК =============== */
+LitRoundFlashlight::LitRoundFlashlight(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+    int InitHeadWidth, int InitHeadHeight)
+    : RoundFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight) {}
+LitRoundFlashlight::~LitRoundFlashlight() {}
+
+void LitRoundFlashlight::PrintLight()
+{
+    // Мягкий свет из круглого фонарика (теплые желтые оттенки)
+    HBRUSH darkWarmBrush = CreateSolidBrush(RGB(255, 230, 150));
+    HBRUSH mediumWarmBrush = CreateSolidBrush(RGB(255, 240, 180));
+    HBRUSH lightWarmBrush = CreateSolidBrush(RGB(255, 250, 210));
+    HBRUSH highlightBrush = CreateSolidBrush(RGB(255, 255, 230));
+
+    HPEN warmPen = CreatePen(PS_SOLID, 1, RGB(255, 230, 150));
+    HPEN lightWarmPen = CreatePen(PS_SOLID, 1, RGB(255, 240, 190));
+
+    // Рисуем рассеянный луч света (треугольник вниз) с градиентом
+    POINT light[3];
+    light[0].x = x + bodyWidth / 2;
+    light[0].y = y - headHeight; // начало луча
+    light[1].x = x + bodyWidth / 2 - headWidth * 1.2;
+    light[1].y = y + headHeight * 2.5; // левая точка основания (шире)
+    light[2].x = x + bodyWidth / 2 + headWidth * 1.2;
+    light[2].y = y + headHeight * 2.5; // правая точка основания
+
+    // Основной луч
+    SelectObject(hdc, darkWarmBrush);
+    SelectObject(hdc, warmPen);
+    Polygon(hdc, light, 3);
+
+    // Внутренняя часть луча
+    POINT innerLight[3];
+    for (int i = 0; i < 3; i++) {
+        innerLight[i].x = (light[i].x + x + bodyWidth / 2) / 2;
+        innerLight[i].y = (light[i].y + y) / 2;
+    }
+    SelectObject(hdc, mediumWarmBrush);
+    SelectObject(hdc, lightWarmPen);
+    Polygon(hdc, innerLight, 3);
+
+    // Ядро луча
+    POINT coreLight[3];
+    for (int i = 0; i < 3; i++) {
+        coreLight[i].x = (innerLight[i].x + x + bodyWidth / 2) / 2;
+        coreLight[i].y = (innerLight[i].y + y) / 2;
+    }
+    SelectObject(hdc, lightWarmBrush);
+    Polygon(hdc, coreLight, 3);
+
+    // Центральная часть (самое яркое)
+    POINT centerLight[3];
+    for (int i = 0; i < 3; i++) {
+        centerLight[i].x = (coreLight[i].x + x + bodyWidth / 2) / 2;
+        centerLight[i].y = (coreLight[i].y + y) / 2;
+    }
+    SelectObject(hdc, highlightBrush);
+    Polygon(hdc, centerLight, 3);
+
+    // Рассеянные лучики
+    HPEN rayPen = CreatePen(PS_SOLID, 1, RGB(255, 245, 200));
+    SelectObject(hdc, rayPen);
+    SelectObject(hdc, GetStockObject(NULL_BRUSH));
+
+    // Рисуем мягкие лучи
+    for (int i = 0; i < 12; i++) {
+        double angle = 3.14159 * i / 6 - 3.14159 / 2; // направлены вниз
+        int rayLength = headHeight * 3;
+        MoveToEx(hdc, x + bodyWidth / 2, y - headHeight / 2, NULL);
+        LineTo(hdc, x + bodyWidth / 2 + cos(angle) * rayLength,
+            y - headHeight / 2 + sin(angle) * rayLength);
+    }
+
+    DeleteObject(warmPen); DeleteObject(lightWarmPen); DeleteObject(rayPen);
+    DeleteObject(darkWarmBrush); DeleteObject(mediumWarmBrush); DeleteObject(lightWarmBrush);
+    DeleteObject(highlightBrush);
+}
+
+void LitRoundFlashlight::Hide()
+{
+    visible = false;
+
+    // Создаем белые кисти и перья для замазывания
+    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+    HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+
+    SelectObject(hdc, whiteBrush);
+    SelectObject(hdc, whitePen);
+
+    // Замазываем область света отдельно (треугольник вниз)
+    POINT light[3];
+    light[0].x = x + bodyWidth / 2;
+    light[0].y = y - headHeight;
+    light[1].x = x + bodyWidth / 2 - headWidth * 1.2;
+    light[1].y = y + headHeight * 2.5;
+    light[2].x = x + bodyWidth / 2 + headWidth * 1.2;
+    light[2].y = y + headHeight * 2.5;
+
+    // Замазываем область света
+    Polygon(hdc, light, 3);
+
+    // Замазываем лучики
+    for (int i = 0; i < 12; i++) {
+        double angle = 3.14159 * i / 6 - 3.14159 / 2;
+        int rayLength = headHeight * 3;
+        MoveToEx(hdc, x + bodyWidth / 2, y - headHeight / 2, NULL);
+        LineTo(hdc, x + bodyWidth / 2 + cos(angle) * rayLength,
+            y - headHeight / 2 + sin(angle) * rayLength);
+    }
+
+    // Замазываем основную область фонарика
+    BaseFlashlight::Hide();
+
+    DeleteObject(whitePen);
+    DeleteObject(whiteBrush);
+}
+
+/* =============== КЛАСС Fly =============== */
+Fly::Fly(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Conflict(InitX, InitY, InitWidth, InitHeight)
+{
+    centerX = InitX;          // центр круга
+    centerY = InitY;          // центр круга
+    circleRadius = 100;       // радиус движения
+    angle = 0;
+
+    // Начальные координаты
+    x = centerX + circleRadius;
+    y = centerY;
+}
+
+Fly::~Fly() {}
+
+void Fly::Show()
+{
+    visible = true;
+
+    // Тело мухи (черный овал)
+    HBRUSH bodyBrush = CreateSolidBrush(RGB(0, 0, 0));
+    HPEN blackPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
+
+    SelectObject(hdc, bodyBrush);
+    SelectObject(hdc, blackPen);
+    Ellipse(hdc, x, y, x + width, y + height);
+
+    // Глаза (красные точки)
+    SetPixel(hdc, x + width / 3, y + height / 4, RGB(255, 0, 0));
+    SetPixel(hdc, x + 2 * width / 3, y + height / 4, RGB(255, 0, 0));
+
+    // Крылья (полупрозрачные)
+    HBRUSH wingBrush = CreateSolidBrush(RGB(150, 150, 150));
+    SelectObject(hdc, wingBrush);
+
+    // Левое крыло
+    Ellipse(hdc, x - width / 2, y - height / 4, x + width / 2, y + height / 4);
+    // Правое крыло
+    Ellipse(hdc, x + width / 2, y - height / 4, x + 3 * width / 2, y + height / 4);
+
+    DeleteObject(bodyBrush);
+    DeleteObject(wingBrush);
+    DeleteObject(blackPen);
+}
+
+void Fly::Hide()
+{
+    visible = false;
+
+    // Создаем белые кисти и перья для замазывания
+    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+    HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+
+    SelectObject(hdc, whiteBrush);
+    SelectObject(hdc, whitePen);
+    Ellipse(hdc, x, y, x + width, y + height);
+
+    // Крылья (полупрозрачные)
+    SelectObject(hdc, whiteBrush);
+
+    // Левое крыло
+    Ellipse(hdc, x - width / 2, y - height / 4, x + width / 2, y + height / 4);
+    // Правое крыло
+    Ellipse(hdc, x + width / 2, y - height / 4, x + 3 * width / 2, y + height / 4);
+
+    DeleteObject(whiteBrush);
+    DeleteObject(whitePen);
+}
+
+void Fly::Move()
+{
+    Hide();
+
+    // Движение по кругу
+    angle += 0.1;  // скорость движения
+    if (angle > 6.283) angle = 0;  // 2*PI
+
+    x = centerX + circleRadius * cos(angle);
+    y = centerY + circleRadius * sin(angle);
+
+    Show();
+}
+
+/* =============== КЛАСС Ghost =============== */
+Ghost::Ghost(int InitX, int InitY, int InitWidth, int InitHeight)
+    : Conflict(InitX, InitY, InitWidth, InitHeight)
+{
+    targetX = InitX;
+    targetY = InitY;
+    chaseSpeed = 2;
+    angle = 0;
+    active = true;
+}
+
+Ghost::~Ghost() {}
+
+void Ghost::Show()
+{
+    visible = true;
+
+    if (!active) return;  // неактивный призрак не показываем
+
+    // Полупрозрачное тело призрака
+    HBRUSH ghostBrush = CreateSolidBrush(RGB(200, 200, 255));
+    HPEN ghostPen = CreatePen(PS_SOLID, 1, RGB(150, 150, 200));
+
+    SelectObject(hdc, ghostBrush);
+    SelectObject(hdc, ghostPen);
+
+    // Тело призрака (овал)
+    Ellipse(hdc, x, y, x + width, y + height);
+
+    // "Хвост" призрака (треугольник снизу)
+    POINT tail[3];
+    tail[0].x = x + width / 4;
+    tail[0].y = y + height;
+    tail[1].x = x + width / 2;
+    tail[1].y = y + height + height / 2;
+    tail[2].x = x + 3 * width / 4;
+    tail[2].y = y + height;
+    Polygon(hdc, tail, 3);
+
+    // Глаза призрака
+    HBRUSH eyeBrush = CreateSolidBrush(RGB(100, 100, 200));
+    SelectObject(hdc, eyeBrush);
+    Ellipse(hdc, x + width / 3, y + height / 3,
+        x + width / 3 + width / 6, y + height / 3 + height / 6);
+    Ellipse(hdc, x + 2 * width / 3 - width / 6, y + height / 3,
+        x + 2 * width / 3, y + height / 3 + height / 6);
+
+    DeleteObject(ghostBrush);
+    DeleteObject(ghostPen);
+    DeleteObject(eyeBrush);
+}
+
+void Ghost::Hide()
+{
+    visible = false;
+    HPEN whitePen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    HBRUSH whiteBrush = CreateSolidBrush(RGB(255, 255, 255));
+
+    SelectObject(hdc, whitePen);
+    SelectObject(hdc, whiteBrush);
+
+    // Замазываем всю область призрака с хвостом
+    Rectangle(hdc, x - 5, y - 5,
+        x + width + 5, y + height + height / 2 + 5);
+
+    DeleteObject(whitePen);
+    DeleteObject(whiteBrush);
+}
+
+void Ghost::Move()
+{
+    if (!active) return;  // неактивный призрак не двигается
+
+    Hide();
+
+    // Движение к цели (фонарику)
+    if (x < targetX) x += chaseSpeed;
+    if (x > targetX) x -= chaseSpeed;
+    if (y < targetY) y += chaseSpeed;
+    if (y > targetY) y -= chaseSpeed;
+
+    Show();
+}
+
+void Ghost::UpdateTarget(int newTargetX, int newTargetY)
+{
+    targetX = newTargetX;
+    targetY = newTargetY;
+}
+
+LitRectFlashlightWithTimer::LitRectFlashlightWithTimer(int InitX, int InitY, int InitBodyWidth,
+    int InitBodyHeight, int InitHeadWidth, int InitHeadHeight)
+    : LitRectFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight),
+    lightTime(0)
+{
+}
+
+bool LitRectFlashlightWithTimer::DecreaseTimer()
+{
+    if (lightTime > 0)
+    {
+        lightTime--;
+        return (lightTime <= 0); // Возвращаем true, если время вышло
+    }
+    return true; // Если время уже было 0, возвращаем true
+}
+
+void LitRectFlashlightWithTimer::AddTime(int seconds)
+{
+    lightTime += seconds;
+}
+
+// LitRoundFlashlightWithTimer.cpp
+LitRoundFlashlightWithTimer::LitRoundFlashlightWithTimer(int InitX, int InitY, int InitBodyWidth,
+    int InitBodyHeight, int InitHeadWidth, int InitHeadHeight)
+    : LitRoundFlashlight(InitX, InitY, InitBodyWidth, InitBodyHeight, InitHeadWidth, InitHeadHeight),
+    lightTime(0)
+{
+}
+
+bool LitRoundFlashlightWithTimer::DecreaseTimer()
+{
+    if (lightTime > 0)
+    {
+        lightTime--;
+        return (lightTime <= 0);//false
+    }
+    return true;
+}
+
+void LitRoundFlashlightWithTimer::AddTime(int seconds)
+{
+    lightTime += seconds;
+}
+
+
+
+
+
+/****************************************************************/
+/*              Ф У Н К Ц И И  Р И С О В А Н И Я                */
+/****************************************************************/
+
+// Функция для отображения текста на экране
+void DrawTextOnScreen(HDC hdc, int x, int y, string text, COLORREF color)
+{
+    SetTextColor(hdc, color);
+    SetBkColor(hdc, RGB(0, 0, 0));
+
+    // Преобразуем string в wstring для совместимости с Unicode
+    wstring wtext(text.begin(), text.end());
+    TextOutW(hdc, x, y, wtext.c_str(), wtext.length());
+}
+
+// Функция для очистки области под информационной панелью
+void ClearInfoArea(HDC hdc, int x, int y, int width, int height)
+{
+    HBRUSH blackBrush = CreateSolidBrush(RGB(0, 0, 0));
+    HPEN blackPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
+
+    HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, blackBrush);
+    HPEN oldPen = (HPEN)SelectObject(hdc, blackPen);
+
+    Rectangle(hdc, x, y, x + width, y + height);
+
+    SelectObject(hdc, oldBrush);
+    SelectObject(hdc, oldPen);
+    DeleteObject(blackBrush);
+    DeleteObject(blackPen);
+}
+
+// Функция для отображения информационной панели
+void DrawInfoPanel(HDC hdc, int screenWidth, int screenHeight,
+    bool isLightOn, int lightTimeRemaining,
+    int batteriesCollected, string flashlightState)
+{
+    const int PANEL_X = screenWidth - 350;
+    const int PANEL_Y = 50;
+    const int PANEL_WIDTH = 320;
+    const int PANEL_HEIGHT = 200;
+
+    // Очищаем область под панелью
+    ClearInfoArea(hdc, PANEL_X - 10, PANEL_Y - 10, PANEL_WIDTH + 20, PANEL_HEIGHT + 20);
+
+    // Рисуем рамку панели
+    HPEN borderPen = CreatePen(PS_SOLID, 3, RGB(80, 80, 120));
+    HBRUSH panelBrush = CreateSolidBrush(RGB(30, 30, 50));
+
+    HPEN oldPen = (HPEN)SelectObject(hdc, borderPen);
+    HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, panelBrush);
+
+    RoundRect(hdc, PANEL_X, PANEL_Y, PANEL_X + PANEL_WIDTH, PANEL_Y + PANEL_HEIGHT, 15, 15);
+
+    SelectObject(hdc, oldPen);
+    SelectObject(hdc, oldBrush);
+    DeleteObject(borderPen);
+    DeleteObject(panelBrush);
+
+    // Проверяем, собраны ли все батарейки
+    if (batteriesCollected >= 10)
+    {
+        // Поздравление - панель победы
+        HBRUSH victoryBrush = CreateSolidBrush(RGB(50, 100, 50));
+        oldBrush = (HBRUSH)SelectObject(hdc, victoryBrush);
+        Rectangle(hdc, PANEL_X + 10, PANEL_Y + 10, PANEL_X + PANEL_WIDTH - 10, PANEL_Y + PANEL_HEIGHT - 10);
+        SelectObject(hdc, oldBrush);
+        DeleteObject(victoryBrush);
+
+        // Заголовок победы
+        SetTextColor(hdc, RGB(255, 255, 100));
+        SetBkColor(hdc, RGB(50, 100, 50));
+
+        HFONT hFont = CreateFontW(32, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+            DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+            DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Arial");
+        HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+
+        wstring victoryTitle = L"VICTORY!";
+        TextOutW(hdc, PANEL_X + 100, PANEL_Y + 30, victoryTitle.c_str(), static_cast<int>(victoryTitle.length()));
+
+        // Меняем шрифт для основного текста
+        SelectObject(hdc, hOldFont);
+        DeleteObject(hFont);
+
+        hFont = CreateFontW(18, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+            DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+            DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Arial");
+        hOldFont = (HFONT)SelectObject(hdc, hFont);
+
+        // Текст поздравления
+        SetTextColor(hdc, RGB(200, 255, 200));
+        wstring congrats1 = L"CONGRATULATIONS!";
+        wstring congrats2 = L"You collected all";
+        wstring congrats3 = L"10 batteries!";
+
+        TextOutW(hdc, PANEL_X + 70, PANEL_Y + 80, congrats1.c_str(), static_cast<int>(congrats1.length()));
+        TextOutW(hdc, PANEL_X + 80, PANEL_Y + 110, congrats2.c_str(), static_cast<int>(congrats2.length()));
+        TextOutW(hdc, PANEL_X + 90, PANEL_Y + 140, congrats3.c_str(), static_cast<int>(congrats3.length()));
+
+        // Восстанавливаем шрифт
+        SelectObject(hdc, hOldFont);
+        DeleteObject(hFont);
+
+        return; // Выходим из функции, чтобы не рисовать обычную панель
+    }
+
+    // Обычная информационная панель (если не собраны все батарейки)
+    // Заголовок панели
+    HBRUSH headerBrush = CreateSolidBrush(RGB(60, 60, 90));
+    oldBrush = (HBRUSH)SelectObject(hdc, headerBrush);
+    Rectangle(hdc, PANEL_X + 5, PANEL_Y + 5, PANEL_X + PANEL_WIDTH - 5, PANEL_Y + 40);
+    SelectObject(hdc, oldBrush);
+    DeleteObject(headerBrush);
+
+    // Текст заголовка
+    SetTextColor(hdc, RGB(255, 255, 200));
+    SetBkColor(hdc, RGB(60, 60, 90));
+
+    HFONT hFont = CreateFontW(24, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
+        DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+        DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Arial");
+    HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+
+    wstring title = L"FLASHLIGHT STATUS";
+    TextOutW(hdc, PANEL_X + (PANEL_WIDTH - 150) / 2, PANEL_Y + 10, title.c_str(), static_cast<int>(title.length()));
+
+    SelectObject(hdc, hOldFont);
+    DeleteObject(hFont);
+
+    // Основной текст информации
+    int textY = PANEL_Y + 60;
+    int lineHeight = 35;
+
+    hFont = CreateFontW(18, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+        DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+        DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Arial");
+    hOldFont = (HFONT)SelectObject(hdc, hFont);
+
+    SetBkColor(hdc, RGB(30, 30, 50));
+
+    // 1. Состояние фонарика
+    wstring stateStr = L"STATE: " + wstring(flashlightState.begin(), flashlightState.end());
+    if (flashlightState == "BROKEN")
+        SetTextColor(hdc, RGB(255, 100, 100));
+    else if (flashlightState == "LIT")
+        SetTextColor(hdc, RGB(255, 255, 100));
+    else
+        SetTextColor(hdc, RGB(100, 255, 100));
+
+    TextOutW(hdc, PANEL_X + 20, textY, stateStr.c_str(), static_cast<int>(stateStr.length()));
+    textY += lineHeight;
+
+    // 2. Свет
+    wstring lightStr = L"LIGHT: " + wstring(isLightOn ? L"ON" : L"OFF");
+    if (isLightOn)
+        SetTextColor(hdc, RGB(255, 255, 100));
+    else
+        SetTextColor(hdc, RGB(200, 200, 200));
+
+    TextOutW(hdc, PANEL_X + 20, textY, lightStr.c_str(), static_cast<int>(lightStr.length()));
+    textY += lineHeight;
+
+    // 3. Время если свет включен
+    if (isLightOn)
+    {
+        SetTextColor(hdc, RGB(100, 255, 255));
+        wstring timeStr = L"TIME LEFT: " + to_wstring(lightTimeRemaining) + L"s";
+        TextOutW(hdc, PANEL_X + 20, textY, timeStr.c_str(), static_cast<int>(timeStr.length()));
+        textY += lineHeight;
+    }
+    else
+    {
+        SetTextColor(hdc, RGB(150, 150, 200));
+        wstring timeStr = L"TIME LEFT: 0s";
+        TextOutW(hdc, PANEL_X + 20, textY, timeStr.c_str(), static_cast<int>(timeStr.length()));
+        textY += lineHeight;
+    }
+
+    // 4. Батарейки
+    SetTextColor(hdc, RGB(200, 150, 255));
+    wstring batteryStr = L"BATTERIES: " + to_wstring(batteriesCollected) + L"/10";
+
+    // Добавляем прогресс сбора
+    if (batteriesCollected >= 8)
+        SetTextColor(hdc, RGB(100, 255, 100));  // Зеленый - почти собраны
+    else if (batteriesCollected >= 5)
+        SetTextColor(hdc, RGB(255, 255, 100));  // Желтый - средний прогресс
+    else
+        SetTextColor(hdc, RGB(255, 100, 100));  // Красный - мало собрано
+
+    TextOutW(hdc, PANEL_X + 20, textY, batteryStr.c_str(), static_cast<int>(batteryStr.length()));
+
+    // Индикатор прогресса
+    int progressWidth = 150;
+    int progressHeight = 15;
+    int progressX = PANEL_X + PANEL_WIDTH - progressWidth - 20;
+    int progressY = textY + 5;
+
+    // Рамка индикатора
+    HPEN progressPen = CreatePen(PS_SOLID, 2, RGB(200, 200, 200));
+    oldPen = (HPEN)SelectObject(hdc, progressPen);
+    HBRUSH progressBgBrush = CreateSolidBrush(RGB(50, 50, 70));
+    oldBrush = (HBRUSH)SelectObject(hdc, progressBgBrush);
+
+    Rectangle(hdc, progressX, progressY, progressX + progressWidth, progressY + progressHeight);
+
+    // Заливка индикатора
+    int fillWidth = (progressWidth * min(batteriesCollected, 10)) / 10;
+    HBRUSH progressFillBrush;
+
+    if (batteriesCollected >= 8)
+        progressFillBrush = CreateSolidBrush(RGB(0, 255, 0));
+    else if (batteriesCollected >= 5)
+        progressFillBrush = CreateSolidBrush(RGB(255, 255, 0));
+    else
+        progressFillBrush = CreateSolidBrush(RGB(255, 0, 0));
+
+    SelectObject(hdc, progressFillBrush);
+    Rectangle(hdc, progressX + 2, progressY + 2, progressX + fillWidth - 2, progressY + progressHeight - 2);
+
+    // Восстанавливаем и удаляем объекты
+    SelectObject(hdc, oldPen);
+    SelectObject(hdc, oldBrush);
+    DeleteObject(progressPen);
+    DeleteObject(progressBgBrush);
+    DeleteObject(progressFillBrush);
+
+    // Восстанавливаем старый шрифт
+    SelectObject(hdc, hOldFont);
+    DeleteObject(hFont);
+}
+
+// Функция для определения состояния фонарика
+string GetFlashlightState(BaseFlashlight* flashlight)
+{
+    if (dynamic_cast<LitRectFlashlight*>(flashlight) ||
+        dynamic_cast<LitRoundFlashlight*>(flashlight))
+        return "LIT";
+    else if (dynamic_cast<BrokenRectFlashlight*>(flashlight) ||
+        dynamic_cast<BrokenRoundFlashlight*>(flashlight))
+        return "BROKEN";
+    else if (dynamic_cast<RectFlashlight*>(flashlight) ||
+        dynamic_cast<RoundFlashlight*>(flashlight))
+        return "OK";
+    return "UNKNOWN";
+}
+
+// Функция для создания батарейки недалеко от фонарика
+Battery* CreateBatteryNearFlashlight(int flashlightX, int flashlightY, int screenWidth, int screenHeight)
+{
+    int batteryWidth = 15, batteryHeight = 25;
+
+    // Радиус появления батареек от фонарика (200-400 пикселей)
+    int spawnRadius = 200 + rand() % 200;
+    int spawnAngle = rand() % 360;
+
+    // Координаты батарейки
+    int x = flashlightX + static_cast<int>(spawnRadius * cos(spawnAngle * 3.14159 / 180));
+    int y = flashlightY + static_cast<int>(spawnRadius * sin(spawnAngle * 3.14159 / 180));
+
+    // Ограничиваем координаты, чтобы батарейка не выходила за границы экрана
+    int margin = 50;
+    if (x < margin) x = margin;
+    if (y < margin) y = margin;
+    if (x > screenWidth - batteryWidth - margin) x = screenWidth - batteryWidth - margin;
+    if (y > screenHeight - batteryHeight - margin) y = screenHeight - batteryHeight - margin;
+
+    return new Battery(x, y, batteryWidth, batteryHeight);
+}

@@ -17,6 +17,8 @@
 #define LIB_H
 
 #include <Windows.h>
+#include <string>
+using namespace std;
 
  // Контекст устройства (общий для всех фигур)
 extern HDC hdc;
@@ -30,6 +32,7 @@ public:
     virtual void PrintButton() = 0;            // Кнопка
     virtual void PrintLight() = 0;             // Свет
     virtual void PrintCrack() = 0;             // Трещины
+
 };
 
 // Класс места нахождения
@@ -89,7 +92,6 @@ public:
     void SetWidth(int NewWidth) { width = NewWidth; }
     void SetHeight(int NewHeight) { height = NewHeight; }
 
-    // АБСТРАКТНЫЙ МЕТОД ДЛЯ ДВИЖЕНИЯ
     virtual void Move();
 };
 
@@ -147,6 +149,12 @@ public:
 
     virtual void Show() override;
     virtual void Hide() override;
+
+    // Виртуальные методы для работы с таймером
+    virtual bool DecreaseTimer() { return false; } // По умолчанию не светится
+    virtual void AddTime(int seconds) {} // По умолчанию ничего не делает
+    virtual int GetTimeRemaining() { return 0; } // По умолчанию 0
+    virtual bool IsLit() { return false; } // По умолчанию не светится
 };
 
 // Целый прямоугольный фонарик
@@ -299,4 +307,43 @@ public:
     bool IsActive() { return active; }
 };
 
+// Светящийся прямоугольный фонарик с таймером
+class LitRectFlashlightWithTimer : public LitRectFlashlight
+{
+private:
+    int lightTime; // Таймер в секундах
+
+public:
+    LitRectFlashlightWithTimer(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+        int InitHeadWidth, int InitHeadHeight);
+
+    // Переопределяем только метод для работы с таймером
+    virtual bool DecreaseTimer() override;
+    virtual void AddTime(int seconds) override;
+    virtual int GetTimeRemaining() override { return lightTime; }
+};
+
+class LitRoundFlashlightWithTimer : public LitRoundFlashlight
+{
+protected:
+    int lightTime; // Таймер в секундах
+
+public:
+    LitRoundFlashlightWithTimer(int InitX, int InitY, int InitBodyWidth, int InitBodyHeight,
+        int InitHeadWidth, int InitHeadHeight);
+
+    // Переопределяем только метод для работы с таймером
+    virtual bool DecreaseTimer() override;
+    virtual void AddTime(int seconds) override;
+    virtual int GetTimeRemaining() override { return lightTime; }
+};
+
+// Прототипы функций отрисовки
+void DrawTextOnScreen(HDC hdc, int x, int y, string text, COLORREF color = RGB(255, 255, 255));
+void ClearInfoArea(HDC hdc, int x, int y, int width, int height);
+void DrawInfoPanel(HDC hdc, int screenWidth, int screenHeight,
+    bool isLightOn, int lightTimeRemaining,
+    int batteriesCollected, string flashlightState);
+string GetFlashlightState(BaseFlashlight* flashlight);
+Battery* CreateBatteryNearFlashlight(int flashlightX, int flashlightY, int screenWidth, int screenHeight);
 #endif
